@@ -13,22 +13,27 @@
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
   <style>
-    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:#e9ecf1;background:#0f1115}
+    :root{--bg:#0f1115;--text:#e9ecf1;--muted:#a9b2c3;--line:#23283a;--panel:#151823;--accent:#e91e63}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--text);background:var(--bg)}
     a{color:inherit;text-decoration:none}
     .container{max-width:1080px;margin:0 auto;padding:0 20px}
-    header{position:sticky;top:0;background:#151823;border-bottom:1px solid #23283a}
+    header{position:sticky;top:0;background:var(--panel);border-bottom:1px solid var(--line);z-index:20}
     .nav{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
-    .brand{font-weight:700;color:white}
-    .cta{padding:10px 16px;border-radius:999px;background:#e91e63;color:white;font-weight:600;text-decoration:none}
-    .hero{padding:72px 0;display:grid;gap:20px}
+    .brand{font-weight:700;color:#fff}
+    .cta{padding:10px 16px;border-radius:999px;background:var(--accent);color:#fff;font-weight:600;text-decoration:none}
+    .hero{padding:56px 0 0}
+    .hero-wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:20px;align-items:center}
     h1{font-size:40px;margin:12px 0}
-    p.lead{color:#a9b2c3;font-size:18px;margin-bottom:18px}
-    section{padding:56px 0;border-top:1px solid #23283a}
+    p.lead{color:var(--muted);font-size:18px;margin-bottom:18px}
+    .hero-img{padding:8px 0}
+    .hero-img img{width:100%;height:420px;object-fit:cover;border-radius:12px;border:1px solid var(--line)}
+    section{padding:56px 0;border-top:1px solid var(--line)}
     h2{font-size:28px;margin-bottom:14px}
     .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
-    .card{border:1px solid #23283a;border-radius:12px;padding:18px;background:#151823}
-    blockquote{border-left:3px solid #e91e63;padding-left:12px;margin:12px 0}
-    footer{padding:30px 0;text-align:center;color:#a9b2c3}
+    .card{border:1px solid var(--line);border-radius:12px;padding:18px;background:var(--panel)}
+    blockquote{border-left:3px solid var(--accent);padding-left:12px;margin:12px 0}
+    footer{padding:30px 0;text-align:center;color:var(--muted);border-top:1px solid var(--line);background:var(--panel)}
+    @media (max-width:900px){.hero-wrap{grid-template-columns:1fr}.hero-img img{height:260px}h1{font-size:34px}}
   </style>
 </head>
 <body>
@@ -46,42 +51,62 @@
   </header>
 
   <main>
-    <section class="hero container">
-      <div>
-        <span>Authentic Experiences, Guided with Care</span>
-        <h1>Tokyo Signature Tours</h1>
-        <p class="lead">Discover Tokyo through private, personalized tours designed for discerning travelers. From iconic landmarks to hidden gems, we create elegant journeys that reflect the true spirit of Japan.</p>
-        <a href="https://wa.me/819084350822" class="cta">Book Your Tour</a>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero-wrap">
+        <div>
+          <span>Authentic Experiences, Guided with Care</span>
+          <h1>Tokyo Signature Tours</h1>
+          <p class="lead">Discover Tokyo through private, personalized tours designed for discerning travelers. From iconic landmarks to hidden gems, we create elegant journeys that reflect the true spirit of Japan.</p>
+          <a href="https://wa.me/819084350822" class="cta">Book Your Tour</a>
+        </div>
+        <div class="hero-img">
+          <!-- ★ Hero画像を表示 -->
+          <img src="/hero-photo.jpg" loading="lazy" alt="Kyoto Japanese garden with red autumn leaves, green moss, and blue sky reflection" />
+        </div>
       </div>
     </section>
 
-    <section id="about" class="container">
-      <h2>About Us</h2>
-      <p>At Tokyo Signature Tours, we believe travel is more than sightseeing — it’s about connection, culture, and creating memories. Led by Taka, an experienced bilingual guide, our tours offer both comfort and authenticity for travelers who expect the finest.</p>
-    </section>
-
-    <section id="tours" class="container">
-      <h2>Our Signature Tours</h2>
-      <div class="grid">
-        <div class="card"><h3>Tokyo Highlights Signature Tour</h3><p>Iconic landmarks, curated elegantly.</p></div>
-        <div class="card"><h3>Hidden Tokyo Experience</h3><p>Explore authentic neighborhoods and local gems.</p></div>
-        <div class="card"><h3>Custom Private Journeys</h3><p>Tailored itineraries designed exclusively for you.</p></div>
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="container">
+        <h2>About Us</h2>
+        <p>At Tokyo Signature Tours, we believe travel is more than sightseeing — it’s about connection, culture, and creating memories. Led by Taka, an experienced bilingual guide, our tours offer both comfort and authenticity for travelers who expect the finest.</p>
       </div>
     </section>
 
-    <section id="testimonials" class="container">
-      <h2>Testimonials</h2>
-      <blockquote>“Professional, elegant, and authentic — Taka showed us a side of Tokyo we could never find ourselves.” – Charles, USA</blockquote>
-      <blockquote>“It was so personalized and our guide Taka was amazing — super fun to be around and made the day a blast! Definitely a highlight of our trip!” – Guest from USA</blockquote>
-      <blockquote>“Taka is a lovely, warm, genuine man who took a real interest in our family. He communicated very well and I would recommend him to anyone — it was a great experience!” – Family traveler</blockquote>
-      <blockquote>“Taka was a pleasure to be with, very considerate, and he made us feel extremely comfortable as he guided us through the wonderful highlights of Tokyo. We would highly recommend Taka. He truly made our day so special.” – Couple from Canada</blockquote>
-      <blockquote>“I had an incredible authentic experience. Taka was a phenomenal guide. He taught me about the history of the places we visited as well as the local customs and traditions.” – Solo traveler</blockquote>
+    <!-- TOURS -->
+    <section id="tours">
+      <div class="container">
+        <h2>Our Signature Tours</h2>
+        <div class="grid">
+          <div class="card"><h3>Tokyo Highlights Signature Tour</h3><p>Iconic landmarks, curated elegantly.</p></div>
+          <div class="card"><h3>Hidden Tokyo Experience</h3><p>Explore authentic neighborhoods and local gems.</p></div>
+          <div class="card"><h3>Custom Private Journeys</h3><p>Tailored itineraries designed exclusively for you.</p></div>
+        </div>
+      </div>
     </section>
 
-    <section id="contact" class="container">
-      <h2>Contact / Booking</h2>
-      <p>Ready to experience Tokyo in a signature way? Contact us today to begin your journey.</p>
-      <p>WhatsApp: <a href="https://wa.me/819084350822">+81-90-8435-0822</a><br>Email: <a href="mailto:info@tokyosignaturetours.com">info@tokyosignaturetours.com</a></p>
+    <!-- TESTIMONIALS -->
+    <section id="testimonials">
+      <div class="container">
+        <h2>Testimonials</h2>
+        <blockquote>“Professional, elegant, and authentic — Taka showed us a side of Tokyo we could never find ourselves.” – Charles, USA</blockquote>
+        <blockquote>“It was so personalized and our guide Taka was amazing — super fun to be around and made the day a blast! Definitely a highlight of our trip!” – Guest from USA</blockquote>
+        <blockquote>“Taka is a lovely, warm, genuine man who took a real interest in our family. He communicated very well and I would recommend him to anyone — it was a great experience!” – Family traveler</blockquote>
+        <blockquote>“Taka was a pleasure to be with, very considerate, and he made us feel extremely comfortable as he guided us through the wonderful highlights of Tokyo. We would highly recommend Taka. He truly made our day so special.” – Couple from Canada</blockquote>
+        <blockquote>“I had an incredible authentic experience. Taka was a phenomenal guide. He taught me about the history of the places we visited as well as the local customs and traditions.” – Solo traveler</blockquote>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="container">
+        <h2>Contact / Booking</h2>
+        <p>Ready to experience Tokyo in a signature way? Contact us today to begin your journey.</p>
+        <p>WhatsApp: <a href="https://wa.me/819084350822">+81-90-8435-0822</a><br>
+           Email: <a href="mailto:info@tokyosignaturetours.com">info@tokyosignaturetours.com</a></p>
+      </div>
     </section>
   </main>
 
