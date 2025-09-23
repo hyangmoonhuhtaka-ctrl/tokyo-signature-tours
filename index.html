@@ -62,6 +62,14 @@
     .slider-dot{width:8px;height:8px;border-radius:999px;background:#3a415a;border:none;cursor:pointer}
     .slider-dot.active{background:var(--accent)}
 
+    /* DETAILS (card-style) */
+    .details-section{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:32px 24px;margin-top:32px}
+    .details-section h2{margin-top:0;margin-bottom:14px;font-size:24px;color:var(--text);border-bottom:1px solid var(--line);padding-bottom:6px}
+    .features-list{list-style:none;padding:0;margin:0 0 24px}
+    .features-list li{margin:8px 0;padding-left:28px;position:relative;line-height:1.5}
+    .features-list li.included::before{content:"✓";color:#4caf50;position:absolute;left:0;font-weight:bold}
+    .features-list li.excluded::before{content:"✗";color:var(--accent);position:absolute;left:0;font-weight:bold}
+
     @media (max-width:900px){
       .hero-wrap{grid-template-columns:1fr}
       .hero-img img{height:260px}
@@ -151,6 +159,37 @@
         <p id="rate-note" style="color:#a9b2c3;margin-top:10px;font-size:14px;">
           Live FX: updating…
         </p>
+      </div>
+    </section>
+
+    <!-- HIGHLIGHTS & INCLUSIONS (card-style) -->
+    <section id="details">
+      <div class="container">
+        <div class="details-section" aria-label="Tour details: highlights and inclusions">
+          <h2>Highlights</h2>
+          <ul class="features-list">
+            <li class="included">Discover Tokyo's temples, markets, and historic districts with an expert local guide</li>
+            <li class="included">Uncover hidden alleys, artisan shops, and off-the-beaten-path gems</li>
+            <li class="included">Engage with locals and experience authentic cultural moments</li>
+            <li class="included">Enjoy a fully tailored experience with flexible start times and a pre-tour questionnaire</li>
+          </ul>
+
+          <h2>What's Included</h2>
+          <ul class="features-list">
+            <li class="included">Private and personalized walking experience with insider tips from a passionate local</li>
+            <li class="included">Flexible start times and durations — Pick your preferred duration when you book</li>
+            <li class="included">Pre-tour questionnaire to tailor the experience to your preferences</li>
+            <li class="included">Direct communication with your host for itinerary planning and local recommendations</li>
+          </ul>
+
+          <h2>Not Included</h2>
+          <ul class="features-list">
+            <li class="excluded">Food and drinks (including meals during the 6h Food Tour — guests pay directly)</li>
+            <li class="excluded">Tickets to any attractions</li>
+            <li class="excluded">Transportation costs (as this is a walking tour, public transport may be used at an additional cost)</li>
+            <li class="excluded">Gratuities (optional)</li>
+          </ul>
+        </div>
       </div>
     </section>
 
