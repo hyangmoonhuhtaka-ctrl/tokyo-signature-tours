@@ -70,6 +70,16 @@
     .features-list li.included::before{content:"✓";color:#4caf50;position:absolute;left:0;font-weight:bold}
     .features-list li.excluded::before{content:"✗";color:var(--accent);position:absolute;left:0;font-weight:bold}
 
+    /* TOURS accordion */
+    .details { display:none; margin-top:12px; color:var(--muted); }
+    .card.open .details { display:block; }
+    .toggle {
+      margin-top:10px; padding:6px 12px;
+      border:1px solid var(--accent); background:transparent; color:var(--accent);
+      border-radius:6px; cursor:pointer;
+    }
+    .toggle:hover { background:var(--accent); color:#fff; }
+
     @media (max-width:900px){
       .hero-wrap{grid-template-columns:1fr}
       .hero-img img{height:260px}
@@ -119,50 +129,111 @@
       </div>
     </section>
 
-    <!-- TOURS (USD基準＋円換算自動更新) -->
+    <!-- TOURS (Accordion + USD only) -->
     <section id="tours">
       <div class="container">
         <h2>Authentic Tokyo Experiences</h2>
         <div class="grid">
+
+          <!-- 4h -->
           <div class="card">
             <h3>Half Day Tour (4h)</h3>
-            <p>
-              Perfect for first-time visitors who want to see Tokyo’s highlights in comfort.<br>
-              <strong>
-                $180 / person <span class="yen" data-usd="180">(≈ ¥—)</span><br>
-                $360 for 2 guests <span class="yen" data-usd="360">(≈ ¥—)</span>
-              </strong>
+            <p>Perfect for first-time visitors to see Tokyo’s highlights in comfort.<br>
+              <strong>$180 / person ($360 for 2 guests)</strong>
             </p>
+            <button class="toggle">More Details</button>
+            <div class="details">
+              <h4>Highlights</h4>
+              <ul>
+                <li>Explore temples, markets & historic districts with an expert guide</li>
+                <li>Discover hidden alleys, artisan shops & authentic gems</li>
+                <li>Connect with locals and enjoy cultural encounters</li>
+                <li>Bespoke journey with flexible start times</li>
+              </ul>
+              <h4>What’s Included</h4>
+              <ul>
+                <li>Private, personalized walking tour</li>
+                <li>Flexible durations — 4h, 6h (with food), or 8h</li>
+                <li>Pre-tour consultation</li>
+                <li>Direct communication with your host</li>
+              </ul>
+              <h4>Not Included</h4>
+              <ul>
+                <li>Food & drinks (guests pay directly)</li>
+                <li>Attraction tickets</li>
+                <li>Public transportation</li>
+                <li>Gratuities (optional)</li>
+              </ul>
+            </div>
           </div>
+
+          <!-- 6h -->
           <div class="card">
             <h3>Extended Half Day & Food Tour (6h)</h3>
-            <p>
-              Explore deeper into Tokyo with time for local neighborhoods and an authentic food experience.<br>
-              <strong>
-                $270 / person <span class="yen" data-usd="270">(≈ ¥—)</span><br>
-                $540 for 2 guests <span class="yen" data-usd="540">(≈ ¥—)</span>
-              </strong>
+            <p>Go beyond the highlights with extra time for neighborhoods and authentic food experiences.<br>
+              <strong>$270 / person ($540 for 2 guests)</strong>
             </p>
+            <button class="toggle">More Details</button>
+            <div class="details">
+              <h4>Highlights</h4>
+              <ul>
+                <li>Discover Tokyo’s food culture with authentic dining stops</li>
+                <li>Explore artisan shops, lively streets, and hidden alleys</li>
+                <li>Engage with locals and enjoy cultural exchanges</li>
+              </ul>
+              <h4>What’s Included</h4>
+              <ul>
+                <li>Private, personalized walking tour</li>
+                <li>Flexible durations — 4h, 6h (with food), or 8h</li>
+                <li>Pre-tour consultation</li>
+                <li>Direct communication with your host</li>
+              </ul>
+              <h4>Not Included</h4>
+              <ul>
+                <li>Food & drinks (including meals during this Food Tour — payable by guests)</li>
+                <li>Attraction tickets</li>
+                <li>Public transportation</li>
+                <li>Gratuities (optional)</li>
+              </ul>
+            </div>
           </div>
+
+          <!-- 8h -->
           <div class="card">
             <h3>Full Day Signature Tour (8h)</h3>
-            <p>
-              A complete Tokyo journey — from iconic landmarks to hidden gems, guided with care.<br>
-              <strong>
-                $330 / person <span class="yen" data-usd="330">(≈ ¥—)</span><br>
-                $660 for 2 guests <span class="yen" data-usd="660">(≈ ¥—)</span>
-              </strong>
+            <p>The complete Tokyo journey — iconic landmarks, hidden gems, and authentic cultural encounters.<br>
+              <strong>$330 / person ($660 for 2 guests)</strong>
             </p>
+            <button class="toggle">More Details</button>
+            <div class="details">
+              <h4>Highlights</h4>
+              <ul>
+                <li>Experience the best of Tokyo in one day — temples, markets, neighborhoods</li>
+                <li>Uncover hidden gems and artisan shops off the tourist path</li>
+                <li>Immerse in authentic cultural moments and local life</li>
+              </ul>
+              <h4>What’s Included</h4>
+              <ul>
+                <li>Private, personalized walking tour</li>
+                <li>Flexible durations — 4h, 6h (with food), or 8h</li>
+                <li>Pre-tour consultation</li>
+                <li>Direct communication with your host</li>
+              </ul>
+              <h4>Not Included</h4>
+              <ul>
+                <li>Food & drinks (guests pay directly)</li>
+                <li>Attraction tickets</li>
+                <li>Public transportation</li>
+                <li>Gratuities (optional)</li>
+              </ul>
+            </div>
           </div>
-        </div>
 
-        <p id="rate-note" style="color:#a9b2c3;margin-top:10px;font-size:14px;">
-          Live FX: updating…
-        </p>
+        </div>
       </div>
     </section>
 
-    <!-- HIGHLIGHTS & INCLUSIONS (card-style) -->
+    <!-- HIGHLIGHTS & INCLUSIONS (card-style, 共通セクションはそのまま保持) -->
     <section id="details">
       <div class="container">
         <div class="details-section" aria-label="Tour details: highlights and inclusions">
@@ -288,39 +359,15 @@
 
   <footer>© 2025 Tokyo Signature Tours. All rights reserved.</footer>
 
-  <!-- Live FX (USD→JPY) -->
+  <!-- Tours Accordion Script -->
   <script>
-  (async function updateYenRates(){
-    const API = "https://api.exchangerate.host/latest?base=USD&symbols=JPY"; // 無料・キー不要
-    const fallbackRate = 150; // 取得失敗時のフォールバック
-
-    const formatJPY = (n) => "¥" + Math.round(n).toLocaleString("ja-JP");
-    const noteEl = document.getElementById("rate-note");
-    const yenEls = document.querySelectorAll(".yen");
-
-    try {
-      const res = await fetch(API, { cache: "no-store" });
-      if (!res.ok) throw new Error("Bad response");
-      const data = await res.json();
-      const rate = data && data.rates && data.rates.JPY ? data.rates.JPY : fallbackRate;
-
-      yenEls.forEach(span => {
-        const usd = parseFloat(span.dataset.usd);
-        if (!isNaN(usd)) span.textContent = `(≈ ${formatJPY(usd * rate)})`;
+    document.querySelectorAll('.toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const card = btn.closest('.card');
+        card.classList.toggle('open');
+        btn.textContent = card.classList.contains('open') ? 'Hide Details' : 'More Details';
       });
-
-      const now = new Date();
-      const timeJST = now.toLocaleString("ja-JP", { hour: "2-digit", minute: "2-digit" });
-      if (noteEl) noteEl.textContent = `Live FX: 1 USD = ${formatJPY(rate)}（${timeJST} 更新）`;
-    } catch (e) {
-      yenEls.forEach(span => {
-        const usd = parseFloat(span.dataset.usd);
-        if (!isNaN(usd)) span.textContent = `(≈ ${formatJPY(usd * fallbackRate)})`;
-      });
-      if (noteEl) noteEl.textContent = `Live FX: 取得エラーのため概算表示（1 USD = ${formatJPY(fallbackRate)}）`;
-      console.error("FX fetch failed:", e);
-    }
-  })();
+    });
   </script>
 
   <!-- SLIDER SCRIPT -->
@@ -334,7 +381,7 @@
     const dotsWrap = document.getElementById('tst-dots');
 
     let index = 0, autoplayId = null, xStart = 0, xMove = 0;
-    const go = (i)=>{ index = (i + slides.length) % slides.length; track.style.transform = `translateX(${-index*100}%)`; syncDots(); restart(); };
+    const go = (i)=>{ index = (i + slides.length) % slides.length; track.style.transform = `translateX(${-index*100}%)`; syncDots(); };
     const syncDots = ()=>{ [...dotsWrap.children].forEach((d,di)=>d.classList.toggle('active', di===index)); };
 
     slides.forEach((_,i)=> {
@@ -345,18 +392,16 @@
     prev.addEventListener('click', ()=>go(index-1));
     next.addEventListener('click', ()=>go(index+1));
 
-    const onStart = e => { xStart = (e.touches? e.touches[0].clientX : e.clientX); };
-    const onMove  = e => { xMove  = (e.touches? e.touches[0].clientX : e.clientX) - xStart; };
-    const onEnd   = () => { if(Math.abs(xMove)>50) go(index + (xMove<0?1:-1)); xStart=0; xMove=0; };
-    wrap.addEventListener('mousedown', onStart); wrap.addEventListener('mousemove', onMove); wrap.addEventListener('mouseup', onEnd);
-    wrap.addEventListener('touchstart', onStart, {passive:true}); wrap.addEventListener('touchmove', onMove, {passive:true}); wrap.addEventListener('touchend', onEnd);
+    // optional swipe
+    let startX=0, deltaX=0;
+    const onStart = e => { startX = (e.touches? e.touches[0].clientX : e.clientX); };
+    const onMove  = e => { deltaX = (e.touches? e.touches[0].clientX : e.clientX) - startX; };
+    const onEnd   = () => { if(Math.abs(deltaX)>50) go(index + (deltaX<0?1:-1)); startX=0; deltaX=0; };
+    wrap.addEventListener('touchstart', onStart, {passive:true});
+    wrap.addEventListener('touchmove',  onMove,  {passive:true});
+    wrap.addEventListener('touchend',   onEnd);
 
-    const start = ()=> autoplayId = setInterval(()=>go(index+1), 4500);
-    const stop  = ()=> { if(autoplayId) clearInterval(autoplayId); autoplayId=null; };
-    const restart = ()=>{ stop(); start(); };
-    wrap.addEventListener('mouseenter', stop); wrap.addEventListener('mouseleave', start);
-
-    go(0); start();
+    go(0);
   })();
   </script>
 </body>
