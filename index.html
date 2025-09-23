@@ -111,24 +111,46 @@
       </div>
     </section>
 
-    <!-- TOURS -->
+    <!-- TOURS (USD基準＋円換算自動更新) -->
     <section id="tours">
       <div class="container">
         <h2>Authentic Tokyo Experiences</h2>
         <div class="grid">
           <div class="card">
-            <h3>Tokyo Highlights Signature Tour</h3>
-            <p>Iconic landmarks, curated elegantly. <strong>From ¥45,000</strong></p>
+            <h3>Half Day Tour (4h)</h3>
+            <p>
+              Perfect for first-time visitors who want to see Tokyo’s highlights in comfort.<br>
+              <strong>
+                $180 / person <span class="yen" data-usd="180">(≈ ¥—)</span><br>
+                $360 for 2 guests <span class="yen" data-usd="360">(≈ ¥—)</span>
+              </strong>
+            </p>
           </div>
           <div class="card">
-            <h3>Hidden Tokyo Experience</h3>
-            <p>Explore authentic neighborhoods and local gems. <strong>From ¥50,000</strong></p>
+            <h3>Extended Half Day & Food Tour (6h)</h3>
+            <p>
+              Explore deeper into Tokyo with time for local neighborhoods and an authentic food experience.<br>
+              <strong>
+                $270 / person <span class="yen" data-usd="270">(≈ ¥—)</span><br>
+                $540 for 2 guests <span class="yen" data-usd="540">(≈ ¥—)</span>
+              </strong>
+            </p>
           </div>
           <div class="card">
-            <h3>Custom Private Journeys</h3>
-            <p>Tailored itineraries designed exclusively for you. <strong>From ¥60,000</strong></p>
+            <h3>Full Day Signature Tour (8h)</h3>
+            <p>
+              A complete Tokyo journey — from iconic landmarks to hidden gems, guided with care.<br>
+              <strong>
+                $330 / person <span class="yen" data-usd="330">(≈ ¥—)</span><br>
+                $660 for 2 guests <span class="yen" data-usd="660">(≈ ¥—)</span>
+              </strong>
+            </p>
           </div>
         </div>
+
+        <p id="rate-note" style="color:#a9b2c3;margin-top:10px;font-size:14px;">
+          Live FX: updating…
+        </p>
       </div>
     </section>
 
@@ -190,20 +212,20 @@
       </div>
     </section>
 
-    <!-- GALLERY -->
+    <!-- GALLERY (Slider) -->
     <section id="gallery">
       <div class="container">
         <h2>Photo Gallery</h2>
         <div class="slider-wrap" id="tst-slider">
           <div class="slider-track">
-            <div class="slide"><img src="/images/TourPhoto-1.jpg" alt="Guests exploring hidden alley in Tokyo" loading="lazy"></div>
-            <div class="slide"><img src="/images/TourPhoto-2.jpg" alt="Group relaxing at a Japanese garden pavilion" loading="lazy"></div>
-            <div class="slide"><img src="/images/TourPhoto-4.jpg" alt="Tour group in front of traditional gate" loading="lazy"></div>
-            <div class="slide"><img src="/images/TourPhoto-5.jpg" alt="Smiling guests in Asakusa street with Skytree" loading="lazy"></div>
-            <div class="slide"><img src="/images/TourPhoto-6.jpg" alt="Tour group enjoying Asakusa sumo street area" loading="lazy"></div>
-            <div class="slide"><img src="/images/TourPhoto-7.jpg" alt="Walking through Takeshita Street in Harajuku" loading="lazy"></div>
-            <div class="slide"><img src="/images/TourPhoto-8.jpg" alt="Group at Meiji Shrine entrance" loading="lazy"></div>
-            <div class="slide"><img src="/images/TourPhoto-9.jpg" alt="Group posing by sake barrel wall at Meiji Jingu" loading="lazy"></div>
+            <div class="slide"><img src="/images/TourPhoto-1.jpg"  alt="Guests exploring hidden alley in Tokyo" loading="lazy"></div>
+            <div class="slide"><img src="/images/TourPhoto-2.jpg"  alt="Group relaxing at a Japanese garden pavilion" loading="lazy"></div>
+            <div class="slide"><img src="/images/TourPhoto-4.jpg"  alt="Tour group in front of traditional gate" loading="lazy"></div>
+            <div class="slide"><img src="/images/TourPhoto-5.jpg"  alt="Smiling guests in Asakusa street with Skytree" loading="lazy"></div>
+            <div class="slide"><img src="/images/TourPhoto-6.jpg"  alt="Tour group enjoying Asakusa sumo street area" loading="lazy"></div>
+            <div class="slide"><img src="/images/TourPhoto-7.jpg"  alt="Walking through Takeshita Street in Harajuku" loading="lazy"></div>
+            <div class="slide"><img src="/images/TourPhoto-8.jpg"  alt="Group at Meiji Shrine entrance" loading="lazy"></div>
+            <div class="slide"><img src="/images/TourPhoto-9.jpg"  alt="Group posing by sake barrel wall at Meiji Jingu" loading="lazy"></div>
             <div class="slide"><img src="/images/TourPhoto-10.jpg" alt="Group at a large torii gate surrounded by forest" loading="lazy"></div>
             <div class="slide"><img src="/images/TourPhoto-11.jpg" alt="Guests enjoying a theater show in Tokyo" loading="lazy"></div>
           </div>
@@ -226,6 +248,41 @@
   </main>
 
   <footer>© 2025 Tokyo Signature Tours. All rights reserved.</footer>
+
+  <!-- Live FX (USD→JPY) -->
+  <script>
+  (async function updateYenRates(){
+    const API = "https://api.exchangerate.host/latest?base=USD&symbols=JPY"; // 無料・キー不要
+    const fallbackRate = 150; // 取得失敗時のフォールバック
+
+    const formatJPY = (n) => "¥" + Math.round(n).toLocaleString("ja-JP");
+    const noteEl = document.getElementById("rate-note");
+    const yenEls = document.querySelectorAll(".yen");
+
+    try {
+      const res = await fetch(API, { cache: "no-store" });
+      if (!res.ok) throw new Error("Bad response");
+      const data = await res.json();
+      const rate = data && data.rates && data.rates.JPY ? data.rates.JPY : fallbackRate;
+
+      yenEls.forEach(span => {
+        const usd = parseFloat(span.dataset.usd);
+        if (!isNaN(usd)) span.textContent = `(≈ ${formatJPY(usd * rate)})`;
+      });
+
+      const now = new Date();
+      const timeJST = now.toLocaleString("ja-JP", { hour: "2-digit", minute: "2-digit" });
+      if (noteEl) noteEl.textContent = `Live FX: 1 USD = ${formatJPY(rate)}（${timeJST} 更新）`;
+    } catch (e) {
+      yenEls.forEach(span => {
+        const usd = parseFloat(span.dataset.usd);
+        if (!isNaN(usd)) span.textContent = `(≈ ${formatJPY(usd * fallbackRate)})`;
+      });
+      if (noteEl) noteEl.textContent = `Live FX: 取得エラーのため概算表示（1 USD = ${formatJPY(fallbackRate)}）`;
+      console.error("FX fetch failed:", e);
+    }
+  })();
+  </script>
 
   <!-- SLIDER SCRIPT -->
   <script>
@@ -265,4 +322,3 @@
   </script>
 </body>
 </html>
-
