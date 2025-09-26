@@ -42,7 +42,7 @@
       --accent:#e85b8c;       /* sakura pink accent */
       --header:rgba(255,255,255,.85); /* translucent light header */
       /* soft sakura petals background (SVG pattern) */
-      --hero-pattern:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120"><g fill="%23e85b8c" fill-opacity="0.35"><path d="M60 20c5 10 15 15 20 20-5 5-10 15-20 20-10-5-15-15-20-20 5-5 15-10 20-20z"/><circle cx="30" cy="90" r="10"/><circle cx="90" cy="80" r="8"/></g></svg>');
+      --hero-pattern:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160"><defs><g id="petal" transform="translate(0,0)"><path d="M20 0 C28 10, 28 26, 20 36 C12 26, 12 10, 20 0 Z" fill="%23e85b8c" fill-opacity="0.38"/></g></defs><g><use href="%23petal" x="20" y="20"/><use href="%23petal" x="80" y="10" transform="rotate(25 80 10) scale(1.1)"/><use href="%23petal" x="120" y="60" transform="rotate(-15 120 60) scale(0.9)"/><use href="%23petal" x="40" y="100" transform="rotate(35 40 100) scale(1.2)"/><use href="%23petal" x="100" y="120" transform="rotate(-30 100 120)"/></g></svg>');
     }
 
     /* ===== THEME: Matcha (toggle by adding .theme-matcha to <body>) ===== */
@@ -82,7 +82,7 @@
 
     /* ===== Hero ===== */
     .hero{padding:48px 0 0; position:relative; overflow:hidden}
-    body::before{content:"";position:fixed;inset:0;background-repeat:repeat;background-size:120px 120px;opacity:.14;z-index:-1;background-image:var(--hero-pattern);pointer-events:none}
+    body::before{content:"";position:fixed;inset:0;background-repeat:repeat;background-size:160px 160px;opacity:.14;z-index:-1;background-image:var(--hero-pattern);pointer-events:none}
     .hero::before{display:none}
 
     /* ===== Sakura petals animation (enabled in Sakura theme only) ===== */
