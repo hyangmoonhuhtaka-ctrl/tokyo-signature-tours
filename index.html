@@ -13,80 +13,6 @@
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
 
-  <style>
-    :root{
-      --bg:#fff7fa;
-      --panel:#ffffff;
-      --text:#17212b;
-      --muted:#5b6470;
-      --line:rgba(0,0,0,.08);
-      --accent:#e85b8c;
-      --header:rgba(255,255,255,.85);
-    }
-
-    body.theme-matcha{
-      --bg:#f4f2ea;
-      --panel:#ffffff;
-      --text:#152217;
-      --muted:#475549;
-      --line:rgba(0,0,0,.08);
-      --accent:#3f6f32;
-      --header:rgba(255,255,255,.9);
-    }
-
-    /* Background patterns */
-    .hero {
-      padding:48px 0 0;
-      position:relative;
-      overflow:hidden;
-    }
-    .hero::before{
-      content:"";
-      position:absolute;inset:0;
-      background-repeat:repeat;
-      background-size:120px 120px;
-      opacity:0.15;
-      z-index:0;
-    }
-    body:not(.theme-matcha) .hero::before{
-      /* Sakura petals SVG pattern */
-      background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120"><g fill="%23e85b8c" fill-opacity="0.5"><path d="M60 20c5 10 15 15 20 20-5 5-10 15-20 20-10-5-15-15-20-20 5-5 15-10 20-20z"/><circle cx="30" cy="90" r="10"/><circle cx="90" cy="80" r="8"/></g></svg>');
-    }
-    body.theme-matcha .hero::before{
-      /* Matcha leaves SVG pattern */
-      background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120"><g fill="%233f6f32" fill-opacity="0.3"><path d="M60 10c15 20 25 40 0 100-25-60-15-80 0-100z"/><path d="M20 60c20-10 40-10 80 30-40-10-60-10-80-30z"/></g></svg>');
-    }
-    .hero-wrap{position:relative;z-index:1;display:grid;grid-template-columns:1.05fr .95fr;gap:20px;align-items:center}
-
-    /* --- existing styles below (kept) --- */
-    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.7;color:var(--text);background:var(--bg);margin:0}
-    a{color:inherit;text-decoration:none}
-    img{max-width:100%;display:block;height:auto}
-    .container{max-width:1080px;margin:0 auto;padding:0 20px}
-    header{position:sticky;top:0;background:var(--header);backdrop-filter:saturate(120%) blur(8px);border-bottom:1px solid var(--line);z-index:20}
-    .nav{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 0}
-    .brand{font-weight:700;color:#000}
-    nav a{padding:8px 6px;display:inline-block}
-    .cta{display:inline-block;min-height:44px;line-height:44px;padding:0 16px;border-radius:999px;background:var(--accent);color:#fff;font-weight:600;text-decoration:none}
-    h1{font-size:40px;margin:12px 0}
-    p.lead{color:var(--muted);font-size:18px;margin-bottom:18px}
-    .hero-img{padding:8px 0}
-    .hero-img img{width:100%;height:420px;object-fit:cover;border-radius:12px;border:1px solid var(--line)}
-    section{padding:48px 0;border-top:1px solid var(--line)}
-    h2{font-size:28px;margin-bottom:14px}
-    .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
-    .card{border:1px solid var(--line);border-radius:12px;padding:18px;background:var(--panel)}
-    blockquote{border-left:3px solid var(--accent);padding-left:12px;margin:12px 0}
-    .stars{color:var(--accent);margin:0 0 6px;font-size:18px}
-    footer{padding:30px 0;text-align:center;color:var(--muted);border-top:1px solid var(--line);background:var(--panel)}
-    /* ... その他スタイルは既存のまま ... */
-  </style>
-</head>
-<body>
-  <!-- rest of HTML unchanged -->
-</body>
-</html>
-
   <!-- JSON-LD (SEO) -->
   <script type="application/ld+json">
   {
@@ -115,9 +41,8 @@
       --line:rgba(0,0,0,.08); /* soft separators */
       --accent:#e85b8c;       /* sakura pink accent */
       --header:rgba(255,255,255,.85); /* translucent light header */
-      /* soft background art using CSS gradients (no images) */
-      --hero-illustration: radial-gradient(60% 60% at 10% 0%, rgba(232,91,140,0.14), rgba(232,91,140,0) 60%),
-                           radial-gradient(50% 50% at 90% 10%, rgba(232,91,140,0.08), rgba(232,91,140,0) 60%);
+      /* soft sakura petals background (SVG pattern) */
+      --hero-pattern:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120"><g fill="%23e85b8c" fill-opacity="0.35"><path d="M60 20c5 10 15 15 20 20-5 5-10 15-20 20-10-5-15-15-20-20 5-5 15-10 20-20z"/><circle cx="30" cy="90" r="10"/><circle cx="90" cy="80" r="8"/></g></svg>');
     }
 
     /* ===== THEME: Matcha (toggle by adding .theme-matcha to <body>) ===== */
@@ -129,8 +54,7 @@
       --line:rgba(0,0,0,.08);
       --accent:#3f6f32;       /* bitter matcha green */
       --header:rgba(255,255,255,.9);
-      --hero-illustration: radial-gradient(60% 60% at 12% 0%, rgba(63,111,50,0.16), rgba(63,111,50,0) 60%),
-                           radial-gradient(50% 50% at 88% 8%, rgba(63,111,50,0.10), rgba(63,111,50,0) 60%);
+      --hero-pattern:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120"><g fill="%233f6f32" fill-opacity="0.28"><path d="M60 10c15 20 25 40 0 100-25-60-15-80 0-100z"/><path d="M20 60c20-10 40-10 80 30-40-10-60-10-80-30z"/></g></svg>');
     }
 
     /* ===== Base ===== */
@@ -147,7 +71,7 @@
     nav a{padding:8px 6px;display:inline-block}
     .cta{display:inline-block;min-height:44px;line-height:44px;padding:0 16px;border-radius:999px;background:var(--accent);color:#fff;font-weight:600;text-decoration:none}
 
-    /* Icon buttons */
+    /* Icon buttons (used in Contact) */
     .icon-btn{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:999px;border:1px solid var(--line);background:rgba(0,0,0,.04);color:var(--text)}
     .icon-btn:hover{background:rgba(0,0,0,.08)}
     .icon{width:18px;height:18px;fill:currentColor}
@@ -157,8 +81,9 @@
     .theme-toggle:hover{background:rgba(0,0,0,.06)}
 
     /* ===== Hero ===== */
-    .hero{padding:48px 0 0; background-image: var(--hero-illustration); background-repeat:no-repeat; background-size:cover; background-position:center top;}
-    .hero-wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:20px;align-items:center}
+    .hero{padding:48px 0 0; position:relative; overflow:hidden}
+    .hero::before{content:""; position:absolute; inset:0; background-repeat:repeat; background-size:120px 120px; opacity:.16; z-index:0; background-image:var(--hero-pattern)}
+    .hero-wrap{position:relative; z-index:1; display:grid;grid-template-columns:1.05fr .95fr;gap:20px;align-items:center}
     h1{font-size:40px;margin:12px 0}
     p.lead{color:var(--muted);font-size:18px;margin-bottom:18px}
     .hero-img{padding:8px 0}
@@ -176,7 +101,7 @@
     blockquote{border-left:3px solid var(--accent);padding-left:12px;margin:12px 0}
     .stars{color:var(--accent);margin:0 0 6px;font-size:18px}
 
-    footer{padding:30px 0;text-align:center;color:var(--muted);border-top:1px solid var(--line)}
+    footer{padding:30px 0;text-align:center;color:var(--muted);border-top:1px solid var(--line);background:var(--panel)}
 
     /* ===== Slider ===== */
     .slider-wrap{position:relative;overflow:hidden;border:1px solid var(--line);border-radius:12px;background:var(--panel)}
@@ -201,11 +126,7 @@
     /* ===== Tours accordion ===== */
     .details { display:none; margin-top:12px; color:var(--muted); }
     .card.open .details { display:block; }
-    .toggle {
-      margin-top:10px; padding:10px 14px; min-height:44px;
-      border:1px solid var(--accent); background:transparent; color:var(--accent);
-      border-radius:8px; cursor:pointer;
-    }
+    .toggle { margin-top:10px; padding:10px 14px; min-height:44px; border:1px solid var(--accent); background:transparent; color:var(--accent); border-radius:8px; cursor:pointer; }
     .toggle:hover { background:var(--accent); color:#fff; }
 
     /* --- Mobile enhancements --- */
@@ -258,8 +179,7 @@
           <a href="https://wa.me/819084350822" class="cta">Book Your Tour</a>
         </div>
         <div class="hero-img">
-          <img src="/hero-photo.jpg" loading="lazy"
-               alt="Mount Fuji with cherry blossoms and Chureito Pagoda in Japan — iconic Tokyo private tour experience with Tokyo Signature Tours" />
+          <img src="/hero-photo.jpg" loading="lazy" alt="Mount Fuji with cherry blossoms and Chureito Pagoda in Japan — iconic Tokyo private tour experience with Tokyo Signature Tours" />
         </div>
       </div>
     </section>
@@ -506,7 +426,7 @@
             <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 9H16V6h-2.5C11.57 6 10 7.57 10 9.5V11H8v3h2v7h3v-7h2.1l.9-3H13v-1.5c0-.28.22-.5.5-.5z"/></svg>
           </a>
           <a class="icon-btn" href="https://wa.me/819084350822" target="_blank" rel="noopener" aria-label="WhatsApp">
-            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.52 3.48A11.86 11.86 0 0 0 12.06 0C5.58 0 .36 5.21.36 11.67c0 2.06.54 4.08 1.56 5.86L0 24l6.63-1.88a12 12 0 0 0 5.43 1.35h.01c6.48 0 11.7-5.21 11.7-11.67 0-3.12-1.23-6.05-3.25-8.32zM12.06 22a9.9 9.9 0 0 1-5.04-1.37l-.36-.21-3.94 1.12 1.12-3.84-.23-.39a9.83 9.83 0 0 1-1.5-5.05C2.1 6.4 6.66 1.9 12.06 1.9c2.6 0 5.04 1.01 6.88 2.84a9.6 9.6 0 0 1 2.85 6.92c0 5.4-4.56 9.99-9.93 9.99zm5.04-7.6c-.27-.13-1.6-.79-1.84-.88-.24-.09-.42-.13-.6.13-.18.27-.69.88-.84 1.06-.16.18-.31.2-.58.07-.27-.13-1.14-.42-2.17-1.33-.8-.69-1.34-1.55-1.5-1.82-.16-.27-.02-.42.11-.55.12-.12.27-.31.4-.47.13-.16.18-.27.27-.45.09-.18.04-.34-.02-.47-.07-.13-.6-1.45-.82-1.99-.22-.54-.44-.46-.6-.47h-.51c-.18 0-.47.07-.72 .34-.24 .27-.95 .93-.95 2.27 0 1.34 .98 2.63 1.12 2.81 .13 .18 1.93 2.93 4.68 4.04 .65 .28 1.16 .45 1.55 .57 .65 .21 1.24 .18 1.71 .11 .52 -.08 1.6 -.65 1.83 -1.27 .23 -.62 .23 -1.15 .16 -1.27 -.06 -.11 -.24 -.18 -.51 -.31z"/></svg>
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.52 3.48A11.86 11.86 0 0 0 12.06 0C5.58 0 .36 5.21.36 11.67c0 2.06.54 4.08 1.56 5.86L0 24l6.63-1.88a12 12 0 0 0 5.43 1.35h.01c6.48 0 11.7-5.21 11.7-11.67 0-3.12-1.23-6.05-3.25-8.32zM12.06 22a9.9 9.9 0 0 1-5.04-1.37l-.36-.21-3.94 1.12 1.12-3.84-.23-.39a9.83 9.83 0 0 1-1.5-5.05C2.1 6.4 6.66 1.9 12.06 1.9c2.6 0 5.04 1.01 6.88 2.84a9.6 9.6 0 0 1 2.85 6.92c0 5.4-4.56 9.99-9.93 9.99zm5.04-7.6c-.27-.13-1.6-.79-1.84-.88-.24-.09-.42-.13-.6.13-.18.27-.69.88-.84 1.06-.16.18-.31.2-.58.07-.27-.13-1.14-.42-2.17-1.33-.8-.69-1.34-1.55-1.5-1.82-.16-.27-.02-.42.11-.55.12-.12.27-.31.4-.47.13-.16.18-.27.27-.45.09-.18.04-.34-.02-.47-.07-.13-.6-1.45-.82-1.99-.22-.54-.44-.46-.6-.47h-.51c-.18 0-.47.07-.72.34-.24.27-.95.93-.95 2.27 0 1.34.98 2.63 1.12 2.81.13.18 1.93 2.93 4.68 4.04.65.28 1.16.45 1.55.57.65.21 1.24.18 1.71.11.52-.08 1.6-.65 1.83-1.27.23-.62.23-1.15.16-1.27-.06-.11-.24-.18-.51-.31z"/></svg>
           </a>
           <a class="icon-btn" href="mailto:info@tokyosignaturetours.com" aria-label="Email">
             <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
@@ -584,4 +504,3 @@
   </script>
 </body>
 </html>
-
