@@ -13,6 +13,80 @@
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
 
+  <style>
+    :root{
+      --bg:#fff7fa;
+      --panel:#ffffff;
+      --text:#17212b;
+      --muted:#5b6470;
+      --line:rgba(0,0,0,.08);
+      --accent:#e85b8c;
+      --header:rgba(255,255,255,.85);
+    }
+
+    body.theme-matcha{
+      --bg:#f4f2ea;
+      --panel:#ffffff;
+      --text:#152217;
+      --muted:#475549;
+      --line:rgba(0,0,0,.08);
+      --accent:#3f6f32;
+      --header:rgba(255,255,255,.9);
+    }
+
+    /* Background patterns */
+    .hero {
+      padding:48px 0 0;
+      position:relative;
+      overflow:hidden;
+    }
+    .hero::before{
+      content:"";
+      position:absolute;inset:0;
+      background-repeat:repeat;
+      background-size:120px 120px;
+      opacity:0.15;
+      z-index:0;
+    }
+    body:not(.theme-matcha) .hero::before{
+      /* Sakura petals SVG pattern */
+      background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120"><g fill="%23e85b8c" fill-opacity="0.5"><path d="M60 20c5 10 15 15 20 20-5 5-10 15-20 20-10-5-15-15-20-20 5-5 15-10 20-20z"/><circle cx="30" cy="90" r="10"/><circle cx="90" cy="80" r="8"/></g></svg>');
+    }
+    body.theme-matcha .hero::before{
+      /* Matcha leaves SVG pattern */
+      background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120"><g fill="%233f6f32" fill-opacity="0.3"><path d="M60 10c15 20 25 40 0 100-25-60-15-80 0-100z"/><path d="M20 60c20-10 40-10 80 30-40-10-60-10-80-30z"/></g></svg>');
+    }
+    .hero-wrap{position:relative;z-index:1;display:grid;grid-template-columns:1.05fr .95fr;gap:20px;align-items:center}
+
+    /* --- existing styles below (kept) --- */
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.7;color:var(--text);background:var(--bg);margin:0}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block;height:auto}
+    .container{max-width:1080px;margin:0 auto;padding:0 20px}
+    header{position:sticky;top:0;background:var(--header);backdrop-filter:saturate(120%) blur(8px);border-bottom:1px solid var(--line);z-index:20}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 0}
+    .brand{font-weight:700;color:#000}
+    nav a{padding:8px 6px;display:inline-block}
+    .cta{display:inline-block;min-height:44px;line-height:44px;padding:0 16px;border-radius:999px;background:var(--accent);color:#fff;font-weight:600;text-decoration:none}
+    h1{font-size:40px;margin:12px 0}
+    p.lead{color:var(--muted);font-size:18px;margin-bottom:18px}
+    .hero-img{padding:8px 0}
+    .hero-img img{width:100%;height:420px;object-fit:cover;border-radius:12px;border:1px solid var(--line)}
+    section{padding:48px 0;border-top:1px solid var(--line)}
+    h2{font-size:28px;margin-bottom:14px}
+    .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+    .card{border:1px solid var(--line);border-radius:12px;padding:18px;background:var(--panel)}
+    blockquote{border-left:3px solid var(--accent);padding-left:12px;margin:12px 0}
+    .stars{color:var(--accent);margin:0 0 6px;font-size:18px}
+    footer{padding:30px 0;text-align:center;color:var(--muted);border-top:1px solid var(--line);background:var(--panel)}
+    /* ... その他スタイルは既存のまま ... */
+  </style>
+</head>
+<body>
+  <!-- rest of HTML unchanged -->
+</body>
+</html>
+
   <!-- JSON-LD (SEO) -->
   <script type="application/ld+json">
   {
@@ -510,3 +584,4 @@
   </script>
 </body>
 </html>
+
