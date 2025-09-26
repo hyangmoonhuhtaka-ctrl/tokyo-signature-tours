@@ -32,51 +32,37 @@
   </script>
 
   <style>
-    /* ===== THEME: Sakura (default light) ===== */
+    /* ===== THEME: Sakura (default) ===== */
     :root{
-      --bg:#fff7fa;
-      --panel:#ffffff;
-      --text:#17212b;
-      --muted:#5b6470;
-      --line:rgba(0,0,0,.08);
-      --accent:#e85b8c;
-      --header:rgba(255,255,255,.85);
-      /* delicate cherry blossom (5 petals) pattern - small & subtle */
+      --bg:#fff7fa;           /* soft sakura */
+      --panel:#ffffff;        /* cards */
+      --text:#17212b;         /* near-navy for readability */
+      --muted:#5b6470;        /* subdued body */
+      --line:rgba(0,0,0,.08); /* soft separators */
+      --accent:#e85b8c;       /* sakura pink accent */
+      --header:rgba(255,255,255,.85); /* translucent light header */
+      /* soft sakura petals background (SVG pattern) */
       --hero-pattern:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200"><g opacity="0.8"><g transform="translate(60,60) scale(0.7)"><path d="M0,-40 C 12,-60 26,-60 36,-40 C 28,-20 12,-8 0,0 C -12,-8 -28,-20 -36,-40 C -26,-60 -12,-60 0,-40 Z" fill="%23f9cdda"/><path d="M0,-40 C 12,-60 26,-60 36,-40 C 28,-20 12,-8 0,0 C -12,-8 -28,-20 -36,-40 C -26,-60 -12,-60 0,-40 Z" fill="%23f9cdda" transform="rotate(72)"/><path d="M0,-40 C 12,-60 26,-60 36,-40 C 28,-20 12,-8 0,0 C -12,-8 -28,-20 -36,-40 C -26,-60 -12,-60 0,-40 Z" fill="%23f9cdda" transform="rotate(144)"/><path d="M0,-40 C 12,-60 26,-60 36,-40 C 28,-20 12,-8 0,0 C -12,-8 -28,-20 -36,-40 C -26,-60 -12,-60 0,-40 Z" fill="%23f9cdda" transform="rotate(216)"/><path d="M0,-40 C 12,-60 26,-60 36,-40 C 28,-20 12,-8 0,0 C -12,-8 -28,-20 -36,-40 C -26,-60 -12,-60 0,-40 Z" fill="%23f9cdda" transform="rotate(288)"/><circle r="6" fill="%23e88ab5"/></g><g transform="translate(150,80) scale(0.55) rotate(15)"><path d="M0,-40 C 12,-60 26,-60 36,-40 C 28,-20 12,-8 0,0 C -12,-8 -28,-20 -36,-40 C -26,-60 -12,-60 0,-40 Z" fill="%23f9cdda"/><path d="M0,-40 C 12,-60 26,-60 36,-40 C 28,-20 12,-8 0,0 C -12,-8 -28,-20 -36,-40 C -26,-60 -12,-60 0,-40 Z" fill="%23f9cdda" transform="rotate(72)"/><path d="M0,-40 C 12,-60 26,-60 36,-40 C 28,-20 12,-8 0,0 C -12,-8 -28,-20 -36,-40 C -26,-60 -12,-60 0,-40 Z" fill="%23f9cdda" transform="rotate(144)"/><path d="M0,-40 C 12,-60 26,-60 36,-40 C 28,-20 12,-8 0,0 C -12,-8 -28,-20 -36,-40 C -26,-60 -12,-60 0,-40 Z" fill="%23f9cdda" transform="rotate(216)"/><path d="M0,-40 C 12,-60 26,-60 36,-40 C 28,-20 12,-8 0,0 C -12,-8 -28,-20 -36,-40 C -26,-60 -12,-60 0,-40 Z" fill="%23f9cdda" transform="rotate(288)"/><circle r="5" fill="%23e88ab5"/></g><g transform="translate(100,150) scale(0.6) rotate(-10)"><path d="M0,-40 C 12,-60 26,-60 36,-40 C 28,-20 12,-8 0,0 C -12,-8 -28,-20 -36,-40 C -26,-60 -12,-60 0,-40 Z" fill="%23f9cdda"/><path d="M0,-40 C 12,-60 26,-60 36,-40 C 28,-20 12,-8 0,0 C -12,-8 -28,-20 -36,-40 C -26,-60 -12,-60 0,-40 Z" fill="%23f9cdda" transform="rotate(72)"/><path d="M0,-40 C 12,-60 26,-60 36,-40 C 28,-20 12,-8 0,0 C -12,-8 -28,-20 -36,-40 C -26,-60 -12,-60 0,-40 Z" fill="%23f9cdda" transform="rotate(144)"/><path d="M0,-40 C 12,-60 26,-60 36,-40 C 28,-20 12,-8 0,0 C -12,-8 -28,-20 -36,-40 C -26,-60 -12,-60 0,-40 Z" fill="%23f9cdda" transform="rotate(216)"/><path d="M0,-40 C 12,-60 26,-60 36,-40 C 28,-20 12,-8 0,0 C -12,-8 -28,-20 -36,-40 C -26,-60 -12,-60 0,-40 Z" fill="%23f9cdda" transform="rotate(288)"/><circle r="5" fill="%23e88ab5"/></g></g></svg>');
     }
 
-    /* ===== THEME: Matcha (toggle) ===== */
+    /* ===== THEME: Matcha (toggle by adding .theme-matcha to <body>) ===== */
     body.theme-matcha{
-      --bg:#f4f2ea;
+      --bg:#f4f2ea;           /* slightly deeper washi beige */
       --panel:#ffffff;
-      --text:#152217;
-      --muted:#475549;
+      --text:#152217;         /* deeper, bitter green-black */
+      --muted:#475549;        /* cooler muted */
       --line:rgba(0,0,0,.08);
-      --accent:#3f6f32;
+      --accent:#3f6f32;       /* bitter matcha green */
       --header:rgba(255,255,255,.9);
-      /* tea-leaf inspired subtle pattern */
-      --hero-pattern:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200"><g fill="%233f6f32" fill-opacity="0.18"><path d="M100 20c25 35 40 70 0 170-40-100-25-135 0-170z"/><path d="M30 110c35-18 70-18 140 54-70-18-105-18-140-54z"/></g></svg>');
+      --hero-pattern:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120"><g fill="%233f6f32" fill-opacity="0.28"><path d="M60 10c15 20 25 40 0 100-25-60-15-80 0-100z"/><path d="M20 60c20-10 40-10 80 30-40-10-60-10-80-30z"/></g></svg>');
     }
 
     /* ===== Base ===== */
     html,body{margin:0}
-    body{
-      font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
-      line-height:1.7;
-      color:var(--text);
-      background:var(--bg);
-    }
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.7;color:var(--text);background:var(--bg)}
     a{color:inherit;text-decoration:none}
     img{max-width:100%;display:block;height:auto}
     .container{max-width:1080px;margin:0 auto;padding:0 20px}
-
-    /* global background pattern to the whole page */
-    body::before{
-      content:""; position:fixed; inset:0;
-      background-repeat:repeat; background-size:200px 200px;
-      opacity:.14; z-index:-1; background-image:var(--hero-pattern);
-      pointer-events:none;
-    }
 
     /* ===== Header ===== */
     header{position:sticky;top:0;background:var(--header);backdrop-filter:saturate(120%) blur(8px);border-bottom:1px solid var(--line);z-index:20}
@@ -85,15 +71,26 @@
     nav a{padding:8px 6px;display:inline-block}
     .cta{display:inline-block;min-height:44px;line-height:44px;padding:0 16px;border-radius:999px;background:var(--accent);color:#fff;font-weight:600;text-decoration:none}
 
-    /* Theme switcher (icons only) */
-    .theme-switcher{display:flex;gap:8px;align-items:center}
-    .theme-btn{background:none;border:1px solid var(--line);cursor:pointer;padding:6px;border-radius:10px}
-    .theme-btn:hover{background:rgba(0,0,0,.05)}
-    .theme-btn svg{width:22px;height:22px;fill:var(--text);display:block}
+    /* Icon buttons (used in Contact) */
+    .icon-btn{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:999px;border:1px solid var(--line);background:rgba(0,0,0,.04);color:var(--text)}
+    .icon-btn:hover{background:rgba(0,0,0,.08)}
+    .icon{width:18px;height:18px;fill:currentColor}
+
+    /* Theme switcher button */
+    .theme-toggle{margin-left:8px;border:1px solid var(--line);background:transparent;color:var(--text);border-radius:999px;min-height:38px;padding:0 12px;cursor:pointer}
+    .theme-toggle:hover{background:rgba(0,0,0,.06)}
 
     /* ===== Hero ===== */
-    .hero{padding:48px 0 0}
-    .hero-wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:20px;align-items:center}
+    .hero{padding:48px 0 0; position:relative; overflow:hidden}
+    body::before{content:"";position:fixed;inset:0;background-repeat:repeat;background-size:200px 200px;opacity:.14;z-index:-1;background-image:var(--hero-pattern);pointer-events:none}
+    .hero::before{display:none}
+
+    /* ===== Sakura petals animation (enabled in Sakura theme only) ===== */
+    
+    }
+    50%{transform:translateX(8px)}}
+    
+    .hero-wrap{position:relative; z-index:1; display:grid;grid-template-columns:1.05fr .95fr;gap:20px;align-items:center}
     h1{font-size:40px;margin:12px 0}
     p.lead{color:var(--muted);font-size:18px;margin-bottom:18px}
     .hero-img{padding:8px 0}
@@ -155,6 +152,7 @@
       .card{padding:16px}
       .slider-btn{width:40px;height:40px}
       .slider-dot{width:8px;height:8px}
+      .icon-btn{width:36px;height:36px}
     }
   </style>
 </head>
@@ -170,25 +168,8 @@
         <a href="#gallery">Gallery</a>
         <a href="#contact">Contact</a>
       </nav>
-
-      <div style="display:flex;gap:10px;align-items:center">
-        <!-- Icon-only theme switcher -->
-        <div class="theme-switcher" aria-label="Theme">
-          <!-- Sakura icon: stylized cherry blossom -->
-          <button class="theme-btn" onclick="setTheme('sakura')" aria-label="Sakura theme">
-            <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-              <path d="M32 8c2 6-2 10-2 10s4-2 8 0 6 8 2 12-8 2-8 2 4 4 2 8-8 6-12 2-2-8-2-8-4 4-8 2-6-8-2-12 8-2 8-2-4-4-2-8 8-6 12-2z" fill="currentColor"/>
-              <circle cx="32" cy="32" r="3" fill="currentColor"/>
-            </svg>
-          </button>
-          <!-- Matcha icon: tea bowl + whisk -->
-          <button class="theme-btn" onclick="setTheme('matcha')" aria-label="Matcha theme">
-            <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12 20h40v12a20 20 0 0 1-40 0V20z" fill="currentColor"/>
-              <path d="M24 16h16l-2-6h-12z" fill="currentColor"/>
-            </svg>
-          </button>
-        </div>
+      <div style="display:flex;gap:8px;align-items:center">
+        <button id="themeToggle" class="theme-toggle" aria-pressed="false" aria-label="Switch color theme">🌸 Sakura</button>
         <a href="https://wa.me/819084350822" class="cta">Book Now</a>
       </div>
     </div>
@@ -205,8 +186,7 @@
           <a href="https://wa.me/819084350822" class="cta">Book Your Tour</a>
         </div>
         <div class="hero-img">
-          <img src="/hero-photo.jpg" loading="lazy"
-               alt="Mount Fuji with cherry blossoms and Chureito Pagoda in Japan — iconic Tokyo private tour experience with Tokyo Signature Tours" />
+          <img src="/hero-photo.jpg" loading="lazy" alt="Mount Fuji with cherry blossoms and Chureito Pagoda in Japan — iconic Tokyo private tour experience with Tokyo Signature Tours" />
         </div>
       </div>
     </section>
@@ -426,7 +406,7 @@
             <div class="slide"><img src="/images/TourPhoto-7.jpg"  alt="Walking through Takeshita Street in Harajuku" loading="lazy"></div>
             <div class="slide"><img src="/images/TourPhoto-8.jpg"  alt="Group at Meiji Shrine entrance" loading="lazy"></div>
             <div class="slide"><img src="/images/TourPhoto-9.jpg"  alt="Group posing by sake barrel wall at Meiji Jingu" loading="lazy"></div>
-            <!-- TourPhoto-10.jpg removed -->
+            <!-- TourPhoto-10.jpg 削除済み -->
             <div class="slide"><img src="/images/TourPhoto-11.jpg" alt="Guests enjoying a theater show in Tokyo" loading="lazy"></div>
           </div>
           <button class="slider-btn slider-prev" aria-label="Previous slide">‹</button>
@@ -446,17 +426,17 @@
 
         <!-- Icon CTA row -->
         <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:12px">
-          <a class="icon-btn" href="https://www.instagram.com/tokyosignaturetours?igsh=YzBtNXd4Y3Vjenlt" target="_blank" rel="noopener" aria-label="Instagram" style="display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:999px;border:1px solid var(--line);background:rgba(0,0,0,.04);color:var(--text)">
-            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" style="width:18px;height:18px;fill:currentColor"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm6.5-.75a1.25 1.25 0 1 0 0 2.5 1.25 1.25 0 0 0 0-2.5zM12 9a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"/></svg>
+          <a class="icon-btn" href="https://www.instagram.com/tokyosignaturetours?igsh=YzBtNXd4Y3Vjenlt" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm6.5-.75a1.25 1.25 0 1 0 0 2.5 1.25 1.25 0 0 0 0-2.5zM12 9a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"/></svg>
           </a>
-          <a class="icon-btn" href="https://www.facebook.com/profile.php?id=61580978236755&mibextid=ZbWKwL" target="_blank" rel="noopener" aria-label="Facebook" style="display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:999px;border:1px solid var(--line);background:rgba(0,0,0,.04);color:var(--text)">
-            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" style="width:18px;height:18px;fill:currentColor"><path d="M13.5 9H16V6h-2.5C11.57 6 10 7.57 10 9.5V11H8v3h2v7h3v-7h2.1l.9-3H13v-1.5c0-.28.22-.5.5-.5z"/></svg>
+          <a class="icon-btn" href="https://www.facebook.com/profile.php?id=61580978236755&mibextid=ZbWKwL" target="_blank" rel="noopener" aria-label="Facebook">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 9H16V6h-2.5C11.57 6 10 7.57 10 9.5V11H8v3h2v7h3v-7h2.1l.9-3H13v-1.5c0-.28.22-.5.5-.5z"/></svg>
           </a>
-          <a class="icon-btn" href="https://wa.me/819084350822" target="_blank" rel="noopener" aria-label="WhatsApp" style="display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:999px;border:1px solid var(--line);background:rgba(0,0,0,.04);color:var(--text)">
-            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" style="width:18px;height:18px;fill:currentColor"><path d="M20.52 3.48A11.86 11.86 0 0 0 12.06 0C5.58 0 .36 5.21.36 11.67c0 2.06.54 4.08 1.56 5.86L0 24l6.63-1.88a12 12 0 0 0 5.43 1.35h.01c6.48 0 11.7-5.21 11.7-11.67 0-3.12-1.23-6.05-3.25-8.32zM12.06 22a9.9 9.9 0 0 1-5.04-1.37l-.36-.21-3.94 1.12 1.12-3.84-.23-.39a9.83 9.83 0 0 1-1.5-5.05C2.1 6.4 6.66 1.9 12.06 1.9c2.6 0 5.04 1.01 6.88 2.84a9.6 9.6 0 0 1 2.85 6.92c0 5.4-4.56 9.99-9.93 9.99zm5.04-7.6c-.27-.13-1.6-.79-1.84-.88-.24-.09-.42-.13-.6.13-.18.27-.69.88-.84 1.06-.16.18-.31.2-.58.07-.27-.13-1.14-.42-2.17-1.33-.8-.69-1.34-1.55-1.5-1.82-.16-.27-.02-.42.11-.55.12-.12.27-.31.4-.47.13-.16.18-.27.27-.45.09-.18.04-.34-.02-.47-.07-.13-.6-1.45-.82-1.99-.22-.54-.44-.46-.6-.47h-.51c-.18 0-.47.07-.72.34-.24.27-.95.93-.95 2.27 0 1.34.98 2.63 1.12 2.81.13.18 1.93 2.93 4.68 4.04.65.28 1.16.45 1.55.57.65.21 1.24.18 1.71.11.52-.08 1.6-.65 1.83-1.27.23-.62.23-1.15.16-1.27-.06-.11-.24-.18-.51-.31z"/></svg>
+          <a class="icon-btn" href="https://wa.me/819084350822" target="_blank" rel="noopener" aria-label="WhatsApp">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.52 3.48A11.86 11.86 0 0 0 12.06 0C5.58 0 .36 5.21.36 11.67c0 2.06.54 4.08 1.56 5.86L0 24l6.63-1.88a12 12 0 0 0 5.43 1.35h.01c6.48 0 11.7-5.21 11.7-11.67 0-3.12-1.23-6.05-3.25-8.32zM12.06 22a9.9 9.9 0 0 1-5.04-1.37l-.36-.21-3.94 1.12 1.12-3.84-.23-.39a9.83 9.83 0 0 1-1.5-5.05C2.1 6.4 6.66 1.9 12.06 1.9c2.6 0 5.04 1.01 6.88 2.84a9.6 9.6 0 0 1 2.85 6.92c0 5.4-4.56 9.99-9.93 9.99zm5.04-7.6c-.27-.13-1.6-.79-1.84-.88-.24-.09-.42-.13-.6.13-.18.27-.69.88-.84 1.06-.16.18-.31.2-.58.07-.27-.13-1.14-.42-2.17-1.33-.8-.69-1.34-1.55-1.5-1.82-.16-.27-.02-.42.11-.55.12-.12.27-.31.4-.47.13-.16.18-.27.27-.45.09-.18.04-.34-.02-.47-.07-.13-.6-1.45-.82-1.99-.22-.54-.44-.46-.6-.47h-.51c-.18 0-.47.07-.72.34-.24.27-.95.93-.95 2.27 0 1.34.98 2.63 1.12 2.81.13.18 1.93 2.93 4.68 4.04.65.28 1.16.45 1.55.57.65.21 1.24.18 1.71.11.52-.08 1.6-.65 1.83-1.27.23-.62.23-1.15.16-1.27-.06-.11-.24-.18-.51-.31z"/></svg>
           </a>
-          <a class="icon-btn" href="mailto:info@tokyosignaturetours.com" aria-label="Email" style="display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:999px;border:1px solid var(--line);background:rgba(0,0,0,.04);color:var(--text)">
-            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" style="width:18px;height:18px;fill:currentColor"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          <a class="icon-btn" href="mailto:info@tokyosignaturetours.com" aria-label="Email">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
           </a>
         </div>
       </div>
@@ -467,31 +447,22 @@
 
   <!-- Scripts -->
   <script>
-    // Theme switcher with persistence + background pattern swap
+    // Theme switcher with localStorage persistence
     (function(){
       const key = 'tstTheme';
+      const btn = document.getElementById('themeToggle');
       const saved = localStorage.getItem(key);
-      if(saved === 'matcha'){ document.body.classList.add('theme-matcha'); }
-      // ensure pattern matches current theme on load
-      setTheme(saved === 'matcha' ? 'matcha' : 'sakura');
-
-      window.setTheme = function(theme){
-        const toMatcha = theme === 'matcha';
-        document.body.classList.toggle('theme-matcha', toMatcha);
-        localStorage.setItem(key, toMatcha ? 'matcha' : 'sakura');
-
-        if(!toMatcha){
-          // Sakura pattern
-          document.documentElement.style.setProperty('--hero-pattern',
-            "url('data:image/svg+xml;utf8,<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"200\\\" height=\\\"200\\\" viewBox=\\\"0 0 200 200\\\"><g opacity=\\\"0.8\\\"><g transform=\\\"translate(60,60) scale(0.7)\\\"><path d=\\\"M0,-40 C 12,-60 26,-60 36,-40 C 28,-20 12,-8 0,0 C -12,-8 -28,-20 -36,-40 C -26,-60 -12,-60 0,-40 Z\\\" fill=\\\"%23f9cdda\\\"/><path d=\\\"M0,-40 C 12,-60 26,-60 36,-40 C 28,-20 12,-8 0,0 C -12,-8 -28,-20 -36,-40 C -26,-60 -12,-60 0,-40 Z\\\" fill=\\\"%23f9cdda\\\" transform=\\\"rotate(72)\\\"/><path d=\\\"M0,-40 C 12,-60 26,-60 36,-40 C 28,-20 12,-8 0,0 C -12,-8 -28,-20 -36,-40 C -26,-60 -12,-60 0,-40 Z\\\" fill=\\\"%23f9cdda\\\" transform=\\\"rotate(144)\\\"/><path d=\\\"M0,-40 C 12,-60 26,-60 36,-40 C 28,-20 12,-8 0,0 C -12,-8 -28,-20 -36,-40 C -26,-60 -12,-60 0,-40 Z\\\" fill=\\\"%23f9cdda\\\" transform=\\\"rotate(216)\\\"/><path d=\\\"M0,-40 C 12,-60 26,-60 36,-40 C 28,-20 12,-8 0,0 C -12,-8 -28,-20 -36,-40 C -26,-60 -12,-60 0,-40 Z\\\" fill=\\\"%23f9cdda\\\" transform=\\\"rotate(288)\\\"/><circle r=\\\"6\\\" fill=\\\"%23e88ab5\\\"/></g><g transform=\\\"translate(150,80) scale(0.55) rotate(15)\\\"><path d=\\\"M0,-40 C 12,-60 26,-60 36,-40 C 28,-20 12,-8 0,0 C -12,-8 -28,-20 -36,-40 C -26,-60 -12,-60 0,-40 Z\\\" fill=\\\"%23f9cdda\\\"/><path d=\\\"M0,-40 C 12,-60 26,-60 36,-40 C 28,-20 12,-8 0,0 C -12,-8 -28,-20 -36,-40 C -26,-60 -12,-60 0,-40 Z\\\" fill=\\\"%23f9cdda\\\" transform=\\\"rotate(72)\\\"/><path d=\\\"M0,-40 C 12,-60 26,-60 36,-40 C 28,-20 12,-8 0,0 C -12,-8 -28,-20 -36,-40 C -26,-60 -12,-60 0,-40 Z\\\" fill=\\\"%23f9cdda\\\" transform=\\\"rotate(144)\\\"/><path d=\\\"M0,-40 C 12,-60 26,-60 36,-40 C 28,-20 12,-8 0,0 C -12,-8 -28,-20 -36,-40 C -26,-60 -12,-60 0,-40 Z\\\" fill=\\\"%23f9cdda\\\" transform=\\\"rotate(216)\\\"/><path d=\\\"M0,-40 C 12,-60 26,-60 36,-40 C 28,-20 12,-8 0,0 C -12,-8 -28,-20 -36,-40 C -26,-60 -12,-60 0,-40 Z\\\" fill=\\\"%23f9cdda\\\" transform=\\\"rotate(288)\\\"/><circle r=\\\"5\\\" fill=\\\"%23e88ab5\\\"/></g><g transform=\\\"translate(100,150) scale(0.6) rotate(-10)\\\"><path d=\\\"M0,-40 C 12,-60 26,-60 36,-40 C 28,-20 12,-8 0,0 C -12,-8 -28,-20 -36,-40 C -26,-60 -12,-60 0,-40 Z\\\" fill=\\\"%23f9cdda\\\"/><path d=\\\"M0,-40 C 12,-60 26,-60 36,-40 C 28,-20 12,-8 0,0 C -12,-8 -28,-20 -36,-40 C -26,-60 -12,-60 0,-40 Z\\\" fill=\\\"%23f9cdda\\\" transform=\\\"rotate(72)\\\"/><path d=\\\"M0,-40 C 12,-60 26,-60 36,-40 C 28,-20 12,-8 0,0 C -12,-8 -28,-20 -36,-40 C -26,-60 -12,-60 0,-40 Z\\\" fill=\\\"%23f9cdda\\\" transform=\\\"rotate(144)\\\"/><path d=\\\"M0,-40 C 12,-60 26,-60 36,-40 C 28,-20 12,-8 0,0 C -12,-8 -28,-20 -36,-40 C -26,-60 -12,-60 0,-40 Z\\\" fill=\\\"%23f9cdda\\\" transform=\\\"rotate(216)\\\"/><path d=\\\"M0,-40 C 12,-60 26,-60 36,-40 C 28,-20 12,-8 0,0 C -12,-8 -28,-20 -36,-40 C -26,-60 -12,-60 0,-40 Z\\\" fill=\\\"%23f9cdda\\\" transform=\\\"rotate(288)\\\"/><circle r=\\\"5\\\" fill=\\\"%23e88ab5\\\"/></g></g></svg>')"
-          );
-        } else {
-          // Matcha leaf pattern
-          document.documentElement.style.setProperty('--hero-pattern',
-            "url('data:image/svg+xml;utf8,<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"200\\\" height=\\\"200\\\" viewBox=\\\"0 0 200 200\\\"><g fill=\\\"%233f6f32\\\" fill-opacity=\\\"0.18\\\"><path d=\\\"M100 20c25 35 40 70 0 170-40-100-25-135 0-170z\\\"/><path d=\\\"M30 110c35-18 70-18 140 54-70-18-105-18-140-54z\\\"/></g></svg>')"
-          );
-        }
+      if(saved === 'matcha'){
+        document.body.classList.add('theme-matcha');
+        btn.textContent = '🍵 Matcha';
+        btn.setAttribute('aria-pressed','true');
       }
+      btn.addEventListener('click',()=>{
+        const isMatcha = document.body.classList.toggle('theme-matcha');
+        btn.textContent = isMatcha ? '🍵 Matcha' : '🌸 Sakura';
+        btn.setAttribute('aria-pressed', String(isMatcha));
+        localStorage.setItem(key, isMatcha ? 'matcha' : 'sakura');
+      });
     })();
 
     // Tours Accordion Script
@@ -508,7 +479,6 @@
   <script>
   (function(){
     const wrap = document.getElementById('tst-slider');
-    if(!wrap) return;
     const track = wrap.querySelector('.slider-track');
     const slides = [...wrap.querySelectorAll('.slide')];
     const prev = wrap.querySelector('.slider-prev');
