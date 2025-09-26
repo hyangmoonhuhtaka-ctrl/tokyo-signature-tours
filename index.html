@@ -41,17 +41,22 @@
       --line:rgba(0,0,0,.08); /* soft separators */
       --accent:#e85b8c;       /* sakura pink accent */
       --header:rgba(255,255,255,.85); /* translucent light header */
+      /* soft background art using CSS gradients (no images) */
+      --hero-illustration: radial-gradient(60% 60% at 10% 0%, rgba(232,91,140,0.14), rgba(232,91,140,0) 60%),
+                           radial-gradient(50% 50% at 90% 10%, rgba(232,91,140,0.08), rgba(232,91,140,0) 60%);
     }
 
     /* ===== THEME: Matcha (toggle by adding .theme-matcha to <body>) ===== */
     body.theme-matcha{
-      --bg:#f7f6f1;           /* warm washi beige */
+      --bg:#f4f2ea;           /* slightly deeper washi beige */
       --panel:#ffffff;
-      --text:#1a261b;         /* deep tea green */
-      --muted:#58645a;
+      --text:#152217;         /* deeper, bitter green-black */
+      --muted:#475549;        /* cooler muted */
       --line:rgba(0,0,0,.08);
-      --accent:#4b8b3b;       /* matcha green */
+      --accent:#3f6f32;       /* bitter matcha green */
       --header:rgba(255,255,255,.9);
+      --hero-illustration: radial-gradient(60% 60% at 12% 0%, rgba(63,111,50,0.16), rgba(63,111,50,0) 60%),
+                           radial-gradient(50% 50% at 88% 8%, rgba(63,111,50,0.10), rgba(63,111,50,0) 60%);
     }
 
     /* ===== Base ===== */
@@ -78,7 +83,7 @@
     .theme-toggle:hover{background:rgba(0,0,0,.06)}
 
     /* ===== Hero ===== */
-    .hero{padding:48px 0 0}
+    .hero{padding:48px 0 0; background-image: var(--hero-illustration); background-repeat:no-repeat; background-size:cover; background-position:center top;}
     .hero-wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:20px;align-items:center}
     h1{font-size:40px;margin:12px 0}
     p.lead{color:var(--muted);font-size:18px;margin-bottom:18px}
