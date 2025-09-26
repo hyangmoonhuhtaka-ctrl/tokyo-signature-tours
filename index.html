@@ -42,7 +42,7 @@
       --accent:#e85b8c;       /* sakura pink accent */
       --header:rgba(255,255,255,.85); /* translucent light header */
       /* soft sakura petals background (SVG pattern) */
-      --hero-pattern:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160"><defs><g id="petal" transform="translate(0,0)"><path d="M20 0 C28 10, 28 26, 20 36 C12 26, 12 10, 20 0 Z" fill="%23e85b8c" fill-opacity="0.38"/></g></defs><g><use href="%23petal" x="20" y="20"/><use href="%23petal" x="80" y="10" transform="rotate(25 80 10) scale(1.1)"/><use href="%23petal" x="120" y="60" transform="rotate(-15 120 60) scale(0.9)"/><use href="%23petal" x="40" y="100" transform="rotate(35 40 100) scale(1.2)"/><use href="%23petal" x="100" y="120" transform="rotate(-30 100 120)"/></g></svg>');
+      --hero-pattern:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="220" height="220" viewBox="0 0 220 220"><defs><path id="petal" d="M0,-36 C8,-50 22,-50 30,-36 C24,-20 10,-8 0,0 C-10,-8 -24,-20 -30,-36 C-22,-50 -8,-50 0,-36 Z"/><g id="flower"><g fill="%23f3a7bf" fill-opacity="0.45" transform="translate(0,0)"><use href="#petal" transform="rotate(0)"/><use href="#petal" transform="rotate(72)"/><use href="#petal" transform="rotate(144)"/><use href="#petal" transform="rotate(216)"/><use href="#petal" transform="rotate(288)"/></g><circle r="6" fill="%23e85b8c" fill-opacity="0.55"/></g></defs><g><use href="#flower" transform="translate(55,55) scale(0.9) rotate(-8)"/><use href="#flower" transform="translate(165,65) scale(0.75) rotate(12)"/><use href="#flower" transform="translate(80,170) scale(1.1) rotate(-18)"/><use href="#flower" transform="translate(150,150) scale(0.95) rotate(6)"/></g></svg>');
     }
 
     /* ===== THEME: Matcha (toggle by adding .theme-matcha to <body>) ===== */
@@ -82,7 +82,7 @@
 
     /* ===== Hero ===== */
     .hero{padding:48px 0 0; position:relative; overflow:hidden}
-    body::before{content:"";position:fixed;inset:0;background-repeat:repeat;background-size:160px 160px;opacity:.14;z-index:-1;background-image:var(--hero-pattern);pointer-events:none}
+    body::before{content:"";position:fixed;inset:0;background-repeat:repeat;background-size:220px 220px;opacity:.14;z-index:-1;background-image:var(--hero-pattern);pointer-events:none}
     .hero::before{display:none}
 
     /* ===== Sakura petals animation (enabled in Sakura theme only) ===== */
