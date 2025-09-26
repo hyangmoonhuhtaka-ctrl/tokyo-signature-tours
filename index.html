@@ -459,7 +459,7 @@
       }
       btn.addEventListener('click',()=>{
         const isMatcha = document.body.classList.toggle('theme-matcha');
-        btn.textContent = isMatcha ? '🍵 Matcha' : '🌸 Sakura';
+        btn.textContent = isMatcha ? '🍵' : '🌸';
         btn.setAttribute('aria-pressed', String(isMatcha));
         localStorage.setItem(key, isMatcha ? 'matcha' : 'sakura');
       });
@@ -511,3 +511,4 @@
   </script>
 </body>
 </html>
+
