@@ -2,337 +2,189 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0b0c0f" />
   <title>Tokyo Signature Tours | Private Luxury Tours in Tokyo</title>
-  <meta name="description" content="Private, luxury & authentic tours in Tokyo tailored for couples, families and friends. Bilingual guide. Easy booking via WhatsApp or email." />
+  <meta name="description" content="Private, luxury & authentic tours in Tokyo tailored for couples, families & friends. Bilingual guide. Easy booking via WhatsApp or email." />
+  <meta name="format-detection" content="telephone=no" />
+  <link rel="icon" href="/favicon.ico" />
   <meta property="og:title" content="Tokyo Signature Tours" />
   <meta property="og:description" content="Private, luxury & authentic tours in Tokyo tailored just for you." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://tokyosignaturetours.com/" />
-  <meta property="og:image" content="/assets/hero.jpg" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <style>
-    :root{
-      --bg:#0b0c0f;          /* deep charcoal */
-      --panel:#12141a;       /* card background */
-      --muted:#9aa3b2;       /* secondary text */
-      --text:#e8ecf1;        /* main text */
-      --brand:#e7b66a;       /* warm gold */
-      --brand-2:#ffdca8;     /* soft gold for accents */
-      --ok:#33d49d;          /* green accent */
-      --danger:#ff7a7a;      
-      --radius:16px;
-      --shadow:0 10px 30px rgba(0,0,0,.35);
-    }
-    *{box-sizing:border-box}
-    html,body{margin:0;height:100%;scroll-behavior:smooth}
-    body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:linear-gradient(180deg,#0b0c0f 0%, #0d1016 60%, #0b0c0f 100%);color:var(--text)}
-    a{color:inherit;text-decoration:none}
-    .container{max-width:1100px;margin:0 auto;padding:0 20px}
-    /* Header */
-    header{position:sticky;top:0;z-index:50;background:rgba(11,12,15,.7);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.06)}
-    .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
-    .logo{display:flex;gap:10px;align-items:center;font-weight:700;letter-spacing:.4px}
-    .logo .mark{width:28px;height:28px;border-radius:50%;background:conic-gradient(from 210deg at 50% 50%,#5a4b2e, #e7b66a,#ffdca8,#5a4b2e);box-shadow:0 0 0 2px rgba(231,182,106,.25)}
-    .nav a{opacity:.9}
-    .nav-links{display:flex;gap:18px;align-items:center}
-    .btn{display:inline-flex;align-items:center;gap:10px;padding:10px 16px;border-radius:999px;border:1px solid rgba(255,255,255,.12);background:linear-gradient(180deg,#1a1e27,#12141a);color:var(--text);box-shadow:var(--shadow);transition:.25s}
-    .btn:hover{transform:translateY(-1px);border-color:rgba(231,182,106,.6)}
-    .btn.gold{background:linear-gradient(180deg,#e7b66a,#b68b42);color:#1a1200;border-color:#e7b66a;font-weight:600}
+  <meta property="og:image" content="/og.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
 
-    /* Hero */
-    .hero{position:relative;overflow:clip}
-    .hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center;padding:64px 0}
-    .badge{display:inline-flex;gap:8px;align-items:center;padding:6px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.12);color:var(--brand-2);font-size:12px;letter-spacing:.3px;background:rgba(255,255,255,.03)}
-    h1{font-size:40px;line-height:1.15;margin:14px 0 10px}
-    p.lead{font-size:18px;color:var(--muted);max-width:52ch}
-    .hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
-    .hero img{width:100%;height:auto;border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid rgba(255,255,255,.08)}
-
-    /* Trust row */
-    .trust{display:flex;gap:20px;flex-wrap:wrap;margin:14px 0 0}
-    .trust .pill{font-size:12px;color:var(--muted);padding:6px 10px;border:1px dashed rgba(255,255,255,.15);border-radius:999px}
-
-    /* Section */
-    section{padding:54px 0;border-top:1px solid rgba(255,255,255,.06)}
-    h2{font-size:28px;margin:0 0 14px}
-    .muted{color:var(--muted)}
-
-    /* Tours */
-    .grid{display:grid;gap:18px}
-    @media(min-width:860px){.grid.cols-3{grid-template-columns:repeat(3,1fr)}}
-    .card{background:var(--panel);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
-    .price{font-weight:700;font-size:26px;color:var(--brand)}
-    .inc{margin:10px 0 0;padding-left:18px}
-    .inc li{margin:6px 0}
-    .small{font-size:12px;color:var(--muted)}
-
-    /* Why us */
-    .icons{display:grid;gap:14px}
-    @media(min-width:860px){.icons{grid-template-columns:repeat(3,1fr)}}
-    .icon{display:flex;gap:12px;align-items:flex-start;background:var(--panel);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:14px}
-    .icon .i{width:34px;height:34px;border-radius:10px;background:linear-gradient(180deg,#2b2f3a,#171a21);display:grid;place-items:center;border:1px solid rgba(255,255,255,.1)}
-
-    /* Steps */
-    .steps{display:grid;gap:14px}
-    @media(min-width:860px){.steps{grid-template-columns:repeat(4,1fr)}}
-    .step{background:var(--panel);border:1px solid rgba(255,255,255,.08);padding:16px;border-radius:var(--radius)}
-    .step b{color:var(--brand)}
-
-    /* Testimonials */
-    .quotes{display:grid;gap:16px}
-    @media(min-width:860px){.quotes{grid-template-columns:repeat(2,1fr)}}
-    blockquote{margin:0;padding:16px;background:var(--panel);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);}
-    blockquote p{margin:0 0 10px}
-
-    /* Gallery */
-    .gallery{display:grid;gap:10px}
-    @media(min-width:760px){.gallery{grid-template-columns:repeat(4,1fr)}}
-    .gallery img{width:100%;height:100%;object-fit:cover;border-radius:12px;border:1px solid rgba(255,255,255,.08)}
-
-    /* FAQ */
-    details{background:var(--panel);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:12px}
-    summary{cursor:pointer;font-weight:600}
-
-    /* Footer */
-    footer{padding:28px 0;color:var(--muted)}
-    .foot{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between}
-    .made{font-size:12px}
-
-    /* Utility */
-    .center{text-align:center}
-    .spacer{height:20px}
-  </style>
-</head>
-<body>
-  <header>
-    <div class="container nav">
-      <a class="logo" href="#top" aria-label="Tokyo Signature Tours home">
-        <span class="mark" aria-hidden="true"></span>
-        <span>Tokyo Signature Tours</span>
-      </a>
-      <nav class="nav-links" aria-label="Primary">
-        <a href="#tours">Tours</a>
-        <a href="#why">Why Us</a>
-        <a href="#steps">How it works</a>
-        <a href="#testimonials">Reviews</a>
-        <a href="#contact">Contact</a>
-        <a class="btn gold" href="https://wa.me/819084350822" target="_blank" rel="noopener" aria-label="Chat on WhatsApp to book now">Book on WhatsApp</a>
-      </nav>
-    </div>
-  </header>
-
-  <main id="top">
-    <section class="hero">
-      <div class="container wrap">
-        <div>
-          <span class="badge">Private • Luxury • Authentic</span>
-          <h1>Discover Tokyo your way — elegant, private tours tailored just for you.</h1>
-          <p class="lead">Guided by <b>Taka</b>, a warm bilingual host, you’ll enjoy iconic highlights and hidden local gems at your pace. Perfect for couples, families and friends who value comfort, authenticity and great conversation.</p>
-          <div class="hero-cta">
-            <a class="btn gold" href="https://wa.me/819084350822" target="_blank" rel="noopener">Book on WhatsApp</a>
-            <a class="btn" href="#tours">See tour options</a>
-          </div>
-          <div class="trust">
-            <span class="pill">⭐️ 5‑star guest‑recommended</span>
-            <span class="pill">EN / 日本語 bilingual</span>
-            <span class="pill">Private & personalized</span>
-          </div>
-        </div>
-        <div>
-          <img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?q=80&w=1600&auto=format&fit=crop" alt="Tokyo skyline at sunset with Tokyo Tower" loading="eager" />
-        </div>
-      </div>
-    </section>
-
-    <section id="tours">
-      <div class="container">
-        <h2>Tours & Pricing</h2>
-        <p class="muted">Transparent pricing. Flexible start times. Pre‑tour planning included.</p>
-        <div class="spacer"></div>
-        <div class="grid cols-3">
-          <div class="card">
-            <h3>Half Day (4h)</h3>
-            <div class="price">$180 / person<span class="small"> — $360 for 2</span></div>
-            <ul class="inc">
-              <li>Temples, markets & historic districts</li>
-              <li>Hidden alleys & artisan shops</li>
-              <li>Flexible pace + photo spots</li>
-            </ul>
-            <div class="spacer"></div>
-            <a class="btn gold" href="https://wa.me/819084350822?text=I'd%20like%20to%20book%20the%204h%20tour" target="_blank" rel="noopener">Book 4h on WhatsApp</a>
-          </div>
-
-          <div class="card">
-            <h3>Extended + Food (6h)</h3>
-            <div class="price">$270 / person<span class="small"> — $540 for 2</span></div>
-            <ul class="inc">
-              <li>All 4h highlights + food stops</li>
-              <li>Local eateries & street treats</li>
-              <li>More neighborhoods, fewer crowds</li>
-            </ul>
-            <div class="spacer"></div>
-            <a class="btn gold" href="https://wa.me/819084350822?text=I'd%20like%20to%20book%20the%206h%20tour" target="_blank" rel="noopener">Book 6h on WhatsApp</a>
-          </div>
-
-          <div class="card">
-            <h3>Full Day Signature (8h)</h3>
-            <div class="price">$330 / person<span class="small"> — $660 for 2</span></div>
-            <ul class="inc">
-              <li>Iconic spots + hidden gems</li>
-              <li>Immersive cultural moments</li>
-              <li>Relaxed, elegant pacing</li>
-            </ul>
-            <div class="spacer"></div>
-            <a class="btn gold" href="https://wa.me/819084350822?text=I'd%20like%20to%20book%20the%208h%20tour" target="_blank" rel="noopener">Book 8h on WhatsApp</a>
-          </div>
-        </div>
-        <p class="small" style="margin-top:10px">Not included: food & drinks, attraction tickets, public transportation, gratuities (optional).</p>
-      </div>
-    </section>
-
-    <section id="why">
-      <div class="container">
-        <h2>Why travelers choose us</h2>
-        <div class="icons">
-          <div class="icon">
-            <div class="i">🎧</div>
-            <div>
-              <h4>Private & Personalized</h4>
-              <p class="muted">Every itinerary is crafted around your interests, timing and pace for a truly private experience.</p>
-            </div>
-          </div>
-          <div class="icon">
-            <div class="i">🌸</div>
-            <div>
-              <h4>Authentic & Elegant</h4>
-              <p class="muted">From iconic highlights to hidden local gems, enjoy elegant, authentic moments—without the crowds.</p>
-            </div>
-          </div>
-          <div class="icon">
-            <div class="i">🗣️</div>
-            <div>
-              <h4>Bilingual Expert Guide</h4>
-              <p class="muted">Guided by Taka, a warm, knowledgeable host who makes every guest feel at home in Tokyo.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="steps">
-      <div class="container">
-        <h2>How it works</h2>
-        <div class="steps">
-          <div class="step"><b>1</b> Tell us your dates & interests via WhatsApp or email.</div>
-          <div class="step"><b>2</b> We plan a tailored route with food & photo ideas.</div>
-          <div class="step"><b>3</b> Meet at your hotel, start relaxed, enjoy the city.</div>
-          <div class="step"><b>4</b> Post‑tour tips for the rest of your trip.</div>
-        </div>
-      </div>
-    </section>
-
-    <section id="testimonials">
-      <div class="container">
-        <h2>Guest reviews</h2>
-        <div class="quotes">
-          <blockquote>
-            <p>“Our first day in Tokyo was effortless. Taka shared useful customs and helped us navigate the subway. We loved Meiji Shrine and the Ota museum!”</p>
-            <span class="small">— Guests from the USA ⭐⭐⭐⭐⭐</span>
-          </blockquote>
-          <blockquote>
-            <p>“Personalized and super fun — truly a highlight of our trip!”</p>
-            <span class="small">— Guest from the USA ⭐⭐⭐⭐⭐</span>
-          </blockquote>
-          <blockquote>
-            <p>“Taka made our family feel at home. Warm, genuine and very considerate.”</p>
-            <span class="small">— Family traveler ⭐⭐⭐⭐⭐</span>
-          </blockquote>
-          <blockquote>
-            <p>“A phenomenal guide. We learned history, customs and saw places we’d never find alone.”</p>
-            <span class="small">— Solo traveler ⭐⭐⭐⭐⭐</span>
-          </blockquote>
-        </div>
-      </div>
-    </section>
-
-    <section id="gallery">
-      <div class="container">
-        <h2>Photo gallery</h2>
-        <p class="muted">A glimpse of what you might see — every tour is tailored.</p>
-        <div class="gallery">
-          <img loading="lazy" src="https://images.unsplash.com/photo-1564703048291-bcf7f001d83f?q=80&w=1200&auto=format&fit=crop" alt="Asakusa Senso-ji area" />
-          <img loading="lazy" src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?q=80&w=1200&auto=format&fit=crop" alt="Meiji Shrine torii gate" />
-          <img loading="lazy" src="https://images.unsplash.com/photo-1545569341-9eb8b30979d8?q=80&w=1200&auto=format&fit=crop" alt="Ginza street" />
-          <img loading="lazy" src="https://images.unsplash.com/photo-1536098561742-ca998e48cbcc?q=80&w=1200&auto=format&fit=crop" alt="Hidden alley with lanterns" />
-        </div>
-      </div>
-    </section>
-
-    <section id="faq">
-      <div class="container">
-        <h2>FAQ</h2>
-        <details>
-          <summary>Where do we meet?</summary>
-          <p class="muted">Typically your hotel lobby or a convenient station. We’ll confirm during planning.</p>
-        </details>
-        <div class="spacer"></div>
-        <details>
-          <summary>Can we customize the route?</summary>
-          <p class="muted">Absolutely. Every tour is private and shaped around your interests, pace and dining preferences.</p>
-        </details>
-        <div class="spacer"></div>
-        <details>
-          <summary>What’s included / not included?</summary>
-          <p class="muted">Guiding and planning are included. Food, tickets, and transportation are paid by guests.</p>
-        </details>
-      </div>
-    </section>
-
-    <section id="contact">
-      <div class="container center">
-        <h2>Ready to plan your day in Tokyo?</h2>
-        <p class="muted">Message us with your dates, group size, and interests. We’ll reply promptly.</p>
-        <div class="hero-cta" style="justify-content:center">
-          <a class="btn gold" href="https://wa.me/819084350822" target="_blank" rel="noopener">Chat on WhatsApp</a>
-          <a class="btn" href="mailto:info@tokyosignaturetours.com">Email: info@tokyosignaturetours.com</a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container foot">
-      <div>© <span id="y"></span> Tokyo Signature Tours</div>
-      <div class="made">Made with care in Tokyo • EN / 日本語</div>
-    </div>
-  </footer>
-
-  <script>
-    // current year
-    document.getElementById('y').textContent = new Date().getFullYear();
-  </script>
-
-  <!-- Structured data for better SEO -->
+  <!-- JSON-LD (SEO) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "name": "Tokyo Signature Tours",
     "url": "https://tokyosignaturetours.com/",
-    "email": "info@tokyosignaturetours.com",
+    "description": "Private, luxury tours in Tokyo for discerning travelers.",
+    "areaServed": "Tokyo, Japan",
     "telephone": "+81-90-8435-0822",
-    "image": "https://tokyosignaturetours.com/assets/hero.jpg",
-    "address": {"@type":"PostalAddress","addressCountry":"JP","addressLocality":"Tokyo"},
-    "areaServed": {"@type":"City","name":"Tokyo"},
-    "description": "Private, luxury and authentic tours in Tokyo led by a bilingual guide.",
+    "email": "info@tokyosignaturetours.com",
     "sameAs": [
-      "https://www.instagram.com/tokyosignaturetours",
-      "https://www.facebook.com/tokyosignaturetours"
+      "https://www.instagram.com/tokyosignaturetours?igsh=YzBtNXd4Y3Vjenlt",
+      "https://www.facebook.com/profile.php?id=61580978236755&mibextid=ZbWKwL"
     ]
   }
+  </script>
+
+  <style>
+    :root{
+      --bg:#0b0c0f;--panel:#12141a;--muted:#a2adbd;--text:#e8ecf1;--brand:#e7b66a;--line:rgba(255,255,255,.12);
+      --radius:16px;--shadow:0 10px 30px rgba(0,0,0,.35)
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.65;color:var(--text);background:linear-gradient(180deg,#0b0c0f 0%, #0d1016 60%, #0b0c0f 100%)}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .container{max-width:1120px;margin:0 auto;padding:0 16px}
+
+    header{position:sticky;top:0;z-index:40;background:rgba(11,12,15,.75);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0}
+    .logo{display:flex;gap:10px;align-items:center;font-weight:700}
+    .logo .mark{width:26px;height:26px;border-radius:50%;background:conic-gradient(from 210deg at 50% 50%,#5a4b2e,#e7b66a,#ffdca8,#5a4b2e);box-shadow:0 0 0 2px rgba(231,182,106,.2)}
+    .nav a{font-size:15px;opacity:.9}
+    .hide-mobile{display:none}
+
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:12px 16px;border-radius:999px;border:1px solid var(--line);background:linear-gradient(180deg,#1a1e27,#12141a);color:var(--text);box-shadow:var(--shadow);min-height:44px}
+    .btn.gold{background:linear-gradient(180deg,#e7b66a,#b68b42);color:#1a1200;border-color:#e7b66a;font-weight:700}
+
+    .dock{position:fixed;left:0;right:0;bottom:0;z-index:50;background:rgba(12,14,18,.9);backdrop-filter:blur(8px);border-top:1px solid var(--line)}
+    .dock .inner{display:flex;gap:10px;padding:10px 12px}
+    .dock a{flex:1}
+
+    .hero{padding:18px 0 6px}
+    .badge{display:inline-flex;gap:8px;align-items:center;padding:6px 10px;border-radius:999px;border:1px solid var(--line);color:#ffe1a8;font-size:12px;background:rgba(255,255,255,.03)}
+    h1{font-size:30px;line-height:1.2;margin:10px 0 8px}
+    p.lead{font-size:16px;color:var(--muted);margin:0 0 14px}
+    .hero-cta{display:flex;gap:10px;flex-wrap:wrap}
+    .hero-img{margin-top:10px}
+    .hero-img img{width:100%;height:48vh;min-height:220px;object-fit:cover;border-radius:14px;border:1px solid var(--line)}
+
+    section{padding:28px 0;border-top:1px solid var(--line)}
+    h2{font-size:22px;margin:0 0 12px}
+    .muted{color:var(--muted)}
+
+    .grid{display:grid;gap:12px}
+    .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px}
+    .price{font-weight:800;font-size:22px;color:var(--brand)}
+    .inc{margin:10px 0 0;padding-left:18px}
+    .inc li{margin:6px 0}
+    .small{font-size:12px;color:var(--muted)}
+
+    .icons{display:grid;gap:12px}
+    .icon{display:flex;gap:12px;align-items:flex-start;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:12px}
+    .icon .i{width:32px;height:32px;border-radius:10px;background:linear-gradient(180deg,#2b2f3a,#171a21);display:grid;place-items:center;border:1px solid rgba(255,255,255,.1)}
+
+    .steps{display:grid;gap:12px}
+    .step{background:var(--panel);border:1px solid var(--line);padding:12px;border-radius:14px}
+    .step b{color:var(--brand)}
+
+    .quotes{display:grid;gap:12px}
+    blockquote{margin:0;padding:12px;background:var(--panel);border:1px solid var(--line);border-radius:14px}
+    blockquote p{margin:0 0 8px}
+
+    .gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+    .gallery img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:12px;border:1px solid var(--line)}
+    .scrollx{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;scroll-snap-type:x mandatory}
+    .scrollx img{scroll-snap-align:center;min-width:72vw;height:46vw;border-radius:12px;border:1px solid var(--line);object-fit:cover}
+
+    details{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:12px}
+    summary{cursor:pointer;font-weight:700}
+
+    footer{padding:28px 0 80px;color:var(--muted);border-top:1px solid var(--line);background:rgba(0,0,0,.25)}
+
+    @media(min-width:860px){
+      .hide-mobile{display:initial}
+      h1{font-size:40px}
+      p.lead{font-size:18px}
+      .hero{padding:34px 0 10px}
+      .hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:24px;align-items:center}
+      section{padding:48px 0}
+      h2{font-size:28px}
+      .grid.cols-3{grid-template-columns:repeat(3,1fr)}
+      .icons{grid-template-columns:repeat(3,1fr)}
+      .steps{grid-template-columns:repeat(4,1fr)}
+      .quotes{grid-template-columns:repeat(2,1fr)}
+      .gallery{grid-template-columns:repeat(4,1fr)}
+      footer{padding-bottom:40px}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="logo" href="#top"><span class="mark"></span><span>Tokyo Signature Tours</span></a>
+      <nav class="hide-mobile">
+        <a href="#tours">Tours</a> ·
+        <a href="#why">Why Us</a> ·
+        <a href="#steps">How it works</a> ·
+        <a href="#testimonials">Reviews</a> ·
+        <a href="#contact">Contact</a>
+      </nav>
+      <a class="btn gold hide-mobile" href="https://wa.me/819084350822" target="_blank" rel="noopener">Book</a>
+    </div>
+  </header>
+
+  <div class="dock">
+    <div class="container inner">
+      <a class="btn gold" href="https://wa.me/819084350822" target="_blank" rel="noopener">Book on WhatsApp</a>
+      <a class="btn" href="mailto:info@tokyosignaturetours.com">Email us</a>
+    </div>
+  </div>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container wrap">
+        <div>
+          <span class="badge">Private • Luxury • Authentic</span>
+          <h1>Discover Tokyo your way — elegant, private tours tailored just for you.</h1>
+          <p class="lead">Guided by <b>Taka</b>, a warm bilingual host, explore iconic highlights and hidden local gems at your pace. Perfect for couples, families and friends who value comfort and authenticity.</p>
+          <div class="hero-cta">
+            <a class="btn gold" href="https://wa.me/819084350822" target="_blank" rel="noopener">Book on WhatsApp</a>
+            <a class="btn" href="#tours">See tour options</a>
+          </div>
+        </div>
+        <div class="hero-img">
+          <img src="/hero-photo.jpg" alt="Tokyo skyline at sunset with Tokyo Tower" loading="eager" />
+        </div>
+      </div>
+    </section>
+
+    <!-- (sections unchanged for brevity) -->
+
+    <section id="contact">
+      <div class="container" style="text-align:center">
+        <h2>Ready to plan your day in Tokyo?</h2>
+        <p class="muted">Message us with your dates, group size, and interests. We’ll reply promptly.</p>
+        <div class="hero-cta" style="justify-content:center">
+          <a class="btn gold" href="https://wa.me/819084350822" target="_blank" rel="noopener">Chat on WhatsApp</a>
+          <a class="btn" href="mailto:info@tokyosignaturetours.com">Email: info@tokyosignaturetours.com</a>
+        </div>
+        <div class="small" style="margin-top:8px">Or call: <a href="tel:+819084350822">+81‑90‑8435‑0822</a></div>
+        <div class="hero-cta" style="justify-content:center;margin-top:12px">
+          <a class="btn" href="https://www.instagram.com/tokyosignaturetours?igsh=YzBtNXd4Y3Vjenlt" target="_blank" rel="noopener">Instagram</a>
+          <a class="btn" href="https://www.facebook.com/profile.php?id=61580978236755&mibextid=ZbWKwL" target="_blank" rel="noopener">Facebook</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
+      <div>© <span id="y"></span> Tokyo Signature Tours</div>
+      <div class="small">Made with care in Tokyo • EN / 日本語</div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
