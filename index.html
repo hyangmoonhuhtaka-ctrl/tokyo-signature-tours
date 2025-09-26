@@ -82,7 +82,14 @@
 
     /* ===== Hero ===== */
     .hero{padding:48px 0 0; position:relative; overflow:hidden}
-    .hero::before{content:""; position:absolute; inset:0; background-repeat:repeat; background-size:120px 120px; opacity:.16; z-index:0; background-image:var(--hero-pattern)}
+    body::before{content:"";position:fixed;inset:0;background-repeat:repeat;background-size:120px 120px;opacity:.14;z-index:-1;background-image:var(--hero-pattern);pointer-events:none}
+    .hero::before{display:none}
+
+    /* ===== Sakura petals animation (enabled in Sakura theme only) ===== */
+    .petal{position:fixed;top:-12vh;left:0;width:14px;height:12px;opacity:.85;pointer-events:none;z-index:0;will-change:transform;background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="18" height="16" viewBox="0 0 18 16"><path fill="%23e85b8c" fill-opacity="0.9" d="M9 0c1.6 2.8 4 4.2 6 6-1.8 1.8-3.2 4.2-6 6-2.8-1.8-4.2-4.2-6-6 2-1.8 4.4-3.2 6-6z"/><circle cx="13" cy="12" r="1.2" fill="%23e85b8c"/></svg>');background-size:contain;background-repeat:no-repeat}
+    @keyframes petal-fall{to{transform:translate3d(var(--tx,0px),110vh,0) rotate(720deg);}}
+    @keyframes petal-sway{0%,100%{transform:translateX(-8px)}50%{transform:translateX(8px)}}
+    @media (prefers-reduced-motion: reduce){.petal{display:none;animation:none}}
     .hero-wrap{position:relative; z-index:1; display:grid;grid-template-columns:1.05fr .95fr;gap:20px;align-items:center}
     h1{font-size:40px;margin:12px 0}
     p.lead{color:var(--muted);font-size:18px;margin-bottom:18px}
@@ -466,6 +473,50 @@
         btn.textContent = card.classList.contains('open') ? 'Hide Details' : 'More Details';
       });
     });
+  </script>
+
+  <!-- Sakura petals script -->
+  <script>
+    (function(){
+      const PETALS = 18; // density
+      let mounted = false; let nodes = [];
+      const isMatcha = ()=> document.body.classList.contains('theme-matcha');
+      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      function spawnPetals(){
+        if (mounted || prefersReduced || isMatcha()) return; mounted = true;
+        for(let i=0;i<PETALS;i++){
+          const el = document.createElement('span');
+          el.className = 'petal';
+          const x = Math.random()*100; // vw
+          const delay = (Math.random()*-20).toFixed(2)+'s';
+          const dur = (12 + Math.random()*10).toFixed(2)+'s';
+          const drift = ((Math.random()*40)-20).toFixed(1)+'vw';
+          const scale = (0.7 + Math.random()*0.9).toFixed(2);
+          el.style.left = x+'vw';
+          el.style.transform = `translate3d(0,-10vh,0) scale(${scale})`;
+          el.style.animation = `petal-fall var(--dur, ${dur}) linear infinite`;
+          el.style.setProperty('--tx', drift);
+          el.style.animationDelay = delay;
+          document.body.appendChild(el); nodes.push(el);
+        }
+      }
+      function clearPetals(){ nodes.forEach(n=>n.remove()); nodes=[]; mounted=false; }
+
+      // init on load based on saved theme
+      if(!isMatcha()) spawnPetals();
+
+      // hook to theme switcher
+      const btn = document.getElementById('themeToggle');
+      if(btn){
+        btn.addEventListener('click',()=>{
+          setTimeout(()=>{ isMatcha()? clearPetals() : spawnPetals(); },0);
+        });
+      }
+      document.addEventListener('visibilitychange',()=>{
+        if(document.visibilityState==='visible' && !isMatcha() && !mounted) spawnPetals();
+      });
+    })();
   </script>
 
   <!-- SLIDER SCRIPT -->
