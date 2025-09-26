@@ -169,7 +169,7 @@
         <a href="#contact">Contact</a>
       </nav>
       <div style="display:flex;gap:8px;align-items:center">
-        <button id="themeToggle" class="theme-toggle" aria-pressed="false" aria-label="Switch color theme">🌸 Sakura</button>
+        <button id="themeToggle" class="theme-toggle" aria-pressed="false" aria-label="Switch color theme">🌸</button>
         <a href="https://wa.me/819084350822" class="cta">Book Now</a>
       </div>
     </div>
@@ -454,12 +454,12 @@
       const saved = localStorage.getItem(key);
       if(saved === 'matcha'){
         document.body.classList.add('theme-matcha');
-        btn.textContent = '🍵 Matcha';
+        btn.textContent = '🍵';
         btn.setAttribute('aria-pressed','true');
       }
       btn.addEventListener('click',()=>{
         const isMatcha = document.body.classList.toggle('theme-matcha');
-        btn.textContent = isMatcha ? '🍵 Matcha' : '🌸 Sakura';
+        btn.textContent = isMatcha ? '🍵' : '🌸';
         btn.setAttribute('aria-pressed', String(isMatcha));
         localStorage.setItem(key, isMatcha ? 'matcha' : 'sakura');
       });
@@ -511,3 +511,4 @@
   </script>
 </body>
 </html>
+
