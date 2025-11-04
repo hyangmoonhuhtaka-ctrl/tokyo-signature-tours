@@ -154,6 +154,13 @@
       .slider-dot{width:8px;height:8px}
       .icon-btn{width:36px;height:36px}
     }
+
+    /* ===== Terms (scoped helpers) ===== */
+    .terms .lang-toggle{display:flex;gap:8px;margin:12px 0 4px}
+    .terms .lang-toggle button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 14px;cursor:pointer}
+    .terms .lang-toggle button.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+    .terms .muted{color:var(--muted)}
+    .terms .en{display:none}
   </style>
 </head>
 <body>
@@ -441,9 +448,168 @@
         </div>
       </div>
     </section>
+
+    <!-- TERMS & CONDITIONS (Bilingual) -->
+    <section id="terms" class="terms">
+      <div class="container">
+        <h2>Terms & Conditions / 利用約款</h2>
+        <div class="lang-toggle" role="tablist" aria-label="Terms language switch">
+          <button id="termsBtnJa" class="active" role="tab" aria-selected="true" aria-controls="termsJa">日本語</button>
+          <button id="termsBtnEn" role="tab" aria-selected="false" aria-controls="termsEn">English</button>
+        </div>
+
+        <!-- Japanese -->
+        <div id="termsJa" class="ja">
+          <div class="card">
+            <h3>第1条（目的）</h3>
+            <p>本約款は、Tokyo Signature Tours（以下「当社」）が提供するツアーおよび体験サービス（以下「本サービス」）の利用条件を定めるものです。</p>
+          </div>
+          <div class="card">
+            <h3>第2条（契約の成立）</h3>
+            <ol>
+              <li>契約は、お客様が当社のWebサイトまたは指定プラットフォームで予約申込を行い、当社が承諾し、代金の支払いが確認された時点で成立します。</li>
+              <li>当社は予約確定後、Eメールにて正式な予約確定通知を送信します。</li>
+            </ol>
+          </div>
+          <div class="card">
+            <h3>第3条（サービス内容）</h3>
+            <ol>
+              <li>当社は、訪日外国人向けのプライベートガイドツアーを提供します。</li>
+              <li>具体的な内容・料金・スケジュールは各ツアーページに明記します。</li>
+            </ol>
+          </div>
+          <div class="card">
+            <h3>第4条（料金および支払い方法）</h3>
+            <ol>
+              <li>料金は税込価格で表示します。</li>
+              <li>支払いはクレジットカード（Stripe / Square）または事前銀行振込にてお願いします。</li>
+              <li>支払い確認後に予約が確定します。</li>
+            </ol>
+          </div>
+          <div class="card">
+            <h3>第5条（キャンセルおよび返金）</h3>
+            <ul>
+              <li>ツアー日7日前まで：全額返金</li>
+              <li>ツアー日6日前〜2日前：50％返金</li>
+              <li>前日・当日：返金不可</li>
+            </ul>
+            <p class="muted">※ 自然災害・交通機関停止等による中止の場合は全額返金します。</p>
+          </div>
+          <div class="card">
+            <h3>第6条（お客様の責任）</h3>
+            <ol>
+              <li>お客様は、当社およびガイドの安全指示に従って行動してください。</li>
+              <li>健康状態・体調に不安がある場合は、事前に当社へ申告してください。</li>
+            </ol>
+          </div>
+          <div class="card">
+            <h3>第7条（当社の責任）</h3>
+            <ol>
+              <li>当社は、天災、交通遅延、第三者の行為、その他の不可抗力による損害について責任を負いません。</li>
+              <li>当社の責任は、当該ツアー代金を上限とします。</li>
+            </ol>
+          </div>
+          <div class="card">
+            <h3>第8条（禁止事項）</h3>
+            <ul>
+              <li>ガイドや他参加者への迷惑行為</li>
+              <li>安全指示に反する行動</li>
+              <li>不正な決済や虚偽情報の提供</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>第9条（著作権・写真利用）</h3>
+            <p>ツアー中に撮影された写真・映像は、お客様の事前同意がある場合に限り、当社のプロモーション目的で使用することがあります。</p>
+          </div>
+          <div class="card">
+            <h3>第10条（個人情報の保護）</h3>
+            <p>お客様の個人情報は、当社のプライバシーポリシーに基づき適切に管理します。</p>
+          </div>
+          <div class="card">
+            <h3>第11条（準拠法および裁判管轄）</h3>
+            <p>本約款は日本法に準拠し、東京地方裁判所を専属的合意管轄裁判所とします。</p>
+            <p class="muted">制定日：2025年11月 / 代表者：Huh Hyangmoon / Email: <a href="mailto:info@tokyosignaturetours.com">info@tokyosignaturetours.com</a></p>
+          </div>
+        </div>
+
+        <!-- English -->
+        <div id="termsEn" class="en">
+          <div class="card">
+            <h3>Article 1 (Purpose)</h3>
+            <p>These Terms and Conditions set forth the rules for using the tour and cultural experience services (the “Service”) provided by Tokyo Signature Tours (the “Company”).</p>
+          </div>
+          <div class="card">
+            <h3>Article 2 (Formation of Contract)</h3>
+            <ol>
+              <li>The contract is formed when the Customer submits a booking request via the Company’s website or designated platform, the Company accepts it, and payment is confirmed.</li>
+              <li>A booking confirmation email will be sent after verification.</li>
+            </ol>
+          </div>
+          <div class="card">
+            <h3>Article 3 (Service Content)</h3>
+            <ol>
+              <li>The Company offers private guided tours for international visitors to Japan.</li>
+              <li>Details, pricing, and schedules are provided on each tour page.</li>
+            </ol>
+          </div>
+          <div class="card">
+            <h3>Article 4 (Fees and Payment)</h3>
+            <ol>
+              <li>All prices are tax-inclusive.</li>
+              <li>Payment is accepted via credit card (Stripe / Square) or bank transfer in advance.</li>
+              <li>Your reservation is confirmed after payment.</li>
+            </ol>
+          </div>
+          <div class="card">
+            <h3>Article 5 (Cancellation & Refund)</h3>
+            <ul>
+              <li>7+ days before the tour date: Full refund</li>
+              <li>2–6 days before: 50% refund</li>
+              <li>Day before / Same day: Non-refundable</li>
+            </ul>
+            <p class="muted">* A full refund will be issued if the tour is cancelled due to natural disasters or public transportation disruption.</p>
+          </div>
+          <div class="card">
+            <h3>Article 6 (Customer Responsibilities)</h3>
+            <ol>
+              <li>Customers must follow safety instructions provided by the guide and the Company.</li>
+              <li>Please inform us in advance of any medical conditions that may affect your participation.</li>
+            </ol>
+          </div>
+          <div class="card">
+            <h3>Article 7 (Company’s Liability)</h3>
+            <ol>
+              <li>The Company is not liable for damages resulting from natural disasters, delays, third-party acts, or other force majeure events.</li>
+              <li>Liability shall not exceed the total tour fee paid by the Customer.</li>
+            </ol>
+          </div>
+          <div class="card">
+            <h3>Article 8 (Prohibited Conduct)</h3>
+            <ul>
+              <li>Harassment of guides or other participants</li>
+              <li>Unsafe behavior against instructions</li>
+              <li>Fraudulent payments or provision of false information</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Article 9 (Copyright & Media Use)</h3>
+            <p>Photos or videos captured during the tour may be used for promotional purposes only with the Customer’s prior consent.</p>
+          </div>
+          <div class="card">
+            <h3>Article 10 (Privacy)</h3>
+            <p>Personal data will be handled in accordance with our Privacy Policy.</p>
+          </div>
+          <div class="card">
+            <h3>Article 11 (Governing Law & Jurisdiction)</h3>
+            <p>These Terms are governed by the laws of Japan. Any disputes shall be subject to the exclusive jurisdiction of the Tokyo District Court.</p>
+            <p class="muted">Effective: November 2025 / Representative: Huh Hyangmoon / Email: <a href="mailto:info@tokyosignaturetours.com">info@tokyosignaturetours.com</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <footer>© 2025 Tokyo Signature Tours. All rights reserved.</footer>
+  <footer>© 2025 Tokyo Signature Tours. All rights reserved. · <a href="#terms">Terms</a></footer>
 
   <!-- Scripts -->
   <script>
@@ -473,6 +639,28 @@
         btn.textContent = card.classList.contains('open') ? 'Hide Details' : 'More Details';
       });
     });
+
+    // Terms language toggle (scoped)
+    (function(){
+      const btnJa = document.getElementById('termsBtnJa');
+      const btnEn = document.getElementById('termsBtnEn');
+      const ja = document.getElementById('termsJa');
+      const en = document.getElementById('termsEn');
+      const key = 'tstTermsLang';
+      const set = (lang)=>{
+        const isJa = lang === 'ja';
+        ja.style.display = isJa ? 'block' : 'none';
+        en.style.display = isJa ? 'none'  : 'block';
+        btnJa.classList.toggle('active', isJa);
+        btnEn.classList.toggle('active', !isJa);
+        btnJa.setAttribute('aria-selected', String(isJa));
+        btnEn.setAttribute('aria-selected', String(!isJa));
+        localStorage.setItem(key, lang);
+      };
+      set(localStorage.getItem(key) || 'ja');
+      btnJa.addEventListener('click', ()=>set('ja'));
+      btnEn.addEventListener('click', ()=>set('en'));
+    })();
   </script>
 
   <!-- SLIDER SCRIPT -->
@@ -511,4 +699,3 @@
   </script>
 </body>
 </html>
-
