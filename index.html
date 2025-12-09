@@ -210,20 +210,6 @@
       color:var(--muted);
     }
 
-  <footer>
-    <div class="container" style="display:flex;flex-direction:column;gap:8px;align-items:center;font-size:13px;">
-      <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;">
-        <a href="/terms.html">Terms of Service</a>
-        <span>・</span>
-        <a href="/privacy.html">Privacy Policy</a>
-        <span>・</span>
-        <a href="/legal.html">Legal Notice (Japan)</a>
-      </div>
-      <div>© 2025 Tokyo Signature Tours. All rights reserved.</div>
-    </div>
-  </footer>
-
-
     /* ===== Slider ===== */
     .slider-wrap{
       position:relative;
@@ -344,7 +330,7 @@
       margin-top:10px;
       padding:8px 14px;
       min-height:40px;
-      border:1px solid: var(--accent);
+      border:1px solid var(--accent);
       border-radius:999px;
       background:transparent;
       color:var(--accent);
@@ -376,6 +362,35 @@
       width:18px;
       height:18px;
       fill:currentColor;
+    }
+
+    /* ===== Footer ===== */
+    footer{
+      border-top:1px solid var(--line);
+      background:rgba(255,255,255,.9);
+      padding:16px 0 20px;
+      margin-top:20px;
+      font-size:13px;
+      color:var(--muted);
+    }
+    .footer-inner{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:8px;
+      text-align:center;
+    }
+    .footer-links{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      justify-content:center;
+    }
+    .footer-links a{
+      text-decoration:none;
+    }
+    .footer-links a:hover{
+      text-decoration:underline;
     }
 
     /* ===== Desktop enhancements ===== */
@@ -754,7 +769,18 @@
     </section>
   </main>
 
-  <footer>© 2025 Tokyo Signature Tours. All rights reserved.</footer>
+  <footer>
+    <div class="container footer-inner">
+      <div class="footer-links">
+        <a href="/terms.html">Terms of Use</a>
+        <span>·</span>
+        <a href="/privacy.html">Privacy Policy</a>
+        <span>·</span>
+        <a href="/legal.html">Legal Notice (Japan)</a>
+      </div>
+      <div>© 2025 Tokyo Signature Tours. All rights reserved.</div>
+    </div>
+  </footer>
 
   <!-- Scripts -->
   <script>
@@ -783,8 +809,10 @@
     const syncDots = ()=>{ [...dotsWrap.children].forEach((d,di)=>d.classList.toggle('active', di===index)); };
 
     slides.forEach((_,i)=> {
-      const b = document.createElement('button'); b.className='slider-dot'+(i===0?' active':'');
-      b.addEventListener('click', ()=>go(i)); dotsWrap.appendChild(b);
+      const b = document.createElement('button'); 
+      b.className='slider-dot'+(i===0?' active':'');
+      b.addEventListener('click', ()=>go(i)); 
+      dotsWrap.appendChild(b);
     });
 
     prev && prev.addEventListener('click', ()=>go(index-1));
@@ -804,4 +832,3 @@
   </script>
 </body>
 </html>
-
