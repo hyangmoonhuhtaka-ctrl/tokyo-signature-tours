@@ -4,8 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Terms of Service | Tokyo Signature Tours</title>
-  <meta name="description" content="Terms of Service for Tokyo Signature Tours." />
-  <meta name="format-detection" content="telephone=no" />
+  <meta name="description" content="Terms of Service for Tokyo Signature Tours private guided experiences in Tokyo, Japan." />
   <link rel="icon" href="/favicon.ico" />
 
   <style>
@@ -16,126 +15,336 @@
       --muted:#5b6470;
       --line:rgba(0,0,0,.06);
       --accent:#e85b8c;
-      --header:rgba(255,255,255,.9);
-      --hero-pattern:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200"><g opacity="0.8"><g transform="translate(60,60) scale(0.7)"><path d="M0,-40 C 12,-60 26,-60 36,-40 C 28,-20 12,-8 0,0 C -12,-8 -28,-20 -36,-40 C -26,-60 -12,-60 0,-40 Z" fill="%23f9cdda"/><path d="M0,-40 C 12,-60 26,-60 36,-40 C 28,-20 12,-8 0,0 C -12,-8 -28,-20 -36,-40 C -26,-60 -12,-60 0,-40 Z" fill="%23f9cdda" transform="rotate(72)"/><path d="M0,-40 C 12,-60 26,-60 36,-40 C 28,-20 12,-8 0,0 C -12,-8 -28,-20 -36,-40 C -26,-60 -12,-60 0,-40 Z" fill="%23f9cdda" transform="rotate(144)"/><path d="M0,-40 C 12,-60 26,-60 36,-40 C 28,-20 12,-8 0,0 C -12,-8 -28,-20 -36,-40 C -26,-60 -12,-60 0,-40 Z" fill="%23f9cdda" transform="rotate(216)"/><path d="M0,-40 C 12,-60 26,-60 36,-40 C 28,-20 12,-8 0,0 C -12,-8 -28,-20 -36,-40 C -26,-60 -12,-60 0,-40 Z" fill="%23f9cdda" transform="rotate(288)"/><circle r="6" fill="%23e88ab5"/></g></g></svg>');
     }
 
-    html,body{margin:0}
     body{
+      margin:0;
       font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
-      font-size:16px;
-      line-height:1.8;
-      color:var(--text);
       background:var(--bg);
+      color:var(--text);
+      line-height:1.75;
+      padding-bottom:60px;
     }
-    body::before{
-      content:"";
-      position:fixed;
-      inset:0;
-      background-repeat:repeat;
-      background-size:200px 200px;
-      opacity:.12;
-      z-index:-1;
-      background-image:var(--hero-pattern);
-      pointer-events:none;
-    }
-    a{color:inherit;text-decoration:none}
-    .container{max-width:900px;margin:0 auto;padding:0 16px}
 
     header{
+      background:#ffffffdd;
+      backdrop-filter:blur(8px);
+      padding:14px 0;
+      border-bottom:1px solid var(--line);
       position:sticky;
       top:0;
-      background:var(--header);
-      backdrop-filter:saturate(120%) blur(10px);
-      border-bottom:1px solid var(--line);
-      z-index:20;
-    }
-    .nav{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:10px;
-      padding:10px 0;
-      font-size:13px;
-    }
-    .brand{
-      font-weight:700;
-      letter-spacing:0.08em;
-      text-transform:uppercase;
-      font-size:13px;
-    }
-    .back-link{
-      font-size:13px;
-      color:var(--muted);
+      z-index:10;
     }
 
-    main{padding:28px 0 24px;}
+    .container{
+      max-width:900px;
+      margin:0 auto;
+      padding:0 20px;
+    }
+
     h1{
-      font-size:24px;
-      margin:4px 0 6px;
+      font-size:28px;
+      margin:20px 0 10px;
     }
-    .subtitle{
-      font-size:13px;
-      color:var(--muted);
-      margin-bottom:18px;
+
+    h2{
+      font-size:20px;
+      margin:28px 0 10px;
+      padding-bottom:6px;
+      border-bottom:1px solid var(--line);
     }
-    .legal-card{
+
+    p, li{
+      font-size:15px;
+      color:var(--text);
+    }
+
+    article{
       background:var(--panel);
       border-radius:14px;
+      padding:24px 20px;
+      margin-top:20px;
+      box-shadow:0 4px 16px rgba(0,0,0,.05);
       border:1px solid var(--line);
-      padding:18px 16px;
-      box-shadow:0 6px 18px rgba(0,0,0,.04);
     }
-    h2{
-      font-size:17px;
-      margin:18px 0 6px;
+
+    ul{
+      padding-left:20px;
+      margin:8px 0 18px;
     }
-    p{margin:4px 0 10px;}
 
     footer{
-      border-top:1px solid var(--line);
-      background:var(--panel);
-      padding:16px 0;
       text-align:center;
-      font-size:12px;
+      margin-top:40px;
+      font-size:13px;
       color:var(--muted);
     }
 
-    @media (min-width:900px){
-      body{font-size:16px;}
-      main{padding:36px 0 32px;}
-      h1{font-size:26px;}
-      .legal-card{padding:22px 20px;}
+    a{
+      color:var(--accent);
+      text-decoration:none;
+    }
+
+    a:hover{
+      text-decoration:underline;
     }
   </style>
 </head>
+
 <body>
-  <header>
-    <div class="container nav">
-      <div class="brand">Tokyo Signature Tours</div>
-      <a href="/" class="back-link">← Back to Home</a>
-    </div>
-  </header>
 
-  <main>
-    <div class="container">
-      <div class="legal-card">
-        <h1>Terms of Service</h1>
-        <p class="subtitle">Last updated: 2025-XX-XX</p>
+<header>
+  <div class="container">
+    <strong>Tokyo Signature Tours — Terms of Service</strong>
+  </div>
+</header>
 
-        <h2>English Version (Placeholder)</h2>
-        <p>XXX – The full Terms of Service for Tokyo Signature Tours will be added here.</p>
+<div class="container">
+  <article>
 
-        <h2>日本語版（仮）</h2>
-        <p>XXX（東京シグネチャーツアーズの利用規約の正式な全文は、後日この箇所に掲載されます）。</p>
-      </div>
-    </div>
-  </main>
+<h1>Terms of Conditions</h1>
+<p><strong>Effective Date: November 26, 2025</strong></p>
 
-  <footer>
-    <div class="container">
-      © 2025 Tokyo Signature Tours. All rights reserved.
-    </div>
-  </footer>
+<h2>Article 1 (Purpose and Application of these Terms)</h2>
+<p>These Terms of Use (hereinafter, these “Terms”) set forth the conditions for the use of the guided private tour services and related concierge services (collectively, the “Services”) provided by Tokyo Signature Tours (hereinafter, the “Company”).</p>
+
+<p>These Terms apply to all customers who use the Services (hereinafter, “Customers”).</p>
+
+<p>A Customer shall be deemed to have agreed to these Terms at the time the Customer makes a reservation application for the Services or otherwise commences use of the Services, and these Terms shall constitute a part of the tour contract between the Company and the Customer. Customers who do not agree to these Terms may not use the Services.</p>
+
+<p>In the event of any inconsistency between these Terms and any individual conditions presented by the Company in connection with the Services, such as booking confirmations, notices, or safety instructions, such individual conditions shall prevail.</p>
+
+<h2>Article 2 (Description of the Services and Distinction from Travel Agency Business)</h2>
+<p>The Company provides the following services (collectively, the “Tours”):</p>
+<ul>
+  <li>(1) Guided sightseeing services with an accompanying guide;</li>
+  <li>(2) Itinerary proposals and provision of sightseeing information tailored to the Customer’s preferences;</li>
+  <li>(3) Advice and assistance regarding restaurant and sightseeing facility reservations; and</li>
+  <li>(4) Other concierge services intended to enhance the Customer’s sightseeing experience.</li>
+</ul>
+
+<p>The Company is not a travel agency and does not provide any travel contracts under the Japanese Travel Agency Act, including but not limited to arranged tour contracts or custom-organized tour contracts.</p>
+
+<p>The Company does not perform reservations, payments, custody of funds, advances, or collection of fees on behalf of Customers for accommodations, transportation, sightseeing facilities, restaurants, or any other services. Even when the Company assists a Customer with reservations for third-party services, the contract regarding such third-party services shall be solely between the Customer and the applicable third-party service provider, and the Company shall not be a party to such contract.</p>
+
+<p>If a guide holds a professional qualification (such as national licensed interpreter-guide, regional interpreter-guide, or no qualification), the type of qualification will be disclosed in advance. The Company shall not make any false or misleading statements regarding the existence or type of such qualifications.</p>
+
+<h2>Article 3 (Formation of Contract)</h2>
+<p>A tour contract between the Company and the Customer (the “Tour Contract”) shall be formed when the Customer makes a reservation via the method prescribed by the Company for use of the Services, and the Company sends a booking confirmation (the “Booking Confirmation”) to the Customer via email or other method designated by the Company.</p>
+
+<p>Even after a Tour Contract has been formed, if payment of the tour fee is not confirmed by the payment deadline specified by the Company, the relevant reservation shall be automatically cancelled.</p>
+
+<p>The Company may refuse a reservation application if any of the following circumstances apply:</p>
+<ul>
+  <li>(1) The Customer has provided false information;</li>
+  <li>(2) The Company reasonably determines that it would be difficult to ensure the safety of the guide or to properly perform the Services; or</li>
+  <li>(3) The Customer has previously engaged in conduct that violated these Terms or constituted nuisance behavior.</li>
+</ul>
+
+<h2>Article 4 (Conditions of Use, Age, and Health)</h2>
+<p>As a general rule, only persons who are at least eighteen (18) years of age may make a reservation for the Services. If a person under eighteen (18) years of age participates in a Tour, a parent or guardian who is at least twenty (20) years of age must accompany such minor, and such parent or guardian shall bear all responsibility for the safety and conduct of the minor.</p>
+
+<p>The tours typically involve walking approximately 3–10 kilometers, climbing and descending stairs, waiting in crowded areas, and dealing with variations in temperature and weather.</p>
+
+<p>If the Customer has any medical conditions, prior illnesses, pregnancy, or other concerns regarding health or physical fitness, the Customer shall, at the Customer’s own responsibility, consult with a physician in advance and make the final decision regarding participation.</p>
+
+<p>The Company and its guides are not medical professionals and do not guarantee the Customer’s health, physical condition, or safety.</p>
+
+<h2>Article 5 (Participation Requirements: Environment, Allergies, Alcohol, Strollers, etc.)</h2>
+<p><strong>Weather Conditions</strong></p>
+<ul>
+  <li>(1) Tours will in principle be conducted in light rain.</li>
+  <li>(2) If the Company determines that there are safety concerns due to severe weather warnings, natural disasters, or other similar circumstances, the Company may change or cancel the Tour pursuant to Article 13.</li>
+</ul>
+
+<p>Customers who have a significantly low tolerance for crowds or busy environments shall inform the Company of such conditions in advance.</p>
+
+<p><strong>Allergies and Dietary Restrictions</strong></p>
+<ul>
+  <li>(1) Customers must notify the Company of allergies or restrictions in advance. Failure to notify may result in the Company being unable to accommodate such needs.</li>
+  <li>(2) The Company does not guarantee the safety of any food or drinks provided by third parties.</li>
+</ul>
+
+<p><strong>Alcohol Consumption</strong></p>
+<ul>
+  <li>(1) Drinking alcohol is permitted only for those age 20 or older under Japanese law.</li>
+  <li>(2) Excessive drinking, dangerous behavior, or nuisance conduct may result in immediate termination of the Tour without refund.</li>
+</ul>
+
+<p><strong>Strollers and Wheelchairs</strong></p>
+<ul>
+  <li>(1) Some routes may not be suitable due to stairs, slopes, or crowds.</li>
+  <li>(2) If not notified in advance, itinerary changes on the day will not result in refunds.</li>
+</ul>
+
+<h2>Article 6 (Payment Method)</h2>
+<p>Tour fees shall be paid in advance by credit card via Stripe or another method designated by the Company.</p>
+
+<p>The Company does not hold or manage funds on behalf of Customers. Exchange rate losses, card fees, and related charges are borne by the Customer.</p>
+
+<p>Reservations are deemed confirmed upon completion of payment.</p>
+
+<p>In the event of duplicate or erroneous charges, corrections or refunds will be made within a reasonable scope.</p>
+
+<h2>Article 7 (Items Included and Not Included in the Tour Fee)</h2>
+<p><strong>Included:</strong></p>
+<ul>
+  <li>(1) Guided sightseeing and language support;</li>
+  <li>(2) Pre-tour consultation and itinerary advice.</li>
+</ul>
+
+<p><strong>Not Included:</strong></p>
+<ul>
+  <li>(1) Food and beverage;</li>
+  <li>(2) Transportation costs;</li>
+  <li>(3) Tickets, admission fees, and activity costs;</li>
+  <li>(4) Lodging, travel insurance, airfare;</li>
+  <li>(5) Tips (voluntary).</li>
+</ul>
+
+<h2>Article 8 (Day-of Operations, Meeting Point, Tardiness, and No-Show)</h2>
+<p>The meeting time and place are as stated in the Booking Confirmation (Japan Standard Time).</p>
+
+<p>Late arrival does not extend the end time of the Tour. No refunds or discounts will be made for shortened Tours caused by Customer delays.</p>
+
+<p>If the Customer does not arrive within 30 minutes of the scheduled time, the Company may treat it as a no-show with no refund.</p>
+
+<h2>Article 9 (Changes, Cancellations, and Refunds)</h2>
+<p><strong>Customer cancellations:</strong></p>
+<ul>
+  <li>(1) 72+ hours before start: 100% refund</li>
+  <li>(2) 24–72 hours before: 50% refund</li>
+  <li>(3) Less than 24 hours before, late arrival, or no-show: no refund</li>
+</ul>
+
+<p>Refunds may exclude card processing fees or FX losses.</p>
+
+<p>Refund processing: within 14 business days; card issuer posting may take 3–30 days.</p>
+
+<h2>Article 10 (Changes to Reservation Details and Change Fees)</h2>
+<p>Changes must be requested promptly. Acceptance is at the Company's discretion based on guide availability and conditions.</p>
+
+<p>Changes that effectively alter the nature of the Tour may incur cancellation fees per Article 9.</p>
+
+<h2>Article 11 (Extensions on the Day of the Tour and Additional Fees)</h2>
+<p>Extensions are granted at the guide's or Company's discretion.</p>
+
+<p>If accepted, an additional Extension Fee will apply at disclosed rates.</p>
+
+<p>The agreement for extension is formed when the guide explains conditions and the Customer expressly agrees.</p>
+
+<h2>Article 12 (Additional Fees for Special Conditions)</h2>
+<p>Additional fees may apply for special itineraries, peak season, group arrangements, long-distance travel, or special requests.</p>
+
+<h2>Article 13 (Changes and Cancellations Due to Force Majeure or Safety Reasons)</h2>
+<p>If operation is impossible due to disasters, severe weather, pandemics, or major disruptions, the Company may cancel and refund 100% of the tour fee.</p>
+
+<p>Refunds do not include airfare, lodging, or incidental expenses.</p>
+
+<h2>Article 14 (Guide Substitution and Alternative Service)</h2>
+<p>If a guide becomes unavailable, the Company may substitute another guide without prior notice.</p>
+
+<p>Cancellations based solely on the substitution of a guide are not accepted unless the Tour content is substantially changed.</p>
+
+<h2>Article 15 (Subcontracting)</h2>
+<p>The Company may subcontract services to external guides. The Company remains responsible for performance under these Terms.</p>
+
+<h2>Article 16 (Position of Third-Party Services)</h2>
+<p>Contracts for restaurants, facilities, transportation, and other third-party services are solely between Customers and those providers.</p>
+
+<p>The Company is not liable for quality, safety, hygiene, delays, closures, or incidents involving third-party providers.</p>
+
+<h2>Article 17 (Photos, Videos, and Intellectual Property)</h2>
+
+<p><strong>Company Intellectual Property</strong></p>
+<ul>
+  <li>All website content, itineraries, images, videos, and materials are owned by the Company.</li>
+  <li>Use beyond personal purposes requires prior written consent.</li>
+</ul>
+
+<p><strong>Photography by the Company</strong></p>
+<ul>
+  <li>The Company may photograph or record Tours.</li>
+  <li>Marketing use requires the Customer’s prior written consent.</li>
+</ul>
+
+<p><strong>Photography by Customers</strong></p>
+<ul>
+  <li>Customers must respect privacy rights and comply with facility photography rules.</li>
+</ul>
+
+<p><strong>Use of Reviews</strong></p>
+<p>The Company may publish anonymized feedback or reviews provided voluntarily by Customers.</p>
+
+<h2>Article 18 (Prohibited Conduct)</h2>
+<ul>
+  <li>(1) Illegal acts;</li>
+  <li>(2) Violence, discrimination, nuisance behavior;</li>
+  <li>(3) Excessive drinking or dangerous conduct;</li>
+  <li>(4) Illegal drugs;</li>
+  <li>(5) Obscene acts, solicitation, political or religious activities;</li>
+  <li>(6) Commercial misuse of itineraries;</li>
+  <li>(7) False reviews or defamatory conduct;</li>
+  <li>(8) Fraudulent reservations;</li>
+  <li>(9) Any conduct deemed inappropriate by the Company.</li>
+</ul>
+
+<p>Violations may result in immediate termination of the Tour with no refund.</p>
+
+<h2>Article 19 (Prohibition on Assignment or Resale of Reservations)</h2>
+<p>Reservations may not be reassigned, transferred, or resold without Company approval.</p>
+
+<p>Unauthorized transfers may result in cancellation with no refund.</p>
+
+<h2>Article 20 (Exclusion of Anti-Social Forces)</h2>
+<p>Customers must affirm they are not part of organized crime groups or related entities.</p>
+
+<p>Discovery of such affiliation results in immediate termination with no refund.</p>
+
+<h2>Article 21 (Limitation of Liability)</h2>
+<p>The Company’s liability is limited to direct damages up to the tour fee (excluding tax), except in cases of willful misconduct or gross negligence.</p>
+
+<h2>Article 22 (Disclaimers)</h2>
+<p>The Company is not liable for:</p>
+<ul>
+  <li>Customer health issues or accidents;</li>
+  <li>Failure to follow instructions or dangerous behavior;</li>
+  <li>Force majeure interruptions;</li>
+  <li>Transportation delays preventing participation;</li>
+  <li>Acts of third-party providers;</li>
+  <li>Technical communication failures.</li>
+</ul>
+
+<h2>Article 23 (Handling of Personal Information)</h2>
+<p>Personal information is handled per the Company’s Privacy Policy.</p>
+
+<h2>Article 24 (Measures in the Event of Breach)</h2>
+<p>The Company may refuse reservations, terminate Tours, or prohibit future use if Customers violate these Terms.</p>
+
+<h2>Article 25 (Governing Law, Jurisdiction, and Language)</h2>
+<p>Japanese law governs these Terms. Disputes fall under the exclusive jurisdiction of the Tokyo District Court or Tokyo Summary Court.</p>
+
+<p>The Japanese version controls in case of interpretive conflict.</p>
+
+<h2>Article 26 (Amendment of these Terms)</h2>
+<p>The Company may amend these Terms when reasonable or in Customers' general interest. Amendments will be announced on the website.</p>
+
+<h2>Article 27 (Means of Communication)</h2>
+<p>Official communication is via registered email, WhatsApp, or website notices.</p>
+
+<h2>Article 28 (Good-Faith Negotiation)</h2>
+<p>Unspecified matters or interpretive issues shall be resolved through good-faith consultation.</p>
+
+<h2>Article 29 (Severability)</h2>
+<p>If any provision is held invalid, remaining provisions remain effective.</p>
+
+  </article>
+
+<footer>
+  © 2025 Tokyo Signature Tours. All rights reserved.  
+  <br><a href="/index.html">Back to Home</a>
+</footer>
+
+</div>
 </body>
 </html>
