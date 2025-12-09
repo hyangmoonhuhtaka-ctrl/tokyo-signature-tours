@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Terms of Service | Tokyo Signature Tours</title>
+  <meta name="description" content="Terms of Service for Tokyo Signature Tours." />
+  <meta name="format-detection" content="telephone=no" />
+  <link rel="icon" href="/favicon.ico" />
+
+  <style>
+    :root{
+      --bg:#fff7fa;
+      --panel:#ffffff;
+      --text:#141922;
+      --muted:#5b6470;
+      --line:rgba(0,0,0,.06);
+      --accent:#e85b8c;
+      --header:rgba(255,255,255,.9);
+      --hero-pattern:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200"><g opacity="0.8"><g transform="translate(60,60) scale(0.7)"><path d="M0,-40 C 12,-60 26,-60 36,-40 C 28,-20 12,-8 0,0 C -12,-8 -28,-20 -36,-40 C -26,-60 -12,-60 0,-40 Z" fill="%23f9cdda"/><path d="M0,-40 C 12,-60 26,-60 36,-40 C 28,-20 12,-8 0,0 C -12,-8 -28,-20 -36,-40 C -26,-60 -12,-60 0,-40 Z" fill="%23f9cdda" transform="rotate(72)"/><path d="M0,-40 C 12,-60 26,-60 36,-40 C 28,-20 12,-8 0,0 C -12,-8 -28,-20 -36,-40 C -26,-60 -12,-60 0,-40 Z" fill="%23f9cdda" transform="rotate(144)"/><path d="M0,-40 C 12,-60 26,-60 36,-40 C 28,-20 12,-8 0,0 C -12,-8 -28,-20 -36,-40 C -26,-60 -12,-60 0,-40 Z" fill="%23f9cdda" transform="rotate(216)"/><path d="M0,-40 C 12,-60 26,-60 36,-40 C 28,-20 12,-8 0,0 C -12,-8 -28,-20 -36,-40 C -26,-60 -12,-60 0,-40 Z" fill="%23f9cdda" transform="rotate(288)"/><circle r="6" fill="%23e88ab5"/></g></g></svg>');
+    }
+
+    html,body{margin:0}
+    body{
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      font-size:16px;
+      line-height:1.8;
+      color:var(--text);
+      background:var(--bg);
+    }
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      background-repeat:repeat;
+      background-size:200px 200px;
+      opacity:.12;
+      z-index:-1;
+      background-image:var(--hero-pattern);
+      pointer-events:none;
+    }
+    a{color:inherit;text-decoration:none}
+    .container{max-width:900px;margin:0 auto;padding:0 16px}
+
+    header{
+      position:sticky;
+      top:0;
+      background:var(--header);
+      backdrop-filter:saturate(120%) blur(10px);
+      border-bottom:1px solid var(--line);
+      z-index:20;
+    }
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      padding:10px 0;
+      font-size:13px;
+    }
+    .brand{
+      font-weight:700;
+      letter-spacing:0.08em;
+      text-transform:uppercase;
+      font-size:13px;
+    }
+    .back-link{
+      font-size:13px;
+      color:var(--muted);
+    }
+
+    main{padding:28px 0 24px;}
+    h1{
+      font-size:24px;
+      margin:4px 0 6px;
+    }
+    .subtitle{
+      font-size:13px;
+      color:var(--muted);
+      margin-bottom:18px;
+    }
+    .legal-card{
+      background:var(--panel);
+      border-radius:14px;
+      border:1px solid var(--line);
+      padding:18px 16px;
+      box-shadow:0 6px 18px rgba(0,0,0,.04);
+    }
+    h2{
+      font-size:17px;
+      margin:18px 0 6px;
+    }
+    p{margin:4px 0 10px;}
+
+    footer{
+      border-top:1px solid var(--line);
+      background:var(--panel);
+      padding:16px 0;
+      text-align:center;
+      font-size:12px;
+      color:var(--muted);
+    }
+
+    @media (min-width:900px){
+      body{font-size:16px;}
+      main{padding:36px 0 32px;}
+      h1{font-size:26px;}
+      .legal-card{padding:22px 20px;}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">Tokyo Signature Tours</div>
+      <a href="/" class="back-link">← Back to Home</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <div class="legal-card">
+        <h1>Terms of Service</h1>
+        <p class="subtitle">Last updated: 2025-XX-XX</p>
+
+        <h2>English Version (Placeholder)</h2>
+        <p>XXX – The full Terms of Service for Tokyo Signature Tours will be added here.</p>
+
+        <h2>日本語版（仮）</h2>
+        <p>XXX（東京シグネチャーツアーズの利用規約の正式な全文は、後日この箇所に掲載されます）。</p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      © 2025 Tokyo Signature Tours. All rights reserved.
+    </div>
+  </footer>
+</body>
+</html>
