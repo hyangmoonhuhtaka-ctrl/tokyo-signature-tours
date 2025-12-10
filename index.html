@@ -472,7 +472,7 @@
       fill:currentColor;
     }
 
-      /* ===== Instagram section ===== */
+    /* ===== Instagram section ===== */
     #instagram{
       padding-top:30px;
       padding-bottom:24px;
@@ -484,7 +484,7 @@
       box-shadow:0 4px 18px rgba(0,0,0,.04);
       padding:16px 14px 18px;
       max-width:560px;
-      margin:0 auto;              /* 画面中央に寄せる */
+      margin:0 auto;
     }
     .instagram-header{
       display:flex;
@@ -515,18 +515,21 @@
     }
     .instagram-embed{
       border-radius:14px;
-      padding-top:14px;            /* 上に少し余白をつける */
+      overflow:hidden;          /* 中身をマスクする */
+      position:relative;
     }
     .instagram-embed blockquote.instagram-media{
       max-width:100% !important;
       width:100% !important;
       margin:0 auto !important;
+      border:0 !important;
     }
     .instagram-embed iframe{
       width:100% !important;
       max-width:100% !important;
       border:0;
       display:block;
+      margin-top:-24px;         /* 上を少しだけカットしてストーリーズを隠す */
     }
 
     /* ===== Footer ===== */
@@ -997,7 +1000,6 @@
               data-instgrm-version="14"
               style="background:#fff; border:0; margin:0 auto; max-width:540px; width:100%;"></blockquote>
           </div>
-
         </div>
       </div>
     </section>
@@ -1123,11 +1125,8 @@
       });
     })();
   </script>
-    <!-- Instagram embed script -->
+
+  <!-- Instagram embed script -->
   <script async src="https://www.instagram.com/embed.js"></script>
 </body>
 </html>
-
-
-
-
