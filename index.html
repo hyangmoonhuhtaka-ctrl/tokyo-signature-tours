@@ -511,15 +511,27 @@
       color:var(--muted);
       margin-bottom:10px;
     }
+
+    /* ★ ここを修正：overflow: hidden をやめて、ストーリーズが切れないようにする */
     .instagram-embed{
       border-radius:14px;
-      overflow:hidden;
+      /* overflow:hidden;  ← 削除 */
     }
+
+    /* ★ Instagram 埋め込みが横幅いっぱいに収まるように */
+    .instagram-embed blockquote.instagram-media{
+      max-width:100% !important;
+      width:100% !important;
+      margin:0 auto !important;
+    }
+
+    /* iframe 版を使っている場合も念のため対応 */
     .instagram-embed iframe{
       width:100%;
       display:block;
       border:0;
     }
+
 
     /* ===== Footer ===== */
     footer{
@@ -1119,4 +1131,5 @@
   <script async src="https://www.instagram.com/embed.js"></script>
 </body>
 </html>
+
 
