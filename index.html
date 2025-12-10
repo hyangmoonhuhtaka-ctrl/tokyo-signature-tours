@@ -512,26 +512,25 @@
       margin-bottom:10px;
     }
 
-    /* ★ ここを修正：overflow: hidden をやめて、ストーリーズが切れないようにする */
+    /* Instagram 埋め込み枠 */
     .instagram-embed{
       border-radius:14px;
-      /* overflow:hidden;  ← 削除 */
+      /* ストーリーズの丸が上に飛び出すので、上に余白をつくる */
+      padding-top:18px;
     }
 
-    /* ★ Instagram 埋め込みが横幅いっぱいに収まるように */
+    /* 埋め込み本体がカード内にきれいに収まるようにする */
     .instagram-embed blockquote.instagram-media{
       max-width:100% !important;
       width:100% !important;
-      margin:0 auto !important;
+      margin:0 auto !important;  /* 中央寄せ */
     }
 
-    /* iframe 版を使っている場合も念のため対応 */
     .instagram-embed iframe{
       width:100%;
       display:block;
       border:0;
     }
-
 
     /* ===== Footer ===== */
     footer{
@@ -1131,5 +1130,6 @@
   <script async src="https://www.instagram.com/embed.js"></script>
 </body>
 </html>
+
 
 
