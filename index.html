@@ -80,8 +80,17 @@
       pointer-events:none;
     }
 
+    /* focus ring (premium + accessible) */
+    :focus-visible{
+      outline: 3px solid rgba(232,91,140,.55);
+      outline-offset: 2px;
+      border-radius: 10px;
+    }
+
     /* ==========================================================
-       HEADER & MOBILE MENU
+       HEADER & MOBILE MENU (UPGRADED UX)
+       - Adds focus trap behavior + ESC close via JS
+       - Adds quick actions inside menu
        ========================================================== */
     header{
       position:sticky;
@@ -114,11 +123,12 @@
       border-radius:999px;
       background:var(--accent);
       color:#fff;
-      font-weight:700;
+      font-weight:800;
       font-size:14px;
       box-shadow:0 10px 22px rgba(232,91,140,.22);
       white-space:nowrap;
       border:1px solid rgba(232,91,140,.25);
+      transform: translateZ(0);
     }
     .cta:hover{opacity:.96}
 
@@ -157,26 +167,26 @@
     .menu-backdrop{
       position:fixed;
       inset:0;
-      background:rgba(0,0,0,.28);
+      background:rgba(0,0,0,.30);
       opacity:0;
       pointer-events:none;
-      transition:opacity .25s ease;
+      transition:opacity .22s ease;
       z-index:39;
     }
     .side-menu{
       position:fixed;
       top:0; right:0;
-      width:280px;
-      max-width:84vw;
+      width:304px;
+      max-width:88vw;
       height:100%;
       background:#ffffff;
       box-shadow:-14px 0 40px rgba(0,0,0,.18);
       transform:translateX(102%);
-      transition:transform .25s ease;
+      transition:transform .22s ease;
       z-index:40;
       display:flex;
       flex-direction:column;
-      padding:18px 18px 24px;
+      padding:18px 18px 18px;
     }
     .side-menu header{
       position:static;
@@ -186,7 +196,7 @@
     }
     .side-menu-title{
       font-size:13px;
-      font-weight:800;
+      font-weight:900;
       letter-spacing:0.10em;
       text-transform:uppercase;
     }
@@ -194,25 +204,60 @@
       margin-left:auto;
       border:none;
       background:none;
-      font-size:24px;
+      font-size:26px;
       cursor:pointer;
       line-height:1;
+      padding:6px 10px;
+      border-radius:12px;
     }
+    .side-menu-close:hover{background:rgba(0,0,0,.04)}
     .side-menu nav{display:block;margin-top:6px}
     .side-menu nav a{
       display:block;
-      padding:11px 0;
+      padding:12px 0;
       border-bottom:1px solid var(--line);
       font-size:14px;
+      font-weight:650;
     }
+    .side-menu nav a:hover{color:rgba(17,24,39,.92)}
     .side-menu-note{
       margin-top:12px;
       font-size:12px;
       color:var(--muted);
       line-height:1.6;
     }
+    .side-menu-actions{
+      margin-top:auto;
+      padding-top:14px;
+      border-top:1px solid var(--line);
+      display:grid;
+      gap:10px;
+    }
+    .side-menu-actions .btn{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      min-height:44px;
+      border-radius:999px;
+      border:1px solid rgba(0,0,0,.10);
+      background:#fff;
+      font-weight:850;
+      font-size:14px;
+      cursor:pointer;
+      box-shadow:0 10px 22px rgba(0,0,0,.06);
+    }
+    .side-menu-actions .btn.primary{
+      border-color:rgba(232,91,140,.25);
+      background:var(--accent);
+      color:#fff;
+      box-shadow:0 16px 30px rgba(232,91,140,.20);
+    }
+    .side-menu-actions .btn:hover{opacity:.96}
+
     body.menu-open .menu-backdrop{opacity:1;pointer-events:auto}
     body.menu-open .side-menu{transform:translateX(0)}
+    body.menu-open{overflow:hidden;} /* prevent background scroll (mobile premium feel) */
 
     /* ==========================================================
        HERO
@@ -293,12 +338,13 @@
       color:var(--accent);
       cursor:pointer;
       font-size:14px;
-      font-weight:650;
+      font-weight:750;
     }
     .toggle:hover{background:var(--accent);color:#fff}
 
     /* ==========================================================
-       PREMIUM MOBILE-FIRST BOOKING (UPGRADED)
+       PREMIUM MOBILE-FIRST BOOKING (FIXED SWIPE + ARROWS + SNAP)
+       - solves: "can't swipe / 8h cut off" on mobile
        ========================================================== */
     .booking-shell{
       margin-top:14px;
@@ -327,7 +373,7 @@
       margin:0 0 6px;
       font-size:18px;
       line-height:1.25;
-      font-weight:800;
+      font-weight:900;
       letter-spacing:.01em;
     }
     .booking-sub{
@@ -336,7 +382,6 @@
       line-height:1.6;
       color:rgba(91,100,112,.95);
     }
-
     .booking-body{padding:14px 14px 18px}
 
     .step{
@@ -356,7 +401,7 @@
       letter-spacing:.12em;
       text-transform:uppercase;
       color:rgba(91,100,112,.9);
-      font-weight:750;
+      font-weight:850;
     }
     .step-hint{
       font-size:12.5px;
@@ -364,23 +409,54 @@
       line-height:1.4;
     }
 
-    /* -------------------------
-       STEP 1: HORIZONTAL SWIPE + SNAP (FIX)
-       ------------------------- */
+    /* Step 1 wrapper includes optional arrows (helps users who don't realize swipe) */
+    .duration-wrap{
+      position:relative;
+      margin-top:6px;
+    }
+    .dur-arrow{
+      position:absolute;
+      top:50%;
+      transform:translateY(-50%);
+      z-index:5;
+      width:40px;height:40px;
+      border-radius:999px;
+      border:1px solid rgba(0,0,0,.10);
+      background:rgba(255,255,255,.92);
+      box-shadow:0 10px 22px rgba(0,0,0,.08);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      backdrop-filter: blur(10px);
+    }
+    .dur-arrow:hover{background:#fff}
+    .dur-arrow[disabled]{opacity:.45;cursor:not-allowed}
+    .dur-arrow svg{width:18px;height:18px;fill:rgba(17,24,39,.70)}
+    .dur-prev{left:6px}
+    .dur-next{right:6px}
+
+    /* --------------------------------
+       Step 1: horizontal swipe + snap
+       (touch-action pan-x is KEY on some Android/Chrome combos)
+       -------------------------------- */
     .seg-scroll{
-      margin-top:8px;
-      margin-left:-14px;    /* extend to container edge */
+      margin-left:-14px;
       margin-right:-14px;
-      padding-left:14px;    /* keep content aligned */
+      padding-left:14px;
       padding-right:14px;
       overflow-x:auto;
+      overflow-y:hidden;
       -webkit-overflow-scrolling:touch;
       scroll-snap-type:x mandatory;
       scroll-padding-left:14px;
       scroll-padding-right:14px;
+      scroll-behavior:smooth;
+      overscroll-behavior-x:contain;
+      touch-action: pan-x;        /* ✅ important */
       position:relative;
     }
-    /* subtle fade to hint swiping */
+    /* subtle fade edges hint */
     .seg-scroll::before,
     .seg-scroll::after{
       content:"";
@@ -402,11 +478,12 @@
     .seg{
       display:flex;
       gap:10px;
-      padding-bottom:4px;
+      padding:6px 0 6px;
       min-width:max-content;
+      scroll-snap-align:start;
     }
-    .seg-scroll::-webkit-scrollbar{height:0} /* hide */
-    .seg-scroll{scrollbar-width:none} /* firefox hide */
+    .seg-scroll::-webkit-scrollbar{height:0}
+    .seg-scroll{scrollbar-width:none}
 
     .seg-btn{
       position:relative;
@@ -418,16 +495,21 @@
       cursor:pointer;
       box-shadow:0 6px 16px rgba(0,0,0,.04);
       transition: transform .10s ease, border-color .12s ease, background .12s ease;
-      min-height:74px;
+      min-height:78px;
 
-      /* make swipe-friendly sizing */
-      flex:0 0 78%;
-      max-width:320px;
+      /* mobile sizing: always show most of 1 card + peeking next */
+      flex:0 0 84%;
+      max-width:360px;
+
       scroll-snap-align:center;
       scroll-snap-stop:always;
+
+      /* prevent tap from killing scroll */
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
     }
     @media(min-width:520px){
-      .seg-btn{flex-basis:46%;}
+      .seg-btn{flex-basis:48%;}
     }
     .seg-btn:hover{ transform: translateY(-1px); }
     .seg-btn[aria-pressed="true"]{
@@ -443,7 +525,7 @@
       gap:8px;
     }
     .seg-name{
-      font-weight:900;
+      font-weight:950;
       font-size:16px;
       letter-spacing:.01em;
       line-height:1.1;
@@ -471,7 +553,7 @@
       color:rgba(91,100,112,.96);
     }
 
-    /* tiny “swipe” hint text */
+    /* swipe hint row */
     .swipe-hint{
       margin:8px 2px 0;
       font-size:12px;
@@ -494,7 +576,7 @@
     }
     .swipe-hint svg{width:16px;height:16px;fill:rgba(17,24,39,.55)}
 
-    /* guests grid */
+    /* Step 2 guests */
     .guest-grid{
       margin-top:10px;
       display:grid;
@@ -514,6 +596,7 @@
       box-shadow:0 6px 16px rgba(0,0,0,.04);
       transition: transform .10s ease, border-color .12s ease, background .12s ease;
       min-height:56px;
+      -webkit-tap-highlight-color: transparent;
     }
     .guest-btn:hover{ transform: translateY(-1px); }
     .guest-btn[aria-pressed="true"]{
@@ -522,7 +605,7 @@
       box-shadow:0 12px 26px rgba(232,91,140,.10);
     }
     .guest-num{
-      font-weight:900;
+      font-weight:950;
       font-size:16px;
       line-height:1;
       margin-top:2px;
@@ -535,7 +618,7 @@
       margin-top:6px;
     }
 
-    /* included mini rows */
+    /* Summary mini rows */
     .mini-includes{
       margin-top:14px;
       display:grid;
@@ -559,10 +642,10 @@
     }
     .mini-ic svg{width:18px;height:18px;fill:rgba(17,24,39,.78)}
     .mini-txt{line-height:1.55}
-    .mini-title{font-size:13px;font-weight:850;margin:0}
+    .mini-title{font-size:13px;font-weight:900;margin:0}
     .mini-sub{font-size:12.5px;color:rgba(91,100,112,.95);margin:2px 0 0}
 
-    /* Sticky purchase bar */
+    /* Sticky purchase bar (mobile conversion booster) */
     .sticky-buy{
       position:fixed;
       left:0; right:0; bottom:0;
@@ -595,7 +678,7 @@
       white-space:nowrap;
       overflow:hidden;
       text-overflow:ellipsis;
-      font-weight:700;
+      font-weight:800;
       letter-spacing:.02em;
     }
     .sticky-price{
@@ -616,7 +699,7 @@
       background:var(--accent);
       color:#fff;
       font-size:14px;
-      font-weight:850;
+      font-weight:900;
       letter-spacing:.02em;
       box-shadow:0 16px 30px rgba(232,91,140,.22);
       white-space:nowrap;
@@ -629,7 +712,6 @@
       box-shadow:none;
     }
     .sticky-btn svg{width:16px;height:16px;fill:#fff}
-
     body.has-sticky{padding-bottom: 84px;}
 
     /* Details section */
@@ -796,7 +878,9 @@
       .side-menu{display:none}
       .sticky-buy{display:none !important}
       body.has-sticky{padding-bottom:0}
-      /* On desktop you can show 3 duration cards without swipe if you want */
+
+      /* show durations as normal row on desktop */
+      .duration-wrap .dur-arrow{display:none}
       .seg-scroll{overflow:visible;margin-left:0;margin-right:0;padding:0}
       .seg{gap:12px}
       .seg-btn{flex:1 1 0;max-width:none}
@@ -808,15 +892,16 @@
 
 <body>
   <!-- mobile side menu -->
-  <div class="menu-backdrop"></div>
-  <aside class="side-menu" aria-label="Section index">
+  <div class="menu-backdrop" aria-hidden="true"></div>
+  <aside class="side-menu" aria-label="Section index" aria-modal="true" role="dialog" aria-hidden="true">
     <header>
       <div style="display:flex;align-items:center;gap:8px;">
         <div class="side-menu-title">Tokyo Signature Tours</div>
-        <button class="side-menu-close" aria-label="Close menu">×</button>
+        <button class="side-menu-close" aria-label="Close menu" type="button">×</button>
       </div>
     </header>
-    <nav>
+
+    <nav aria-label="Quick index">
       <a href="#about">About</a>
       <a href="#tours">Tours</a>
       <a href="#details">Highlights &amp; Inclusions</a>
@@ -827,9 +912,15 @@
       <a href="#instagram">Instagram Overview</a>
       <a href="#contact">Contact &amp; Booking</a>
     </nav>
+
     <p class="side-menu-note">
       Quick index for guests browsing on mobile. Tap a section to jump directly without scrolling.
     </p>
+
+    <div class="side-menu-actions" aria-label="Quick actions">
+      <a class="btn primary" href="#booking">Book a Tour</a>
+      <a class="btn" href="https://wa.me/819084350822" target="_blank" rel="noopener">WhatsApp Inquiry</a>
+    </div>
   </aside>
 
   <header>
@@ -847,14 +938,14 @@
       </nav>
       <div style="display:flex;align-items:center;gap:8px;">
         <a href="https://wa.me/819084350822" class="cta">WhatsApp</a>
-        <button class="menu-toggle" aria-label="Open menu"><span></span></button>
+        <button class="menu-toggle" aria-label="Open menu" type="button"><span></span></button>
       </div>
     </div>
   </header>
 
   <main>
     <!-- HERO -->
-    <section class="hero">
+    <section class="hero" id="top">
       <div class="container hero-wrap">
         <div>
           <span class="eyebrow">Private Authentic Experiences in Tokyo, Japan</span>
@@ -863,7 +954,7 @@
             Discover Tokyo through private, carefully curated tours designed for discerning travelers.
             From iconic landmarks to quiet hidden streets, each day is tailored to your pace and interests.
           </p>
-          <a href="https://wa.me/819084350822" class="cta">Chat on WhatsApp</a>
+          <a href="#booking" class="cta">Choose &amp; Book</a>
           <ul class="hero-points">
             <li>Fully private, customized itineraries — no groups, no scripts</li>
             <li>Hosted by a small team of carefully selected bilingual local guides</li>
@@ -917,32 +1008,41 @@
               </div>
             </div>
 
-            <!-- FIXED: horizontal swipe container -->
-            <div class="seg-scroll" id="durationScroll" role="group" aria-label="Tour length selector (swipe)">
-              <div class="seg">
-                <button class="seg-btn" type="button" data-duration="4" aria-pressed="false">
-                  <div class="seg-top">
-                    <div class="seg-name">4 Hours</div>
-                    <div class="seg-tag">Highlights</div>
-                  </div>
-                  <div class="seg-desc">A refined introduction — focused and relaxed.</div>
-                </button>
+            <!-- FIXED: swipe container + arrow controls -->
+            <div class="duration-wrap">
+              <button class="dur-arrow dur-prev" id="durPrev" type="button" aria-label="Scroll durations left">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+              </button>
+              <button class="dur-arrow dur-next" id="durNext" type="button" aria-label="Scroll durations right">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.59 16.59 10 18l6-6-6-6-1.41 1.41L13.17 12z"/></svg>
+              </button>
 
-                <button class="seg-btn" type="button" data-duration="6" aria-pressed="false">
-                  <div class="seg-top">
-                    <div class="seg-name">6 Hours</div>
-                    <div class="seg-tag">Depth</div>
-                  </div>
-                  <div class="seg-desc">Neighborhoods + culture + food moments.</div>
-                </button>
+              <div class="seg-scroll" id="durationScroll" role="group" aria-label="Tour length selector (swipe)">
+                <div class="seg">
+                  <button class="seg-btn" type="button" data-duration="4" aria-pressed="false">
+                    <div class="seg-top">
+                      <div class="seg-name">4 Hours</div>
+                      <div class="seg-tag">Highlights</div>
+                    </div>
+                    <div class="seg-desc">A refined introduction — focused and relaxed.</div>
+                  </button>
 
-                <button class="seg-btn" type="button" data-duration="8" aria-pressed="true" data-default="true">
-                  <div class="seg-top">
-                    <div class="seg-name">8 Hours</div>
-                    <div class="seg-tag">Most Popular</div>
-                  </div>
-                  <div class="seg-desc">The signature day — iconic + hidden, unrushed.</div>
-                </button>
+                  <button class="seg-btn" type="button" data-duration="6" aria-pressed="false">
+                    <div class="seg-top">
+                      <div class="seg-name">6 Hours</div>
+                      <div class="seg-tag">Depth</div>
+                    </div>
+                    <div class="seg-desc">Neighborhoods + culture + food moments.</div>
+                  </button>
+
+                  <button class="seg-btn" type="button" data-duration="8" aria-pressed="true" data-default="true">
+                    <div class="seg-top">
+                      <div class="seg-name">8 Hours</div>
+                      <div class="seg-tag">Most Popular</div>
+                    </div>
+                    <div class="seg-desc">The signature day — iconic + hidden, unrushed.</div>
+                  </button>
+                </div>
               </div>
             </div>
 
@@ -1020,7 +1120,7 @@
           </div>
         </div>
 
-        <!-- Tour overview cards (kept) -->
+        <!-- Tour overview cards -->
         <div class="grid" style="margin-top:16px;">
           <div class="card">
             <h3>Half Day Tokyo Highlights (4h)</h3>
@@ -1161,12 +1261,9 @@
           <p><strong>“He made our first day in Tokyo so easy.”</strong><br>
           <em>Couple from USA, first time in Japan</em></p>
           <p>
-            “Our experience with Taka as a personal guide was wonderful. We were on our first day in Tokyo and he was
+            Our experience with Taka as a personal guide was wonderful. We were on our first day in Tokyo and he was
             greatly helpful in sharing important cultural customs as well as practical advice regarding exchanging
-            currency and getting around on the subway. He met us at our hotel to make sure we could easily navigate our
-            way to the Meiji Shrine which we enjoyed along with a stroll through Takeshita Street. He suggested a lunch
-            place and walked us to the Ota museum which we had planned to tour. Along the way we enjoyed getting to know
-            him, as well as the city.”
+            currency and getting around on the subway...
           </p>
         </blockquote>
 
@@ -1175,8 +1272,8 @@
           <p><strong>“Definitely a highlight of our trip.”</strong><br>
           <em>Group of friends from USA</em></p>
           <p>
-            “It was so personalized and our guide was amazing — a pleasure to spend the day with and they made the
-            experience truly memorable. Definitely a highlight of our trip.”
+            It was so personalized and our guide was amazing — a pleasure to spend the day with and they made the
+            experience truly memorable. Definitely a highlight of our trip.
           </p>
         </blockquote>
 
@@ -1185,8 +1282,8 @@
           <p><strong>“Warm, genuine, and great with families.”</strong><br>
           <em>Family traveler</em></p>
           <p>
-            “Our guide was a lovely, warm, genuine person who took a real interest in our family.
-            Communication was excellent and I would recommend Tokyo Signature Tours to anyone — it was a great experience.”
+            Our guide was a lovely, warm, genuine person who took a real interest in our family.
+            Communication was excellent and I would recommend Tokyo Signature Tours to anyone.
           </p>
         </blockquote>
 
@@ -1195,8 +1292,8 @@
           <p><strong>“They truly made our day so special.”</strong><br>
           <em>Couple from Canada</em></p>
           <p>
-            “Our guide was a pleasure to be with, very considerate, and made us feel extremely comfortable as we explored
-            the wonderful highlights of Tokyo. We would highly recommend Tokyo Signature Tours — they truly made our day so special.”
+            Our guide was a pleasure to be with, very considerate, and made us feel extremely comfortable as we explored
+            the wonderful highlights of Tokyo. We would highly recommend Tokyo Signature Tours.
           </p>
         </blockquote>
 
@@ -1205,8 +1302,8 @@
           <p><strong>“An incredible, authentic experience.”</strong><br>
           <em>Solo traveler</em></p>
           <p>
-            “I had an incredible authentic experience. The guide was phenomenal
-            and taught me about the history of the places we visited as well as the local customs and traditions.”
+            I had an incredible authentic experience. The guide was phenomenal
+            and taught me about the history of the places we visited as well as the local customs and traditions.
           </p>
         </blockquote>
       </div>
@@ -1228,8 +1325,8 @@
             <div class="slide"><img src="/images/TourPhoto-9.jpg"  alt="Guests posing by sake barrel wall at Meiji Jingu" loading="lazy"></div>
             <div class="slide"><img src="/images/TourPhoto-11.jpg" alt="Guests enjoying a theater show in Tokyo" loading="lazy"></div>
           </div>
-          <button class="slider-btn slider-prev" aria-label="Previous slide">‹</button>
-          <button class="slider-btn slider-next" aria-label="Next slide">›</button>
+          <button class="slider-btn slider-prev" aria-label="Previous slide" type="button">‹</button>
+          <button class="slider-btn slider-next" aria-label="Next slide" type="button">›</button>
         </div>
         <div class="slider-dots" id="tst-dots"></div>
       </div>
@@ -1251,9 +1348,8 @@
           <div class="card">
             <h3>What happens if it rains?</h3>
             <p>
-              Tours generally run in light rain. We may adjust the route to include more indoor options
-              such as cafés, department stores, or covered shopping streets. In case of severe weather
-              warnings or safety concerns, we may reschedule or cancel the tour according to our Terms of Use.
+              Tours generally run in light rain. We may adjust the route to include more indoor options.
+              In case of severe weather warnings or safety concerns, we may reschedule or cancel according to our Terms of Use.
             </p>
           </div>
           <div class="card">
@@ -1405,7 +1501,10 @@
     };
 
     /* ==========================================================
-       BOOKING UI LOGIC + AUTO-CENTER DEFAULT (8H)
+       BOOKING UI LOGIC + FIXED SWIPE RELIABILITY
+       - centers selected duration
+       - arrow buttons for non-swipe users
+       - keeps arrows enabled/disabled based on scroll position
        ========================================================== */
     (function(){
       const sticky = document.getElementById('stickyBuy');
@@ -1418,12 +1517,15 @@
       const segBtns = [...document.querySelectorAll('.seg-btn')];
       const guestBtns = [...document.querySelectorAll('.guest-btn')];
 
+      const prevBtn = document.getElementById('durPrev');
+      const nextBtn = document.getElementById('durNext');
+
       let state = { duration: 8, guests: 2 };
 
       const fmtUSD = (n)=> `$${Number(n).toLocaleString('en-US')}`;
       const key = ()=> `${state.duration}h_${state.guests}g`;
 
-      const render = ()=>{
+      const render = ()=> {
         segBtns.forEach(b => b.setAttribute('aria-pressed', String(Number(b.dataset.duration) === state.duration)));
         guestBtns.forEach(b => b.setAttribute('aria-pressed', String(Number(b.dataset.guests) === state.guests)));
 
@@ -1444,25 +1546,42 @@
         }
       };
 
-      const centerSelectedDuration = ()=>{
+      const centerSelectedDuration = (behavior='smooth') => {
         if (!durationScroll) return;
         const selected = segBtns.find(b => Number(b.dataset.duration) === state.duration);
         if (!selected) return;
 
         const cRect = durationScroll.getBoundingClientRect();
         const bRect = selected.getBoundingClientRect();
-
-        // scroll so selected card is centered
         const currentLeft = durationScroll.scrollLeft;
+
         const delta = (bRect.left - cRect.left) - (cRect.width/2 - bRect.width/2);
-        durationScroll.scrollTo({ left: currentLeft + delta, behavior: 'smooth' });
+        durationScroll.scrollTo({ left: currentLeft + delta, behavior });
+      };
+
+      const updateArrowState = ()=> {
+        if (!durationScroll || !prevBtn || !nextBtn) return;
+        const max = durationScroll.scrollWidth - durationScroll.clientWidth;
+        const left = durationScroll.scrollLeft;
+        const atStart = left <= 2;
+        const atEnd = left >= max - 2;
+        prevBtn.disabled = atStart;
+        nextBtn.disabled = atEnd;
+      };
+
+      const scrollByCard = (dir=1) => {
+        if (!durationScroll) return;
+        // scroll by ~1 card width (responsive)
+        const card = segBtns[0];
+        const amount = card ? (card.getBoundingClientRect().width + 10) : 280;
+        durationScroll.scrollBy({ left: dir * amount, behavior:'smooth' });
       };
 
       segBtns.forEach(btn=>{
         btn.addEventListener('click', ()=>{
           state.duration = Number(btn.dataset.duration);
           render();
-          centerSelectedDuration();
+          centerSelectedDuration('smooth');
           btn.blur();
         });
       });
@@ -1475,6 +1594,14 @@
         });
       });
 
+      prevBtn && prevBtn.addEventListener('click', ()=> scrollByCard(-1));
+      nextBtn && nextBtn.addEventListener('click', ()=> scrollByCard( 1));
+
+      durationScroll && durationScroll.addEventListener('scroll', ()=>{
+        // cheap throttle
+        window.requestAnimationFrame(updateArrowState);
+      }, {passive:true});
+
       bookBtn.addEventListener('click', ()=>{
         const url = bookBtn.dataset.href;
         if (!url) return;
@@ -1482,11 +1609,11 @@
       });
 
       // sticky on mobile
-      const enableSticky = ()=>{
+      const enableSticky = ()=> {
         sticky.style.display = 'block';
         document.body.classList.add('has-sticky');
       };
-      const disableSticky = ()=>{
+      const disableSticky = ()=> {
         sticky.style.display = 'none';
         document.body.classList.remove('has-sticky');
       };
@@ -1499,10 +1626,13 @@
       render();
 
       // IMPORTANT: center default (8h) on load so it’s never cut off
-      // Use 2 frames to ensure layout is ready on mobile browsers
-      requestAnimationFrame(()=> requestAnimationFrame(centerSelectedDuration));
-      window.addEventListener('orientationchange', ()=> setTimeout(centerSelectedDuration, 250));
-      window.addEventListener('resize', ()=> setTimeout(centerSelectedDuration, 150));
+      requestAnimationFrame(()=> requestAnimationFrame(()=>{
+        centerSelectedDuration('auto');
+        updateArrowState();
+      }));
+
+      window.addEventListener('orientationchange', ()=> setTimeout(()=>{ centerSelectedDuration('auto'); updateArrowState(); }, 250));
+      window.addEventListener('resize', ()=> setTimeout(()=>{ centerSelectedDuration('auto'); updateArrowState(); }, 150));
     })();
 
     /* ==========================================================
@@ -1538,6 +1668,8 @@
       slides.forEach((_,i)=> {
         const b = document.createElement('button');
         b.className = 'slider-dot'+(i===0?' active':'');
+        b.type = 'button';
+        b.setAttribute('aria-label', `Go to slide ${i+1}`);
         b.addEventListener('click', ()=>go(i));
         dotsWrap.appendChild(b);
       });
@@ -1557,7 +1689,10 @@
     })();
 
     /* ==========================================================
-       MOBILE SIDE MENU
+       MOBILE SIDE MENU (UPGRADED)
+       - ESC to close
+       - basic focus trap
+       - restores scroll
        ========================================================== */
     (function(){
       const body = document.body;
@@ -1566,8 +1701,62 @@
       const backdrop = document.querySelector('.menu-backdrop');
       const sideMenu = document.querySelector('.side-menu');
 
-      const close = () => body.classList.remove('menu-open');
-      const open  = () => body.classList.add('menu-open');
+      let lastFocus = null;
+
+      const focusableSel = [
+        'a[href]',
+        'button:not([disabled])',
+        '[tabindex]:not([tabindex="-1"])'
+      ].join(',');
+
+      const setAria = (open)=>{
+        sideMenu.setAttribute('aria-hidden', open ? 'false' : 'true');
+        openBtn && openBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      };
+
+      const close = ()=>{
+        body.classList.remove('menu-open');
+        setAria(false);
+        if (lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus();
+        lastFocus = null;
+      };
+
+      const open  = ()=>{
+        lastFocus = document.activeElement;
+        body.classList.add('menu-open');
+        setAria(true);
+
+        // focus first interactive element
+        const first = sideMenu.querySelector(focusableSel);
+        first && first.focus();
+      };
+
+      const onKeydown = (e)=>{
+        if (!body.classList.contains('menu-open')) return;
+
+        if (e.key === 'Escape') {
+          e.preventDefault();
+          close();
+          return;
+        }
+
+        // focus trap (Tab)
+        if (e.key === 'Tab') {
+          const focusables = [...sideMenu.querySelectorAll(focusableSel)];
+          if (!focusables.length) return;
+
+          const first = focusables[0];
+          const last  = focusables[focusables.length - 1];
+
+          if (e.shiftKey && document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+          } else if (!e.shiftKey && document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+          }
+        }
+      };
 
       openBtn && openBtn.addEventListener('click', open);
       closeBtn && closeBtn.addEventListener('click', close);
@@ -1576,6 +1765,12 @@
       sideMenu && sideMenu.querySelectorAll('a').forEach(a=>{
         a.addEventListener('click', close);
       });
+
+      document.addEventListener('keydown', onKeydown);
+
+      // init aria
+      setAria(false);
+      openBtn && openBtn.setAttribute('aria-expanded', 'false');
     })();
   </script>
 
