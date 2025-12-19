@@ -32,7 +32,9 @@
   </script>
 
   <style>
-    /* ===== THEME ===== */
+    /* ==========================================================
+       THEME
+       ========================================================== */
     :root{
       --bg:#fff7fa;
       --panel:#ffffff;
@@ -40,11 +42,21 @@
       --muted:#5b6470;
       --line:rgba(0,0,0,.06);
       --accent:#e85b8c;
-      --header:rgba(255,255,255,.95);
+
+      --header:rgba(255,255,255,.92);
+
+      /* premium neutrals */
+      --ink:#0c0f14;
+      --ink2:#111827;
+      --shadow: 0 12px 34px rgba(0,0,0,.10);
+      --shadow2: 0 20px 60px rgba(0,0,0,.12);
+
       --hero-pattern:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200"><g opacity="0.8"><g transform="translate(60,60) scale(0.7)"><path d="M0,-40 C 12,-60 26,-60 36,-40 C 28,-20 12,-8 0,0 C -12,-8 -28,-20 -36,-40 C -26,-60 -12,-60 0,-40 Z" fill="%23f9cdda"/><path d="M0,-40 C 12,-60 26,-60 36,-40 C 28,-20 12,-8 0,0 C -12,-8 -28,-20 -36,-40 C -26,-60 -12,-60 0,-40 Z" fill="%23f9cdda" transform="rotate(72)"/><path d="M0,-40 C 12,-60 26,-60 36,-40 C 28,-20 12,-8 0,0 C -12,-8 -28,-20 -36,-40 C -26,-60 -12,-60 0,-40 Z" fill="%23f9cdda" transform="rotate(144)"/><path d="M0,-40 C 12,-60 26,-60 36,-40 C 28,-20 12,-8 0,0 C -12,-8 -28,-20 -36,-40 C -26,-60 -12,-60 0,-40 Z" fill="%23f9cdda" transform="rotate(216)"/><path d="M0,-40 C 12,-60 26,-60 36,-40 C 28,-20 12,-8 0,0 C -12,-8 -28,-20 -36,-40 C -26,-60 -12,-60 0,-40 Z" fill="%23f9cdda" transform="rotate(288)"/><circle r="6" fill="%23e88ab5"/></g><g transform="translate(150,80) scale(0.55) rotate(15)"><path d="M0,-40 C 12,-60 26,-60 36,-40 C 28,-20 12,-8 0,0 C -12,-8 -28,-20 -36,-40 C -26,-60 -12,-60 0,-40 Z" fill="%23f9cdda"/><path d="M0,-40 C 12,-60 26,-60 36,-40 C 28,-20 12,-8 0,0 C -12,-8 -28,-20 -36,-40 C -26,-60 -12,-60 0,-40 Z" fill="%23f9cdda" transform="rotate(72)"/><path d="M0,-40 C 12,-60 26,-60 36,-40 C 28,-20 12,-8 0,0 C -12,-8 -28,-20 -36,-40 C -26,-60 -12,-60 0,-40 Z" fill="%23f9cdda" transform="rotate(144)"/><path d="M0,-40 C 12,-60 26,-60 36,-40 C 28,-20 12,-8 0,0 C -12,-8 -28,-20 -36,-40 C -26,-60 -12,-60 0,-40 Z" fill="%23f9cdda" transform="rotate(216)"/><path d="M0,-40 C 12,-60 26,-60 36,-40 C 28,-20 12,-8 0,0 C -12,-8 -28,-20 -36,-40 C -26,-60 -12,-60 0,-40 Z" fill="%23f9cdda" transform="rotate(288)"/><circle r="5" fill="%23e88ab5"/></g><g transform="translate(100,150) scale(0.6) rotate(-10)"><path d="M0,-40 C 12,-60 26,-60 36,-40 C 28,-20 12,-8 0,0 C -12,-8 -28,-20 -36,-40 C -26,-60 -12,-60 0,-40 Z" fill="%23f9cdda"/><path d="M0,-40 C 12,-60 26,-60 36,-40 C 28,-20 12,-8 0,0 C -12,-8 -28,-20 -36,-40 C -26,-60 -12,-60 0,-40 Z" fill="%23f9cdda" transform="rotate(72)"/><path d="M0,-40 C 12,-60 26,-60 36,-40 C 28,-20 12,-8 0,0 C -12,-8 -28,-20 -36,-40 C -26,-60 -12,-60 0,-40 Z" fill="%23f9cdda" transform="rotate(144)"/><path d="M0,-40 C 12,-60 26,-60 36,-40 C 28,-20 12,-8 0,0 C -12,-8 -28,-20 -36,-40 C -26,-60 -12,-60 0,-40 Z" fill="%23f9cdda" transform="rotate(216)"/><path d="M0,-40 C 12,-60 26,-60 36,-40 C 28,-20 12,-8 0,0 C -12,-8 -28,-20 -36,-40 C -26,-60 -12,-60 0,-40 Z" fill="%23f9cdda" transform="rotate(288)"/><circle r="5" fill="%23e88ab5"/></g></g></svg>');
     }
 
-    /* ===== Base ===== */
+    /* ==========================================================
+       BASE
+       ========================================================== */
     html,body{margin:0}
     body{
       font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
@@ -52,6 +64,8 @@
       line-height:1.8;
       color:var(--text);
       background:var(--bg);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
     a{color:inherit;text-decoration:none}
     img{max-width:100%;display:block;height:auto}
@@ -69,12 +83,14 @@
       pointer-events:none;
     }
 
-    /* ===== Header & mobile menu ===== */
+    /* ==========================================================
+       HEADER & MOBILE MENU
+       ========================================================== */
     header{
       position:sticky;
       top:0;
       background:var(--header);
-      backdrop-filter:saturate(120%) blur(10px);
+      backdrop-filter:saturate(120%) blur(12px);
       border-bottom:1px solid var(--line);
       z-index:40;
     }
@@ -86,33 +102,32 @@
       padding:10px 0;
     }
     .brand{
-      font-weight:700;
-      letter-spacing:0.08em;
+      font-weight:750;
+      letter-spacing:0.10em;
       text-transform:uppercase;
-      font-size:14px;
+      font-size:13px;
     }
-    nav{
-      display:none; /* hidden on mobile */
-    }
+    nav{display:none}
     .cta{
-      display:inline-block;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
       min-height:40px;
-      line-height:40px;
-      padding:0 18px;
+      padding:0 16px;
       border-radius:999px;
       background:var(--accent);
       color:#fff;
-      font-weight:600;
+      font-weight:700;
       font-size:14px;
-      text-decoration:none;
-      box-shadow:0 6px 16px rgba(0,0,0,.12);
+      box-shadow:0 10px 22px rgba(232,91,140,.22);
       white-space:nowrap;
+      border:1px solid rgba(232,91,140,.25);
     }
+    .cta:hover{opacity:.96}
 
     .menu-toggle{
       margin-left:8px;
-      width:40px;
-      height:40px;
+      width:40px;height:40px;
       border-radius:999px;
       border:1px solid var(--line);
       background:#fff;
@@ -120,7 +135,7 @@
       align-items:center;
       justify-content:center;
       cursor:pointer;
-      box-shadow:0 4px 10px rgba(0,0,0,.06);
+      box-shadow:0 6px 14px rgba(0,0,0,.06);
     }
     .menu-toggle span{
       display:block;
@@ -135,19 +150,17 @@
       content:"";
       position:absolute;
       left:0;
-      width:18px;
-      height:2px;
+      width:18px;height:2px;
       background:var(--text);
       border-radius:999px;
     }
     .menu-toggle span::before{top:-6px}
     .menu-toggle span::after{top:6px}
 
-    /* side menu */
     .menu-backdrop{
       position:fixed;
       inset:0;
-      background:rgba(0,0,0,.25);
+      background:rgba(0,0,0,.28);
       opacity:0;
       pointer-events:none;
       transition:opacity .25s ease;
@@ -155,14 +168,13 @@
     }
     .side-menu{
       position:fixed;
-      top:0;
-      right:0;
-      width:260px;
-      max-width:80vw;
+      top:0; right:0;
+      width:280px;
+      max-width:84vw;
       height:100%;
       background:#ffffff;
-      box-shadow:-4px 0 20px rgba(0,0,0,.18);
-      transform:translateX(100%);
+      box-shadow:-14px 0 40px rgba(0,0,0,.18);
+      transform:translateX(102%);
       transition:transform .25s ease;
       z-index:40;
       display:flex;
@@ -176,58 +188,45 @@
       padding:0 0 10px;
     }
     .side-menu-title{
-      font-size:14px;
-      font-weight:700;
-      letter-spacing:0.08em;
+      font-size:13px;
+      font-weight:800;
+      letter-spacing:0.10em;
       text-transform:uppercase;
     }
     .side-menu-close{
       margin-left:auto;
       border:none;
       background:none;
-      font-size:22px;
+      font-size:24px;
       cursor:pointer;
       line-height:1;
     }
-    .side-menu nav{
-      display:block;
-      margin-top:8px;
-    }
+    .side-menu nav{display:block;margin-top:6px}
     .side-menu nav a{
       display:block;
-      padding:10px 0;
+      padding:11px 0;
       border-bottom:1px solid var(--line);
       font-size:14px;
-    }
-    .side-menu nav a:last-child{
-      border-bottom:none;
     }
     .side-menu-note{
       margin-top:12px;
       font-size:12px;
       color:var(--muted);
+      line-height:1.6;
     }
 
-    body.menu-open .menu-backdrop{
-      opacity:1;
-      pointer-events:auto;
-    }
-    body.menu-open .side-menu{
-      transform:translateX(0);
-    }
+    body.menu-open .menu-backdrop{opacity:1;pointer-events:auto}
+    body.menu-open .side-menu{transform:translateX(0)}
 
-    /* ===== Hero ===== */
-    .hero{
-      padding:32px 0 8px;
-      position:relative;
-      overflow:hidden;
-    }
+    /* ==========================================================
+       HERO
+       ========================================================== */
+    .hero{padding:30px 0 8px;position:relative;overflow:hidden}
     .hero-wrap{
-      position:relative;
-      z-index:1;
+      position:relative; z-index:1;
       display:grid;
       grid-template-columns:1fr;
-      gap:20px;
+      gap:18px;
       align-items:center;
     }
     .eyebrow{
@@ -236,14 +235,12 @@
       text-transform:uppercase;
       color:var(--muted);
     }
-    h1{
-      font-size:28px;
-      margin:8px 0 10px;
-    }
+    h1{font-size:30px;margin:8px 0 10px;line-height:1.18}
     p.lead{
       color:var(--muted);
       font-size:15px;
-      margin:0 0 16px;
+      margin:0 0 14px;
+      line-height:1.7;
     }
     .hero-points{
       margin:14px 0 0;
@@ -251,35 +248,29 @@
       color:var(--muted);
       font-size:14px;
     }
-    .hero-points li{
-      margin-bottom:6px;
-    }
-    .hero-img{
-      padding:4px 0 0;
-    }
+    .hero-points li{margin-bottom:6px}
     .hero-img img{
       width:100%;
       height:260px;
       object-fit:cover;
-      border-radius:14px;
+      border-radius:16px;
       border:1px solid var(--line);
-      box-shadow:0 10px 26px rgba(0,0,0,.12);
+      box-shadow:var(--shadow);
     }
 
-    /* ===== Sections ===== */
+    /* ==========================================================
+       SECTIONS
+       ========================================================== */
     section{
-      padding:32px 0;
+      padding:30px 0;
       border-top:1px solid var(--line);
     }
-    h2{
-      font-size:22px;
-      margin:0 0 12px;
-    }
-    section p{
-      margin:0 0 10px;
-    }
+    h2{font-size:22px;margin:0 0 12px;line-height:1.25}
+    section p{margin:0 0 10px}
 
-    /* ===== Cards / grids ===== */
+    /* ==========================================================
+       CARDS / GRIDS
+       ========================================================== */
     .grid{
       display:grid;
       gap:14px;
@@ -287,153 +278,308 @@
     }
     .card{
       border:1px solid var(--line);
-      border-radius:14px;
+      border-radius:16px;
       padding:16px;
-      background:var(--panel);
-      box-shadow:0 4px 14px rgba(0,0,0,.04);
+      background:rgba(255,255,255,.92);
+      box-shadow:0 6px 18px rgba(0,0,0,.04);
     }
-    .card h3{
-      margin:0 0 6px;
-      font-size:18px;
-    }
+    .card h3{margin:0 0 6px;font-size:18px;line-height:1.25}
 
-    /* ===== Tours accordion ===== */
-    .details{
-      display:none;
-      margin-top:10px;
-      color:var(--muted);
-      font-size:14px;
-    }
-    .card.open .details{
-      display:block;
-    }
+    /* Tours accordion */
+    .details{display:none;margin-top:10px;color:var(--muted);font-size:14px;line-height:1.7}
+    .card.open .details{display:block}
     .toggle{
       margin-top:10px;
-      padding:8px 14px;
-      min-height:40px;
-      border:1px solid var(--accent);
+      padding:9px 14px;
+      min-height:42px;
+      border:1px solid rgba(232,91,140,.55);
       border-radius:999px;
       background:transparent;
       color:var(--accent);
       cursor:pointer;
       font-size:14px;
+      font-weight:650;
     }
-    .toggle:hover{
-      background:var(--accent);
-      color:#fff;
+    .toggle:hover{background:var(--accent);color:#fff}
+
+    /* ==========================================================
+       PREMIUM MOBILE-FIRST BOOKING (UPGRADED)
+       ========================================================== */
+    .booking-shell{
+      margin-top:14px;
+      border-radius:20px;
+      border:1px solid rgba(0,0,0,.08);
+      background:
+        radial-gradient(900px 420px at 20% -10%, rgba(232,91,140,.12), transparent 60%),
+        radial-gradient(800px 360px at 110% 10%, rgba(17,24,39,.06), transparent 55%),
+        rgba(255,255,255,.88);
+      box-shadow: var(--shadow2);
+      overflow:hidden;
+    }
+    .booking-head{
+      padding:16px 16px 14px;
+      border-bottom:1px solid rgba(0,0,0,.06);
+      background:linear-gradient(180deg, rgba(255,255,255,.96), rgba(255,255,255,.78));
+    }
+    .booking-kicker{
+      margin:0 0 6px;
+      font-size:12px;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      color:rgba(91,100,112,.95);
+    }
+    .booking-title{
+      margin:0 0 6px;
+      font-size:18px;
+      line-height:1.25;
+      font-weight:800;
+      letter-spacing:.01em;
+    }
+    .booking-sub{
+      margin:0;
+      font-size:13px;
+      line-height:1.6;
+      color:rgba(91,100,112,.95);
     }
 
-    /* Icon buttons (Contact) */
-    .icon-btn{
+    .booking-body{padding:14px 14px 18px}
+
+    .step{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      margin:10px 2px 10px;
+    }
+    .step-left{
+      display:flex;
+      flex-direction:column;
+      gap:2px;
+    }
+    .step-label{
+      font-size:12px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      color:rgba(91,100,112,.9);
+      font-weight:750;
+    }
+    .step-hint{
+      font-size:12.5px;
+      color:rgba(91,100,112,.95);
+      line-height:1.4;
+    }
+
+    /* duration segmented control */
+    .seg{
+      margin-top:8px;
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:10px;
+    }
+    .seg-btn{
+      position:relative;
+      border:1px solid rgba(0,0,0,.10);
+      border-radius:16px;
+      background:rgba(255,255,255,.86);
+      padding:12px 10px;
+      text-align:left;
+      cursor:pointer;
+      box-shadow:0 6px 16px rgba(0,0,0,.04);
+      transition: transform .10s ease, border-color .12s ease, background .12s ease;
+      min-height:66px;
+    }
+    .seg-btn:hover{ transform: translateY(-1px); }
+    .seg-btn[aria-pressed="true"]{
+      border-color: rgba(232,91,140,.42);
+      background: rgba(232,91,140,.08);
+      box-shadow:0 12px 26px rgba(232,91,140,.10);
+    }
+    .seg-top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:6px;
+    }
+    .seg-name{
+      font-weight:850;
+      font-size:14px;
+      letter-spacing:.01em;
+    }
+    .seg-tag{
+      font-size:11px;
+      letter-spacing:.10em;
+      text-transform:uppercase;
+      padding:5px 9px;
+      border-radius:999px;
+      border:1px solid rgba(0,0,0,.10);
+      background:rgba(255,255,255,.72);
+      color:rgba(17,24,39,.80);
+      white-space:nowrap;
+    }
+    .seg-btn[aria-pressed="true"] .seg-tag{
+      border-color: rgba(232,91,140,.28);
+      background: rgba(232,91,140,.10);
+      color: rgba(232,91,140,.95);
+    }
+    .seg-desc{
+      margin-top:6px;
+      font-size:12px;
+      line-height:1.4;
+      color:rgba(91,100,112,.96);
+    }
+
+    /* guests grid */
+    .guest-grid{
+      margin-top:10px;
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:10px;
+    }
+    @media(min-width:520px){
+      .guest-grid{ grid-template-columns: repeat(6, 1fr); }
+    }
+    .guest-btn{
+      border:1px solid rgba(0,0,0,.10);
+      border-radius:16px;
+      background:rgba(255,255,255,.86);
+      padding:10px 8px;
+      cursor:pointer;
+      text-align:center;
+      box-shadow:0 6px 16px rgba(0,0,0,.04);
+      transition: transform .10s ease, border-color .12s ease, background .12s ease;
+      min-height:56px;
+    }
+    .guest-btn:hover{ transform: translateY(-1px); }
+    .guest-btn[aria-pressed="true"]{
+      border-color: rgba(232,91,140,.42);
+      background: rgba(232,91,140,.08);
+      box-shadow:0 12px 26px rgba(232,91,140,.10);
+    }
+    .guest-num{
+      font-weight:900;
+      font-size:16px;
+      line-height:1;
+      margin-top:2px;
+    }
+    .guest-lbl{
+      font-size:11px;
+      color:rgba(91,100,112,.95);
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      margin-top:6px;
+    }
+
+    /* included mini rows */
+    .mini-includes{
+      margin-top:14px;
+      display:grid;
+      gap:10px;
+    }
+    .mini-row{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      padding:12px 12px;
+      border:1px solid rgba(0,0,0,.07);
+      border-radius:16px;
+      background:rgba(255,255,255,.78);
+    }
+    .mini-ic{
+      width:34px;height:34px;border-radius:12px;
+      display:flex;align-items:center;justify-content:center;
+      background: rgba(17,24,39,.06);
+      border: 1px solid rgba(0,0,0,.06);
+      flex-shrink:0;
+    }
+    .mini-ic svg{width:18px;height:18px;fill:rgba(17,24,39,.78)}
+    .mini-txt{line-height:1.55}
+    .mini-title{font-size:13px;font-weight:850;margin:0}
+    .mini-sub{font-size:12.5px;color:rgba(91,100,112,.95);margin:2px 0 0}
+
+    /* Sticky purchase bar */
+    .sticky-buy{
+      position:fixed;
+      left:0; right:0; bottom:0;
+      z-index:60;
+      padding:10px 12px calc(10px + env(safe-area-inset-bottom));
+      background:rgba(255,255,255,.92);
+      backdrop-filter:saturate(140%) blur(14px);
+      border-top:1px solid rgba(0,0,0,.08);
+      box-shadow:0 -14px 44px rgba(0,0,0,.12);
+      display:none; /* enabled via JS when pricing exists */
+    }
+    .sticky-inner{
+      max-width:1080px;
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+    }
+    .sticky-left{
+      display:flex;
+      flex-direction:column;
+      line-height:1.2;
+      gap:2px;
+      min-width: 0;
+    }
+    .sticky-line1{
+      font-size:12px;
+      color:rgba(91,100,112,.95);
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      font-weight:700;
+      letter-spacing:.02em;
+    }
+    .sticky-price{
+      font-size:18px;
+      font-weight:950;
+      color:rgba(17,24,39,.95);
+      letter-spacing:.01em;
+    }
+
+    .sticky-btn{
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      width:36px;
-      height:36px;
-      border-radius:999px;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.9);
-      color:var(--text);
-      box-shadow:0 3px 10px rgba(0,0,0,.06);
-    }
-    .icon-btn:hover{
-      background:rgba(255,255,255,1);
-    }
-    .icon{
-      width:18px;
-      height:18px;
-      fill:currentColor;
-    }
-
-    /* ===== Blockquotes ===== */
-    blockquote{
-      border-left:3px solid var(--accent);
-      padding-left:12px;
-      margin:16px 0;
-      background:rgba(255,255,255,0.7);
-      border-radius:8px 0 0 8px;
-    }
-    .stars{
-      color:var(--accent);
-      margin:0 0 4px;
-      font-size:16px;
-    }
-    blockquote p{
-      margin:2px 0 6px;
-    }
-    blockquote em{
-      font-size:13px;
-      color:var(--muted);
-    }
-
-    /* ===== Slider ===== */
-    .slider-wrap{
-      position:relative;
-      overflow:hidden;
-      border:1px solid var(--line);
-      border-radius:14px;
-      background:var(--panel);
-      box-shadow:0 6px 20px rgba(0,0,0,.06);
-    }
-    .slider-track{
-      display:flex;
-      transition:transform .5s ease;
-      will-change:transform;
-    }
-    .slide{
-      min-width:100%;
-      user-select:none;
-    }
-    .slide img{
-      width:100%;
-      height:260px;
-      object-fit:cover;
-      display:block;
-    }
-    .slider-btn{
-      position:absolute;
-      top:50%;
-      transform:translateY(-50%);
-      background:rgba(0,0,0,.35);
-      color:#fff;
-      border:none;
-      width:40px;
-      height:40px;
-      border-radius:999px;
-      cursor:pointer;
-      font-size:20px;
-    }
-    .slider-btn:hover{
-      background:rgba(0,0,0,.5);
-    }
-    .slider-prev{left:10px}
-    .slider-next{right:10px}
-    .slider-dots{
-      display:flex;
       gap:8px;
-      justify-content:center;
-      padding:10px;
-    }
-    .slider-dot{
-      width:8px;
-      height:8px;
+      min-height:48px;
+      padding:0 16px;
       border-radius:999px;
-      background:#cfd5dc;
-      border:none;
+      border:1px solid rgba(232,91,140,.22);
+      background:var(--accent);
+      color:#fff;
+      font-size:14px;
+      font-weight:850;
+      letter-spacing:.02em;
+      box-shadow:0 16px 30px rgba(232,91,140,.22);
+      white-space:nowrap;
       cursor:pointer;
     }
-    .slider-dot.active{
-      background:var(--accent);
+    .sticky-btn:hover{opacity:.96}
+    .sticky-btn:disabled{
+      opacity:.55;
+      cursor:not-allowed;
+      box-shadow:none;
+    }
+    .sticky-btn svg{width:16px;height:16px;fill:#fff}
+
+    /* push content above sticky bar on mobile */
+    body.has-sticky{
+      padding-bottom: 84px;
     }
 
-    /* ===== Details (card-style) ===== */
+    /* ==========================================================
+       DETAILS SECTION (as you had)
+       ========================================================== */
     .details-section{
-      background:var(--panel);
+      background:rgba(255,255,255,.92);
       border:1px solid var(--line);
-      border-radius:14px;
+      border-radius:16px;
       padding:20px 16px;
       margin-top:20px;
-      box-shadow:0 4px 16px rgba(0,0,0,.04);
+      box-shadow:0 6px 18px rgba(0,0,0,.04);
     }
     .details-section h2{
       margin-top:0;
@@ -441,7 +587,7 @@
       font-size:18px;
       color:var(--text);
       border-bottom:1px solid var(--line);
-      padding-bottom:4px;
+      padding-bottom:6px;
     }
     .features-list{
       list-style:none;
@@ -472,67 +618,98 @@
       font-size:13px;
     }
 
-    /* ===== Instagram section ===== */
-    #instagram{
-      padding-top:30px;
-      padding-bottom:24px;
+    /* ==========================================================
+       TESTIMONIALS
+       ========================================================== */
+    blockquote{
+      border-left:3px solid var(--accent);
+      padding-left:12px;
+      margin:16px 0;
+      background:rgba(255,255,255,0.7);
+      border-radius:10px 0 0 10px;
     }
+    .stars{color:var(--accent);margin:0 0 4px;font-size:16px}
+    blockquote p{margin:2px 0 6px}
+    blockquote em{font-size:13px;color:var(--muted)}
+
+    /* ==========================================================
+       SLIDER
+       ========================================================== */
+    .slider-wrap{
+      position:relative;
+      overflow:hidden;
+      border:1px solid var(--line);
+      border-radius:16px;
+      background:rgba(255,255,255,.92);
+      box-shadow:0 10px 26px rgba(0,0,0,.06);
+    }
+    .slider-track{display:flex;transition:transform .5s ease;will-change:transform}
+    .slide{min-width:100%;user-select:none}
+    .slide img{width:100%;height:260px;object-fit:cover;display:block}
+    .slider-btn{
+      position:absolute;top:50%;transform:translateY(-50%);
+      background:rgba(0,0,0,.35);color:#fff;border:none;
+      width:40px;height:40px;border-radius:999px;cursor:pointer;font-size:20px;
+    }
+    .slider-btn:hover{background:rgba(0,0,0,.5)}
+    .slider-prev{left:10px}
+    .slider-next{right:10px}
+    .slider-dots{display:flex;gap:8px;justify-content:center;padding:10px}
+    .slider-dot{
+      width:8px;height:8px;border-radius:999px;background:#cfd5dc;border:none;cursor:pointer;
+    }
+    .slider-dot.active{background:var(--accent)}
+
+    /* ==========================================================
+       ICON BUTTONS
+       ========================================================== */
+    .icon-btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:36px;height:36px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.92);
+      color:var(--text);
+      box-shadow:0 6px 14px rgba(0,0,0,.06);
+    }
+    .icon-btn:hover{background:#fff}
+    .icon{width:18px;height:18px;fill:currentColor}
+
+    /* ==========================================================
+       INSTAGRAM
+       ========================================================== */
+    #instagram{padding-top:30px;padding-bottom:24px}
     .instagram-card{
       border:1px solid var(--line);
       border-radius:18px;
-      background:var(--panel);
-      box-shadow:0 4px 18px rgba(0,0,0,.04);
+      background:rgba(255,255,255,.92);
+      box-shadow:0 10px 24px rgba(0,0,0,.05);
       padding:16px 14px 18px;
       max-width:560px;
       margin:0 auto;
     }
     .instagram-header{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      margin-bottom:8px;
+      display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;
     }
-    .instagram-header h3{
-      margin:0;
-      font-size:18px;
-    }
+    .instagram-header h3{margin:0;font-size:18px}
     .instagram-header a{
-      display:inline-flex;
-      align-items:center;
-      gap:6px;
-      font-size:13px;
-      color:var(--accent);
+      display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--accent);
     }
-    .instagram-header svg{
-      width:16px;
-      height:16px;
-      fill:currentColor;
-    }
-    .instagram-intro{
-      font-size:13px;
-      color:var(--muted);
-      margin-bottom:10px;
-    }
-    .instagram-embed{
-      border-radius:14px;
-      overflow:hidden;
-      position:relative;
-    }
+    .instagram-header svg{width:16px;height:16px;fill:currentColor}
+    .instagram-intro{font-size:13px;color:var(--muted);margin-bottom:10px}
+    .instagram-embed{border-radius:14px;overflow:hidden;position:relative}
     .instagram-embed blockquote.instagram-media{
-      max-width:100% !important;
-      width:100% !important;
-      margin:0 auto !important;
-      border:0 !important;
+      max-width:100% !important;width:100% !important;margin:0 auto !important;border:0 !important;
     }
     .instagram-embed iframe{
-      width:100% !important;
-      max-width:100% !important;
-      border:0;
-      display:block;
-      margin-top:-24px;
+      width:100% !important;max-width:100% !important;border:0;display:block;margin-top:-24px;
     }
 
-    /* ===== Footer ===== */
+    /* ==========================================================
+       FOOTER
+       ========================================================== */
     footer{
       border-top:1px solid var(--line);
       background:rgba(255,255,255,.9);
@@ -542,239 +719,39 @@
       color:var(--muted);
     }
     .footer-inner{
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      gap:8px;
-      text-align:center;
+      display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;
     }
-    .footer-links{
-      display:flex;
-      flex-wrap:wrap;
-      gap:8px;
-      justify-content:center;
-    }
-    .footer-links a{
-      text-decoration:none;
-    }
-    .footer-links a:hover{
-      text-decoration:underline;
-    }
-
-    /* ===== Desktop ===== */
-    @media (min-width:900px){
-      body{
-        font-size:17px;
-        line-height:1.8;
-      }
-      .container{
-        padding:0 20px;
-      }
-      nav{
-        display:flex;
-        gap:6px;
-        font-size:13px;
-        text-transform:uppercase;
-        letter-spacing:0.08em;
-      }
-      nav a{
-        padding:8px 6px;
-        display:inline-block;
-      }
-      .cta{
-        min-height:44px;
-        line-height:44px;
-        font-size:15px;
-      }
-      .menu-toggle{
-        display:none;
-      }
-      .hero{
-        padding-top:48px;
-      }
-      .hero-wrap{
-        grid-template-columns:1.05fr .95fr;
-        gap:24px;
-      }
-      h1{
-        font-size:36px;
-      }
-      p.lead{
-        font-size:18px;
-      }
-      .hero-img img,
-      .slide img{
-        height:420px;
-      }
-      h2{
-        font-size:26px;
-      }
-      .grid{
-        grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-        gap:16px;
-      }
-      .card{
-        padding:18px;
-      }
-      .details-section{
-        padding:24px 20px;
-      }
-      .side-menu{
-        display:none;
-      }
-    }
+    .footer-links{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+    .footer-links a:hover{text-decoration:underline}
 
     /* ==========================================================
-       PREMIUM PRICING (added)
+       DESKTOP ENHANCEMENTS
        ========================================================== */
-    .pricing-wrap{
-      margin-top:14px;
-      border:1px solid var(--line);
-      border-radius:16px;
-      background:rgba(255,255,255,.85);
-      box-shadow:0 6px 20px rgba(0,0,0,.06);
-      overflow:hidden;
+    @media (min-width:900px){
+      body{font-size:17px;line-height:1.8}
+      .container{padding:0 20px}
+      nav{
+        display:flex;gap:6px;font-size:13px;text-transform:uppercase;letter-spacing:0.08em;
+      }
+      nav a{padding:8px 6px;display:inline-block}
+      .cta{min-height:44px;font-size:15px}
+      .menu-toggle{display:none}
+      .hero{padding-top:48px}
+      .hero-wrap{grid-template-columns:1.05fr .95fr;gap:24px}
+      h1{font-size:38px}
+      p.lead{font-size:18px}
+      .hero-img img,.slide img{height:420px}
+      h2{font-size:26px}
+      .grid{grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+      .card{padding:18px}
+      .details-section{padding:24px 20px}
+      .side-menu{display:none}
+      .sticky-buy{display:none !important} /* desktop: you can keep, but usually not needed */
+      body.has-sticky{padding-bottom:0}
     }
-    .pricing-head{
-      padding:14px 14px 12px;
-      border-bottom:1px solid var(--line);
-      background:linear-gradient(180deg, rgba(255,255,255,.95), rgba(255,255,255,.75));
-    }
-    .pricing-title{
-      margin:0;
-      font-size:18px;
-      letter-spacing:.02em;
-    }
-    .pricing-sub{
-      margin:4px 0 0;
-      font-size:13px;
-      color:var(--muted);
-      line-height:1.6;
-    }
-
-    .pricing-grid{
-      display:grid;
-      gap:12px;
-      padding:14px;
-      grid-template-columns: 1fr;
-    }
-    @media(min-width:900px){
-      .pricing-grid{ grid-template-columns: repeat(3, 1fr); }
-    }
-
-    .pricing-card{
-      border:1px solid var(--line);
-      border-radius:14px;
-      background:#fff;
-      padding:14px;
-      box-shadow:0 4px 14px rgba(0,0,0,.04);
-      position:relative;
-    }
-    .pricing-card.featured{
-      border-color:rgba(232,91,140,.45);
-      box-shadow:0 10px 26px rgba(232,91,140,.10);
-    }
-    .pricing-badge{
-      position:absolute;
-      top:12px;
-      right:12px;
-      font-size:11px;
-      letter-spacing:.08em;
-      text-transform:uppercase;
-      color:var(--accent);
-      border:1px solid rgba(232,91,140,.28);
-      background:rgba(232,91,140,.08);
-      padding:5px 10px;
-      border-radius:999px;
-    }
-    .pricing-card h3{
-      margin:0;
-      font-size:16px;
-    }
-    .pricing-desc{
-      margin:6px 0 10px;
-      font-size:13px;
-      color:var(--muted);
-      line-height:1.6;
-    }
-
-    .pricing-rows{
-      display:flex;
-      flex-direction:column;
-      gap:10px;
-      margin-top:10px;
-    }
-    .pricing-row{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:10px;
-      padding:10px 10px;
-      border:1px solid var(--line);
-      border-radius:12px;
-      background:rgba(255,255,255,.92);
-    }
-    .pricing-left{
-      display:flex;
-      flex-direction:column;
-      line-height:1.2;
-    }
-    .pricing-guests{
-      font-weight:700;
-      font-size:13px;
-    }
-    .pricing-hint{
-      font-size:11.5px;
-      color:var(--muted);
-      margin-top:3px;
-    }
-    .pricing-right{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      flex-shrink:0;
-    }
-    .pricing-price{
-      font-weight:800;
-      font-size:13.5px;
-      letter-spacing:.01em;
-    }
-
-    .pay-btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      min-height:36px;
-      padding:0 12px;
-      border-radius:999px;
-      border:1px solid rgba(0,0,0,.10);
-      background:rgba(20,25,34,.92);
-      color:#fff;
-      font-size:12.5px;
-      font-weight:700;
-      letter-spacing:.02em;
-      white-space:nowrap;
-      box-shadow:0 5px 14px rgba(0,0,0,.10);
-    }
-    .pay-btn:hover{ opacity:.92; }
-    .pay-btn.alt{
-      background:var(--accent);
-      border-color:rgba(232,91,140,.28);
-      box-shadow:0 8px 18px rgba(232,91,140,.18);
-    }
-
-    .pricing-foot{
-      padding:12px 14px 14px;
-      border-top:1px solid var(--line);
-      background:rgba(255,255,255,.80);
-      font-size:12.5px;
-      color:var(--muted);
-      line-height:1.7;
-    }
-    .pricing-foot strong{ color:var(--text); }
-
   </style>
 </head>
+
 <body>
   <!-- mobile side menu -->
   <div class="menu-backdrop"></div>
@@ -816,9 +793,7 @@
       </nav>
       <div style="display:flex;align-items:center;gap:8px;">
         <a href="https://wa.me/819084350822" class="cta">WhatsApp</a>
-        <button class="menu-toggle" aria-label="Open menu">
-          <span></span>
-        </button>
+        <button class="menu-toggle" aria-label="Open menu"><span></span></button>
       </div>
     </div>
   </header>
@@ -867,189 +842,130 @@
       <div class="container">
         <h2>Signature Tokyo Experiences</h2>
 
-        <!-- ===== Premium Pricing (NEW) ===== -->
-        <div class="pricing-wrap" aria-label="Private tour fees">
-          <div class="pricing-head">
-            <h3 class="pricing-title">Private Tour Fees</h3>
-            <p class="pricing-sub">
-              Prices are per group (USD). Choose your tour length and group size, then complete payment securely via Stripe.
+        <!-- =========================
+             UPGRADED BOOKING MODULE
+             ========================= -->
+        <div class="booking-shell" id="booking" aria-label="Tour booking module">
+          <div class="booking-head">
+            <p class="booking-kicker">Booking</p>
+            <h3 class="booking-title">Choose your tour — then book instantly</h3>
+            <p class="booking-sub">
+              Select duration and group size. Payment is secure via Stripe (USD). Your itinerary is tailored after booking.
             </p>
           </div>
 
-          <div class="pricing-grid">
-            <!-- 4 Hours -->
-            <div class="pricing-card" aria-label="4 hour pricing">
-              <h3>4 Hours</h3>
-              <p class="pricing-desc">A refined introduction — 2–3 key areas at a relaxed pace.</p>
-
-              <div class="pricing-rows">
-                <div class="pricing-row">
-                  <div class="pricing-left">
-                    <span class="pricing-guests">1 guest</span>
-                    <span class="pricing-hint">Private group</span>
-                  </div>
-                  <div class="pricing-right">
-                    <span class="pricing-price">$269</span>
-                    <a class="pay-btn" href="https://buy.stripe.com/REPLACE_4H_1G" target="_blank" rel="noopener">Pay</a>
-                  </div>
-                </div>
-
-                <div class="pricing-row">
-                  <div class="pricing-left"><span class="pricing-guests">2 guests</span><span class="pricing-hint">Private group</span></div>
-                  <div class="pricing-right"><span class="pricing-price">$349</span>
-                    <a class="pay-btn" href="https://buy.stripe.com/REPLACE_4H_2G" target="_blank" rel="noopener">Pay</a>
-                  </div>
-                </div>
-
-                <div class="pricing-row">
-                  <div class="pricing-left"><span class="pricing-guests">3 guests</span><span class="pricing-hint">Private group</span></div>
-                  <div class="pricing-right"><span class="pricing-price">$399</span>
-                    <a class="pay-btn" href="https://buy.stripe.com/REPLACE_4H_3G" target="_blank" rel="noopener">Pay</a>
-                  </div>
-                </div>
-
-                <div class="pricing-row">
-                  <div class="pricing-left"><span class="pricing-guests">4 guests</span><span class="pricing-hint">Private group</span></div>
-                  <div class="pricing-right"><span class="pricing-price">$449</span>
-                    <a class="pay-btn" href="https://buy.stripe.com/REPLACE_4H_4G" target="_blank" rel="noopener">Pay</a>
-                  </div>
-                </div>
-
-                <div class="pricing-row">
-                  <div class="pricing-left"><span class="pricing-guests">5 guests</span><span class="pricing-hint">Private group</span></div>
-                  <div class="pricing-right"><span class="pricing-price">$499</span>
-                    <a class="pay-btn" href="https://buy.stripe.com/REPLACE_4H_5G" target="_blank" rel="noopener">Pay</a>
-                  </div>
-                </div>
-
-                <div class="pricing-row">
-                  <div class="pricing-left"><span class="pricing-guests">6 guests</span><span class="pricing-hint">Private group</span></div>
-                  <div class="pricing-right"><span class="pricing-price">$549</span>
-                    <a class="pay-btn" href="https://buy.stripe.com/REPLACE_4H_6G" target="_blank" rel="noopener">Pay</a>
-                  </div>
-                </div>
+          <div class="booking-body">
+            <!-- Step 1 -->
+            <div class="step">
+              <div class="step-left">
+                <div class="step-label">Step 1</div>
+                <div class="step-hint">Select tour length</div>
               </div>
             </div>
 
-            <!-- 6 Hours -->
-            <div class="pricing-card" aria-label="6 hour pricing">
-              <h3>6 Hours</h3>
-              <p class="pricing-desc">Deeper neighborhoods + cultural and food moments.</p>
-
-              <div class="pricing-rows">
-                <div class="pricing-row">
-                  <div class="pricing-left"><span class="pricing-guests">1 guest</span><span class="pricing-hint">Private group</span></div>
-                  <div class="pricing-right"><span class="pricing-price">$399</span>
-                    <a class="pay-btn" href="https://buy.stripe.com/REPLACE_6H_1G" target="_blank" rel="noopener">Pay</a>
-                  </div>
+            <div class="seg" role="group" aria-label="Tour length selector">
+              <button class="seg-btn" type="button" data-duration="4" aria-pressed="false">
+                <div class="seg-top">
+                  <div class="seg-name">4 Hours</div>
+                  <div class="seg-tag">Highlights</div>
                 </div>
+                <div class="seg-desc">A refined introduction — focused and relaxed.</div>
+              </button>
 
-                <div class="pricing-row">
-                  <div class="pricing-left"><span class="pricing-guests">2 guests</span><span class="pricing-hint">Private group</span></div>
-                  <div class="pricing-right"><span class="pricing-price">$499</span>
-                    <a class="pay-btn" href="https://buy.stripe.com/REPLACE_6H_2G" target="_blank" rel="noopener">Pay</a>
-                  </div>
+              <button class="seg-btn" type="button" data-duration="6" aria-pressed="false">
+                <div class="seg-top">
+                  <div class="seg-name">6 Hours</div>
+                  <div class="seg-tag">Depth</div>
                 </div>
+                <div class="seg-desc">Neighborhoods + culture + food moments.</div>
+              </button>
 
-                <div class="pricing-row">
-                  <div class="pricing-left"><span class="pricing-guests">3 guests</span><span class="pricing-hint">Private group</span></div>
-                  <div class="pricing-right"><span class="pricing-price">$549</span>
-                    <a class="pay-btn" href="https://buy.stripe.com/REPLACE_6H_3G" target="_blank" rel="noopener">Pay</a>
-                  </div>
+              <button class="seg-btn" type="button" data-duration="8" aria-pressed="true">
+                <div class="seg-top">
+                  <div class="seg-name">8 Hours</div>
+                  <div class="seg-tag">Most Popular</div>
                 </div>
+                <div class="seg-desc">The signature day — iconic + hidden, unrushed.</div>
+              </button>
+            </div>
 
-                <div class="pricing-row">
-                  <div class="pricing-left"><span class="pricing-guests">4 guests</span><span class="pricing-hint">Private group</span></div>
-                  <div class="pricing-right"><span class="pricing-price">$609</span>
-                    <a class="pay-btn" href="https://buy.stripe.com/REPLACE_6H_4G" target="_blank" rel="noopener">Pay</a>
-                  </div>
-                </div>
-
-                <div class="pricing-row">
-                  <div class="pricing-left"><span class="pricing-guests">5 guests</span><span class="pricing-hint">Private group</span></div>
-                  <div class="pricing-right"><span class="pricing-price">$659</span>
-                    <a class="pay-btn" href="https://buy.stripe.com/REPLACE_6H_5G" target="_blank" rel="noopener">Pay</a>
-                  </div>
-                </div>
-
-                <div class="pricing-row">
-                  <div class="pricing-left"><span class="pricing-guests">6 guests</span><span class="pricing-hint">Private group</span></div>
-                  <div class="pricing-right"><span class="pricing-price">$709</span>
-                    <a class="pay-btn" href="https://buy.stripe.com/REPLACE_6H_6G" target="_blank" rel="noopener">Pay</a>
-                  </div>
-                </div>
+            <!-- Step 2 -->
+            <div class="step" style="margin-top:16px;">
+              <div class="step-left">
+                <div class="step-label">Step 2</div>
+                <div class="step-hint">Choose your group size</div>
               </div>
             </div>
 
-            <!-- 8 Hours -->
-            <div class="pricing-card featured" aria-label="8 hour pricing">
-              <div class="pricing-badge">Most Popular</div>
-              <h3>8 Hours</h3>
-              <p class="pricing-desc">The signature day — iconic sights + hidden gems, unrushed.</p>
+            <div class="guest-grid" role="group" aria-label="Group size selector">
+              <button class="guest-btn" type="button" data-guests="1" aria-pressed="false">
+                <div class="guest-num">1</div><div class="guest-lbl">Guest</div>
+              </button>
+              <button class="guest-btn" type="button" data-guests="2" aria-pressed="true">
+                <div class="guest-num">2</div><div class="guest-lbl">Guests</div>
+              </button>
+              <button class="guest-btn" type="button" data-guests="3" aria-pressed="false">
+                <div class="guest-num">3</div><div class="guest-lbl">Guests</div>
+              </button>
+              <button class="guest-btn" type="button" data-guests="4" aria-pressed="false">
+                <div class="guest-num">4</div><div class="guest-lbl">Guests</div>
+              </button>
+              <button class="guest-btn" type="button" data-guests="5" aria-pressed="false">
+                <div class="guest-num">5</div><div class="guest-lbl">Guests</div>
+              </button>
+              <button class="guest-btn" type="button" data-guests="6" aria-pressed="false">
+                <div class="guest-num">6</div><div class="guest-lbl">Guests</div>
+              </button>
+            </div>
 
-              <div class="pricing-rows">
-                <div class="pricing-row">
-                  <div class="pricing-left"><span class="pricing-guests">1 guest</span><span class="pricing-hint">Private group</span></div>
-                  <div class="pricing-right"><span class="pricing-price">$449</span>
-                    <a class="pay-btn alt" href="https://buy.stripe.com/REPLACE_8H_1G" target="_blank" rel="noopener">Pay</a>
-                  </div>
+            <!-- Step 3 summary (in-module) -->
+            <div class="mini-includes" aria-label="Booking summary and inclusions">
+              <div class="mini-row">
+                <div class="mini-ic" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M12 1a11 11 0 1 0 11 11A11.01 11.01 0 0 0 12 1Zm1 11.41 3.29 3.3-1.42 1.41L11 13V6h2Z"/></svg>
                 </div>
-
-                <div class="pricing-row">
-                  <div class="pricing-left"><span class="pricing-guests">2 guests</span><span class="pricing-hint">Private group</span></div>
-                  <div class="pricing-right"><span class="pricing-price">$559</span>
-                    <a class="pay-btn alt" href="https://buy.stripe.com/REPLACE_8H_2G" target="_blank" rel="noopener">Pay</a>
-                  </div>
-                </div>
-
-                <div class="pricing-row">
-                  <div class="pricing-left"><span class="pricing-guests">3 guests</span><span class="pricing-hint">Private group</span></div>
-                  <div class="pricing-right"><span class="pricing-price">$619</span>
-                    <a class="pay-btn alt" href="https://buy.stripe.com/REPLACE_8H_3G" target="_blank" rel="noopener">Pay</a>
-                  </div>
-                </div>
-
-                <div class="pricing-row">
-                  <div class="pricing-left"><span class="pricing-guests">4 guests</span><span class="pricing-hint">Private group</span></div>
-                  <div class="pricing-right"><span class="pricing-price">$669</span>
-                    <a class="pay-btn alt" href="https://buy.stripe.com/REPLACE_8H_4G" target="_blank" rel="noopener">Pay</a>
-                  </div>
-                </div>
-
-                <div class="pricing-row">
-                  <div class="pricing-left"><span class="pricing-guests">5 guests</span><span class="pricing-hint">Private group</span></div>
-                  <div class="pricing-right"><span class="pricing-price">$719</span>
-                    <a class="pay-btn alt" href="https://buy.stripe.com/REPLACE_8H_5G" target="_blank" rel="noopener">Pay</a>
-                  </div>
-                </div>
-
-                <div class="pricing-row">
-                  <div class="pricing-left"><span class="pricing-guests">6 guests</span><span class="pricing-hint">Private group</span></div>
-                  <div class="pricing-right"><span class="pricing-price">$769</span>
-                    <a class="pay-btn alt" href="https://buy.stripe.com/REPLACE_8H_6G" target="_blank" rel="noopener">Pay</a>
-                  </div>
+                <div class="mini-txt">
+                  <p class="mini-title">Your selection</p>
+                  <p class="mini-sub" id="summaryLine">8 Hours • 2 guests</p>
                 </div>
               </div>
-            </div>
-          </div>
 
-          <div class="pricing-foot">
-            <strong>Notes:</strong> Transportation, meals, and admission fees are not included.
-            If you need a day trip (Hakone / Kamakura / Nikko), please message us for a tailored quote.
+              <div class="mini-row">
+                <div class="mini-ic" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M12 2 1 7l11 5 9-4.09V17h2V7Zm-7 9.27V17a2 2 0 0 0 1.11 1.79l5 2.5a2 2 0 0 0 1.78 0l5-2.5A2 2 0 0 0 20 17v-5.73l-8 3.64Z"/></svg>
+                </div>
+                <div class="mini-txt">
+                  <p class="mini-title">What you get</p>
+                  <p class="mini-sub">Private guide, planning, local navigation, and flexible pacing.</p>
+                </div>
+              </div>
+
+              <div class="mini-row">
+                <div class="mini-ic" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M20 6H4V4h16Zm0 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8Zm-2 4H6v2h12Z"/></svg>
+                </div>
+                <div class="mini-txt">
+                  <p class="mini-title">Instant confirmation</p>
+                  <p class="mini-sub">Secure Stripe payment (USD). We finalize your itinerary after booking.</p>
+                </div>
+              </div>
+
+              <p style="margin:2px 4px 0;color:rgba(91,100,112,.95);font-size:12.5px;line-height:1.7;">
+                Note: Transportation, meals, and admission fees are not included. Day trips (Hakone / Kamakura / Nikko) available by request.
+              </p>
+            </div>
           </div>
         </div>
 
-        <!-- ===== Tour Overviews (kept) ===== -->
+        <!-- Tour overview cards (kept) -->
         <div class="grid" style="margin-top:16px;">
-
-          <!-- 4h -->
           <div class="card">
             <h3>Half Day Tokyo Highlights (4h)</h3>
             <p>
               A refined introduction to Tokyo, perfect for your first day or a short stay.
               We focus on 2–3 key areas so you can quickly feel oriented and at ease.
             </p>
-            <button class="toggle">More Details</button>
+            <button class="toggle" type="button">More Details</button>
             <div class="details">
               <h4>Ideal for</h4>
               <p>
@@ -1061,14 +977,13 @@
             </div>
           </div>
 
-          <!-- 6h -->
           <div class="card">
             <h3>Extended Half Day &amp; Food Tour (6h)</h3>
             <p>
               A deeper exploration of neighborhoods and food culture.
               We combine essential sights with local backstreets and carefully chosen eateries.
             </p>
-            <button class="toggle">More Details</button>
+            <button class="toggle" type="button">More Details</button>
             <div class="details">
               <h4>Ideal for</h4>
               <p>
@@ -1080,14 +995,13 @@
             </div>
           </div>
 
-          <!-- 8h -->
           <div class="card">
             <h3>Full Day Signature Tour (8h)</h3>
             <p>
               A complete Tokyo day – temples, markets, viewpoints, and hidden gems,
               woven into one seamless experience at your preferred pace.
             </p>
-            <button class="toggle">More Details</button>
+            <button class="toggle" type="button">More Details</button>
             <div class="details">
               <h4>Ideal for</h4>
               <p>
@@ -1101,8 +1015,8 @@
               </p>
             </div>
           </div>
-
         </div>
+
       </div>
     </section>
 
@@ -1130,7 +1044,7 @@
           <ul class="features-list">
             <li class="excluded">Food and drinks (including meals during the 6h Food Tour — guests pay directly)</li>
             <li class="excluded">Tickets to attractions (temples, museums, observatories, etc.)</li>
-            <li class="excluded">Transportation costs (this is a walking tour; if we use public transport, you pay your own fares)</li>
+            <li class="excluded">Transportation costs (walking tour; if we use public transport, guests pay their own fares)</li>
             <li class="excluded">Gratuities (optional, always appreciated but never expected)</li>
           </ul>
         </div>
@@ -1290,8 +1204,7 @@
             <h3>What is included in the tour fee?</h3>
             <p>
               The fee covers private guiding, language support, and pre-tour planning.
-              Food, drinks, transportation, and attraction tickets are not included and are paid directly by guests,
-              as explained in our Terms of Use and Legal Notice (Japan).
+              Food, drinks, transportation, and attraction tickets are not included and are paid directly by guests.
             </p>
           </div>
         </div>
@@ -1335,8 +1248,8 @@
         <p><strong>How it works</strong></p>
         <ol style="padding-left:20px;margin-top:6px;margin-bottom:14px;font-size:14px;">
           <li><strong>Get in touch</strong> – Send a message on WhatsApp or by email with your dates, group size, and any ideas you already have.</li>
-          <li><strong>Custom plan</strong> – One of our guides will ask a few questions, then share a draft itinerary and quote tailored to you.</li>
-          <li><strong>Confirm &amp; enjoy</strong> – Once you are happy with the plan, your tour is confirmed and you meet in Tokyo for your day together.</li>
+          <li><strong>Custom plan</strong> – We ask a few questions, then share a draft itinerary tailored to you.</li>
+          <li><strong>Confirm &amp; enjoy</strong> – Your tour is confirmed and you meet in Tokyo for your day together.</li>
         </ol>
         <p>
           WhatsApp:
@@ -1345,7 +1258,6 @@
           <a href="mailto:info@tokyosignaturetours.com">info@tokyosignaturetours.com</a>
         </p>
 
-        <!-- Icon CTA row -->
         <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:12px">
           <a class="icon-btn" href="https://www.instagram.com/tokyosignaturetours?igsh=YzBtNXd4Y3Vjenlt" target="_blank" rel="noopener" aria-label="Instagram">
             <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm6.5-.75a1.25 1.25 0 1 0 0 2.5 1.25 1.25 0 0 0 0-2.5zM12 9a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"/></svg>
@@ -1377,9 +1289,161 @@
     </div>
   </footer>
 
-  <!-- Scripts -->
+  <!-- Sticky purchase bar (mobile) -->
+  <div class="sticky-buy" id="stickyBuy" aria-label="Purchase bar">
+    <div class="sticky-inner">
+      <div class="sticky-left">
+        <div class="sticky-line1" id="stickyLine">8 Hours • 2 guests</div>
+        <div class="sticky-price" id="stickyPrice">$559</div>
+      </div>
+
+      <button class="sticky-btn" id="bookBtn" type="button" aria-label="Book on Stripe">
+        Book on Stripe
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14ZM5 5h6v2H7v10h10v-4h2v6H5Z"/></svg>
+      </button>
+    </div>
+  </div>
+
   <script>
-    // Tours Accordion Script
+    /* ==========================================================
+       STRIPE PAYMENT LINKS (REPLACE THESE)
+       Key format: "<duration>h_<guests>g"
+       ========================================================== */
+    const stripeLinks = {
+      // 4 Hours
+      "4h_1g": "https://buy.stripe.com/REPLACE_4H_1G",
+      "4h_2g": "https://buy.stripe.com/REPLACE_4H_2G",
+      "4h_3g": "https://buy.stripe.com/REPLACE_4H_3G",
+      "4h_4g": "https://buy.stripe.com/REPLACE_4H_4G",
+      "4h_5g": "https://buy.stripe.com/REPLACE_4H_5G",
+      "4h_6g": "https://buy.stripe.com/REPLACE_4H_6G",
+
+      // 6 Hours
+      "6h_1g": "https://buy.stripe.com/REPLACE_6H_1G",
+      "6h_2g": "https://buy.stripe.com/REPLACE_6H_2G",
+      "6h_3g": "https://buy.stripe.com/REPLACE_6H_3G",
+      "6h_4g": "https://buy.stripe.com/REPLACE_6H_4G",
+      "6h_5g": "https://buy.stripe.com/REPLACE_6H_5G",
+      "6h_6g": "https://buy.stripe.com/REPLACE_6H_6G",
+
+      // 8 Hours
+      "8h_1g": "https://buy.stripe.com/REPLACE_8H_1G",
+      "8h_2g": "https://buy.stripe.com/REPLACE_8H_2G",
+      "8h_3g": "https://buy.stripe.com/REPLACE_8H_3G",
+      "8h_4g": "https://buy.stripe.com/REPLACE_8H_4G",
+      "8h_5g": "https://buy.stripe.com/REPLACE_8H_5G",
+      "8h_6g": "https://buy.stripe.com/REPLACE_8H_6G"
+    };
+
+    /* ==========================================================
+       PRICES (from your table)
+       ========================================================== */
+    const prices = {
+      4: { 1:269, 2:349, 3:399, 4:449, 5:499, 6:549 },
+      6: { 1:399, 2:499, 3:549, 4:609, 5:659, 6:709 },
+      8: { 1:449, 2:559, 3:619, 4:669, 5:719, 6:769 }
+    };
+
+    /* ==========================================================
+       BOOKING UI LOGIC
+       ========================================================== */
+    (function(){
+      const sticky = document.getElementById('stickyBuy');
+      const bookBtn = document.getElementById('bookBtn');
+      const stickyLine = document.getElementById('stickyLine');
+      const stickyPrice = document.getElementById('stickyPrice');
+      const summaryLine = document.getElementById('summaryLine');
+
+      const segBtns = [...document.querySelectorAll('.seg-btn')];
+      const guestBtns = [...document.querySelectorAll('.guest-btn')];
+
+      let state = {
+        duration: 8,
+        guests: 2
+      };
+
+      const fmtUSD = (n)=> `$${Number(n).toLocaleString('en-US')}`;
+
+      const key = ()=> `${state.duration}h_${state.guests}g`;
+
+      const render = ()=>{
+        // toggle selected
+        segBtns.forEach(b => b.setAttribute('aria-pressed', String(Number(b.dataset.duration) === state.duration)));
+        guestBtns.forEach(b => b.setAttribute('aria-pressed', String(Number(b.dataset.guests) === state.guests)));
+
+        const p = prices[state.duration]?.[state.guests];
+        const lineText = `${state.duration} Hours • ${state.guests} ${state.guests === 1 ? 'guest' : 'guests'}`;
+
+        summaryLine.textContent = lineText;
+        stickyLine.textContent = lineText;
+
+        if (p != null) stickyPrice.textContent = fmtUSD(p);
+
+        // link availability
+        const url = stripeLinks[key()];
+        if (url && !url.includes('REPLACE_')) {
+          bookBtn.disabled = false;
+          bookBtn.dataset.href = url;
+        } else {
+          // allow you to test without disabling if you want:
+          // bookBtn.disabled = false;
+          // bookBtn.dataset.href = url;
+          bookBtn.disabled = true;
+          bookBtn.dataset.href = '';
+        }
+      };
+
+      // duration click
+      segBtns.forEach(btn=>{
+        btn.addEventListener('click', ()=>{
+          state.duration = Number(btn.dataset.duration);
+          render();
+          // subtle scroll hint: keep user in module
+          btn.blur();
+        });
+      });
+
+      // guest click
+      guestBtns.forEach(btn=>{
+        btn.addEventListener('click', ()=>{
+          state.guests = Number(btn.dataset.guests);
+          render();
+          btn.blur();
+        });
+      });
+
+      // book button click
+      bookBtn.addEventListener('click', ()=>{
+        const url = bookBtn.dataset.href;
+        if (!url) return;
+        window.open(url, '_blank', 'noopener');
+      });
+
+      // enable sticky on mobile
+      const enableSticky = ()=>{
+        sticky.style.display = 'block';
+        document.body.classList.add('has-sticky');
+      };
+      const disableSticky = ()=>{
+        sticky.style.display = 'none';
+        document.body.classList.remove('has-sticky');
+      };
+
+      const mq = window.matchMedia('(min-width: 900px)');
+      const handleMQ = ()=> {
+        if (mq.matches) disableSticky();
+        else enableSticky();
+      };
+      mq.addEventListener ? mq.addEventListener('change', handleMQ) : mq.addListener(handleMQ);
+
+      // init
+      handleMQ();
+      render();
+    })();
+
+    /* ==========================================================
+       TOURS ACCORDION
+       ========================================================== */
     document.querySelectorAll('.toggle').forEach(btn => {
       btn.addEventListener('click', () => {
         const card = btn.closest('.card');
@@ -1388,7 +1452,9 @@
       });
     });
 
-    // Slider Script
+    /* ==========================================================
+       SLIDER
+       ========================================================== */
     (function(){
       const wrap = document.getElementById('tst-slider');
       if(!wrap) return;
@@ -1427,7 +1493,9 @@
       go(0);
     })();
 
-    // Mobile side menu
+    /* ==========================================================
+       MOBILE SIDE MENU
+       ========================================================== */
     (function(){
       const body = document.body;
       const openBtn  = document.querySelector('.menu-toggle');
@@ -1442,7 +1510,6 @@
       closeBtn && closeBtn.addEventListener('click', close);
       backdrop && backdrop.addEventListener('click', close);
 
-      // auto-close when clicking a link in the side menu
       sideMenu && sideMenu.querySelectorAll('a').forEach(a=>{
         a.addEventListener('click', close);
       });
