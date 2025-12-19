@@ -42,12 +42,9 @@
       --muted:#5b6470;
       --line:rgba(0,0,0,.06);
       --accent:#e85b8c;
-
       --header:rgba(255,255,255,.92);
 
-      /* premium neutrals */
       --ink:#0c0f14;
-      --ink2:#111827;
       --shadow: 0 12px 34px rgba(0,0,0,.10);
       --shadow2: 0 20px 60px rgba(0,0,0,.12);
 
@@ -214,7 +211,6 @@
       color:var(--muted);
       line-height:1.6;
     }
-
     body.menu-open .menu-backdrop{opacity:1;pointer-events:auto}
     body.menu-open .side-menu{transform:translateX(0)}
 
@@ -285,7 +281,6 @@
     }
     .card h3{margin:0 0 6px;font-size:18px;line-height:1.25}
 
-    /* Tours accordion */
     .details{display:none;margin-top:10px;color:var(--muted);font-size:14px;line-height:1.7}
     .card.open .details{display:block}
     .toggle{
@@ -369,24 +364,70 @@
       line-height:1.4;
     }
 
-    /* duration segmented control */
-    .seg{
+    /* -------------------------
+       STEP 1: HORIZONTAL SWIPE + SNAP (FIX)
+       ------------------------- */
+    .seg-scroll{
       margin-top:8px;
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:10px;
+      margin-left:-14px;    /* extend to container edge */
+      margin-right:-14px;
+      padding-left:14px;    /* keep content aligned */
+      padding-right:14px;
+      overflow-x:auto;
+      -webkit-overflow-scrolling:touch;
+      scroll-snap-type:x mandatory;
+      scroll-padding-left:14px;
+      scroll-padding-right:14px;
+      position:relative;
     }
+    /* subtle fade to hint swiping */
+    .seg-scroll::before,
+    .seg-scroll::after{
+      content:"";
+      position:absolute;
+      top:0; bottom:0;
+      width:18px;
+      pointer-events:none;
+      z-index:2;
+    }
+    .seg-scroll::before{
+      left:0;
+      background:linear-gradient(90deg, rgba(255,247,250,1), rgba(255,247,250,0));
+    }
+    .seg-scroll::after{
+      right:0;
+      background:linear-gradient(270deg, rgba(255,247,250,1), rgba(255,247,250,0));
+    }
+
+    .seg{
+      display:flex;
+      gap:10px;
+      padding-bottom:4px;
+      min-width:max-content;
+    }
+    .seg-scroll::-webkit-scrollbar{height:0} /* hide */
+    .seg-scroll{scrollbar-width:none} /* firefox hide */
+
     .seg-btn{
       position:relative;
       border:1px solid rgba(0,0,0,.10);
-      border-radius:16px;
+      border-radius:18px;
       background:rgba(255,255,255,.86);
-      padding:12px 10px;
+      padding:12px 12px;
       text-align:left;
       cursor:pointer;
       box-shadow:0 6px 16px rgba(0,0,0,.04);
       transition: transform .10s ease, border-color .12s ease, background .12s ease;
-      min-height:66px;
+      min-height:74px;
+
+      /* make swipe-friendly sizing */
+      flex:0 0 78%;
+      max-width:320px;
+      scroll-snap-align:center;
+      scroll-snap-stop:always;
+    }
+    @media(min-width:520px){
+      .seg-btn{flex-basis:46%;}
     }
     .seg-btn:hover{ transform: translateY(-1px); }
     .seg-btn[aria-pressed="true"]{
@@ -394,22 +435,24 @@
       background: rgba(232,91,140,.08);
       box-shadow:0 12px 26px rgba(232,91,140,.10);
     }
+
     .seg-top{
       display:flex;
       align-items:center;
       justify-content:space-between;
-      gap:6px;
+      gap:8px;
     }
     .seg-name{
-      font-weight:850;
-      font-size:14px;
+      font-weight:900;
+      font-size:16px;
       letter-spacing:.01em;
+      line-height:1.1;
     }
     .seg-tag{
       font-size:11px;
       letter-spacing:.10em;
       text-transform:uppercase;
-      padding:5px 9px;
+      padding:6px 10px;
       border-radius:999px;
       border:1px solid rgba(0,0,0,.10);
       background:rgba(255,255,255,.72);
@@ -422,11 +465,34 @@
       color: rgba(232,91,140,.95);
     }
     .seg-desc{
-      margin-top:6px;
-      font-size:12px;
-      line-height:1.4;
+      margin-top:8px;
+      font-size:12.5px;
+      line-height:1.45;
       color:rgba(91,100,112,.96);
     }
+
+    /* tiny “swipe” hint text */
+    .swipe-hint{
+      margin:8px 2px 0;
+      font-size:12px;
+      color:rgba(91,100,112,.88);
+      display:flex;
+      align-items:center;
+      gap:8px;
+      letter-spacing:.01em;
+    }
+    .swipe-hint .pill{
+      font-size:10.5px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      padding:5px 10px;
+      border-radius:999px;
+      border:1px solid rgba(0,0,0,.08);
+      background:rgba(255,255,255,.70);
+      color:rgba(17,24,39,.72);
+      white-space:nowrap;
+    }
+    .swipe-hint svg{width:16px;height:16px;fill:rgba(17,24,39,.55)}
 
     /* guests grid */
     .guest-grid{
@@ -506,7 +572,7 @@
       backdrop-filter:saturate(140%) blur(14px);
       border-top:1px solid rgba(0,0,0,.08);
       box-shadow:0 -14px 44px rgba(0,0,0,.12);
-      display:none; /* enabled via JS when pricing exists */
+      display:none;
     }
     .sticky-inner{
       max-width:1080px;
@@ -538,7 +604,6 @@
       color:rgba(17,24,39,.95);
       letter-spacing:.01em;
     }
-
     .sticky-btn{
       display:inline-flex;
       align-items:center;
@@ -565,14 +630,9 @@
     }
     .sticky-btn svg{width:16px;height:16px;fill:#fff}
 
-    /* push content above sticky bar on mobile */
-    body.has-sticky{
-      padding-bottom: 84px;
-    }
+    body.has-sticky{padding-bottom: 84px;}
 
-    /* ==========================================================
-       DETAILS SECTION (as you had)
-       ========================================================== */
+    /* Details section */
     .details-section{
       background:rgba(255,255,255,.92);
       border:1px solid var(--line);
@@ -618,9 +678,7 @@
       font-size:13px;
     }
 
-    /* ==========================================================
-       TESTIMONIALS
-       ========================================================== */
+    /* Testimonials */
     blockquote{
       border-left:3px solid var(--accent);
       padding-left:12px;
@@ -632,9 +690,7 @@
     blockquote p{margin:2px 0 6px}
     blockquote em{font-size:13px;color:var(--muted)}
 
-    /* ==========================================================
-       SLIDER
-       ========================================================== */
+    /* Slider */
     .slider-wrap{
       position:relative;
       overflow:hidden;
@@ -660,9 +716,7 @@
     }
     .slider-dot.active{background:var(--accent)}
 
-    /* ==========================================================
-       ICON BUTTONS
-       ========================================================== */
+    /* Icon buttons */
     .icon-btn{
       display:inline-flex;
       align-items:center;
@@ -677,9 +731,7 @@
     .icon-btn:hover{background:#fff}
     .icon{width:18px;height:18px;fill:currentColor}
 
-    /* ==========================================================
-       INSTAGRAM
-       ========================================================== */
+    /* Instagram */
     #instagram{padding-top:30px;padding-bottom:24px}
     .instagram-card{
       border:1px solid var(--line);
@@ -707,9 +759,7 @@
       width:100% !important;max-width:100% !important;border:0;display:block;margin-top:-24px;
     }
 
-    /* ==========================================================
-       FOOTER
-       ========================================================== */
+    /* Footer */
     footer{
       border-top:1px solid var(--line);
       background:rgba(255,255,255,.9);
@@ -724,9 +774,7 @@
     .footer-links{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
     .footer-links a:hover{text-decoration:underline}
 
-    /* ==========================================================
-       DESKTOP ENHANCEMENTS
-       ========================================================== */
+    /* Desktop */
     @media (min-width:900px){
       body{font-size:17px;line-height:1.8}
       .container{padding:0 20px}
@@ -746,8 +794,14 @@
       .card{padding:18px}
       .details-section{padding:24px 20px}
       .side-menu{display:none}
-      .sticky-buy{display:none !important} /* desktop: you can keep, but usually not needed */
+      .sticky-buy{display:none !important}
       body.has-sticky{padding-bottom:0}
+      /* On desktop you can show 3 duration cards without swipe if you want */
+      .seg-scroll{overflow:visible;margin-left:0;margin-right:0;padding:0}
+      .seg{gap:12px}
+      .seg-btn{flex:1 1 0;max-width:none}
+      .seg-scroll::before,.seg-scroll::after{display:none}
+      .swipe-hint{display:none}
     }
   </style>
 </head>
@@ -843,7 +897,7 @@
         <h2>Signature Tokyo Experiences</h2>
 
         <!-- =========================
-             UPGRADED BOOKING MODULE
+             BOOKING MODULE
              ========================= -->
         <div class="booking-shell" id="booking" aria-label="Tour booking module">
           <div class="booking-head">
@@ -863,30 +917,39 @@
               </div>
             </div>
 
-            <div class="seg" role="group" aria-label="Tour length selector">
-              <button class="seg-btn" type="button" data-duration="4" aria-pressed="false">
-                <div class="seg-top">
-                  <div class="seg-name">4 Hours</div>
-                  <div class="seg-tag">Highlights</div>
-                </div>
-                <div class="seg-desc">A refined introduction — focused and relaxed.</div>
-              </button>
+            <!-- FIXED: horizontal swipe container -->
+            <div class="seg-scroll" id="durationScroll" role="group" aria-label="Tour length selector (swipe)">
+              <div class="seg">
+                <button class="seg-btn" type="button" data-duration="4" aria-pressed="false">
+                  <div class="seg-top">
+                    <div class="seg-name">4 Hours</div>
+                    <div class="seg-tag">Highlights</div>
+                  </div>
+                  <div class="seg-desc">A refined introduction — focused and relaxed.</div>
+                </button>
 
-              <button class="seg-btn" type="button" data-duration="6" aria-pressed="false">
-                <div class="seg-top">
-                  <div class="seg-name">6 Hours</div>
-                  <div class="seg-tag">Depth</div>
-                </div>
-                <div class="seg-desc">Neighborhoods + culture + food moments.</div>
-              </button>
+                <button class="seg-btn" type="button" data-duration="6" aria-pressed="false">
+                  <div class="seg-top">
+                    <div class="seg-name">6 Hours</div>
+                    <div class="seg-tag">Depth</div>
+                  </div>
+                  <div class="seg-desc">Neighborhoods + culture + food moments.</div>
+                </button>
 
-              <button class="seg-btn" type="button" data-duration="8" aria-pressed="true">
-                <div class="seg-top">
-                  <div class="seg-name">8 Hours</div>
-                  <div class="seg-tag">Most Popular</div>
-                </div>
-                <div class="seg-desc">The signature day — iconic + hidden, unrushed.</div>
-              </button>
+                <button class="seg-btn" type="button" data-duration="8" aria-pressed="true" data-default="true">
+                  <div class="seg-top">
+                    <div class="seg-name">8 Hours</div>
+                    <div class="seg-tag">Most Popular</div>
+                  </div>
+                  <div class="seg-desc">The signature day — iconic + hidden, unrushed.</div>
+                </button>
+              </div>
+            </div>
+
+            <div class="swipe-hint" aria-hidden="true">
+              <span class="pill">Swipe</span>
+              <svg viewBox="0 0 24 24"><path d="M7.41 7.84 3.25 12l4.16 4.16 1.41-1.41L6.07 12l2.75-2.75ZM16.59 7.84l-1.41 1.41L17.93 12l-2.75 2.75 1.41 1.41L20.75 12Z"/></svg>
+              <span>to view all options</span>
             </div>
 
             <!-- Step 2 -->
@@ -901,7 +964,7 @@
               <button class="guest-btn" type="button" data-guests="1" aria-pressed="false">
                 <div class="guest-num">1</div><div class="guest-lbl">Guest</div>
               </button>
-              <button class="guest-btn" type="button" data-guests="2" aria-pressed="true">
+              <button class="guest-btn" type="button" data-guests="2" aria-pressed="true" data-default="true">
                 <div class="guest-num">2</div><div class="guest-lbl">Guests</div>
               </button>
               <button class="guest-btn" type="button" data-guests="3" aria-pressed="false">
@@ -918,7 +981,7 @@
               </button>
             </div>
 
-            <!-- Step 3 summary (in-module) -->
+            <!-- Summary -->
             <div class="mini-includes" aria-label="Booking summary and inclusions">
               <div class="mini-row">
                 <div class="mini-ic" aria-hidden="true">
@@ -1310,7 +1373,6 @@
        Key format: "<duration>h_<guests>g"
        ========================================================== */
     const stripeLinks = {
-      // 4 Hours
       "4h_1g": "https://buy.stripe.com/REPLACE_4H_1G",
       "4h_2g": "https://buy.stripe.com/REPLACE_4H_2G",
       "4h_3g": "https://buy.stripe.com/REPLACE_4H_3G",
@@ -1318,7 +1380,6 @@
       "4h_5g": "https://buy.stripe.com/REPLACE_4H_5G",
       "4h_6g": "https://buy.stripe.com/REPLACE_4H_6G",
 
-      // 6 Hours
       "6h_1g": "https://buy.stripe.com/REPLACE_6H_1G",
       "6h_2g": "https://buy.stripe.com/REPLACE_6H_2G",
       "6h_3g": "https://buy.stripe.com/REPLACE_6H_3G",
@@ -1326,7 +1387,6 @@
       "6h_5g": "https://buy.stripe.com/REPLACE_6H_5G",
       "6h_6g": "https://buy.stripe.com/REPLACE_6H_6G",
 
-      // 8 Hours
       "8h_1g": "https://buy.stripe.com/REPLACE_8H_1G",
       "8h_2g": "https://buy.stripe.com/REPLACE_8H_2G",
       "8h_3g": "https://buy.stripe.com/REPLACE_8H_3G",
@@ -1345,7 +1405,7 @@
     };
 
     /* ==========================================================
-       BOOKING UI LOGIC
+       BOOKING UI LOGIC + AUTO-CENTER DEFAULT (8H)
        ========================================================== */
     (function(){
       const sticky = document.getElementById('stickyBuy');
@@ -1354,20 +1414,16 @@
       const stickyPrice = document.getElementById('stickyPrice');
       const summaryLine = document.getElementById('summaryLine');
 
+      const durationScroll = document.getElementById('durationScroll');
       const segBtns = [...document.querySelectorAll('.seg-btn')];
       const guestBtns = [...document.querySelectorAll('.guest-btn')];
 
-      let state = {
-        duration: 8,
-        guests: 2
-      };
+      let state = { duration: 8, guests: 2 };
 
       const fmtUSD = (n)=> `$${Number(n).toLocaleString('en-US')}`;
-
       const key = ()=> `${state.duration}h_${state.guests}g`;
 
       const render = ()=>{
-        // toggle selected
         segBtns.forEach(b => b.setAttribute('aria-pressed', String(Number(b.dataset.duration) === state.duration)));
         guestBtns.forEach(b => b.setAttribute('aria-pressed', String(Number(b.dataset.guests) === state.guests)));
 
@@ -1376,34 +1432,41 @@
 
         summaryLine.textContent = lineText;
         stickyLine.textContent = lineText;
-
         if (p != null) stickyPrice.textContent = fmtUSD(p);
 
-        // link availability
         const url = stripeLinks[key()];
         if (url && !url.includes('REPLACE_')) {
           bookBtn.disabled = false;
           bookBtn.dataset.href = url;
         } else {
-          // allow you to test without disabling if you want:
-          // bookBtn.disabled = false;
-          // bookBtn.dataset.href = url;
           bookBtn.disabled = true;
           bookBtn.dataset.href = '';
         }
       };
 
-      // duration click
+      const centerSelectedDuration = ()=>{
+        if (!durationScroll) return;
+        const selected = segBtns.find(b => Number(b.dataset.duration) === state.duration);
+        if (!selected) return;
+
+        const cRect = durationScroll.getBoundingClientRect();
+        const bRect = selected.getBoundingClientRect();
+
+        // scroll so selected card is centered
+        const currentLeft = durationScroll.scrollLeft;
+        const delta = (bRect.left - cRect.left) - (cRect.width/2 - bRect.width/2);
+        durationScroll.scrollTo({ left: currentLeft + delta, behavior: 'smooth' });
+      };
+
       segBtns.forEach(btn=>{
         btn.addEventListener('click', ()=>{
           state.duration = Number(btn.dataset.duration);
           render();
-          // subtle scroll hint: keep user in module
+          centerSelectedDuration();
           btn.blur();
         });
       });
 
-      // guest click
       guestBtns.forEach(btn=>{
         btn.addEventListener('click', ()=>{
           state.guests = Number(btn.dataset.guests);
@@ -1412,14 +1475,13 @@
         });
       });
 
-      // book button click
       bookBtn.addEventListener('click', ()=>{
         const url = bookBtn.dataset.href;
         if (!url) return;
         window.open(url, '_blank', 'noopener');
       });
 
-      // enable sticky on mobile
+      // sticky on mobile
       const enableSticky = ()=>{
         sticky.style.display = 'block';
         document.body.classList.add('has-sticky');
@@ -1428,17 +1490,19 @@
         sticky.style.display = 'none';
         document.body.classList.remove('has-sticky');
       };
-
       const mq = window.matchMedia('(min-width: 900px)');
-      const handleMQ = ()=> {
-        if (mq.matches) disableSticky();
-        else enableSticky();
-      };
+      const handleMQ = ()=> { mq.matches ? disableSticky() : enableSticky(); };
       mq.addEventListener ? mq.addEventListener('change', handleMQ) : mq.addListener(handleMQ);
 
       // init
       handleMQ();
       render();
+
+      // IMPORTANT: center default (8h) on load so it’s never cut off
+      // Use 2 frames to ensure layout is ready on mobile browsers
+      requestAnimationFrame(()=> requestAnimationFrame(centerSelectedDuration));
+      window.addEventListener('orientationchange', ()=> setTimeout(centerSelectedDuration, 250));
+      window.addEventListener('resize', ()=> setTimeout(centerSelectedDuration, 150));
     })();
 
     /* ==========================================================
@@ -1481,7 +1545,6 @@
       prev && prev.addEventListener('click', ()=>go(index-1));
       next && next.addEventListener('click', ()=>go(index+1));
 
-      // swipe (mobile)
       let startX=0, deltaX=0;
       const onStart = e => { startX = (e.touches? e.touches[0].clientX : e.clientX); };
       const onMove  = e => { deltaX = (e.touches? e.touches[0].clientX : e.clientX) - startX; };
