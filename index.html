@@ -89,8 +89,6 @@
 
     /* ==========================================================
        HEADER & MOBILE MENU (UPGRADED UX)
-       - Adds focus trap behavior + ESC close via JS
-       - Adds quick actions inside menu
        ========================================================== */
     header{
       position:sticky;
@@ -172,6 +170,7 @@
       pointer-events:none;
       transition:opacity .22s ease;
       z-index:39;
+      touch-action: manipulation; /* ensure backdrop can always be tapped */
     }
     .side-menu{
       position:fixed;
@@ -187,13 +186,23 @@
       display:flex;
       flex-direction:column;
       padding:18px 18px 18px;
+
+      /* FIX: menu content can scroll + avoid bottom being hidden */
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: calc(24px + 96px + env(safe-area-inset-bottom));
     }
+
+    /* FIX: make menu header sticky inside the menu */
     .side-menu header{
-      position:static;
-      background:none;
-      border:none;
-      padding:0 0 10px;
+      position: sticky;
+      top: 0;
+      background: #fff;
+      z-index: 2;
+      border: none;
+      padding: 0 0 10px;
     }
+
     .side-menu-title{
       font-size:13px;
       font-weight:900;
@@ -257,7 +266,15 @@
 
     body.menu-open .menu-backdrop{opacity:1;pointer-events:auto}
     body.menu-open .side-menu{transform:translateX(0)}
-    body.menu-open{overflow:hidden;} /* prevent background scroll (mobile premium feel) */
+
+    /* FIX: When menu is open, lock background scroll + hide sticky buy bar (prevents covering menu bottom) */
+    body.menu-open{
+      overflow:hidden;
+      touch-action:none;
+    }
+    body.menu-open .sticky-buy{
+      display:none !important;
+    }
 
     /* ==========================================================
        HERO
@@ -343,8 +360,7 @@
     .toggle:hover{background:var(--accent);color:#fff}
 
     /* ==========================================================
-       PREMIUM MOBILE-FIRST BOOKING (FIXED SWIPE + ARROWS + SNAP)
-       - solves: "can't swipe / 8h cut off" on mobile
+       PREMIUM MOBILE-FIRST BOOKING
        ========================================================== */
     .booking-shell{
       margin-top:14px;
@@ -409,7 +425,6 @@
       line-height:1.4;
     }
 
-    /* Step 1 wrapper includes optional arrows (helps users who don't realize swipe) */
     .duration-wrap{
       position:relative;
       margin-top:6px;
@@ -436,43 +451,50 @@
     .dur-prev{left:6px}
     .dur-next{right:6px}
 
-    /* --------------------------------
-       Step 1: horizontal swipe + snap
-       (touch-action pan-x is KEY on some Android/Chrome combos)
-       -------------------------------- */
     .seg-scroll{
       margin-left:-14px;
       margin-right:-14px;
-      padding-left:14px;
-      padding-right:14px;
+
+      /* FIX: safe-area padding so "8 Hours" never clips on some Android devices */
+      padding-left: calc(14px + env(safe-area-inset-left));
+      padding-right: calc(14px + env(safe-area-inset-right));
+      scroll-padding-left: calc(14px + env(safe-area-inset-left));
+      scroll-padding-right: calc(14px + env(safe-area-inset-right));
+
       overflow-x:auto;
       overflow-y:hidden;
       -webkit-overflow-scrolling:touch;
       scroll-snap-type:x mandatory;
-      scroll-padding-left:14px;
-      scroll-padding-right:14px;
       scroll-behavior:smooth;
       overscroll-behavior-x:contain;
-      touch-action: pan-x;        /* ✅ important */
+      touch-action: pan-x;
       position:relative;
     }
-    /* subtle fade edges hint */
+
+    /* FIX: lighter / narrower fades so they don't visually "eat" text */
     .seg-scroll::before,
     .seg-scroll::after{
       content:"";
       position:absolute;
       top:0; bottom:0;
-      width:18px;
+      width:10px;
       pointer-events:none;
       z-index:2;
+      opacity:.65;
     }
     .seg-scroll::before{
       left:0;
-      background:linear-gradient(90deg, rgba(255,247,250,1), rgba(255,247,250,0));
+      background: linear-gradient(90deg,
+        rgba(255,247,250,.95) 0%,
+        rgba(255,247,250,0) 100%
+      );
     }
     .seg-scroll::after{
       right:0;
-      background:linear-gradient(270deg, rgba(255,247,250,1), rgba(255,247,250,0));
+      background: linear-gradient(270deg,
+        rgba(255,247,250,.95) 0%,
+        rgba(255,247,250,0) 100%
+      );
     }
 
     .seg{
@@ -497,14 +519,12 @@
       transition: transform .10s ease, border-color .12s ease, background .12s ease;
       min-height:78px;
 
-      /* mobile sizing: always show most of 1 card + peeking next */
       flex:0 0 84%;
       max-width:360px;
 
       scroll-snap-align:center;
       scroll-snap-stop:always;
 
-      /* prevent tap from killing scroll */
       -webkit-tap-highlight-color: transparent;
       touch-action: manipulation;
     }
@@ -553,7 +573,6 @@
       color:rgba(91,100,112,.96);
     }
 
-    /* swipe hint row */
     .swipe-hint{
       margin:8px 2px 0;
       font-size:12px;
@@ -576,7 +595,6 @@
     }
     .swipe-hint svg{width:16px;height:16px;fill:rgba(17,24,39,.55)}
 
-    /* Step 2 guests */
     .guest-grid{
       margin-top:10px;
       display:grid;
@@ -618,7 +636,6 @@
       margin-top:6px;
     }
 
-    /* Summary mini rows */
     .mini-includes{
       margin-top:14px;
       display:grid;
@@ -645,7 +662,6 @@
     .mini-title{font-size:13px;font-weight:900;margin:0}
     .mini-sub{font-size:12.5px;color:rgba(91,100,112,.95);margin:2px 0 0}
 
-    /* Sticky purchase bar (mobile conversion booster) */
     .sticky-buy{
       position:fixed;
       left:0; right:0; bottom:0;
@@ -714,7 +730,6 @@
     .sticky-btn svg{width:16px;height:16px;fill:#fff}
     body.has-sticky{padding-bottom: 84px;}
 
-    /* Details section */
     .details-section{
       background:rgba(255,255,255,.92);
       border:1px solid var(--line);
@@ -760,7 +775,6 @@
       font-size:13px;
     }
 
-    /* Testimonials */
     blockquote{
       border-left:3px solid var(--accent);
       padding-left:12px;
@@ -772,7 +786,6 @@
     blockquote p{margin:2px 0 6px}
     blockquote em{font-size:13px;color:var(--muted)}
 
-    /* Slider */
     .slider-wrap{
       position:relative;
       overflow:hidden;
@@ -798,7 +811,6 @@
     }
     .slider-dot.active{background:var(--accent)}
 
-    /* Icon buttons */
     .icon-btn{
       display:inline-flex;
       align-items:center;
@@ -813,7 +825,6 @@
     .icon-btn:hover{background:#fff}
     .icon{width:18px;height:18px;fill:currentColor}
 
-    /* Instagram */
     #instagram{padding-top:30px;padding-bottom:24px}
     .instagram-card{
       border:1px solid var(--line);
@@ -841,7 +852,6 @@
       width:100% !important;max-width:100% !important;border:0;display:block;margin-top:-24px;
     }
 
-    /* Footer */
     footer{
       border-top:1px solid var(--line);
       background:rgba(255,255,255,.9);
@@ -856,7 +866,6 @@
     .footer-links{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
     .footer-links a:hover{text-decoration:underline}
 
-    /* Desktop */
     @media (min-width:900px){
       body{font-size:17px;line-height:1.8}
       .container{padding:0 20px}
@@ -879,7 +888,6 @@
       .sticky-buy{display:none !important}
       body.has-sticky{padding-bottom:0}
 
-      /* show durations as normal row on desktop */
       .duration-wrap .dur-arrow{display:none}
       .seg-scroll{overflow:visible;margin-left:0;margin-right:0;padding:0}
       .seg{gap:12px}
@@ -944,7 +952,6 @@
   </header>
 
   <main>
-    <!-- HERO -->
     <section class="hero" id="top">
       <div class="container hero-wrap">
         <div>
@@ -967,7 +974,6 @@
       </div>
     </section>
 
-    <!-- ABOUT -->
     <section id="about">
       <div class="container">
         <h2>Private Tours in Tokyo</h2>
@@ -982,14 +988,10 @@
       </div>
     </section>
 
-    <!-- TOURS -->
     <section id="tours">
       <div class="container">
         <h2>Signature Tokyo Experiences</h2>
 
-        <!-- =========================
-             BOOKING MODULE
-             ========================= -->
         <div class="booking-shell" id="booking" aria-label="Tour booking module">
           <div class="booking-head">
             <p class="booking-kicker">Booking</p>
@@ -1000,7 +1002,6 @@
           </div>
 
           <div class="booking-body">
-            <!-- Step 1 -->
             <div class="step">
               <div class="step-left">
                 <div class="step-label">Step 1</div>
@@ -1008,7 +1009,6 @@
               </div>
             </div>
 
-            <!-- FIXED: swipe container + arrow controls -->
             <div class="duration-wrap">
               <button class="dur-arrow dur-prev" id="durPrev" type="button" aria-label="Scroll durations left">
                 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
@@ -1052,7 +1052,6 @@
               <span>to view all options</span>
             </div>
 
-            <!-- Step 2 -->
             <div class="step" style="margin-top:16px;">
               <div class="step-left">
                 <div class="step-label">Step 2</div>
@@ -1081,7 +1080,6 @@
               </button>
             </div>
 
-            <!-- Summary -->
             <div class="mini-includes" aria-label="Booking summary and inclusions">
               <div class="mini-row">
                 <div class="mini-ic" aria-hidden="true">
@@ -1120,7 +1118,6 @@
           </div>
         </div>
 
-        <!-- Tour overview cards -->
         <div class="grid" style="margin-top:16px;">
           <div class="card">
             <h3>Half Day Tokyo Highlights (4h)</h3>
@@ -1183,7 +1180,6 @@
       </div>
     </section>
 
-    <!-- HIGHLIGHTS & INCLUSIONS -->
     <section id="details">
       <div class="container">
         <div class="details-section" aria-label="Tour details: highlights and inclusions">
@@ -1214,7 +1210,6 @@
       </div>
     </section>
 
-    <!-- WHY CHOOSE US -->
     <section id="why-choose-us">
       <div class="container">
         <h2>Why Tokyo Signature Tours</h2>
@@ -1251,7 +1246,6 @@
       </div>
     </section>
 
-    <!-- TESTIMONIALS -->
     <section id="testimonials">
       <div class="container">
         <h2>Guest Testimonials</h2>
@@ -1309,7 +1303,6 @@
       </div>
     </section>
 
-    <!-- GALLERY (Slider) -->
     <section id="gallery">
       <div class="container">
         <h2>Photo Gallery</h2>
@@ -1332,7 +1325,6 @@
       </div>
     </section>
 
-    <!-- FAQ -->
     <section id="faq">
       <div class="container">
         <h2>Frequently Asked Questions</h2>
@@ -1370,7 +1362,6 @@
       </div>
     </section>
 
-    <!-- INSTAGRAM -->
     <section id="instagram">
       <div class="container">
         <h2>Instagram Overview</h2>
@@ -1399,7 +1390,6 @@
       </div>
     </section>
 
-    <!-- CONTACT -->
     <section id="contact">
       <div class="container">
         <h2>Contact &amp; Booking</h2>
@@ -1448,7 +1438,6 @@
     </div>
   </footer>
 
-  <!-- Sticky purchase bar (mobile) -->
   <div class="sticky-buy" id="stickyBuy" aria-label="Purchase bar">
     <div class="sticky-inner">
       <div class="sticky-left">
@@ -1502,9 +1491,6 @@
 
     /* ==========================================================
        BOOKING UI LOGIC + FIXED SWIPE RELIABILITY
-       - centers selected duration
-       - arrow buttons for non-swipe users
-       - keeps arrows enabled/disabled based on scroll position
        ========================================================== */
     (function(){
       const sticky = document.getElementById('stickyBuy');
@@ -1546,17 +1532,19 @@
         }
       };
 
+      /* FIX: reliable centering across Android/Chrome (offset-based) */
       const centerSelectedDuration = (behavior='smooth') => {
         if (!durationScroll) return;
         const selected = segBtns.find(b => Number(b.dataset.duration) === state.duration);
         if (!selected) return;
 
-        const cRect = durationScroll.getBoundingClientRect();
-        const bRect = selected.getBoundingClientRect();
-        const currentLeft = durationScroll.scrollLeft;
+        const containerWidth = durationScroll.clientWidth;
+        const targetLeft = selected.offsetLeft - (containerWidth - selected.offsetWidth) / 2;
 
-        const delta = (bRect.left - cRect.left) - (cRect.width/2 - bRect.width/2);
-        durationScroll.scrollTo({ left: currentLeft + delta, behavior });
+        durationScroll.scrollTo({
+          left: Math.max(0, targetLeft),
+          behavior
+        });
       };
 
       const updateArrowState = ()=> {
@@ -1571,7 +1559,6 @@
 
       const scrollByCard = (dir=1) => {
         if (!durationScroll) return;
-        // scroll by ~1 card width (responsive)
         const card = segBtns[0];
         const amount = card ? (card.getBoundingClientRect().width + 10) : 280;
         durationScroll.scrollBy({ left: dir * amount, behavior:'smooth' });
@@ -1598,7 +1585,6 @@
       nextBtn && nextBtn.addEventListener('click', ()=> scrollByCard( 1));
 
       durationScroll && durationScroll.addEventListener('scroll', ()=>{
-        // cheap throttle
         window.requestAnimationFrame(updateArrowState);
       }, {passive:true});
 
@@ -1608,7 +1594,6 @@
         window.open(url, '_blank', 'noopener');
       });
 
-      // sticky on mobile
       const enableSticky = ()=> {
         sticky.style.display = 'block';
         document.body.classList.add('has-sticky');
@@ -1621,15 +1606,19 @@
       const handleMQ = ()=> { mq.matches ? disableSticky() : enableSticky(); };
       mq.addEventListener ? mq.addEventListener('change', handleMQ) : mq.addListener(handleMQ);
 
-      // init
       handleMQ();
       render();
 
-      // IMPORTANT: center default (8h) on load so it’s never cut off
       requestAnimationFrame(()=> requestAnimationFrame(()=>{
         centerSelectedDuration('auto');
         updateArrowState();
       }));
+
+      /* FIX: extra stabilizers (fonts/images/layout timing) */
+      window.addEventListener('load', () => setTimeout(()=>{ centerSelectedDuration('auto'); updateArrowState(); }, 120));
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(() => setTimeout(()=>{ centerSelectedDuration('auto'); updateArrowState(); }, 120));
+      }
 
       window.addEventListener('orientationchange', ()=> setTimeout(()=>{ centerSelectedDuration('auto'); updateArrowState(); }, 250));
       window.addEventListener('resize', ()=> setTimeout(()=>{ centerSelectedDuration('auto'); updateArrowState(); }, 150));
@@ -1690,9 +1679,6 @@
 
     /* ==========================================================
        MOBILE SIDE MENU (UPGRADED)
-       - ESC to close
-       - basic focus trap
-       - restores scroll
        ========================================================== */
     (function(){
       const body = document.body;
@@ -1726,7 +1712,6 @@
         body.classList.add('menu-open');
         setAria(true);
 
-        // focus first interactive element
         const first = sideMenu.querySelector(focusableSel);
         first && first.focus();
       };
@@ -1740,7 +1725,6 @@
           return;
         }
 
-        // focus trap (Tab)
         if (e.key === 'Tab') {
           const focusables = [...sideMenu.querySelectorAll(focusableSel)];
           if (!focusables.length) return;
@@ -1768,13 +1752,11 @@
 
       document.addEventListener('keydown', onKeydown);
 
-      // init aria
       setAria(false);
       openBtn && openBtn.setAttribute('aria-expanded', 'false');
     })();
   </script>
 
-  <!-- Instagram embed script -->
   <script async src="https://www.instagram.com/embed.js"></script>
 </body>
 </html>
