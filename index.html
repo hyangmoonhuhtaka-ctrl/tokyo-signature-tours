@@ -297,26 +297,52 @@
       font-size:18px;
     }
 
-    .btn-book{
-      display:inline-block;
-      margin-top:6px;
-      padding:8px 20px;
-      border-radius:999px;
-      background:var(--text);
-      color:#fff;
-      font-size:14px;
-      letter-spacing:0.05em;
-      text-transform:uppercase;
-      text-decoration:none;
-      box-shadow:0 5px 14px rgba(0,0,0,.12);
-    }
-    .btn-book:hover{
-      opacity:0.9;
-    }
-    .book-note{
-      margin-top:6px;
-      font-size:12px;
+    /* ===== Tours accordion ===== */
+    .details{
+      display:none;
+      margin-top:10px;
       color:var(--muted);
+      font-size:14px;
+    }
+    .card.open .details{
+      display:block;
+    }
+    .toggle{
+      margin-top:10px;
+      padding:8px 14px;
+      min-height:40px;
+      border:1px solid var(--accent);
+      border-radius:999px;
+      background:transparent;
+      color:var(--accent);
+      cursor:pointer;
+      font-size:14px;
+    }
+    .toggle:hover{
+      background:var(--accent);
+      color:#fff;
+    }
+
+    /* Icon buttons (Contact) */
+    .icon-btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:36px;
+      height:36px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.9);
+      color:var(--text);
+      box-shadow:0 3px 10px rgba(0,0,0,.06);
+    }
+    .icon-btn:hover{
+      background:rgba(255,255,255,1);
+    }
+    .icon{
+      width:18px;
+      height:18px;
+      fill:currentColor;
     }
 
     /* ===== Blockquotes ===== */
@@ -446,54 +472,6 @@
       font-size:13px;
     }
 
-    /* ===== Tours accordion ===== */
-    .details{
-      display:none;
-      margin-top:10px;
-      color:var(--muted);
-      font-size:14px;
-    }
-    .card.open .details{
-      display:block;
-    }
-    .toggle{
-      margin-top:10px;
-      padding:8px 14px;
-      min-height:40px;
-      border:1px solid var(--accent);
-      border-radius:999px;
-      background:transparent;
-      color:var(--accent);
-      cursor:pointer;
-      font-size:14px;
-    }
-    .toggle:hover{
-      background:var(--accent);
-      color:#fff;
-    }
-
-    /* Icon buttons (Contact) */
-    .icon-btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      width:36px;
-      height:36px;
-      border-radius:999px;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.9);
-      color:var(--text);
-      box-shadow:0 3px 10px rgba(0,0,0,.06);
-    }
-    .icon-btn:hover{
-      background:rgba(255,255,255,1);
-    }
-    .icon{
-      width:18px;
-      height:18px;
-      fill:currentColor;
-    }
-
     /* ===== Instagram section ===== */
     #instagram{
       padding-top:30px;
@@ -537,7 +515,7 @@
     }
     .instagram-embed{
       border-radius:14px;
-      overflow:hidden;          /* 中身をマスクする */
+      overflow:hidden;
       position:relative;
     }
     .instagram-embed blockquote.instagram-media{
@@ -551,7 +529,7 @@
       max-width:100% !important;
       border:0;
       display:block;
-      margin-top:-24px;         /* 上を少しだけカットしてストーリーズを隠す */
+      margin-top:-24px;
     }
 
     /* ===== Footer ===== */
@@ -642,9 +620,159 @@
         padding:24px 20px;
       }
       .side-menu{
-        display:none; /* desktop: サイドメニューはモバイル専用 */
+        display:none;
       }
     }
+
+    /* ==========================================================
+       PREMIUM PRICING (added)
+       ========================================================== */
+    .pricing-wrap{
+      margin-top:14px;
+      border:1px solid var(--line);
+      border-radius:16px;
+      background:rgba(255,255,255,.85);
+      box-shadow:0 6px 20px rgba(0,0,0,.06);
+      overflow:hidden;
+    }
+    .pricing-head{
+      padding:14px 14px 12px;
+      border-bottom:1px solid var(--line);
+      background:linear-gradient(180deg, rgba(255,255,255,.95), rgba(255,255,255,.75));
+    }
+    .pricing-title{
+      margin:0;
+      font-size:18px;
+      letter-spacing:.02em;
+    }
+    .pricing-sub{
+      margin:4px 0 0;
+      font-size:13px;
+      color:var(--muted);
+      line-height:1.6;
+    }
+
+    .pricing-grid{
+      display:grid;
+      gap:12px;
+      padding:14px;
+      grid-template-columns: 1fr;
+    }
+    @media(min-width:900px){
+      .pricing-grid{ grid-template-columns: repeat(3, 1fr); }
+    }
+
+    .pricing-card{
+      border:1px solid var(--line);
+      border-radius:14px;
+      background:#fff;
+      padding:14px;
+      box-shadow:0 4px 14px rgba(0,0,0,.04);
+      position:relative;
+    }
+    .pricing-card.featured{
+      border-color:rgba(232,91,140,.45);
+      box-shadow:0 10px 26px rgba(232,91,140,.10);
+    }
+    .pricing-badge{
+      position:absolute;
+      top:12px;
+      right:12px;
+      font-size:11px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:var(--accent);
+      border:1px solid rgba(232,91,140,.28);
+      background:rgba(232,91,140,.08);
+      padding:5px 10px;
+      border-radius:999px;
+    }
+    .pricing-card h3{
+      margin:0;
+      font-size:16px;
+    }
+    .pricing-desc{
+      margin:6px 0 10px;
+      font-size:13px;
+      color:var(--muted);
+      line-height:1.6;
+    }
+
+    .pricing-rows{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      margin-top:10px;
+    }
+    .pricing-row{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      padding:10px 10px;
+      border:1px solid var(--line);
+      border-radius:12px;
+      background:rgba(255,255,255,.92);
+    }
+    .pricing-left{
+      display:flex;
+      flex-direction:column;
+      line-height:1.2;
+    }
+    .pricing-guests{
+      font-weight:700;
+      font-size:13px;
+    }
+    .pricing-hint{
+      font-size:11.5px;
+      color:var(--muted);
+      margin-top:3px;
+    }
+    .pricing-right{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      flex-shrink:0;
+    }
+    .pricing-price{
+      font-weight:800;
+      font-size:13.5px;
+      letter-spacing:.01em;
+    }
+
+    .pay-btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:36px;
+      padding:0 12px;
+      border-radius:999px;
+      border:1px solid rgba(0,0,0,.10);
+      background:rgba(20,25,34,.92);
+      color:#fff;
+      font-size:12.5px;
+      font-weight:700;
+      letter-spacing:.02em;
+      white-space:nowrap;
+      box-shadow:0 5px 14px rgba(0,0,0,.10);
+    }
+    .pay-btn:hover{ opacity:.92; }
+    .pay-btn.alt{
+      background:var(--accent);
+      border-color:rgba(232,91,140,.28);
+      box-shadow:0 8px 18px rgba(232,91,140,.18);
+    }
+
+    .pricing-foot{
+      padding:12px 14px 14px;
+      border-top:1px solid var(--line);
+      background:rgba(255,255,255,.80);
+      font-size:12.5px;
+      color:var(--muted);
+      line-height:1.7;
+    }
+    .pricing-foot strong{ color:var(--text); }
+
   </style>
 </head>
 <body>
@@ -738,21 +866,188 @@
     <section id="tours">
       <div class="container">
         <h2>Signature Tokyo Experiences</h2>
-        <div class="grid">
+
+        <!-- ===== Premium Pricing (NEW) ===== -->
+        <div class="pricing-wrap" aria-label="Private tour fees">
+          <div class="pricing-head">
+            <h3 class="pricing-title">Private Tour Fees</h3>
+            <p class="pricing-sub">
+              Prices are per group (USD). Choose your tour length and group size, then complete payment securely via Stripe.
+            </p>
+          </div>
+
+          <div class="pricing-grid">
+            <!-- 4 Hours -->
+            <div class="pricing-card" aria-label="4 hour pricing">
+              <h3>4 Hours</h3>
+              <p class="pricing-desc">A refined introduction — 2–3 key areas at a relaxed pace.</p>
+
+              <div class="pricing-rows">
+                <div class="pricing-row">
+                  <div class="pricing-left">
+                    <span class="pricing-guests">1 guest</span>
+                    <span class="pricing-hint">Private group</span>
+                  </div>
+                  <div class="pricing-right">
+                    <span class="pricing-price">$269</span>
+                    <a class="pay-btn" href="https://buy.stripe.com/REPLACE_4H_1G" target="_blank" rel="noopener">Pay</a>
+                  </div>
+                </div>
+
+                <div class="pricing-row">
+                  <div class="pricing-left"><span class="pricing-guests">2 guests</span><span class="pricing-hint">Private group</span></div>
+                  <div class="pricing-right"><span class="pricing-price">$349</span>
+                    <a class="pay-btn" href="https://buy.stripe.com/REPLACE_4H_2G" target="_blank" rel="noopener">Pay</a>
+                  </div>
+                </div>
+
+                <div class="pricing-row">
+                  <div class="pricing-left"><span class="pricing-guests">3 guests</span><span class="pricing-hint">Private group</span></div>
+                  <div class="pricing-right"><span class="pricing-price">$399</span>
+                    <a class="pay-btn" href="https://buy.stripe.com/REPLACE_4H_3G" target="_blank" rel="noopener">Pay</a>
+                  </div>
+                </div>
+
+                <div class="pricing-row">
+                  <div class="pricing-left"><span class="pricing-guests">4 guests</span><span class="pricing-hint">Private group</span></div>
+                  <div class="pricing-right"><span class="pricing-price">$449</span>
+                    <a class="pay-btn" href="https://buy.stripe.com/REPLACE_4H_4G" target="_blank" rel="noopener">Pay</a>
+                  </div>
+                </div>
+
+                <div class="pricing-row">
+                  <div class="pricing-left"><span class="pricing-guests">5 guests</span><span class="pricing-hint">Private group</span></div>
+                  <div class="pricing-right"><span class="pricing-price">$499</span>
+                    <a class="pay-btn" href="https://buy.stripe.com/REPLACE_4H_5G" target="_blank" rel="noopener">Pay</a>
+                  </div>
+                </div>
+
+                <div class="pricing-row">
+                  <div class="pricing-left"><span class="pricing-guests">6 guests</span><span class="pricing-hint">Private group</span></div>
+                  <div class="pricing-right"><span class="pricing-price">$549</span>
+                    <a class="pay-btn" href="https://buy.stripe.com/REPLACE_4H_6G" target="_blank" rel="noopener">Pay</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 6 Hours -->
+            <div class="pricing-card" aria-label="6 hour pricing">
+              <h3>6 Hours</h3>
+              <p class="pricing-desc">Deeper neighborhoods + cultural and food moments.</p>
+
+              <div class="pricing-rows">
+                <div class="pricing-row">
+                  <div class="pricing-left"><span class="pricing-guests">1 guest</span><span class="pricing-hint">Private group</span></div>
+                  <div class="pricing-right"><span class="pricing-price">$399</span>
+                    <a class="pay-btn" href="https://buy.stripe.com/REPLACE_6H_1G" target="_blank" rel="noopener">Pay</a>
+                  </div>
+                </div>
+
+                <div class="pricing-row">
+                  <div class="pricing-left"><span class="pricing-guests">2 guests</span><span class="pricing-hint">Private group</span></div>
+                  <div class="pricing-right"><span class="pricing-price">$499</span>
+                    <a class="pay-btn" href="https://buy.stripe.com/REPLACE_6H_2G" target="_blank" rel="noopener">Pay</a>
+                  </div>
+                </div>
+
+                <div class="pricing-row">
+                  <div class="pricing-left"><span class="pricing-guests">3 guests</span><span class="pricing-hint">Private group</span></div>
+                  <div class="pricing-right"><span class="pricing-price">$549</span>
+                    <a class="pay-btn" href="https://buy.stripe.com/REPLACE_6H_3G" target="_blank" rel="noopener">Pay</a>
+                  </div>
+                </div>
+
+                <div class="pricing-row">
+                  <div class="pricing-left"><span class="pricing-guests">4 guests</span><span class="pricing-hint">Private group</span></div>
+                  <div class="pricing-right"><span class="pricing-price">$609</span>
+                    <a class="pay-btn" href="https://buy.stripe.com/REPLACE_6H_4G" target="_blank" rel="noopener">Pay</a>
+                  </div>
+                </div>
+
+                <div class="pricing-row">
+                  <div class="pricing-left"><span class="pricing-guests">5 guests</span><span class="pricing-hint">Private group</span></div>
+                  <div class="pricing-right"><span class="pricing-price">$659</span>
+                    <a class="pay-btn" href="https://buy.stripe.com/REPLACE_6H_5G" target="_blank" rel="noopener">Pay</a>
+                  </div>
+                </div>
+
+                <div class="pricing-row">
+                  <div class="pricing-left"><span class="pricing-guests">6 guests</span><span class="pricing-hint">Private group</span></div>
+                  <div class="pricing-right"><span class="pricing-price">$709</span>
+                    <a class="pay-btn" href="https://buy.stripe.com/REPLACE_6H_6G" target="_blank" rel="noopener">Pay</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 8 Hours -->
+            <div class="pricing-card featured" aria-label="8 hour pricing">
+              <div class="pricing-badge">Most Popular</div>
+              <h3>8 Hours</h3>
+              <p class="pricing-desc">The signature day — iconic sights + hidden gems, unrushed.</p>
+
+              <div class="pricing-rows">
+                <div class="pricing-row">
+                  <div class="pricing-left"><span class="pricing-guests">1 guest</span><span class="pricing-hint">Private group</span></div>
+                  <div class="pricing-right"><span class="pricing-price">$449</span>
+                    <a class="pay-btn alt" href="https://buy.stripe.com/REPLACE_8H_1G" target="_blank" rel="noopener">Pay</a>
+                  </div>
+                </div>
+
+                <div class="pricing-row">
+                  <div class="pricing-left"><span class="pricing-guests">2 guests</span><span class="pricing-hint">Private group</span></div>
+                  <div class="pricing-right"><span class="pricing-price">$559</span>
+                    <a class="pay-btn alt" href="https://buy.stripe.com/REPLACE_8H_2G" target="_blank" rel="noopener">Pay</a>
+                  </div>
+                </div>
+
+                <div class="pricing-row">
+                  <div class="pricing-left"><span class="pricing-guests">3 guests</span><span class="pricing-hint">Private group</span></div>
+                  <div class="pricing-right"><span class="pricing-price">$619</span>
+                    <a class="pay-btn alt" href="https://buy.stripe.com/REPLACE_8H_3G" target="_blank" rel="noopener">Pay</a>
+                  </div>
+                </div>
+
+                <div class="pricing-row">
+                  <div class="pricing-left"><span class="pricing-guests">4 guests</span><span class="pricing-hint">Private group</span></div>
+                  <div class="pricing-right"><span class="pricing-price">$669</span>
+                    <a class="pay-btn alt" href="https://buy.stripe.com/REPLACE_8H_4G" target="_blank" rel="noopener">Pay</a>
+                  </div>
+                </div>
+
+                <div class="pricing-row">
+                  <div class="pricing-left"><span class="pricing-guests">5 guests</span><span class="pricing-hint">Private group</span></div>
+                  <div class="pricing-right"><span class="pricing-price">$719</span>
+                    <a class="pay-btn alt" href="https://buy.stripe.com/REPLACE_8H_5G" target="_blank" rel="noopener">Pay</a>
+                  </div>
+                </div>
+
+                <div class="pricing-row">
+                  <div class="pricing-left"><span class="pricing-guests">6 guests</span><span class="pricing-hint">Private group</span></div>
+                  <div class="pricing-right"><span class="pricing-price">$769</span>
+                    <a class="pay-btn alt" href="https://buy.stripe.com/REPLACE_8H_6G" target="_blank" rel="noopener">Pay</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="pricing-foot">
+            <strong>Notes:</strong> Transportation, meals, and admission fees are not included.
+            If you need a day trip (Hakone / Kamakura / Nikko), please message us for a tailored quote.
+          </div>
+        </div>
+
+        <!-- ===== Tour Overviews (kept) ===== -->
+        <div class="grid" style="margin-top:16px;">
 
           <!-- 4h -->
           <div class="card">
             <h3>Half Day Tokyo Highlights (4h)</h3>
             <p>
               A refined introduction to Tokyo, perfect for your first day or a short stay.
-              We focus on 2–3 key areas so you can quickly feel oriented and at ease.<br>
-              <strong>$180 / person &nbsp;($360 for 2 guests)</strong>
-            </p>
-            <a class="btn-book" href="https://buy.stripe.com/6oU7sK6TBgo9cd0eoUg7e02" target="_blank" rel="noopener">
-              Book This Tour
-            </a>
-            <p class="book-note">
-              Secure payment in USD via Stripe. You can adjust the number of guests on the next page.
+              We focus on 2–3 key areas so you can quickly feel oriented and at ease.
             </p>
             <button class="toggle">More Details</button>
             <div class="details">
@@ -771,14 +1066,7 @@
             <h3>Extended Half Day &amp; Food Tour (6h)</h3>
             <p>
               A deeper exploration of neighborhoods and food culture.
-              We combine essential sights with local backstreets and carefully chosen eateries.<br>
-              <strong>$270 / person &nbsp;($540 for 2 guests)</strong>
-            </p>
-            <a class="btn-book" href="https://buy.stripe.com/8x2dR81zh4Fr7WK0y4g7e03" target="_blank" rel="noopener">
-              Book This Tour
-            </a>
-            <p class="book-note">
-              Secure payment in USD via Stripe. You can adjust the number of guests on the next page.
+              We combine essential sights with local backstreets and carefully chosen eateries.
             </p>
             <button class="toggle">More Details</button>
             <div class="details">
@@ -797,14 +1085,7 @@
             <h3>Full Day Signature Tour (8h)</h3>
             <p>
               A complete Tokyo day – temples, markets, viewpoints, and hidden gems,
-              woven into one seamless experience at your preferred pace.<br>
-              <strong>$330 / person &nbsp;($660 for 2 guests)</strong>
-            </p>
-            <a class="btn-book" href="https://buy.stripe.com/00w4gy91Jb3Pcd03Kgg7e01" target="_blank" rel="noopener">
-              Book This Tour
-            </a>
-            <p class="book-note">
-              Secure payment in USD via Stripe. You can adjust the number of guests on the next page.
+              woven into one seamless experience at your preferred pace.
             </p>
             <button class="toggle">More Details</button>
             <div class="details">
@@ -1021,6 +1302,8 @@
     <section id="instagram">
       <div class="container">
         <h2>Instagram Overview</h2>
+
+        <div class="instagram-card">
           <div class="instagram-header">
             <h3>@tokyosignaturetours</h3>
             <a href="https://www.instagram.com/tokyosignaturetours?igsh=YzBtNXd4Y3Vjenlt" target="_blank" rel="noopener">
@@ -1170,4 +1453,3 @@
   <script async src="https://www.instagram.com/embed.js"></script>
 </body>
 </html>
-
