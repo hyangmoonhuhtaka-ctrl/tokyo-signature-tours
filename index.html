@@ -1,36 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Tokyo Signature Tours | Private Authentic Experiences in Tokyo, Japan</title>
-  <meta name="description" content="Discover Tokyo through private, authentic tours led by carefully selected local guides. Elegant, customized experiences for discerning travelers." />
-  <meta name="format-detection" content="telephone=no" />
-  <link rel="icon" href="/favicon.ico" />
-  <meta property="og:title" content="Tokyo Signature Tours | Private Authentic Experiences in Tokyo, Japan" />
-  <meta property="og:description" content="Discover Tokyo through private, authentic tours led by carefully selected local guides. Elegant, customized experiences for discerning travelers." />
-  <meta property="og:image" content="/og.jpg" />
-  <meta property="og:type" content="website" />
-  <meta name="twitter:card" content="summary_large_image" />
 
-  <!-- JSON-LD (SEO) -->
+  <title>Tokyo Signature Tours | Private Tokyo Tours & Authentic Experiences in Tokyo, Japan</title>
+  <meta name="description" content="Tokyo Signature Tours offers private, customized tours in Tokyo for couples, families, first-time visitors, and small groups. Enjoy authentic local experiences with carefully selected bilingual guides." />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://tokyosignaturetours.com/" />
+
+  <link rel="icon" href="/favicon.ico" />
+
+  <!-- Performance: prioritize the hero image -->
+  <link rel="preload" as="image" href="/hero-photo.jpg" fetchpriority="high" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Tokyo Signature Tours | Private Tokyo Tours & Authentic Experiences in Tokyo" />
+  <meta property="og:description" content="Private, customized Tokyo tours for couples, families, first-time visitors, and small groups. Authentic local experiences with carefully selected bilingual guides." />
+  <meta property="og:image" content="https://tokyosignaturetours.com/og.jpg" />
+  <meta property="og:url" content="https://tokyosignaturetours.com/" />
+  <meta property="og:type" content="website" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Tokyo Signature Tours | Private Tokyo Tours in Japan" />
+  <meta name="twitter:description" content="Private, customized Tokyo tours for discerning travelers who want authentic local experiences." />
+  <meta name="twitter:image" content="https://tokyosignaturetours.com/og.jpg" />
+
+  <!-- JSON-LD: AI / Search Engine Crawling -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "Tokyo Signature Tours",
-    "url": "https://tokyosignaturetours.com",
-    "description": "Private, luxury tours in Tokyo for discerning travelers.",
-    "areaServed": "Tokyo, Japan",
-    "telephone": "+81-90-8435-0822",
-    "email": "info@tokyosignaturetours.com",
-    "sameAs": [
-      "https://www.instagram.com/tokyosignaturetours?igsh=YzBtNXd4Y3Vjenlt",
-      "https://www.facebook.com/profile.php?id=61580978236755&mibextid=ZbWKwL"
+    "@graph": [
+      {
+        "@type": ["LocalBusiness", "TouristInformationCenter"],
+        "@id": "https://tokyosignaturetours.com/#business",
+        "name": "Tokyo Signature Tours",
+        "url": "https://tokyosignaturetours.com/",
+        "description": "Tokyo Signature Tours provides private, customized tours in Tokyo for couples, families, first-time visitors, and small groups. Experiences are designed around each guest's interests, pace, food preferences, and travel style.",
+        "telephone": "+81-90-8435-0822",
+        "email": "info@tokyosignaturetours.com",
+        "areaServed": {
+          "@type": "City",
+          "name": "Tokyo"
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Tokyo",
+          "addressCountry": "JP"
+        },
+        "sameAs": [
+          "https://www.instagram.com/tokyosignaturetours?igsh=YzBtNXd4Y3Vjenlt",
+          "https://www.facebook.com/profile.php?id=61580978236755&mibextid=ZbWKwL"
+        ],
+        "makesOffer": [
+          {
+            "@type": "Offer",
+            "name": "Half Day Tokyo Highlights",
+            "price": "349",
+            "priceCurrency": "USD",
+            "description": "Private 4-hour customized Tokyo tour for up to 2 guests."
+          },
+          {
+            "@type": "Offer",
+            "name": "Extended Half Day & Food Tour",
+            "price": "499",
+            "priceCurrency": "USD",
+            "description": "Private 6-hour customized Tokyo tour for up to 2 guests, including neighborhoods, culture, and local food moments."
+          },
+          {
+            "@type": "Offer",
+            "name": "Full Day Signature Tour",
+            "price": "559",
+            "priceCurrency": "USD",
+            "description": "Private 8-hour full-day customized Tokyo tour for up to 2 guests."
+          }
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://tokyosignaturetours.com/#website",
+        "url": "https://tokyosignaturetours.com/",
+        "name": "Tokyo Signature Tours",
+        "description": "Private Tokyo tours and authentic local experiences in Tokyo, Japan.",
+        "publisher": {
+          "@id": "https://tokyosignaturetours.com/#business"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://tokyosignaturetours.com/#faqpage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Do you offer private Tokyo tours for first-time visitors?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Tokyo Signature Tours specializes in private customized tours for first-time visitors, couples, families, and small groups. We help guests understand Tokyo's neighborhoods, transportation, food culture, temples, etiquette, and local customs."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can you customize the itinerary?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Every tour is customized based on your interests, pace, hotel location, food preferences, and travel style."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is this a walking tour?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Most tours are private walking tours using Tokyo's public transportation when needed. Private vehicles can be arranged by request for larger groups or special itineraries."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is included in the tour fee?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The fee covers private guiding, language support, and pre-tour planning. Food, drinks, transportation, and attraction tickets are not included and are paid directly by guests."
+            }
+          }
+        ]
+      }
     ]
   }
   </script>
-
+  
   <style>
     /* ==========================================================
        THEME
@@ -952,41 +1052,55 @@
   </header>
 
   <main>
-    <section class="hero" id="top">
-      <div class="container hero-wrap">
-        <div>
-          <span class="eyebrow">Private Authentic Experiences in Tokyo, Japan</span>
-          <h1>Tokyo Signature Tours</h1>
-          <p class="lead">
-            Discover Tokyo through private, carefully curated tours designed for discerning travelers.
-            From iconic landmarks to quiet hidden streets, each day is tailored to your pace and interests.
-          </p>
-          <a href="#booking" class="cta">Choose &amp; Book</a>
-          <ul class="hero-points">
-            <li>Fully private, customized itineraries — no groups, no scripts</li>
-            <li>Hosted by a small team of carefully selected bilingual local guides</li>
-            <li>Ideal for couples, families, and first-time visitors</li>
-          </ul>
-        </div>
-        <div class="hero-img">
-          <img src="/hero-photo.jpg" loading="lazy" alt="Elegant view of Tokyo with cherry blossoms and cityscape, representing private tours by Tokyo Signature Tours" />
-        </div>
-      </div>
-    </section>
 
-    <section id="about">
-      <div class="container">
-        <h2>Private Tours in Tokyo</h2>
-        <p>
-          Tokyo Signature Tours offers more than standard sightseeing. Each experience is hand-crafted by our carefully selected guides
-          to balance comfort, authenticity, and a touch of elegance.
-        </p>
-        <p>
-          Before your visit, we take time to understand your preferences — from food and neighborhoods to pace and interests —
-          so that your first days in Tokyo feel smooth, inspiring, and deeply memorable.
-        </p>
-      </div>
-    </section>
+    <section class="hero" id="top">
+  <div class="container hero-wrap">
+    <div>
+      <span class="eyebrow">Private Authentic Experiences in Tokyo, Japan</span>
+      <h1>Private Tokyo Tours, Customized for Your Travel Style</h1>
+      <p class="lead">
+        Tokyo Signature Tours offers private, customized walking tours in Tokyo for couples, families, first-time visitors, and small groups.
+        Each experience is designed around your interests, pace, food preferences, and travel style.
+      </p>
+      <a href="#booking" class="cta">Choose &amp; Book</a>
+      <ul class="hero-points">
+        <li>Fully private, customized itineraries — no groups, no scripts</li>
+        <li>Hosted by a small team of carefully selected bilingual local guides</li>
+        <li>Ideal for couples, families, first-time visitors, and small groups</li>
+      </ul>
+    </div>
+
+    <div class="hero-img">
+      <img
+        src="/hero-photo.jpg"
+        width="1200"
+        height="800"
+        loading="eager"
+        decoding="async"
+        fetchpriority="high"
+        alt="Private Tokyo tour with Tokyo Signature Tours, featuring an elegant view of Tokyo with cherry blossoms and cityscape"
+      />
+    </div>
+  </div>
+</section>
+    
+   <section id="about">
+  <div class="container">
+    <h2>Private Tours in Tokyo</h2>
+    <p>
+      Tokyo Signature Tours offers private, customized tours in Tokyo for travelers who want more than standard sightseeing.
+      Each experience is hand-crafted by carefully selected bilingual local guides to balance comfort, authenticity, and a touch of elegance.
+    </p>
+    <p>
+      Before your visit, we take time to understand your preferences — from food and neighborhoods to pace, interests, and travel style —
+      so that your first days in Tokyo feel smooth, inspiring, and deeply memorable.
+    </p>
+    <p>
+      Whether you are visiting Japan for the first time, traveling as a couple, exploring with family, or planning a special private day in Tokyo,
+      we design each route around you.
+    </p>
+  </div>
+</section>
 
     <section id="tours">
       <div class="container">
@@ -1308,15 +1422,15 @@
         <h2>Photo Gallery</h2>
         <div class="slider-wrap" id="tst-slider">
           <div class="slider-track">
-            <div class="slide"><img src="/images/TourPhoto-1.jpg"  alt="Guests exploring a quiet hidden alley in Tokyo" loading="lazy"></div>
-            <div class="slide"><img src="/images/TourPhoto-2.jpg"  alt="Guests relaxing at a Japanese garden pavilion" loading="lazy"></div>
-            <div class="slide"><img src="/images/TourPhoto-4.jpg"  alt="Tour group in front of a traditional gate in Tokyo" loading="lazy"></div>
-            <div class="slide"><img src="/images/TourPhoto-5.jpg"  alt="Smiling guests in Asakusa street with Tokyo Skytree" loading="lazy"></div>
-            <div class="slide"><img src="/images/TourPhoto-6.jpg"  alt="Guests enjoying the Asakusa sumo street area" loading="lazy"></div>
-            <div class="slide"><img src="/images/TourPhoto-7.jpg"  alt="Walking through Takeshita Street in Harajuku" loading="lazy"></div>
-            <div class="slide"><img src="/images/TourPhoto-8.jpg"  alt="Group at Meiji Shrine entrance" loading="lazy"></div>
-            <div class="slide"><img src="/images/TourPhoto-9.jpg"  alt="Guests posing by sake barrel wall at Meiji Jingu" loading="lazy"></div>
-            <div class="slide"><img src="/images/TourPhoto-11.jpg" alt="Guests enjoying a theater show in Tokyo" loading="lazy"></div>
+            <div class="slide"><img src="/images/TourPhoto-1.jpg"  width="1200" height="800" alt="Guests exploring a quiet hidden alley in Tokyo" loading="lazy" decoding="async"></div>
+            <div class="slide"><img src="/images/TourPhoto-2.jpg"  width="1200" height="800" alt="Guests relaxing at a Japanese garden pavilion" loading="lazy" decoding="async"></div>
+            <div class="slide"><img src="/images/TourPhoto-4.jpg"  width="1200" height="800" alt="Tour group in front of a traditional gate in Tokyo" loading="lazy" decoding="async"></div>
+            <div class="slide"><img src="/images/TourPhoto-5.jpg"  width="1200" height="800" alt="Smiling guests in Asakusa street with Tokyo Skytree" loading="lazy" decoding="async"></div>
+            <div class="slide"><img src="/images/TourPhoto-6.jpg"  width="1200" height="800" alt="Guests enjoying the Asakusa sumo street area" loading="lazy" decoding="async"></div>
+            <div class="slide"><img src="/images/TourPhoto-7.jpg"  width="1200" height="800" alt="Walking through Takeshita Street in Harajuku" loading="lazy" decoding="async"></div>
+            <div class="slide"><img src="/images/TourPhoto-8.jpg"  width="1200" height="800" alt="Group at Meiji Shrine entrance" loading="lazy" decoding="async"></div>
+            <div class="slide"><img src="/images/TourPhoto-9.jpg"  width="1200" height="800" alt="Guests posing by sake barrel wall at Meiji Jingu" loading="lazy" decoding="async"></div>
+            <div class="slide"><img src="/images/TourPhoto-11.jpg" width="1200" height="800" alt="Guests enjoying a theater show in Tokyo" loading="lazy" decoding="async"></div>
           </div>
           <button class="slider-btn slider-prev" aria-label="Previous slide" type="button">‹</button>
           <button class="slider-btn slider-next" aria-label="Next slide" type="button">›</button>
@@ -1326,41 +1440,85 @@
     </section>
 
     <section id="faq">
-      <div class="container">
-        <h2>Frequently Asked Questions</h2>
-        <div class="grid">
-          <div class="card">
-            <h3>How far in advance should we book?</h3>
-            <p>
-              Tours can fill up quickly, especially during spring, autumn, and holiday periods.
-              If possible, we recommend booking at least 2–4 weeks in advance so we have enough time
-              to learn about your preferences and design a custom itinerary for you.
-            </p>
-          </div>
-          <div class="card">
-            <h3>What happens if it rains?</h3>
-            <p>
-              Tours generally run in light rain. We may adjust the route to include more indoor options.
-              In case of severe weather warnings or safety concerns, we may reschedule or cancel according to our Terms of Use.
-            </p>
-          </div>
-          <div class="card">
-            <h3>Are tours suitable for children or older guests?</h3>
-            <p>
-              Yes. Routes and pace can be adjusted for families with children or guests who prefer a slower pace.
-              Please share any concerns about walking distance, stairs, or strollers in advance so we can plan accordingly.
-            </p>
-          </div>
-          <div class="card">
-            <h3>What is included in the tour fee?</h3>
-            <p>
-              The fee covers private guiding, language support, and pre-tour planning.
-              Food, drinks, transportation, and attraction tickets are not included and are paid directly by guests.
-            </p>
-          </div>
-        </div>
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Do you offer private Tokyo tours for first-time visitors?</h3>
+        <p>
+          Yes. Tokyo Signature Tours specializes in private customized tours for first-time visitors, couples, families, and small groups.
+          We help guests understand Tokyo's neighborhoods, transportation, food culture, temples, etiquette, and local customs.
+        </p>
       </div>
-    </section>
+
+      <div class="card">
+        <h3>Can you customize the itinerary?</h3>
+        <p>
+          Yes. Every tour is customized based on your interests, pace, hotel location, food preferences, and travel style.
+          Before the tour, we ask a few questions and prepare a draft itinerary tailored to you.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Is this a walking tour?</h3>
+        <p>
+          Yes. Most tours are private walking tours using Tokyo's excellent public transportation when needed.
+          Private vehicles can be arranged by request for larger groups, day trips, or special itineraries.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Do you offer food tours in Tokyo?</h3>
+        <p>
+          Yes. Our 6-hour experience can include local food moments such as ramen, sushi, izakaya, market snacks,
+          or neighborhood restaurants, depending on your preferences.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>How far in advance should we book?</h3>
+        <p>
+          Tours can fill up quickly, especially during spring, autumn, and holiday periods.
+          If possible, we recommend booking at least 2–4 weeks in advance so we have enough time
+          to learn about your preferences and design a custom itinerary for you.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>What happens if it rains?</h3>
+        <p>
+          Tours generally run in light rain. We may adjust the route to include more indoor options.
+          In case of severe weather warnings or safety concerns, we may reschedule or cancel according to our Terms of Use.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Are tours suitable for children or older guests?</h3>
+        <p>
+          Yes. Routes and pace can be adjusted for families with children or guests who prefer a slower pace.
+          Please share any concerns about walking distance, stairs, or strollers in advance so we can plan accordingly.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>What is included in the tour fee?</h3>
+        <p>
+          The fee covers private guiding, language support, and pre-tour planning.
+          Food, drinks, transportation, and attraction tickets are not included and are paid directly by guests.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>How do we book?</h3>
+        <p>
+          You can book directly through the website by selecting your tour length and group size.
+          You can also contact us by WhatsApp or email. After confirming your date, group size, and preferred duration,
+          we begin planning your custom itinerary.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
 
     <section id="instagram">
       <div class="container">
@@ -1757,6 +1915,43 @@
     })();
   </script>
 
-  <script async src="https://www.instagram.com/embed.js"></script>
+ <script>
+  /*
+    Performance improvement:
+    Load Instagram embed only when the Instagram section is near the viewport.
+    This keeps the first page load faster, especially on mobile.
+  */
+  (function(){
+    const instagramSection = document.getElementById('instagram');
+    if (!instagramSection) return;
+
+    let loaded = false;
+
+    const loadInstagram = () => {
+      if (loaded) return;
+      loaded = true;
+
+      const s = document.createElement('script');
+      s.src = 'https://www.instagram.com/embed.js';
+      s.async = true;
+      document.body.appendChild(s);
+    };
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            loadInstagram();
+            observer.disconnect();
+          }
+        });
+      }, { rootMargin: '300px 0px' });
+
+      observer.observe(instagramSection);
+    } else {
+      window.addEventListener('load', loadInstagram);
+    }
+  })();
+</script>
 </body>
 </html>
