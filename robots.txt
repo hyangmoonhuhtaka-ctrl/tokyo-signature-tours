@@ -2,7 +2,6 @@
 User-agent: *
 Allow: /
 
-# AI crawler explicit allows (informational; real obedience varies)
 User-agent: GPTBot
 Allow: /
 User-agent: ChatGPT-User
