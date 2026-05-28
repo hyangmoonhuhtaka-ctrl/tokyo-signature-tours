@@ -1,1 +1,5 @@
 
+User-agent: *
+Allow: /
+
+Sitemap: https://tokyosignaturetours.com/sitemap.xml
