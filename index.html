@@ -1003,6 +1003,51 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       .seg-scroll::before,.seg-scroll::after{display:none}
       .swipe-hint{display:none}
     }
+    /* ==========================================================
+   FIX: Mobile duration arrows should not cover 4h/6h/8h text
+   ========================================================== */
+@media (max-width:899px){
+  .duration-wrap{
+    padding-top:48px;
+  }
+
+  .dur-arrow{
+    top:0;
+    transform:none;
+    width:38px;
+    height:38px;
+  }
+
+  .dur-prev{
+    left:auto;
+    right:50px;
+  }
+
+  .dur-next{
+    right:6px;
+  }
+
+  .seg-btn{
+    padding:14px 14px;
+  }
+}
+
+/* ==========================================================
+   FIX: Show selected price inside booking module on desktop
+   ========================================================== */
+.summary-price{
+  margin-top:4px;
+  font-size:16px;
+  font-weight:950;
+  color:rgba(17,24,39,.95);
+  letter-spacing:.01em;
+}
+
+@media (min-width:900px){
+  .summary-price{
+    font-size:18px;
+  }
+}
   </style>
 </head>
 
@@ -1196,6 +1241,7 @@ Each tour is customized to your interests, pace, and travel style. Discover icon
                 <div class="mini-txt">
                   <p class="mini-title">Your selection</p>
                   <p class="mini-sub" id="summaryLine">8 Hours • 2 guests</p>
+<p class="summary-price" id="summaryPrice">$279 per person</p>
                 </div>
               </div>
 
@@ -1630,7 +1676,8 @@ Each tour is customized to your interests, pace, and travel style. Discover icon
       const bookBtn = document.getElementById('bookBtn');
       const stickyLine = document.getElementById('stickyLine');
       const stickyPrice = document.getElementById('stickyPrice');
-      const summaryLine = document.getElementById('summaryLine');
+const summaryLine = document.getElementById('summaryLine');
+const summaryPrice = document.getElementById('summaryPrice');
 
       const durationScroll = document.getElementById('durationScroll');
       const segBtns = [...document.querySelectorAll('.seg-btn')];
@@ -1641,7 +1688,8 @@ Each tour is customized to your interests, pace, and travel style. Discover icon
 
       let state = { duration: 8, guests: 2 };
 
-      const fmtUSD = (n)=> `$${Number(n).toLocaleString('en-US')}`;
+const key = ()=> `${state.duration}h_${state.guests}g`;
+
 const fmtUSDPerPerson = (total, guests)=> {
   const perPerson = Math.round(total / guests);
   return `$${perPerson} per person`;
@@ -1655,8 +1703,13 @@ const fmtUSDPerPerson = (total, guests)=> {
         const lineText = `${state.duration} Hours • ${state.guests} ${state.guests === 1 ? 'guest' : 'guests'}`;
 
         summaryLine.textContent = lineText;
-        stickyLine.textContent = lineText;
-        if (p != null) stickyPrice.textContent = fmtUSDPerPerson(p, state.guests);
+stickyLine.textContent = lineText;
+
+if (p != null) {
+  const priceText = fmtUSDPerPerson(p, state.guests);
+  stickyPrice.textContent = priceText;
+  if (summaryPrice) summaryPrice.textContent = priceText;
+}
 
         const url = stripeLinks[key()];
         if (url && !url.includes('REPLACE_')) {
