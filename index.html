@@ -138,7 +138,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   ]
 }
 </script>
-
+  
   <style>
     /* ==========================================================
        THEME
@@ -1058,6 +1058,74 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     font-size:18px;
   }
 }
+    /* ==========================================================
+   FIX: Inquiry CTA instead of Stripe checkout
+   ========================================================== */
+.booking-contact-actions{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:10px;
+  margin-top:14px;
+}
+
+.booking-contact-btn{
+  min-height:48px;
+  border-radius:999px;
+  font-size:14px;
+  font-weight:900;
+  cursor:pointer;
+  border:1px solid rgba(0,0,0,.10);
+  box-shadow:0 10px 22px rgba(0,0,0,.06);
+}
+
+.booking-contact-btn.primary{
+  background:var(--accent);
+  color:#fff;
+  border-color:rgba(232,91,140,.25);
+}
+
+.booking-contact-btn.secondary{
+  background:#fff;
+  color:var(--text);
+}
+
+.booking-contact-btn:hover{
+  opacity:.96;
+}
+
+.sticky-actions{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  flex-shrink:0;
+}
+
+.sticky-email-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:48px;
+  padding:0 14px;
+  border-radius:999px;
+  border:1px solid rgba(0,0,0,.12);
+  background:#fff;
+  color:var(--text);
+  font-size:14px;
+  font-weight:900;
+  white-space:nowrap;
+  cursor:pointer;
+  box-shadow:0 10px 22px rgba(0,0,0,.06);
+}
+
+.sticky-email-btn:hover{
+  opacity:.96;
+}
+
+@media (min-width:700px){
+  .booking-contact-actions{
+    grid-template-columns:1fr 1fr;
+  }
+}
   </style>
 </head>
 
@@ -1093,7 +1161,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </p>
 
     <div class="side-menu-actions" aria-label="Quick actions">
-      <a class="btn primary" href="#booking">Book a Tour</a>
+      <a class="btn primary" href="#booking">Check Price &amp; Inquire</a>
       <a class="btn" href="https://wa.me/819084350822" target="_blank" rel="noopener">WhatsApp Inquiry</a>
     </div>
   </aside>
@@ -1128,7 +1196,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             Explore Tokyo with a private tour guide and a carefully customized itinerary designed around your interests, pace, and travel style.
             From iconic landmarks to quiet hidden streets, each experience is planned to feel seamless, authentic, and personal.
           </p>
-          <a href="#booking" class="cta">Choose &amp; Book</a>
+          <a href="#booking" class="cta">Check Price &amp; Inquire</a>
           <ul class="hero-points">
             <li>Private Tokyo tours with customized itineraries — no groups, no scripts</li>
             <li>Hosted by carefully selected bilingual local guides in Tokyo</li>
@@ -1158,10 +1226,10 @@ Each tour is customized to your interests, pace, and travel style. Discover icon
         <div class="booking-shell" id="booking" aria-label="Tour booking module">
           <div class="booking-head">
             <p class="booking-kicker">Booking</p>
-            <h3 class="booking-title">Choose your private Tokyo tour — then book instantly</h3>
-            <p class="booking-sub">
-              Select your preferred duration and group size. Payment is secure via Stripe (USD). Your private Tokyo itinerary is tailored after booking.
-            </p>
+           <h3 class="booking-title">Choose your private Tokyo tour — then contact us</h3>
+<p class="booking-sub">
+  Select your preferred duration and group size. Then send us an inquiry by WhatsApp or email. We will confirm availability and help finalize your private Tokyo itinerary.
+</p>
           </div>
 
           <div class="booking-body">
@@ -1270,14 +1338,23 @@ Each tour is customized to your interests, pace, and travel style. Discover icon
                   <svg viewBox="0 0 24 24"><path d="M20 6H4V4h16Zm0 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8Zm-2 4H6v2h12Z"/></svg>
                 </div>
                 <div class="mini-txt">
-                  <p class="mini-title">Instant confirmation</p>
-                  <p class="mini-sub">Secure Stripe payment (USD). We finalize your itinerary after booking.</p>
-                </div>
-              </div>
+                  <p class="mini-title">Quick inquiry</p>
+<p class="mini-sub">Send us your preferred tour details by WhatsApp or email. We will confirm availability and next steps.</p>
+</div>
+</div>
 
-              <p style="margin:2px 4px 0;color:rgba(91,100,112,.95);font-size:12.5px;line-height:1.7;">
-                Note: Transportation, meals, and admission fees are not included. Day trips (Hakone / Kamakura / Nikko) available by request.
-              </p>
+<p style="margin:2px 4px 0;color:rgba(91,100,112,.95);font-size:12.5px;line-height:1.7;">
+  Note: Transportation, meals, and admission fees are not included. Day trips such as Hakone, Kamakura, and Nikko are available by request.
+</p>
+
+<div class="booking-contact-actions" aria-label="Contact options">
+  <button class="booking-contact-btn primary" id="bookingWhatsappBtn" type="button">
+    Inquire on WhatsApp
+  </button>
+  <button class="booking-contact-btn secondary" id="bookingEmailBtn" type="button">
+    Inquire by Email
+  </button>
+</div>
             </div>
           </div>
         </div>
@@ -1627,25 +1704,30 @@ Each tour is customized to your interests, pace, and travel style. Discover icon
     </div>
   </footer>
 
-  <div class="sticky-buy" id="stickyBuy" aria-label="Purchase bar">
+  <div class="sticky-buy" id="stickyBuy" aria-label="Inquiry bar">
     <div class="sticky-inner">
       <div class="sticky-left">
         <div class="sticky-line1" id="stickyLine">8 Hours • 2 guests</div>
         <div class="sticky-price" id="stickyPrice">From $279 per person</div>
       </div>
 
-      <button class="sticky-btn" id="bookBtn" type="button" aria-label="Book on Stripe">
-        Book on Stripe
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14ZM5 5h6v2H7v10h10v-4h2v6H5Z"/></svg>
-      </button>
+      <div class="sticky-actions">
+  <button class="sticky-btn" id="bookBtn" type="button" aria-label="Inquire on WhatsApp">
+    WhatsApp
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14ZM5 5h6v2H7v10h10v-4h2v6H5Z"/></svg>
+  </button>
+  <button class="sticky-email-btn" id="stickyEmailBtn" type="button" aria-label="Inquire by Email">
+    Email
+  </button>
+</div>
     </div>
   </div>
 
   <script>
     /* ==========================================================
-       STRIPE PAYMENT LINKS (REPLACE THESE)
-       Key format: "<duration>h_<guests>g"
-       ========================================================== */
+   STRIPE PAYMENT LINKS
+   Currently not used. Inquiry CTA is active instead.
+   ========================================================== */
     const stripeLinks = {
       "4h_1g": "https://buy.stripe.com/REPLACE_4H_1G",
       "4h_2g": "https://buy.stripe.com/REPLACE_4H_2G",
@@ -1682,10 +1764,14 @@ Each tour is customized to your interests, pace, and travel style. Discover icon
        BOOKING UI LOGIC + FIXED SWIPE RELIABILITY
        ========================================================== */
     (function(){
-      const sticky = document.getElementById('stickyBuy');
-      const bookBtn = document.getElementById('bookBtn');
-      const stickyLine = document.getElementById('stickyLine');
-      const stickyPrice = document.getElementById('stickyPrice');
+     const sticky = document.getElementById('stickyBuy');
+const bookBtn = document.getElementById('bookBtn');
+const stickyEmailBtn = document.getElementById('stickyEmailBtn');
+const bookingWhatsappBtn = document.getElementById('bookingWhatsappBtn');
+const bookingEmailBtn = document.getElementById('bookingEmailBtn');
+
+const stickyLine = document.getElementById('stickyLine');
+const stickyPrice = document.getElementById('stickyPrice');
 const summaryLine = document.getElementById('summaryLine');
 const summaryPrice = document.getElementById('summaryPrice');
 
@@ -1721,14 +1807,23 @@ if (p != null) {
   if (summaryPrice) summaryPrice.textContent = priceText;
 }
 
-        const url = stripeLinks[key()];
-        if (url && !url.includes('REPLACE_')) {
-          bookBtn.disabled = false;
-          bookBtn.dataset.href = url;
-        } else {
-          bookBtn.disabled = true;
-          bookBtn.dataset.href = '';
-        }
+        const inquiryText =
+  `Hello Tokyo Signature Tours,\n\n` +
+  `I am interested in a private Tokyo tour.\n` +
+  `Preferred duration: ${state.duration} Hours\n` +
+  `Group size: ${state.guests} ${state.guests === 1 ? 'guest' : 'guests'}\n` +
+  `Estimated price: ${p != null ? fmtUSDPerPerson(p, state.guests) : 'Please advise'}\n\n` +
+  `Could you please confirm availability and next steps?`;
+
+const encodedInquiryText = encodeURIComponent(inquiryText);
+const whatsappUrl = `https://wa.me/819084350822?text=${encodedInquiryText}`;
+const emailSubject = encodeURIComponent('Private Tokyo Tour Inquiry');
+const emailUrl = `mailto:info@tokyosignaturetours.com?subject=${emailSubject}&body=${encodedInquiryText}`;
+
+bookBtn.dataset.href = whatsappUrl;
+if (stickyEmailBtn) stickyEmailBtn.dataset.href = emailUrl;
+if (bookingWhatsappBtn) bookingWhatsappBtn.dataset.href = whatsappUrl;
+if (bookingEmailBtn) bookingEmailBtn.dataset.href = emailUrl;
       };
 
       /* FIX: reliable centering across Android/Chrome (offset-based) */
@@ -1787,11 +1882,16 @@ if (p != null) {
         window.requestAnimationFrame(updateArrowState);
       }, {passive:true});
 
-      bookBtn.addEventListener('click', ()=>{
-        const url = bookBtn.dataset.href;
-        if (!url) return;
-        window.open(url, '_blank', 'noopener');
-      });
+      const openInquiry = (btn)=>{
+  const url = btn?.dataset?.href;
+  if (!url) return;
+  window.open(url, '_blank', 'noopener');
+};
+
+bookBtn && bookBtn.addEventListener('click', ()=> openInquiry(bookBtn));
+stickyEmailBtn && stickyEmailBtn.addEventListener('click', ()=> openInquiry(stickyEmailBtn));
+bookingWhatsappBtn && bookingWhatsappBtn.addEventListener('click', ()=> openInquiry(bookingWhatsappBtn));
+bookingEmailBtn && bookingEmailBtn.addEventListener('click', ()=> openInquiry(bookingEmailBtn));
 
       const enableSticky = ()=> {
         sticky.style.display = 'block';
