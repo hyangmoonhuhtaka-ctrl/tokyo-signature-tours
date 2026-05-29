@@ -1899,7 +1899,7 @@ if (bookingEmailBtn) bookingEmailBtn.dataset.href = emailUrl;
   });
 };
 
-const openInquiry = (btn, leadSource)=>{
+const openInquiry = (btn, leadSource = 'unknown_inquiry')=>{
   const url = btn?.dataset?.href;
   if (!url) return;
 
