@@ -1891,16 +1891,36 @@ if (bookingEmailBtn) bookingEmailBtn.dataset.href = emailUrl;
         window.requestAnimationFrame(updateArrowState);
       }, {passive:true});
 
-      const openInquiry = (btn)=>{
+      const sendGAEvent = (eventName, params = {}) => {
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({
+    event: eventName,
+    ...params
+  });
+};
+
+const openInquiry = (btn, leadSource)=>{
   const url = btn?.dataset?.href;
   if (!url) return;
+
+  const p = prices[state.duration]?.[state.guests];
+  const perPerson = p != null ? Math.round(p / state.guests) : null;
+
+  sendGAEvent('generate_lead', {
+    lead_source: leadSource,
+    tour_duration: state.duration,
+    group_size: state.guests,
+    total_price_usd: p || null,
+    price_per_person_usd: perPerson
+  });
+
   window.open(url, '_blank', 'noopener');
 };
 
-bookBtn && bookBtn.addEventListener('click', ()=> openInquiry(bookBtn));
-stickyEmailBtn && stickyEmailBtn.addEventListener('click', ()=> openInquiry(stickyEmailBtn));
-bookingWhatsappBtn && bookingWhatsappBtn.addEventListener('click', ()=> openInquiry(bookingWhatsappBtn));
-bookingEmailBtn && bookingEmailBtn.addEventListener('click', ()=> openInquiry(bookingEmailBtn));
+bookBtn && bookBtn.addEventListener('click', ()=> openInquiry(bookBtn, 'sticky_whatsapp'));
+stickyEmailBtn && stickyEmailBtn.addEventListener('click', ()=> openInquiry(stickyEmailBtn, 'sticky_email'));
+bookingWhatsappBtn && bookingWhatsappBtn.addEventListener('click', ()=> openInquiry(bookingWhatsappBtn, 'booking_whatsapp'));
+bookingEmailBtn && bookingEmailBtn.addEventListener('click', ()=> openInquiry(bookingEmailBtn, 'booking_email'));
 
       const enableSticky = ()=> {
         sticky.style.display = 'block';
