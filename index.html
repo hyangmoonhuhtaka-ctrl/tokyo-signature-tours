@@ -1453,7 +1453,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="sticky-inner">
       <div class="sticky-left">
         <div class="sticky-line1" id="stickyLine">8 Hours • 2 guests</div>
-        <div class="sticky-price" id="stickyPrice">$559</div>
+        <div class="sticky-price" id="stickyPrice">From $279 per person</div>
       </div>
 
       <button class="sticky-btn" id="bookBtn" type="button" aria-label="Book on Stripe">
@@ -1520,7 +1520,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       let state = { duration: 8, guests: 2 };
 
       const fmtUSD = (n)=> `$${Number(n).toLocaleString('en-US')}`;
-      const key = ()=> `${state.duration}h_${state.guests}g`;
+const fmtUSDPerPerson = (total, guests)=> {
+  const perPerson = Math.round(total / guests);
+  return `$${perPerson} per person`;
+};
 
       const render = ()=> {
         segBtns.forEach(b => b.setAttribute('aria-pressed', String(Number(b.dataset.duration) === state.duration)));
@@ -1531,7 +1534,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         summaryLine.textContent = lineText;
         stickyLine.textContent = lineText;
-        if (p != null) stickyPrice.textContent = fmtUSD(p);
+        if (p != null) stickyPrice.textContent = fmtUSDPerPerson(p, state.guests);
 
         const url = stripeLinks[key()];
         if (url && !url.includes('REPLACE_')) {
