@@ -895,6 +895,141 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     blockquote p{margin:2px 0 6px}
     blockquote em{font-size:13px;color:var(--muted)}
 
+    .reviews-intro{
+      display:flex;
+      flex-direction:column;
+      align-items:flex-start;
+      gap:14px;
+      margin-bottom:20px;
+    }
+    .reviews-intro p{margin:0}
+    .review-carousel{position:relative}
+    .review-grid{
+      display:flex;
+      gap:14px;
+      overflow-x:auto;
+      scroll-snap-type:x mandatory;
+      scroll-behavior:smooth;
+      scrollbar-width:none;
+      overscroll-behavior-x:contain;
+      padding:4px 2px 12px;
+      -webkit-overflow-scrolling:touch;
+    }
+    .review-grid::-webkit-scrollbar{display:none}
+    .review-card{
+      flex:0 0 86%;
+      scroll-snap-align:start;
+      margin:0;
+      border:1px solid var(--line);
+      border-radius:8px;
+      overflow:hidden;
+      background:#fff;
+      box-shadow:0 10px 26px rgba(0,0,0,.06);
+    }
+    .review-open{
+      width:100%;
+      padding:0;
+      border:0;
+      background:transparent;
+      cursor:zoom-in;
+      text-align:inherit;
+    }
+    .review-open img{
+      width:100%;
+      aspect-ratio:1 / 1;
+      object-fit:cover;
+      transition:transform .2s ease;
+    }
+    .review-open:hover img{transform:scale(1.015)}
+    .review-meta{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding:12px 14px;
+      border-top:1px solid var(--line);
+    }
+    .review-name{font-weight:850}
+    .review-guide{font-size:13px;color:var(--muted)}
+    .review-stars{
+      color:#b51e1e;
+      letter-spacing:.08em;
+      white-space:nowrap;
+      font-size:13px;
+    }
+    .review-controls{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:12px;
+      margin-top:10px;
+    }
+    .review-arrow{
+      display:grid;
+      place-items:center;
+      width:44px;
+      height:44px;
+      padding:0;
+      border:1px solid rgba(0,0,0,.12);
+      border-radius:50%;
+      background:#fff;
+      color:var(--text);
+      font-size:26px;
+      line-height:1;
+      cursor:pointer;
+      box-shadow:0 6px 18px rgba(0,0,0,.08);
+      transition:background .2s ease,transform .2s ease,opacity .2s ease;
+    }
+    .review-arrow:hover:not(:disabled){background:#fff1f6;transform:translateY(-1px)}
+    .review-arrow:focus-visible,.review-open:focus-visible{
+      outline:3px solid rgba(232,91,140,.32);
+      outline-offset:3px;
+    }
+    .review-arrow:disabled{opacity:.35;cursor:default;box-shadow:none}
+    .review-status{
+      min-width:58px;
+      text-align:center;
+      color:var(--muted);
+      font-size:14px;
+      font-variant-numeric:tabular-nums;
+    }
+    .review-swipe-hint{
+      margin:4px 0 0;
+      color:var(--muted);
+      font-size:12px;
+      text-align:center;
+    }
+    .review-dialog{
+      width:min(92vw,760px);
+      max-height:92vh;
+      padding:0;
+      border:0;
+      border-radius:8px;
+      background:#fff;
+      box-shadow:var(--shadow2);
+    }
+    .review-dialog::backdrop{background:rgba(12,15,20,.72)}
+    .review-dialog img{
+      width:100%;
+      max-height:88vh;
+      object-fit:contain;
+    }
+    .review-dialog-close{
+      position:absolute;
+      top:10px;
+      right:10px;
+      width:42px;
+      height:42px;
+      border:1px solid rgba(0,0,0,.12);
+      border-radius:999px;
+      background:rgba(255,255,255,.94);
+      color:var(--text);
+      font-size:25px;
+      line-height:1;
+      cursor:pointer;
+      box-shadow:0 6px 18px rgba(0,0,0,.12);
+    }
+
     .slider-wrap{
       position:relative;
       overflow:hidden;
@@ -991,6 +1126,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       .hero-img img,.slide img{height:420px}
       h2{font-size:26px}
       .grid{grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+      .reviews-intro{flex-direction:row;align-items:center;justify-content:space-between}
+      .review-grid{gap:16px}
+      .review-card{flex-basis:calc((100% - 32px) / 3)}
+      .review-swipe-hint{display:none}
       .card{padding:18px}
       .details-section{padding:24px 20px}
       .side-menu{display:none}
@@ -1150,7 +1289,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <a href="#tours">Tours</a>
       <a href="#details">Highlights &amp; Inclusions</a>
       <a href="#why-choose-us">Why Choose Us</a>
-      <a href="#testimonials">Testimonials</a>
+      <a href="#testimonials">Guest Reviews</a>
       <a href="#gallery">Photo Gallery</a>
       <a href="#faq">FAQ</a>
       <a href="#instagram">Instagram Overview</a>
@@ -1175,7 +1314,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <a href="#tours">Tours</a>
         <a href="#details">Highlights</a>
         <a href="#why-choose-us">Why Us</a>
-        <a href="#testimonials">Testimonials</a>
+        <a href="#testimonials">Reviews</a>
         <a href="#gallery">Gallery</a>
         <a href="#instagram">Instagram</a>
         <a href="#contact">Contact</a>
@@ -1489,71 +1628,39 @@ Each tour is customized to your interests, pace, and travel style. Discover icon
 
     <section id="testimonials">
       <div class="container">
-        <h2>Guest Testimonials</h2>
+        <h2>Guest Reviews</h2>
+        <div class="reviews-intro">
+          <div>
+            <p class="stars" aria-label="5 out of 5 stars">★★★★★</p>
+            <h3>Real Stories from Our Guests</h3>
+            <p>Personalized private tours, thoughtful itineraries, and memorable days across Tokyo.</p>
+          </div>
+          <a class="cta" href="https://www.google.com/maps/place/Tokyo+Signature+Tours+%7C+Private+Tokyo+Tours/@35.701622,139.6885977,14z/data=!3m1!4b1!4m6!3m5!1s0x2ae76d89645afc83:0x968877d08d9a25e1!8m2!3d35.7015889!4d139.7091972!16s%2Fg%2F11yrbvflx0" target="_blank" rel="noopener">
+            View Reviews on Google
+          </a>
+        </div>
 
-        <div class="card" style="margin-bottom:18px;">
-  <p class="stars">★★★★★</p>
-  <h3>Trusted by Guests on Google Maps</h3>
-  <p>
-    Guests consistently highlight our private Tokyo tours, personalized itineraries, and carefully selected bilingual local guides.
-  </p>
-  <a class="cta" href="https://www.google.com/maps/place/Tokyo+Signature+Tours+%7C+Private+Tokyo+Tours/@35.701622,139.6885977,14z/data=!3m1!4b1!4m6!3m5!1s0x2ae76d89645afc83:0x968877d08d9a25e1!8m2!3d35.7015889!4d139.7091972!16s%2Fg%2F11yrbvflx0" target="_blank" rel="noopener">
-    View Latest Reviews on Google Maps
-  </a>
-</div>
-
-        <blockquote>
-          <p class="stars">⭐⭐⭐⭐⭐</p>
-          <p><strong>“He made our first day in Tokyo so easy.”</strong><br>
-          <em>Couple from USA, first time in Japan</em></p>
-          <p>
-            Our experience with Taka as a personal guide was wonderful. We were on our first day in Tokyo and he was
-            greatly helpful in sharing important cultural customs as well as practical advice regarding exchanging
-            currency and getting around on the subway...
-          </p>
-        </blockquote>
-
-        <blockquote>
-          <p class="stars">⭐⭐⭐⭐⭐</p>
-          <p><strong>“Definitely a highlight of our trip.”</strong><br>
-          <em>Group of friends from USA</em></p>
-          <p>
-            It was so personalized and our guide was amazing — a pleasure to spend the day with and they made the
-            experience truly memorable. Definitely a highlight of our trip.
-          </p>
-        </blockquote>
-
-        <blockquote>
-          <p class="stars">⭐⭐⭐⭐⭐</p>
-          <p><strong>“Warm, genuine, and great with families.”</strong><br>
-          <em>Family traveler</em></p>
-          <p>
-            Our guide was a lovely, warm, genuine person who took a real interest in our family.
-            Communication was excellent and I would recommend Tokyo Signature Tours to anyone.
-          </p>
-        </blockquote>
-
-        <blockquote>
-          <p class="stars">⭐⭐⭐⭐⭐</p>
-          <p><strong>“They truly made our day so special.”</strong><br>
-          <em>Couple from Canada</em></p>
-          <p>
-            Our guide was a pleasure to be with, very considerate, and made us feel extremely comfortable as we explored
-            the wonderful highlights of Tokyo. We would highly recommend Tokyo Signature Tours.
-          </p>
-        </blockquote>
-
-        <blockquote>
-          <p class="stars">⭐⭐⭐⭐⭐</p>
-          <p><strong>“An incredible, authentic experience.”</strong><br>
-          <em>Solo traveler</em></p>
-          <p>
-            I had an incredible authentic experience. The guide was phenomenal
-            and taught me about the history of the places we visited as well as the local customs and traditions.
-          </p>
-        </blockquote>
+        <div class="review-carousel">
+          <div class="review-grid" id="review-grid" role="region" aria-label="Guest reviews" tabindex="0"></div>
+          <div class="review-controls" aria-label="Review navigation">
+            <button class="review-arrow review-prev" type="button" aria-label="Previous reviews" title="Previous reviews">‹</button>
+            <span class="review-status" id="review-status" aria-live="polite">1 / 10</span>
+            <button class="review-arrow review-next" type="button" aria-label="Next reviews" title="Next reviews">›</button>
+          </div>
+          <p class="review-swipe-hint">Swipe to explore more guest stories</p>
+        </div>
+        <noscript>
+          <figure class="review-card">
+            <img src="/images/reviews/review-joe-ohern.webp" alt="Five-star private Tokyo tour review from Joe O'Hern, guided by Taka">
+          </figure>
+        </noscript>
       </div>
     </section>
+
+    <dialog class="review-dialog" id="review-dialog" aria-label="Guest review image">
+      <button class="review-dialog-close" type="button" aria-label="Close review">×</button>
+      <img src="" alt="">
+    </dialog>
 
     <section id="gallery">
       <div class="container">
@@ -2083,6 +2190,179 @@ bookingEmailBtn && bookingEmailBtn.addEventListener('click', ()=> openInquiry(bo
 
       setAria(false);
       openBtn && openBtn.setAttribute('aria-expanded', 'false');
+    })();
+  </script>
+
+  <script>
+    /* ==========================================================
+       GUEST REVIEWS
+       Add each new review image to /images/reviews/, then copy one
+       object in this list and update its four values.
+       ========================================================== */
+    const guestReviews = [
+      {
+        image: "/images/reviews/review-joe-ohern.webp",
+        guest: "Joe O'Hern",
+        guide: "Taka",
+        alt: "Five-star private Tokyo tour review from Joe O'Hern, guided by Taka"
+      },
+      {
+        image: "/images/reviews/review-jason-p.webp",
+        guest: "Jason P.",
+        guide: "Mai",
+        alt: "Five-star private Tokyo tour review from Jason P., guided by Mai"
+      },
+      {
+        image: "/images/reviews/review-tais-k.webp",
+        guest: "Tais K.",
+        guide: "Masa",
+        alt: "Five-star private Tokyo tour review from Tais K., guided by Masa"
+      },
+      {
+        image: "/images/reviews/review-flipson-f.webp",
+        guest: "Flipson F.",
+        guide: "Chiro",
+        alt: "Five-star private Tokyo tour review from Flipson F., guided by Chiro"
+      },
+      {
+        image: "/images/reviews/review-jordana-john-david.webp",
+        guest: "Jordana W. & John-David K.",
+        guide: "Taka",
+        alt: "Five-star private Japan tour review from Jordana W. and John-David K., guided by Taka"
+      },
+      {
+        image: "/images/reviews/review-kelly-soirefman.webp",
+        guest: "Kelly Soirefman",
+        guide: "Taka",
+        alt: "Five-star private tour review from Kelly Soirefman, guided by Taka"
+      },
+      {
+        image: "/images/reviews/review-olivia-jonathan.webp",
+        guest: "Olivia C. & Jonathan C.",
+        guide: "Taka",
+        alt: "Five-star private Tokyo tour review from Olivia C. and Jonathan C., guided by Taka"
+      },
+      {
+        image: "/images/reviews/review-ashley-tenney.webp",
+        guest: "Ashley Tenney",
+        guide: "Taka",
+        alt: "Five-star private Tokyo tour review from Ashley Tenney, guided by Taka"
+      },
+      {
+        image: "/images/reviews/review-luiz-camilla.webp",
+        guest: "Luiz F. & Camilla M.",
+        guide: "Taka",
+        alt: "Five-star private Tokyo tour review from Luiz F. and Camilla M., guided by Taka"
+      },
+      {
+        image: "/images/reviews/review-suzanne-b.webp",
+        guest: "Suzanne B.",
+        guide: "Taka",
+        alt: "Five-star private Tokyo tour review from Suzanne B., guided by Taka"
+      }
+    ];
+
+    (function renderGuestReviews(){
+      const grid = document.getElementById('review-grid');
+      const dialog = document.getElementById('review-dialog');
+      const dialogImage = dialog && dialog.querySelector('img');
+      const closeButton = dialog && dialog.querySelector('.review-dialog-close');
+      const previousButton = document.querySelector('.review-prev');
+      const nextButton = document.querySelector('.review-next');
+      const status = document.getElementById('review-status');
+      if (!grid || !dialog || !dialogImage) return;
+
+      guestReviews.forEach((review)=>{
+        const card = document.createElement('figure');
+        card.className = 'review-card';
+
+        const button = document.createElement('button');
+        button.className = 'review-open';
+        button.type = 'button';
+        button.setAttribute('aria-label', `Open review from ${review.guest}`);
+
+        const image = document.createElement('img');
+        image.src = review.image;
+        image.alt = review.alt;
+        image.loading = 'lazy';
+        image.decoding = 'async';
+        button.appendChild(image);
+
+        const caption = document.createElement('figcaption');
+        caption.className = 'review-meta';
+        caption.innerHTML = `
+          <span>
+            <span class="review-name">${review.guest}</span><br>
+            <span class="review-guide">Guided by ${review.guide}</span>
+          </span>
+          <span class="review-stars" aria-label="5 out of 5 stars">★★★★★</span>
+        `;
+
+        button.addEventListener('click', ()=>{
+          dialogImage.src = review.image;
+          dialogImage.alt = review.alt;
+          dialog.showModal();
+        });
+
+        card.append(button, caption);
+        grid.appendChild(card);
+      });
+
+      const cards = Array.from(grid.querySelectorAll('.review-card'));
+      const visibleCards = ()=>window.matchMedia('(min-width: 900px)').matches ? 3 : 1;
+      const currentIndex = ()=>{
+        if (!cards.length) return 0;
+        const gridLeft = grid.getBoundingClientRect().left;
+        return cards.reduce((closest, card, index)=>{
+          const distance = Math.abs(card.getBoundingClientRect().left - gridLeft);
+          return distance < closest.distance ? {index, distance} : closest;
+        }, {index:0, distance:Infinity}).index;
+      };
+      const updateNavigation = ()=>{
+        const index = currentIndex();
+        const lastStart = Math.max(0, cards.length - visibleCards());
+        if (status) status.textContent = `${Math.min(index + 1, cards.length)} / ${cards.length}`;
+        if (previousButton) previousButton.disabled = index === 0;
+        if (nextButton) nextButton.disabled = index >= lastStart;
+      };
+      const moveReviews = (direction)=>{
+        const index = currentIndex();
+        const target = Math.max(
+          0,
+          Math.min(cards.length - 1, index + (direction * visibleCards()))
+        );
+        cards[target] && cards[target].scrollIntoView({
+          behavior:'smooth',
+          block:'nearest',
+          inline:'start'
+        });
+      };
+
+      previousButton && previousButton.addEventListener('click', ()=>moveReviews(-1));
+      nextButton && nextButton.addEventListener('click', ()=>moveReviews(1));
+      grid.addEventListener('keydown', (event)=>{
+        if (event.key === 'ArrowLeft'){
+          event.preventDefault();
+          moveReviews(-1);
+        }
+        if (event.key === 'ArrowRight'){
+          event.preventDefault();
+          moveReviews(1);
+        }
+      });
+      let reviewScrollTimer;
+      grid.addEventListener('scroll', ()=>{
+        clearTimeout(reviewScrollTimer);
+        reviewScrollTimer = setTimeout(updateNavigation,100);
+      }, {passive:true});
+      window.addEventListener('resize', updateNavigation);
+      updateNavigation();
+
+      const closeDialog = ()=>dialog.close();
+      closeButton && closeButton.addEventListener('click', closeDialog);
+      dialog.addEventListener('click', (event)=>{
+        if (event.target === dialog) closeDialog();
+      });
     })();
   </script>
 
