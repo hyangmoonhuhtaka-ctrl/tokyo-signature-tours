@@ -930,7 +930,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       width:100%;
       padding:0;
       border:0;
-      background:transparent;
+      background:#f7f3f1;
       cursor:zoom-in;
       text-align:inherit;
     }
@@ -938,19 +938,28 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       width:100%;
       aspect-ratio:1 / 1;
       object-fit:cover;
-      transition:transform .2s ease;
+      opacity:0;
+      transition:opacity .2s ease,transform .2s ease;
     }
+    .review-open img.is-loaded{opacity:1}
     .review-open:hover img{transform:scale(1.015)}
     .review-meta{
       display:flex;
-      align-items:center;
+      align-items:flex-start;
       justify-content:space-between;
       gap:12px;
       padding:12px 14px;
       border-top:1px solid var(--line);
     }
+    .review-meta-copy{min-width:0}
     .review-name{font-weight:850}
     .review-guide{font-size:13px;color:var(--muted)}
+    .review-excerpt{
+      margin:7px 0 0;
+      color:#303641;
+      font-size:13px;
+      line-height:1.5;
+    }
     .review-stars{
       color:#b51e1e;
       letter-spacing:.08em;
@@ -2204,60 +2213,70 @@ bookingEmailBtn && bookingEmailBtn.addEventListener('click', ()=> openInquiry(bo
         image: "/images/reviews/review-joe-ohern.webp",
         guest: "Joe O'Hern",
         guide: "Taka",
+        quote: "Taka is an incredible tour guide and our favorite that we have ever used.",
         alt: "Five-star private Tokyo tour review from Joe O'Hern, guided by Taka"
       },
       {
         image: "/images/reviews/review-jason-p.webp",
         guest: "Jason P.",
         guide: "Mai",
+        quote: "Our guide, Mai, was absolutely amazing.",
         alt: "Five-star private Tokyo tour review from Jason P., guided by Mai"
       },
       {
         image: "/images/reviews/review-tais-k.webp",
         guest: "Tais K.",
         guide: "Masa",
+        quote: "We went to hidden and special places we couldn't have found ourselves.",
         alt: "Five-star private Tokyo tour review from Tais K., guided by Masa"
       },
       {
         image: "/images/reviews/review-flipson-f.webp",
         guest: "Flipson F.",
         guide: "Chiro",
+        quote: "Instead of rushing between attractions, he showed us a more local and authentic side of Tokyo.",
         alt: "Five-star private Tokyo tour review from Flipson F., guided by Chiro"
       },
       {
         image: "/images/reviews/review-jordana-john-david.webp",
         guest: "Jordana W. & John-David K.",
         guide: "Taka",
+        quote: "It felt like having a local friend and a trusted guide throughout our Japan journey.",
         alt: "Five-star private Japan tour review from Jordana W. and John-David K., guided by Taka"
       },
       {
         image: "/images/reviews/review-kelly-soirefman.webp",
         guest: "Kelly Soirefman",
         guide: "Taka",
+        quote: "It felt more like having a friend with us rather than a tour guide.",
         alt: "Five-star private tour review from Kelly Soirefman, guided by Taka"
       },
       {
         image: "/images/reviews/review-olivia-jonathan.webp",
         guest: "Olivia C. & Jonathan C.",
         guide: "Taka",
+        quote: "The perfect first day in Tokyo and a customized tour that let us see the city in a way we never could have on our own.",
         alt: "Five-star private Tokyo tour review from Olivia C. and Jonathan C., guided by Taka"
       },
       {
         image: "/images/reviews/review-ashley-tenney.webp",
         guest: "Ashley Tenney",
         guide: "Taka",
+        quote: "Taka was very responsive and shared so much about Japanese culture with us.",
         alt: "Five-star private Tokyo tour review from Ashley Tenney, guided by Taka"
       },
       {
         image: "/images/reviews/review-luiz-camilla.webp",
         guest: "Luiz F. & Camilla M.",
         guide: "Taka",
+        quote: "A perfect first day in Japan, a complete 10/10 experience with an honest, prepared, and genuine guide.",
         alt: "Five-star private Tokyo tour review from Luiz F. and Camilla M., guided by Taka"
       },
       {
         image: "/images/reviews/review-suzanne-b.webp",
         guest: "Suzanne B.",
         guide: "Taka",
+        quote: "Our tour of Tokyo was the highlight of our trip.",
         alt: "Five-star private Tokyo tour review from Suzanne B., guided by Taka"
       }
     ];
@@ -2272,7 +2291,15 @@ bookingEmailBtn && bookingEmailBtn.addEventListener('click', ()=> openInquiry(bo
       const status = document.getElementById('review-status');
       if (!grid || !dialog || !dialogImage) return;
 
-      guestReviews.forEach((review)=>{
+      const initialImageCount = window.matchMedia('(min-width: 900px)').matches ? 3 : 1;
+      const preloadReviewImage = (image)=>{
+        if (!image || image.complete) return;
+        image.loading = 'eager';
+        const preload = new Image();
+        preload.src = image.currentSrc || image.src;
+      };
+
+      guestReviews.forEach((review,index)=>{
         const card = document.createElement('figure');
         card.className = 'review-card';
 
@@ -2284,16 +2311,19 @@ bookingEmailBtn && bookingEmailBtn.addEventListener('click', ()=> openInquiry(bo
         const image = document.createElement('img');
         image.src = review.image;
         image.alt = review.alt;
-        image.loading = 'lazy';
+        image.loading = index < initialImageCount ? 'eager' : 'lazy';
         image.decoding = 'async';
+        image.addEventListener('load', ()=>image.classList.add('is-loaded'), {once:true});
+        if (image.complete) image.classList.add('is-loaded');
         button.appendChild(image);
 
         const caption = document.createElement('figcaption');
         caption.className = 'review-meta';
         caption.innerHTML = `
-          <span>
+          <span class="review-meta-copy">
             <span class="review-name">${review.guest}</span><br>
             <span class="review-guide">Guided by ${review.guide}</span>
+            <p class="review-excerpt">“${review.quote}”</p>
           </span>
           <span class="review-stars" aria-label="5 out of 5 stars">★★★★★</span>
         `;
@@ -2309,6 +2339,24 @@ bookingEmailBtn && bookingEmailBtn.addEventListener('click', ()=> openInquiry(bo
       });
 
       const cards = Array.from(grid.querySelectorAll('.review-card'));
+      const reviewImages = Array.from(grid.querySelectorAll('.review-card img'));
+      if ('IntersectionObserver' in window){
+        const imageObserver = new IntersectionObserver((entries)=>{
+          entries.forEach((entry)=>{
+            if (!entry.isIntersecting) return;
+            preloadReviewImage(entry.target);
+            imageObserver.unobserve(entry.target);
+          });
+        },{
+          root:grid,
+          rootMargin:'0px 110% 0px 110%',
+          threshold:0.01
+        });
+        reviewImages.forEach((image)=>imageObserver.observe(image));
+      }else{
+        reviewImages.forEach(preloadReviewImage);
+      }
+
       const visibleCards = ()=>window.matchMedia('(min-width: 900px)').matches ? 3 : 1;
       const currentIndex = ()=>{
         if (!cards.length) return 0;
