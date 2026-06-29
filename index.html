@@ -1538,7 +1538,7 @@ Each tour is customized to your interests, pace, and travel style. Discover icon
                 <div class="mini-txt">
                   <p class="mini-title">Your selection</p>
                   <p class="mini-sub" id="summaryLine">8 Hours • 2 guests</p>
-                  <p class="summary-price" id="summaryPrice">$279.50 per person</p>
+                  <p class="summary-price" id="summaryPrice">$280/person</p>
                   <p class="summary-total" id="summaryTotal">$559 total</p>
                 </div>
               </div>
@@ -2000,7 +2000,6 @@ const fmtUSD = (amount)=> {
 };
 
 const fmtUSDTotal = (total)=> `${fmtUSD(total)} total`;
-const fmtUSDPerPerson = (total, guests)=> `${fmtUSD(total / guests)} per person`;
 const fmtUSDPerPersonCompact = (total, guests)=> `$${Math.round(total / guests)}/person`;
 
 const inquiryPriceText = (total, guests)=> {
@@ -2023,11 +2022,10 @@ stickyLine.textContent = lineText;
 
 if (p != null) {
   const totalText = fmtUSDTotal(p);
-  const perPersonText = fmtUSDPerPerson(p, state.guests);
   stickyPrice.textContent = fmtUSDPerPersonCompact(p, state.guests);
 
   if (state.guests > 1) {
-    if (summaryPrice) summaryPrice.textContent = perPersonText;
+    if (summaryPrice) summaryPrice.textContent = fmtUSDPerPersonCompact(p, state.guests);
     if (summaryTotal) {
       summaryTotal.textContent = totalText;
       summaryTotal.hidden = false;
