@@ -934,7 +934,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       display:flex;
       align-items:center;
       gap:12px;
+      box-sizing:border-box;
       width:min(100%,520px);
+      max-width:100%;
       margin:2px 0 18px;
       padding:14px 18px;
       border:1px solid rgba(0,0,0,.07);
@@ -1009,33 +1011,63 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
     @media (max-width:560px){
       .google-rating-card{
-        gap:10px;
+        gap:9px;
         width:100%;
-        padding:12px 14px;
+        max-width:360px;
+        padding:11px 13px;
         border-radius:16px;
-        box-shadow:0 8px 20px rgba(0,0,0,.065);
+        box-shadow:0 8px 18px rgba(0,0,0,.06);
       }
       .google-rating-mark{
-        width:42px;
-        height:42px;
+        width:38px;
+        height:38px;
       }
       .google-rating-mark .google-g-icon{
-        width:26px;
-        height:26px;
+        width:24px;
+        height:24px;
       }
       .google-rating-stars{
-        font-size:15px;
+        font-size:14px;
         margin-bottom:4px;
+        letter-spacing:.045em;
       }
       .google-rating-score{
-        font-size:22px;
+        font-size:20px;
       }
       .google-rating-label{
-        font-size:12px;
-        letter-spacing:.10em;
+        font-size:11px;
+        letter-spacing:.08em;
       }
       .google-rating-arrow{
-        font-size:19px;
+        font-size:17px;
+      }
+    }
+
+    @media (max-width:380px){
+      .google-rating-card{
+        max-width:100%;
+        padding:10px 11px;
+      }
+      .google-rating-mark{
+        width:34px;
+        height:34px;
+      }
+      .google-rating-mark .google-g-icon{
+        width:21px;
+        height:21px;
+      }
+      .google-rating-stars{
+        font-size:13px;
+      }
+      .google-rating-score{
+        font-size:18px;
+      }
+      .google-rating-label{
+        font-size:10px;
+        letter-spacing:.06em;
+      }
+      .google-rating-arrow{
+        display:none;
       }
     }
     .reviews-intro{
@@ -1826,9 +1858,6 @@ Each tour is customized to your interests, pace, and travel style. Discover icon
             <h3>Real Stories from Our Guests</h3>
             <p>Personalized private tours, thoughtful itineraries, and memorable days across Tokyo.</p>
           </div>
-          <a class="cta" href="https://www.google.com/maps/place/Tokyo+Signature+Tours+%7C+Private+Tokyo+Tours/@35.701622,139.6885977,14z/data=!3m1!4b1!4m6!3m5!1s0x2ae76d89645afc83:0x968877d08d9a25e1!8m2!3d35.7015889!4d139.7091972!16s%2Fg%2F11yrbvflx0" target="_blank" rel="noopener">
-            View Reviews on Google
-          </a>
         </div>
 
         <div class="review-carousel">
