@@ -1245,15 +1245,24 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
    ========================================================== */
 .summary-price{
   margin-top:4px;
-  font-size:16px;
+  font-size:18px;
   font-weight:950;
   color:rgba(17,24,39,.95);
   letter-spacing:.01em;
+  line-height:1.25;
+}
+
+.summary-price-sub{
+  margin-top:2px;
+  font-size:12.5px;
+  font-weight:800;
+  color:rgba(91,100,112,.95);
+  line-height:1.35;
 }
 
 @media (min-width:900px){
   .summary-price{
-    font-size:18px;
+    font-size:19px;
   }
 }
     /* ==========================================================
@@ -1529,7 +1538,8 @@ Each tour is customized to your interests, pace, and travel style. Discover icon
                 <div class="mini-txt">
                   <p class="mini-title">Your selection</p>
                   <p class="mini-sub" id="summaryLine">8 Hours • 2 guests</p>
-<p class="summary-price" id="summaryPrice">$279 per person</p>
+<p class="summary-price" id="summaryPrice">$559 total</p>
+<p class="summary-price-sub" id="summaryPriceSub">Approx. $280 per guest</p>
                 </div>
               </div>
 
@@ -1905,7 +1915,7 @@ Each tour is customized to your interests, pace, and travel style. Discover icon
     <div class="sticky-inner">
       <div class="sticky-left">
         <div class="sticky-line1" id="stickyLine">8 Hours • 2 guests</div>
-        <div class="sticky-price" id="stickyPrice">From $279 per person</div>
+        <div class="sticky-price" id="stickyPrice">$559 total · ~$280/person</div>
       </div>
 
       <div class="sticky-actions">
@@ -1971,6 +1981,7 @@ const stickyLine = document.getElementById('stickyLine');
 const stickyPrice = document.getElementById('stickyPrice');
 const summaryLine = document.getElementById('summaryLine');
 const summaryPrice = document.getElementById('summaryPrice');
+const summaryPriceSub = document.getElementById('summaryPriceSub');
 
       const durationScroll = document.getElementById('durationScroll');
       const segBtns = [...document.querySelectorAll('.seg-btn')];
@@ -1983,9 +1994,21 @@ const summaryPrice = document.getElementById('summaryPrice');
 
 const key = ()=> `${state.duration}h_${state.guests}g`;
 
-const fmtUSDPerPerson = (total, guests)=> {
-  const perPerson = Math.round(total / guests);
-  return `$${perPerson} per person`;
+const fmtUSDTotal = (total)=> `$${total} total`;
+
+const fmtUSDPerGuest = (total, guests)=> {
+  const perGuest = Math.round(total / guests);
+  return `Approx. $${perGuest} per guest`;
+};
+
+const fmtStickyPrice = (total, guests)=> {
+  const perGuest = Math.round(total / guests);
+  return `$${total} total · ~$${perGuest}/person`;
+};
+
+const fmtInquiryPrice = (total, guests)=> {
+  const perGuest = Math.round(total / guests);
+  return `$${total} total (approx. $${perGuest} per guest)`;
 };
 
       const render = ()=> {
@@ -1999,9 +2022,9 @@ const fmtUSDPerPerson = (total, guests)=> {
 stickyLine.textContent = lineText;
 
 if (p != null) {
-  const priceText = fmtUSDPerPerson(p, state.guests);
-  stickyPrice.textContent = priceText;
-  if (summaryPrice) summaryPrice.textContent = priceText;
+  if (summaryPrice) summaryPrice.textContent = fmtUSDTotal(p);
+  if (summaryPriceSub) summaryPriceSub.textContent = fmtUSDPerGuest(p, state.guests);
+  stickyPrice.textContent = fmtStickyPrice(p, state.guests);
 }
 
         const inquiryText =
@@ -2009,7 +2032,7 @@ if (p != null) {
   `I am interested in a private Tokyo tour.\n` +
   `Preferred duration: ${state.duration} Hours\n` +
   `Group size: ${state.guests} ${state.guests === 1 ? 'guest' : 'guests'}\n` +
-  `Estimated price: ${p != null ? fmtUSDPerPerson(p, state.guests) : 'Please advise'}\n\n` +
+  `Estimated price: ${p != null ? fmtInquiryPrice(p, state.guests) : 'Please advise'}\n\n` +
   `Could you please confirm availability and next steps?`;
 
 const encodedInquiryText = encodeURIComponent(inquiryText);
