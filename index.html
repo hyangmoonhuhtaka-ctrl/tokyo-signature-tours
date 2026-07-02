@@ -99,23 +99,47 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           "name": "Can you customize a private Tokyo tour?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. Every Tokyo Signature Tour is customized to your interests, pace, and travel style, creating a unique and personal experience in Tokyo."
+            "text": "Yes. Every Tokyo Signature Tour is customized around your interests, pace, travel style, food preferences, and must-see places. We prepare a thoughtful route in advance and keep it flexible on the day."
           }
         },
         {
           "@type": "Question",
-          "name": "Do you provide English-speaking guides in Tokyo?",
+          "name": "Do you provide English-speaking private guides in Tokyo?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. Our carefully selected bilingual local guides provide cultural insights, local recommendations, and seamless support throughout your private Tokyo tour."
+            "text": "Yes. Our carefully selected bilingual local guides provide English support, cultural insights, local recommendations, navigation help, and practical support throughout your private Tokyo tour."
           }
         },
         {
           "@type": "Question",
-          "name": "Are private Tokyo tours suitable for children or older guests?",
+          "name": "What makes Tokyo Signature Tours different from a standard group tour?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Absolutely. We can adjust the itinerary, walking distance, pace, and transportation to accommodate families with children, seniors, and guests with mobility considerations."
+            "text": "Tokyo Signature Tours focuses on private, personalized experiences instead of fixed routes, large groups, flags, or microphones. Your guide can adjust the pace, timing, and route so the day feels relaxed and personal."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which private Tokyo tour length should we choose: 4, 6, or 8 hours?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Choose 4 hours for a refined introduction, 6 hours for neighborhoods plus food and culture, and 8 hours for a full signature day covering iconic sights and hidden local areas at a relaxed pace."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can our itinerary include food, culture, shopping, art, and hidden neighborhoods?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. We can shape your private Tokyo itinerary around food, temples, local neighborhoods, shopping, design, art, family-friendly stops, seasonal places, and off-the-beaten-path areas."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are private Tokyo tours suitable for families, children, seniors, or a slower pace?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Absolutely. We can adjust walking distance, breaks, transportation, timing, and neighborhood choices for families with children, older guests, and travelers who prefer a slower, more comfortable pace."
           }
         },
         {
@@ -128,10 +152,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         },
         {
           "@type": "Question",
-          "name": "What happens if it rains?",
+          "name": "Can the tour start at our hotel or another convenient Tokyo location?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Tours usually operate in light rain. If necessary, we adjust the itinerary to include more indoor locations and comfortable alternatives while maintaining the overall experience."
+            "text": "Yes. In most cases, your private Tokyo tour can start from your hotel lobby or a convenient station or landmark in central Tokyo. We confirm the best meeting point before the tour."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you offer private day trips from Tokyo to Hakone, Kamakura, Nikko, or Mt. Fuji?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Private day trips from Tokyo to places such as Hakone, Kamakura, Nikko, and Mt. Fuji may be available by request. We can discuss timing, transportation, guide availability, and the best route for your group."
           }
         }
       ]
@@ -521,6 +553,53 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       font-weight:750;
     }
     .toggle:hover{background:var(--accent);color:#fff}
+
+    .faq-list{
+      display:grid;
+      gap:10px;
+    }
+    .faq-item{
+      border:1px solid var(--line);
+      border-radius:16px;
+      background:rgba(255,255,255,.94);
+      box-shadow:0 6px 18px rgba(0,0,0,.04);
+      overflow:hidden;
+    }
+    .faq-item summary{
+      list-style:none;
+      cursor:pointer;
+      padding:16px 44px 16px 16px;
+      position:relative;
+      font-size:17px;
+      font-weight:800;
+      line-height:1.35;
+      color:var(--ink);
+    }
+    .faq-item summary::-webkit-details-marker{display:none}
+    .faq-item summary::after{
+      content:"+";
+      position:absolute;
+      right:16px;
+      top:50%;
+      transform:translateY(-50%);
+      width:24px;
+      height:24px;
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      background:rgba(232,91,140,.10);
+      color:var(--accent);
+      font-weight:850;
+      line-height:1;
+    }
+    .faq-item[open] summary::after{content:"-"}
+    .faq-item p{
+      margin:0;
+      padding:0 16px 16px;
+      color:var(--muted);
+      font-size:15px;
+      line-height:1.75;
+    }
 
     /* ==========================================================
        PREMIUM MOBILE-FIRST BOOKING
@@ -1928,50 +2007,76 @@ Each tour is customized to your interests, pace, and travel style. Discover icon
   <div class="container">
     <h2>Frequently Asked Questions About Private Tokyo Tours</h2>
 
-    <div class="grid">
-
-      <div class="card">
-        <h3>How far in advance should we book a private Tokyo tour?</h3>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>How far in advance should we book a private Tokyo tour?</summary>
         <p>
-          We recommend booking 2–4 weeks in advance, especially during cherry blossom season, autumn, and holidays. This allows us to design a customized itinerary and match you with the most suitable bilingual local guide.
+          We recommend booking 2-4 weeks in advance, especially during cherry blossom season, autumn, and holidays. This allows us to design a customized itinerary and match you with the most suitable bilingual local guide.
         </p>
-      </div>
+      </details>
 
-      <div class="card">
-        <h3>Can you customize a private Tokyo tour?</h3>
+      <details class="faq-item">
+        <summary>Can you customize a private Tokyo tour?</summary>
         <p>
-          Yes. Every Tokyo Signature Tour is customized to your interests, pace, and travel style, creating a unique and personal experience in Tokyo.
+          Yes. Every Tokyo Signature Tour is customized around your interests, pace, travel style, food preferences, and must-see places. We prepare a thoughtful route in advance and keep it flexible on the day.
         </p>
-      </div>
+      </details>
 
-      <div class="card">
-        <h3>Do you provide English-speaking guides in Tokyo?</h3>
+      <details class="faq-item">
+        <summary>Do you provide English-speaking private guides in Tokyo?</summary>
         <p>
-          Yes. Our carefully selected bilingual local guides provide cultural insights, local recommendations, and seamless support throughout your private Tokyo tour.
+          Yes. Our carefully selected bilingual local guides provide English support, cultural insights, local recommendations, navigation help, and practical support throughout your private Tokyo tour.
         </p>
-      </div>
+      </details>
 
-      <div class="card">
-        <h3>Are private Tokyo tours suitable for children or older guests?</h3>
+      <details class="faq-item">
+        <summary>What makes Tokyo Signature Tours different from a standard group tour?</summary>
         <p>
-          Absolutely. We can adjust the itinerary, walking distance, pace, and transportation to accommodate families with children, seniors, and guests with mobility considerations.
+          Tokyo Signature Tours focuses on private, personalized experiences instead of fixed routes, large groups, flags, or microphones. Your guide can adjust the pace, timing, and route so the day feels relaxed and personal.
         </p>
-      </div>
+      </details>
 
-      <div class="card">
-        <h3>What is included in the private tour fee?</h3>
+      <details class="faq-item">
+        <summary>Which private Tokyo tour length should we choose: 4, 6, or 8 hours?</summary>
+        <p>
+          Choose 4 hours for a refined introduction, 6 hours for neighborhoods plus food and culture, and 8 hours for a full signature day covering iconic sights and hidden local areas at a relaxed pace.
+        </p>
+      </details>
+
+      <details class="faq-item">
+        <summary>Can our itinerary include food, culture, shopping, art, and hidden neighborhoods?</summary>
+        <p>
+          Yes. We can shape your private Tokyo itinerary around food, temples, local neighborhoods, shopping, design, art, family-friendly stops, seasonal places, and off-the-beaten-path areas.
+        </p>
+      </details>
+
+      <details class="faq-item">
+        <summary>Are private Tokyo tours suitable for families, children, seniors, or a slower pace?</summary>
+        <p>
+          Absolutely. We can adjust walking distance, breaks, transportation, timing, and neighborhood choices for families with children, older guests, and travelers who prefer a slower, more comfortable pace.
+        </p>
+      </details>
+
+      <details class="faq-item">
+        <summary>What is included in the private tour fee?</summary>
         <p>
           The fee includes private guiding, itinerary planning, bilingual language support, and local navigation. Transportation, meals, drinks, and attraction tickets are paid separately by guests.
         </p>
-      </div>
+      </details>
 
-      <div class="card">
-        <h3>What happens if it rains?</h3>
+      <details class="faq-item">
+        <summary>Can the tour start at our hotel or another convenient Tokyo location?</summary>
         <p>
-          Tours usually operate in light rain. If necessary, we adjust the itinerary to include more indoor locations and comfortable alternatives while maintaining the overall experience.
+          Yes. In most cases, your private Tokyo tour can start from your hotel lobby or a convenient station or landmark in central Tokyo. We confirm the best meeting point before the tour.
         </p>
-      </div>
+      </details>
 
+      <details class="faq-item">
+        <summary>Do you offer private day trips from Tokyo to Hakone, Kamakura, Nikko, or Mt. Fuji?</summary>
+        <p>
+          Yes. Private day trips from Tokyo to places such as Hakone, Kamakura, Nikko, and Mt. Fuji may be available by request. We can discuss timing, transportation, guide availability, and the best route for your group.
+        </p>
+      </details>
     </div>
   </div>
 </section>
