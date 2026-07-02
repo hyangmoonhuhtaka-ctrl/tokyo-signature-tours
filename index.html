@@ -2392,12 +2392,13 @@ bookingEmailBtn && bookingEmailBtn.addEventListener('click', ()=> openInquiry(bo
       const setAria = (open)=>{
         sideMenu.setAttribute('aria-hidden', open ? 'false' : 'true');
         openBtn && openBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        openBtn && openBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
       };
 
-      const close = ()=>{
+      const close = (returnFocus = true)=>{
         body.classList.remove('menu-open');
         setAria(false);
-        if (lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus();
+        if (returnFocus && lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus();
         lastFocus = null;
       };
 
@@ -2408,6 +2409,14 @@ bookingEmailBtn && bookingEmailBtn.addEventListener('click', ()=> openInquiry(bo
 
         const first = sideMenu.querySelector(focusableSel);
         first && first.focus();
+      };
+
+      const toggle = ()=>{
+        if (body.classList.contains('menu-open')) {
+          close(false);
+        } else {
+          open();
+        }
       };
 
       const onKeydown = (e)=>{
@@ -2436,7 +2445,7 @@ bookingEmailBtn && bookingEmailBtn.addEventListener('click', ()=> openInquiry(bo
         }
       };
 
-      openBtn && openBtn.addEventListener('click', open);
+      openBtn && openBtn.addEventListener('click', toggle);
       closeBtn && closeBtn.addEventListener('click', close);
       backdrop && backdrop.addEventListener('click', close);
 
