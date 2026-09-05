@@ -571,8 +571,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       padding:16px 44px 16px 16px;
       position:relative;
       font-size:17px;
-      font-weight:800;
-      line-height:1.35;
+      font-weight:650;
+      line-height:1.5;
       color:var(--ink);
     }
     .faq-item summary::-webkit-details-marker{display:none}
@@ -1501,6 +1501,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 }
 
 .booking-contact-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
   min-height:48px;
   border-radius:999px;
   font-size:14px;
@@ -1558,6 +1562,29 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     grid-template-columns:1fr 1fr;
   }
 }
+
+/* WhatsApp actions only */
+.whatsapp-action{
+  background:#25D366 !important;
+  color:#fff !important;
+  border-color:rgba(37,211,102,.38) !important;
+  box-shadow:0 10px 22px rgba(37,211,102,.22) !important;
+}
+.whatsapp-action:hover{
+  background:#20bd5a !important;
+  opacity:1;
+}
+.whatsapp-action svg{
+  width:18px;
+  height:18px;
+  fill:currentColor;
+  flex:0 0 auto;
+}
+.icon-btn.whatsapp-action{
+  width:36px;
+  height:36px;
+  padding:0;
+}
   </style>
 </head>
 
@@ -1594,7 +1621,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <div class="side-menu-actions" aria-label="Quick actions">
       <a class="btn primary" href="#booking">Check Price &amp; Inquire</a>
-      <a class="btn" href="https://wa.me/819084350822" target="_blank" rel="noopener">WhatsApp Inquiry</a>
+      <a class="btn whatsapp-action" href="https://wa.me/819084350822" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.52 3.48A11.86 11.86 0 0 0 12.06 0C5.58 0 .36 5.21.36 11.67c0 2.06.54 4.08 1.56 5.86L0 24l6.63-1.88a12 12 0 0 0 5.43 1.35h.01c6.48 0 11.7-5.21 11.7-11.67 0-3.12-1.23-6.05-3.25-8.32zM12.06 22a9.9 9.9 0 0 1-5.04-1.37l-.36-.21-3.94 1.12 1.12-3.84-.23-.39a9.83 9.83 0 0 1-1.5-5.05C2.1 6.4 6.66 1.9 12.06 1.9c2.6 0 5.04 1.01 6.88 2.84a9.6 9.6 0 0 1 2.85 6.92c0 5.4-4.56 9.99-9.93 9.99zm5.04-7.6c-.27-.13-1.6-.79-1.84-.88-.24-.09-.42-.13-.6.13-.18.27-.69.88-.84 1.06-.16.18-.31.2-.58.07-.27-.13-1.14-.42-2.17-1.33-.8-.69-1.34-1.55-1.5-1.82-.16-.27-.02-.42.11-.55.12-.12.27-.31.4-.47.13-.16.18-.27.27-.45.09-.18.04-.34-.02-.47-.07-.13-.6-1.45-.82-1.99-.22-.54-.44-.46-.6-.47h-.51c-.18 0-.47.07-.72.34-.24.27-.95.93-.95 2.27 0 1.34.98 2.63 1.12 2.81.13.18 1.93 2.93 4.68 4.04.65.28 1.16.45 1.55.57.65.21 1.24.18 1.71.11.52-.08 1.6-.65 1.83-1.27.23-.62.23-1.15.16-1.27-.06-.11-.24-.18-.51-.31z"/></svg>WhatsApp Inquiry</a>
     </div>
   </aside>
 
@@ -1612,7 +1639,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <a href="#contact">Contact</a>
       </nav>
       <div style="display:flex;align-items:center;gap:8px;">
-        <a href="https://wa.me/819084350822" class="cta">WhatsApp</a>
+        <a href="https://wa.me/819084350822" class="cta whatsapp-action"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.52 3.48A11.86 11.86 0 0 0 12.06 0C5.58 0 .36 5.21.36 11.67c0 2.06.54 4.08 1.56 5.86L0 24l6.63-1.88a12 12 0 0 0 5.43 1.35h.01c6.48 0 11.7-5.21 11.7-11.67 0-3.12-1.23-6.05-3.25-8.32zM12.06 22a9.9 9.9 0 0 1-5.04-1.37l-.36-.21-3.94 1.12 1.12-3.84-.23-.39a9.83 9.83 0 0 1-1.5-5.05C2.1 6.4 6.66 1.9 12.06 1.9c2.6 0 5.04 1.01 6.88 2.84a9.6 9.6 0 0 1 2.85 6.92c0 5.4-4.56 9.99-9.93 9.99zm5.04-7.6c-.27-.13-1.6-.79-1.84-.88-.24-.09-.42-.13-.6.13-.18.27-.69.88-.84 1.06-.16.18-.31.2-.58.07-.27-.13-1.14-.42-2.17-1.33-.8-.69-1.34-1.55-1.5-1.82-.16-.27-.02-.42.11-.55.12-.12.27-.31.4-.47.13-.16.18-.27.27-.45.09-.18.04-.34-.02-.47-.07-.13-.6-1.45-.82-1.99-.22-.54-.44-.46-.6-.47h-.51c-.18 0-.47.07-.72.34-.24.27-.95.93-.95 2.27 0 1.34.98 2.63 1.12 2.81.13.18 1.93 2.93 4.68 4.04.65.28 1.16.45 1.55.57.65.21 1.24.18 1.71.11.52-.08 1.6-.65 1.83-1.27.23-.62.23-1.15.16-1.27-.06-.11-.24-.18-.51-.31z"/></svg>WhatsApp</a>
         <button class="menu-toggle" aria-label="Open menu" type="button"><span></span></button>
       </div>
     </div>
@@ -1633,7 +1660,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <span>Send us your date, group size, and interests.</span>
             <span>We will confirm availability and prepare a personalized Tokyo itinerary.</span>
           </p>
-          <a class="hero-trust" href="https://www.google.com/maps/place/Tokyo+Signature+Tours+%7C+Private+Tokyo+Tours/@35.701622,139.6885977,14z/data=!3m1!4b1!4m6!3m5!1s0x2ae76d89645afc83:0x968877d08d9a25e1!8m2!3d35.7015889!4d139.7091972!16s%2Fg%2F11yrbvflx0" target="_blank" rel="noopener" aria-label="Rated 5.0 on Google with 50 or more five-star reviews. View reviews on Google Maps.">
+          <a class="hero-trust" href="https://www.google.com/maps/place/Tokyo+Signature+Tours+%7C+Private+Tokyo+Tours/@35.701622,139.6885977,14z/data=!3m1!4b1!4m6!3m5!1s0x2ae76d89645afc83:0x968877d08d9a25e1!8m2!3d35.7015889!4d139.7091972!16s%2Fg%2F11yrbvflx0" target="_blank" rel="noopener" aria-label="Rated 5.0 on Google with 73 reviews. View reviews on Google Maps." data-google-review-link>
             <span class="google-g-badge" aria-hidden="true">
               <svg class="google-g-icon" viewBox="0 0 48 48">
                 <path fill="#FFC107" d="M43.6 20H24v8h11.3C33.7 32.6 29.4 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.1 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20c11 0 20-8 20-20 0-1.3-.1-2.7-.4-4z"/>
@@ -1643,7 +1670,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </svg>
             </span>
             <span class="hero-trust-stars" aria-hidden="true">★★★★★</span>
-            <span><strong>5.0 on Google</strong> · 50+ Five-Star Reviews</span>
+            <span><strong><span data-google-rating-score>5.0</span> on Google</strong> · <span data-google-review-count>73</span> Google Reviews</span>
           </a>
           <ul class="hero-points">
             <li>Private Tokyo tours with customized itineraries — no groups, no scripts</li>
@@ -1710,7 +1737,7 @@ Each tour is customized to your interests, pace, and travel style. Discover icon
         <h2>Guest Reviews</h2>
         <div class="reviews-intro">
           <div>
-            <a class="google-rating-card" href="https://www.google.com/maps/place/Tokyo+Signature+Tours+%7C+Private+Tokyo+Tours/@35.701622,139.6885977,14z/data=!3m1!4b1!4m6!3m5!1s0x2ae76d89645afc83:0x968877d08d9a25e1!8m2!3d35.7015889!4d139.7091972!16s%2Fg%2F11yrbvflx0" target="_blank" rel="noopener" aria-label="View Tokyo Signature Tours Google rating and reviews on Google Maps">
+            <a class="google-rating-card" href="https://www.google.com/maps/place/Tokyo+Signature+Tours+%7C+Private+Tokyo+Tours/@35.701622,139.6885977,14z/data=!3m1!4b1!4m6!3m5!1s0x2ae76d89645afc83:0x968877d08d9a25e1!8m2!3d35.7015889!4d139.7091972!16s%2Fg%2F11yrbvflx0" target="_blank" rel="noopener" aria-label="Rated 5.0 on Google with 73 reviews. View Tokyo Signature Tours on Google Maps" data-google-review-link>
               <span class="google-rating-mark" aria-hidden="true">
                 <svg class="google-g-icon" viewBox="0 0 48 48">
                   <path fill="#FFC107" d="M43.6 20H24v8h11.3C33.7 32.6 29.4 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.1 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20c11 0 20-8 20-20 0-1.3-.1-2.7-.4-4z"/>
@@ -1722,8 +1749,8 @@ Each tour is customized to your interests, pace, and travel style. Discover icon
               <span class="google-rating-copy">
                 <span class="google-rating-stars" aria-hidden="true">★★★★★</span>
                 <span class="google-rating-text">
-                  <span class="google-rating-score">5.0</span>
-                  <span class="google-rating-label">Google Rating</span>
+                  <span class="google-rating-score" data-google-rating-score>5.0</span>
+                  <span class="google-rating-label"><span data-google-review-count>73</span> Google Reviews</span>
                 </span>
               </span>
               <span class="google-rating-arrow" aria-hidden="true">→</span>
@@ -1885,7 +1912,8 @@ Each tour is customized to your interests, pace, and travel style. Discover icon
 </p>
 
 <div class="booking-contact-actions" aria-label="Contact options">
-  <button class="booking-contact-btn primary" id="bookingWhatsappBtn" type="button">
+  <button class="booking-contact-btn primary whatsapp-action" id="bookingWhatsappBtn" type="button">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.52 3.48A11.86 11.86 0 0 0 12.06 0C5.58 0 .36 5.21.36 11.67c0 2.06.54 4.08 1.56 5.86L0 24l6.63-1.88a12 12 0 0 0 5.43 1.35h.01c6.48 0 11.7-5.21 11.7-11.67 0-3.12-1.23-6.05-3.25-8.32zM12.06 22a9.9 9.9 0 0 1-5.04-1.37l-.36-.21-3.94 1.12 1.12-3.84-.23-.39a9.83 9.83 0 0 1-1.5-5.05C2.1 6.4 6.66 1.9 12.06 1.9c2.6 0 5.04 1.01 6.88 2.84a9.6 9.6 0 0 1 2.85 6.92c0 5.4-4.56 9.99-9.93 9.99zm5.04-7.6c-.27-.13-1.6-.79-1.84-.88-.24-.09-.42-.13-.6.13-.18.27-.69.88-.84 1.06-.16.18-.31.2-.58.07-.27-.13-1.14-.42-2.17-1.33-.8-.69-1.34-1.55-1.5-1.82-.16-.27-.02-.42.11-.55.12-.12.27-.31.4-.47.13-.16.18-.27.27-.45.09-.18.04-.34-.02-.47-.07-.13-.6-1.45-.82-1.99-.22-.54-.44-.46-.6-.47h-.51c-.18 0-.47.07-.72.34-.24.27-.95.93-.95 2.27 0 1.34.98 2.63 1.12 2.81.13.18 1.93 2.93 4.68 4.04.65.28 1.16.45 1.55.57.65.21 1.24.18 1.71.11.52-.08 1.6-.65 1.83-1.27.23-.62.23-1.15.16-1.27-.06-.11-.24-.18-.51-.31z"/></svg>
     Inquire on WhatsApp
   </button>
   <button class="booking-contact-btn secondary" id="bookingEmailBtn" type="button">
@@ -2147,7 +2175,7 @@ Each tour is customized to your interests, pace, and travel style. Discover icon
   </svg>
 </a>
 
-<a class="icon-btn" href="https://wa.me/819084350822" target="_blank" rel="noopener" aria-label="WhatsApp">
+<a class="icon-btn whatsapp-action" href="https://wa.me/819084350822" target="_blank" rel="noopener" aria-label="WhatsApp">
   <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.52 3.48A11.86 11.86 0 0 0 12.06 0C5.58 0 .36 5.21.36 11.67c0 2.06.54 4.08 1.56 5.86L0 24l6.63-1.88a12 12 0 0 0 5.43 1.35h.01c6.48 0 11.7-5.21 11.7-11.67 0-3.12-1.23-6.05-3.25-8.32zM12.06 22a9.9 9.9 0 0 1-5.04-1.37l-.36-.21-3.94 1.12 1.12-3.84-.23-.39a9.83 9.83 0 0 1-1.5-5.05C2.1 6.4 6.66 1.9 12.06 1.9c2.6 0 5.04 1.01 6.88 2.84a9.6 9.6 0 0 1 2.85 6.92c0 5.4-4.56 9.99-9.93 9.99zm5.04-7.6c-.27-.13-1.6-.79-1.84-.88-.24-.09-.42-.13-.6.13-.18.27-.69.88-.84 1.06-.16.18-.31.2-.58.07-.27-.13-1.14-.42-2.17-1.33-.8-.69-1.34-1.55-1.5-1.82-.16-.27-.02-.42.11-.55.12-.12.27-.31.4-.47.13-.16.18-.27.27-.45.09-.18.04-.34-.02-.47-.07-.13-.6-1.45-.82-1.99-.22-.54-.44-.46-.6-.47h-.51c-.18 0-.47.07-.72.34-.24.27-.95.93-.95 2.27 0 1.34.98 2.63 1.12 2.81.13.18 1.93 2.93 4.68 4.04.65.28 1.16.45 1.55.57.65.21 1.24.18 1.71.11.52-.08 1.6-.65 1.83-1.27.23-.62.23-1.15.16-1.27-.06-.11-.24-.18-.51-.31z"/></svg>
 </a>
 
@@ -2180,9 +2208,9 @@ Each tour is customized to your interests, pace, and travel style. Discover icon
       </div>
 
       <div class="sticky-actions">
-  <button class="sticky-btn" id="bookBtn" type="button" aria-label="Inquire on WhatsApp">
+  <button class="sticky-btn whatsapp-action" id="bookBtn" type="button" aria-label="Inquire on WhatsApp">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.52 3.48A11.86 11.86 0 0 0 12.06 0C5.58 0 .36 5.21.36 11.67c0 2.06.54 4.08 1.56 5.86L0 24l6.63-1.88a12 12 0 0 0 5.43 1.35h.01c6.48 0 11.7-5.21 11.7-11.67 0-3.12-1.23-6.05-3.25-8.32zM12.06 22a9.9 9.9 0 0 1-5.04-1.37l-.36-.21-3.94 1.12 1.12-3.84-.23-.39a9.83 9.83 0 0 1-1.5-5.05C2.1 6.4 6.66 1.9 12.06 1.9c2.6 0 5.04 1.01 6.88 2.84a9.6 9.6 0 0 1 2.85 6.92c0 5.4-4.56 9.99-9.93 9.99zm5.04-7.6c-.27-.13-1.6-.79-1.84-.88-.24-.09-.42-.13-.6.13-.18.27-.69.88-.84 1.06-.16.18-.31.2-.58.07-.27-.13-1.14-.42-2.17-1.33-.8-.69-1.34-1.55-1.5-1.82-.16-.27-.02-.42.11-.55.12-.12.27-.31.4-.47.13-.16.18-.27.27-.45.09-.18.04-.34-.02-.47-.07-.13-.6-1.45-.82-1.99-.22-.54-.44-.46-.6-.47h-.51c-.18 0-.47.07-.72.34-.24.27-.95.93-.95 2.27 0 1.34.98 2.63 1.12 2.81.13.18 1.93 2.93 4.68 4.04.65.28 1.16.45 1.55.57.65.21 1.24.18 1.71.11.52-.08 1.6-.65 1.83-1.27.23-.62.23-1.15.16-1.27-.06-.11-.24-.18-.51-.31z"/></svg>
     WhatsApp
-    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14ZM5 5h6v2H7v10h10v-4h2v6H5Z"/></svg>
   </button>
   <button class="sticky-email-btn" id="stickyEmailBtn" type="button" aria-label="Inquire by Email">
     Email
@@ -2303,6 +2331,8 @@ if (p != null) {
         const inquiryText =
   `Hello Tokyo Signature Tours,\n\n` +
   `I am interested in a private Tokyo tour.\n` +
+  `Requested Date: \n` +
+  `Hotel (If you already have decided): \n` +
   `Preferred duration: ${state.duration} Hours\n` +
   `Group size: ${state.guests} ${state.guests === 1 ? 'guest' : 'guests'}\n` +
   `Estimated total: ${inquiryPriceText(p, state.guests)}\n\n` +
@@ -2787,6 +2817,69 @@ bookingEmailBtn && bookingEmailBtn.addEventListener('click', ()=> openInquiry(bo
       dialog.addEventListener('click', (event)=>{
         if (event.target === dialog) closeDialog();
       });
+    })();
+  </script>
+
+
+
+  <script>
+    /* ==========================================================
+       GOOGLE REVIEW STATS AUTO-SYNC
+       - Current fallback shown in HTML: 5.0 / 73 reviews
+       - To enable live automatic updates, paste a browser-restricted
+         Google Maps JavaScript API key below and enable Places API (New).
+       ========================================================== */
+    const GOOGLE_MAPS_API_KEY = 'PASTE_YOUR_GOOGLE_MAPS_API_KEY_HERE';
+    const GOOGLE_PLACE_ID = 'ChIJg_xaZIlt5yoR4SWajdB3iJY';
+
+    (async function syncGoogleReviewStats(){
+      if (!GOOGLE_MAPS_API_KEY || GOOGLE_MAPS_API_KEY.includes('PASTE_YOUR_')) return;
+
+      const loadGoogleMaps = () => new Promise((resolve, reject) => {
+        if (window.google?.maps?.importLibrary) return resolve();
+
+        const existing = document.querySelector('script[data-google-maps-loader="true"]');
+        if (existing) {
+          existing.addEventListener('load', resolve, {once:true});
+          existing.addEventListener('error', reject, {once:true});
+          return;
+        }
+
+        const script = document.createElement('script');
+        script.src = `https://maps.googleapis.com/maps/api/js?key=${encodeURIComponent(GOOGLE_MAPS_API_KEY)}&v=weekly&libraries=places&loading=async`;
+        script.async = true;
+        script.defer = true;
+        script.dataset.googleMapsLoader = 'true';
+        script.onload = resolve;
+        script.onerror = reject;
+        document.head.appendChild(script);
+      });
+
+      try {
+        await loadGoogleMaps();
+        const { Place } = await google.maps.importLibrary('places');
+        const place = new Place({ id: GOOGLE_PLACE_ID, requestedLanguage: 'en' });
+        await place.fetchFields({ fields: ['rating', 'userRatingCount'] });
+
+        const rating = Number(place.rating);
+        const reviewCount = Number(place.userRatingCount);
+        if (!Number.isFinite(rating) || !Number.isFinite(reviewCount)) return;
+
+        const ratingText = rating.toFixed(1);
+        const countText = reviewCount.toLocaleString('en-US');
+
+        document.querySelectorAll('[data-google-rating-score]').forEach((el) => {
+          el.textContent = ratingText;
+        });
+        document.querySelectorAll('[data-google-review-count]').forEach((el) => {
+          el.textContent = countText;
+        });
+        document.querySelectorAll('[data-google-review-link]').forEach((el) => {
+          el.setAttribute('aria-label', `Rated ${ratingText} on Google with ${countText} reviews. View reviews on Google Maps.`);
+        });
+      } catch (error) {
+        console.warn('Google review stats auto-sync unavailable; using the current fallback values.', error);
+      }
     })();
   </script>
 
