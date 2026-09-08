@@ -11,8 +11,6 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link rel="preconnect" href="https://www.instagram.com" />
-<link rel="dns-prefetch" href="https://buy.stripe.com" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'" />
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" /></noscript>
 
@@ -607,28 +605,6 @@ blockquote.review p.quote strong{font-weight:600;color:var(--ink);font-family:va
 body.has-sticky{padding-bottom:92px}
 body.menu-open .sticky-buy{display:none !important}
 
-/* ============== PHOTO SLIDER ============== */
-.slider-wrap{
-  position:relative;overflow:hidden;
-  border:1px solid var(--line-soft);border-radius:var(--radius-lg);
-  background:#fff;box-shadow:var(--shadow-1);
-}
-.slider-track{display:flex;transition:transform .6s cubic-bezier(.4,0,.2,1);will-change:transform}
-.slide{min-width:100%;user-select:none}
-.slide img{width:100%;height:320px;object-fit:cover;display:block}
-.slider-btn{
-  position:absolute;top:50%;transform:translateY(-50%);
-  background:rgba(255,255,255,.96);color:var(--ink);border:1px solid var(--line);
-  width:50px;height:50px;border-radius:50%;cursor:pointer;
-  font-family:var(--serif);font-size:26px;line-height:1;font-weight:400;
-  box-shadow:var(--shadow-1);
-}
-.slider-btn:hover{background:#fff;border-color:var(--accent);color:var(--accent-dark)}
-.slider-prev{left:16px} .slider-next{right:16px}
-.slider-dots{display:flex;gap:10px;justify-content:center;padding:18px}
-.slider-dot{width:8px;height:8px;border-radius:50%;background:var(--line);border:none;cursor:pointer;transition:background .2s ease, width .2s ease}
-.slider-dot.active{background:var(--accent);width:28px;border-radius:4px}
-
 /* ============== CTA BLOCK ============== */
 .cta-block{
   background:linear-gradient(135deg,rgba(196,72,120,.08),rgba(184,153,104,.06));
@@ -668,20 +644,6 @@ body.menu-open .sticky-buy{display:none !important}
 }
 .icon-btn:hover{border-color:var(--accent);color:var(--accent-dark);transform:translateY(-1px)}
 .icon{width:18px;height:18px;fill:currentColor}
-
-/* ============== INSTAGRAM ============== */
-.instagram-card{
-  border:1px solid var(--line-soft);
-  border-radius:var(--radius-lg);background:#fff;
-  padding:26px 24px 28px;max-width:600px;margin:0 auto;
-  box-shadow:var(--shadow-1);
-}
-.instagram-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;gap:10px;flex-wrap:wrap}
-.instagram-header h3{margin:0;font-size:22px}
-.instagram-header a{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--accent-dark);font-family:var(--sans);font-weight:600;letter-spacing:.10em;text-transform:uppercase}
-.instagram-header svg{width:16px;height:16px;fill:currentColor}
-.instagram-intro{font-size:16px;color:var(--text-soft);margin-bottom:14px;line-height:1.7}
-.instagram-embed{border-radius:var(--radius);overflow:hidden;position:relative;min-height:220px;background:rgba(0,0,0,.02)}
 
 /* ============== FOOTER ============== */
 footer.site{
@@ -730,7 +692,7 @@ footer.site{
   p.lead{font-size:24px}
   .hero{padding-top:72px;padding-bottom:48px}
   .hero-wrap{grid-template-columns:1.05fr .95fr;gap:48px}
-  .hero-img img,.slide img{height:520px}
+  .hero-img img{height:520px}
   .grid{grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:28px}
   .grid-2{grid-template-columns:1fr 1fr;gap:32px}
   .card{padding:32px 30px}
@@ -1351,46 +1313,6 @@ footer.site{
     });
   });
 
-  /* ---------- Photo Slider ---------- */
-  (function(){
-    const wrap = document.getElementById('tst-slider');
-    if (!wrap) return;
-    const track = wrap.querySelector('.slider-track');
-    const slides = [...wrap.querySelectorAll('.slide')];
-    const prev = wrap.querySelector('.slider-prev');
-    const next = wrap.querySelector('.slider-next');
-    const dotsWrap = document.getElementById('tst-dots');
-    if (!slides.length) return;
-
-    let index = 0;
-    const go = (i)=>{
-      index = (i + slides.length) % slides.length;
-      track.style.transform = `translateX(${-index*100}%)`;
-      if (dotsWrap) [...dotsWrap.children].forEach((d,di)=>d.classList.toggle('active', di===index));
-    };
-    if (dotsWrap){
-      slides.forEach((_,i)=> {
-        const b = document.createElement('button');
-        b.className = 'slider-dot' + (i===0?' active':'');
-        b.type = 'button';
-        b.setAttribute('aria-label', `Go to slide ${i+1}`);
-        b.addEventListener('click', ()=>go(i));
-        dotsWrap.appendChild(b);
-      });
-    }
-    prev && prev.addEventListener('click', ()=>go(index-1));
-    next && next.addEventListener('click', ()=>go(index+1));
-    let startX=0, deltaX=0;
-    wrap.addEventListener('touchstart', e=>{ startX=e.touches[0].clientX; }, {passive:true});
-    wrap.addEventListener('touchmove',  e=>{ deltaX=e.touches[0].clientX - startX; }, {passive:true});
-    wrap.addEventListener('touchend', ()=>{ if (Math.abs(deltaX)>50) go(index + (deltaX<0?1:-1)); startX=0; deltaX=0; });
-    go(0);
-
-    let timer = setInterval(()=>go(index+1), 7000);
-    wrap.addEventListener('mouseenter', ()=>clearInterval(timer));
-    wrap.addEventListener('mouseleave', ()=>{ timer = setInterval(()=>go(index+1), 7000); });
-  })();
-
   /* ---------- Booking widget ---------- */
   (function(){
     const shell = document.getElementById('booking');
@@ -1418,7 +1340,6 @@ footer.site{
     const nextBtn = document.getElementById('durNext');
     let state = { duration: 8, guests: 2 };
     const fmt = n => `$${Number(n).toLocaleString('en-US', {minimumFractionDigits:Number.isInteger(Number(n))?0:2, maximumFractionDigits:2})}`;
-    const key = ()=> `${state.duration}h_${state.guests}g`;
 
     /* Per-person = total / guests, rounded */
     const perPerson = (total, guests) => Number((total / guests).toFixed(2));
@@ -1490,29 +1411,6 @@ footer.site{
     window.addEventListener('resize',()=>setTimeout(()=>{centerSelected('auto');arrowState();},150));
     window.addEventListener('orientationchange',()=>setTimeout(()=>{centerSelected('auto');arrowState();},250));
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(()=>setTimeout(()=>{centerSelected('auto');arrowState();},120));
-  })();
-
-  /* ---------- Lazy load Instagram embed ---------- */
-  (function(){
-    const sec = document.getElementById('instagram');
-    if (!sec) return;
-    let loaded = false;
-    const load = ()=>{
-      if (loaded) return;
-      loaded = true;
-      const s = document.createElement('script');
-      s.src = 'https://www.instagram.com/embed.js';
-      s.async = true;
-      document.body.appendChild(s);
-    };
-    if ('IntersectionObserver' in window){
-      const obs = new IntersectionObserver(entries=>{
-        entries.forEach(e=>{ if (e.isIntersecting){ load(); obs.disconnect(); }});
-      }, {rootMargin:'300px 0px'});
-      obs.observe(sec);
-    } else {
-      window.addEventListener('load', load);
-    }
   })();
 
 })();

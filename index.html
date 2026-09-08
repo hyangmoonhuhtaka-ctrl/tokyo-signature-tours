@@ -1624,12 +1624,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 .site-directory { padding:24px 0; border-top:1px solid rgba(80,60,60,.15); }
 .site-directory .container { display:flex; flex-wrap:wrap; gap:12px 22px; }
 .site-directory a { text-decoration:underline; text-underline-offset:3px; font-size:15px; }
-.price-table-wrap { overflow-x:auto; margin:20px 0; }
-.price-table { width:100%; border-collapse:collapse; font-size:15px; min-width:570px; }
-.price-table th,.price-table td { padding:12px; text-align:left; border-bottom:1px solid rgba(80,60,60,.18); white-space:nowrap; }
-.price-table caption { text-align:left; font-weight:600; padding:0 0 12px; white-space:normal; }
-.price-table thead { background:rgba(180,140,150,.10); }
-.inquiry-actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:20px; }
 
 
 /* Resolve percentage card widths against the viewport, not max-content. */
@@ -2271,33 +2265,6 @@ Each tour is customized to your interests, pace, and travel style. Discover icon
 
   <script>
     /* ==========================================================
-   STRIPE PAYMENT LINKS
-   Currently not used. Inquiry CTA is active instead.
-   ========================================================== */
-    const stripeLinks = {
-      "4h_1g": "https://buy.stripe.com/REPLACE_4H_1G",
-      "4h_2g": "https://buy.stripe.com/REPLACE_4H_2G",
-      "4h_3g": "https://buy.stripe.com/REPLACE_4H_3G",
-      "4h_4g": "https://buy.stripe.com/REPLACE_4H_4G",
-      "4h_5g": "https://buy.stripe.com/REPLACE_4H_5G",
-      "4h_6g": "https://buy.stripe.com/REPLACE_4H_6G",
-
-      "6h_1g": "https://buy.stripe.com/REPLACE_6H_1G",
-      "6h_2g": "https://buy.stripe.com/REPLACE_6H_2G",
-      "6h_3g": "https://buy.stripe.com/REPLACE_6H_3G",
-      "6h_4g": "https://buy.stripe.com/REPLACE_6H_4G",
-      "6h_5g": "https://buy.stripe.com/REPLACE_6H_5G",
-      "6h_6g": "https://buy.stripe.com/REPLACE_6H_6G",
-
-      "8h_1g": "https://buy.stripe.com/REPLACE_8H_1G",
-      "8h_2g": "https://buy.stripe.com/REPLACE_8H_2G",
-      "8h_3g": "https://buy.stripe.com/REPLACE_8H_3G",
-      "8h_4g": "https://buy.stripe.com/REPLACE_8H_4G",
-      "8h_5g": "https://buy.stripe.com/REPLACE_8H_5G",
-      "8h_6g": "https://buy.stripe.com/REPLACE_8H_6G"
-    };
-
-    /* ==========================================================
        PRICES (from your table)
        ========================================================== */
     const prices = {
@@ -2331,7 +2298,6 @@ const summaryTotal = document.getElementById('summaryTotal');
 
       let state = { duration: 8, guests: 2 };
 
-const key = ()=> `${state.duration}h_${state.guests}g`;
 
 const fmtUSD = (amount)=> {
   const value = Number(amount);
