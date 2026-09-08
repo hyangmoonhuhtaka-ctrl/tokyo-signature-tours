@@ -14,7 +14,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <meta name="description" content="Explore Tokyo on a private, fully customized tour with a bilingual local guide. Choose a 4-, 6-, or 8-hour itinerary for couples, families, and first-time visitors." />
   <meta name="format-detection" content="telephone=no" />
   <link rel="canonical" href="https://tokyosignaturetours.com/" />
-  <link rel="icon" href="/favicon.ico" />
   <meta property="og:title" content="Private Tokyo Tours &amp; Local Guides | Tokyo Signature Tours" />
   <meta property="og:description" content="Explore Tokyo on a private, fully customized tour with a bilingual local guide. Choose a 4-, 6-, or 8-hour itinerary for couples, families, and first-time visitors." />
   <meta property="og:image" content="https://tokyosignaturetours.com/tokyo-signature-tours-og-image.jpg" />
@@ -31,7 +30,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": ["LocalBusiness", "TravelAgency"],
+      "@type": [
+        "LocalBusiness",
+        "TravelAgency"
+      ],
       "@id": "https://tokyosignaturetours.com/#organization",
       "name": "Tokyo Signature Tours",
       "url": "https://tokyosignaturetours.com/",
@@ -39,17 +41,21 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       "image": "https://tokyosignaturetours.com/tokyo-signature-tours-og-image.jpg",
       "areaServed": {
         "@type": "City",
-        "name": "Tokyo",
-        "addressCountry": "JP"
+        "name": "Tokyo"
       },
       "telephone": "+81-90-8435-0822",
       "email": "info@tokyosignaturetours.com",
       "priceRange": "$$",
       "sameAs": [
-  "https://www.instagram.com/tokyosignaturetours/",
-  "https://www.facebook.com/profile.php?id=61580978236755",
-  "https://www.google.com/maps/place/Tokyo+Signature+Tours+%7C+Private+Tokyo+Tours/@35.701622,139.6885977,14z/data=!3m1!4b1!4m6!3m5!1s0x2ae76d89645afc83:0x968877d08d9a25e1!8m2!3d35.7015889!4d139.7091972!16s%2Fg%2F11yrbvflx0"
-]
+        "https://www.instagram.com/tokyosignaturetours/",
+        "https://www.facebook.com/profile.php?id=61580978236755",
+        "https://www.google.com/maps/place/Tokyo+Signature+Tours+%7C+Private+Tokyo+Tours/@35.701622,139.6885977,14z/data=!3m1!4b1!4m6!3m5!1s0x2ae76d89645afc83:0x968877d08d9a25e1!8m2!3d35.7015889!4d139.7091972!16s%2Fg%2F11yrbvflx0"
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Tokyo",
+        "addressCountry": "JP"
+      }
     },
     {
       "@type": "Service",
@@ -61,8 +67,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       },
       "areaServed": {
         "@type": "City",
-        "name": "Tokyo",
-        "addressCountry": "JP"
+        "name": "Tokyo"
       },
       "audience": {
         "@type": "Audience",
@@ -93,7 +98,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       "url": "https://tokyosignaturetours.com/",
       "name": "Private Tokyo Tours & Local Guides | Tokyo Signature Tours",
       "description": "Explore Tokyo on a private, fully customized tour with a bilingual local guide. Choose a 4-, 6-, or 8-hour itinerary for couples, families, and first-time visitors.",
-      "dateModified": "2026-09-05",
+      "dateModified": "2026-09-08",
       "about": {
         "@id": "https://tokyosignaturetours.com/#organization"
       },
@@ -190,7 +195,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   ]
 }
 </script>
-  
+
   <style>
     /* ==========================================================
        THEME
@@ -1614,7 +1619,24 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   height:36px;
   padding:0;
 }
-  </style>
+
+/* Crawlable page directory and readable group pricing. */
+.site-directory { padding:24px 0; border-top:1px solid rgba(80,60,60,.15); }
+.site-directory .container { display:flex; flex-wrap:wrap; gap:12px 22px; }
+.site-directory a { text-decoration:underline; text-underline-offset:3px; font-size:15px; }
+.price-table-wrap { overflow-x:auto; margin:20px 0; }
+.price-table { width:100%; border-collapse:collapse; font-size:15px; min-width:570px; }
+.price-table th,.price-table td { padding:12px; text-align:left; border-bottom:1px solid rgba(80,60,60,.18); white-space:nowrap; }
+.price-table caption { text-align:left; font-weight:600; padding:0 0 12px; white-space:normal; }
+.price-table thead { background:rgba(180,140,150,.10); }
+.inquiry-actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:20px; }
+
+
+/* Resolve percentage card widths against the viewport, not max-content. */
+.seg { min-width:0; width:100%; }
+.seg-btn { min-width:0; }
+
+</style>
 </head>
 
 <body>
@@ -1679,7 +1701,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="container hero-wrap">
         <div>
           <span class="eyebrow">Private Authentic Experiences in Tokyo, Japan</span>
-          <h1>Tokyo Signature Tours</h1>
+          <h1>Private Tokyo Tours<br>with Local Guides</h1>
           <p class="lead">
             Explore Tokyo with a private tour guide and a carefully customized itinerary designed around your interests, pace, and travel style.
             From iconic landmarks to quiet hidden streets, each experience is planned to feel seamless, authentic, and personal.
@@ -1708,7 +1730,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </ul>
         </div>
         <div class="hero-img">
-          <img src="/hero-photo.jpg" loading="eager" fetchpriority="high" decoding="async" alt="Elegant view of Tokyo with cherry blossoms and cityscape, representing private tours by Tokyo Signature Tours" />
+          <img width="1280" height="789" srcset="/images/optimized/hero-photo-640.webp 640w, /images/optimized/hero-photo-1280.webp 1280w" sizes="(max-width: 899px) calc(100vw - 40px), (max-width: 1200px) 50vw, 560px" src="/images/optimized/hero-photo-1280.webp" loading="eager" fetchpriority="high" decoding="async" alt="Elegant view of Tokyo with cherry blossoms and cityscape, representing private tours by Tokyo Signature Tours" />
         </div>
       </div>
     </section>
@@ -1718,10 +1740,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <h2>Private Tours in Tokyo</h2>
         <p>
           Tokyo Signature Tours offers private Tokyo tours led by carefully selected bilingual local guides.
-Each tour is customized to your interests, pace, and travel style. Discover iconic landmarks, local neighborhoods, food, and culture through an authentic and seamless Tokyo experience.
+Each tour is customized to your interests, pace, and travel style. Discover iconic landmarks, local neighborhoods, food, and culture through an authentic and seamless Tokyo experience. <a href="/private-tokyo-tour-guide.html">Learn about our private Tokyo guide service</a> or <a href="/tours.html#group-prices">compare tour durations and group prices</a>.
         </p>
-        
-        
+
+
       </div>
     </section>
 
@@ -1796,7 +1818,7 @@ Each tour is customized to your interests, pace, and travel style. Discover icon
         </div>
         <noscript>
           <figure class="review-card">
-            <img src="/images/reviews/review-joe-ohern.webp" loading="lazy" decoding="async" alt="Five-star private Tokyo tour review from Joe O'Hern, guided by Taka">
+            <img width="640" height="640" src="/images/optimized/review-joe-ohern-640.webp" loading="lazy" decoding="async" alt="Five-star private Tokyo tour review from Joe O'Hern, guided by Taka">
           </figure>
         </noscript>
       </div>
@@ -1899,7 +1921,8 @@ Each tour is customized to your interests, pace, and travel style. Discover icon
               </button>
             </div>
 
-            <div class="mini-includes" aria-label="Booking summary and inclusions">
+            <p class="family-price-note" style="font-size:14px;line-height:1.6;margin-top:16px">Traveling with children? Please include their ages in your inquiry so we can confirm the applicable guest count and final price. See our <a href="/terms.html" style="text-decoration:underline">terms</a> for the child policy.</p>
+<div class="mini-includes" aria-label="Booking summary and inclusions">
               <div class="mini-row">
                 <div class="mini-ic" aria-hidden="true">
                   <svg viewBox="0 0 24 24"><path d="M12 1a11 11 0 1 0 11 11A11.01 11.01 0 0 0 12 1Zm1 11.41 3.29 3.3-1.42 1.41L11 13V6h2Z"/></svg>
@@ -1907,7 +1930,7 @@ Each tour is customized to your interests, pace, and travel style. Discover icon
                 <div class="mini-txt">
                   <p class="mini-title">Your selection</p>
                   <p class="mini-sub" id="summaryLine">8 Hours • 2 guests</p>
-                  <p class="summary-price" id="summaryPrice">$280/person</p>
+                  <p class="summary-price" id="summaryPrice">$279.50/person</p>
                   <p class="summary-total" id="summaryTotal">$559 total</p>
                 </div>
               </div>
@@ -2045,15 +2068,15 @@ Each tour is customized to your interests, pace, and travel style. Discover icon
         <h2>Photo Gallery</h2>
         <div class="slider-wrap" id="tst-slider">
           <div class="slider-track">
-            <div class="slide"><img src="/images/TourPhoto-1.jpg"  alt="Guests exploring a quiet hidden alley in Tokyo" loading="lazy" decoding="async" fetchpriority="low"></div>
-            <div class="slide"><img src="/images/TourPhoto-2.jpg"  alt="Guests relaxing at a Japanese garden pavilion" loading="lazy" decoding="async" fetchpriority="low"></div>
-            <div class="slide"><img src="/images/TourPhoto-4.jpg"  alt="Tour group in front of a traditional gate in Tokyo" loading="lazy" decoding="async" fetchpriority="low"></div>
-            <div class="slide"><img src="/images/TourPhoto-5.jpg"  alt="Smiling guests in Asakusa street with Tokyo Skytree" loading="lazy" decoding="async" fetchpriority="low"></div>
-            <div class="slide"><img src="/images/TourPhoto-6.jpg"  alt="Guests enjoying the Asakusa sumo street area" loading="lazy" decoding="async" fetchpriority="low"></div>
-            <div class="slide"><img src="/images/TourPhoto-7.jpg"  alt="Walking through Takeshita Street in Harajuku" loading="lazy" decoding="async" fetchpriority="low"></div>
-            <div class="slide"><img src="/images/TourPhoto-8.jpg"  alt="Group at Meiji Shrine entrance" loading="lazy" decoding="async" fetchpriority="low"></div>
-            <div class="slide"><img src="/images/TourPhoto-9.jpg"  alt="Guests posing by sake barrel wall at Meiji Jingu" loading="lazy" decoding="async" fetchpriority="low"></div>
-            <div class="slide"><img src="/images/TourPhoto-11.jpg" alt="Guests enjoying a theater show in Tokyo" loading="lazy" decoding="async" fetchpriority="low"></div>
+            <div class="slide"><img width="1280" height="960" srcset="/images/optimized/TourPhoto-1-640.webp 640w, /images/optimized/TourPhoto-1-1280.webp 1280w" sizes="(max-width: 1200px) calc(100vw - 40px), 1140px" src="/images/optimized/TourPhoto-1-1280.webp"  alt="Guests exploring a quiet hidden alley in Tokyo" loading="lazy" decoding="async" fetchpriority="low"></div>
+            <div class="slide"><img width="1280" height="960" srcset="/images/optimized/TourPhoto-2-640.webp 640w, /images/optimized/TourPhoto-2-1280.webp 1280w" sizes="(max-width: 1200px) calc(100vw - 40px), 1140px" src="/images/optimized/TourPhoto-2-1280.webp"  alt="Guests relaxing at a Japanese garden pavilion" loading="lazy" decoding="async" fetchpriority="low"></div>
+            <div class="slide"><img width="1280" height="1707" srcset="/images/optimized/TourPhoto-4-640.webp 640w, /images/optimized/TourPhoto-4-1280.webp 1280w" sizes="(max-width: 1200px) calc(100vw - 40px), 1140px" src="/images/optimized/TourPhoto-4-1280.webp"  alt="Tour group in front of a traditional gate in Tokyo" loading="lazy" decoding="async" fetchpriority="low"></div>
+            <div class="slide"><img width="1280" height="960" srcset="/images/optimized/TourPhoto-5-640.webp 640w, /images/optimized/TourPhoto-5-1280.webp 1280w" sizes="(max-width: 1200px) calc(100vw - 40px), 1140px" src="/images/optimized/TourPhoto-5-1280.webp"  alt="Smiling guests in Asakusa street with Tokyo Skytree" loading="lazy" decoding="async" fetchpriority="low"></div>
+            <div class="slide"><img width="1280" height="960" srcset="/images/optimized/TourPhoto-6-640.webp 640w, /images/optimized/TourPhoto-6-1280.webp 1280w" sizes="(max-width: 1200px) calc(100vw - 40px), 1140px" src="/images/optimized/TourPhoto-6-1280.webp"  alt="Guests enjoying the Asakusa sumo street area" loading="lazy" decoding="async" fetchpriority="low"></div>
+            <div class="slide"><img width="1280" height="960" srcset="/images/optimized/TourPhoto-7-640.webp 640w, /images/optimized/TourPhoto-7-1280.webp 1280w" sizes="(max-width: 1200px) calc(100vw - 40px), 1140px" src="/images/optimized/TourPhoto-7-1280.webp"  alt="Walking through Takeshita Street in Harajuku" loading="lazy" decoding="async" fetchpriority="low"></div>
+            <div class="slide"><img width="1280" height="960" srcset="/images/optimized/TourPhoto-8-640.webp 640w, /images/optimized/TourPhoto-8-1280.webp 1280w" sizes="(max-width: 1200px) calc(100vw - 40px), 1140px" src="/images/optimized/TourPhoto-8-1280.webp"  alt="Group at Meiji Shrine entrance" loading="lazy" decoding="async" fetchpriority="low"></div>
+            <div class="slide"><img width="1280" height="1707" srcset="/images/optimized/TourPhoto-9-640.webp 640w, /images/optimized/TourPhoto-9-1280.webp 1280w" sizes="(max-width: 1200px) calc(100vw - 40px), 1140px" src="/images/optimized/TourPhoto-9-1280.webp"  alt="Guests posing by sake barrel wall at Meiji Jingu" loading="lazy" decoding="async" fetchpriority="low"></div>
+            <div class="slide"><img width="1280" height="960" srcset="/images/optimized/TourPhoto-11-640.webp 640w, /images/optimized/TourPhoto-11-1280.webp 1280w" sizes="(max-width: 1200px) calc(100vw - 40px), 1140px" src="/images/optimized/TourPhoto-11-1280.webp" alt="Guests enjoying a theater show in Tokyo" loading="lazy" decoding="async" fetchpriority="low"></div>
           </div>
           <button class="slider-btn slider-prev" aria-label="Previous slide" type="button">‹</button>
           <button class="slider-btn slider-next" aria-label="Next slide" type="button">›</button>
@@ -2212,7 +2235,9 @@ Each tour is customized to your interests, pace, and travel style. Discover icon
     </section>
   </main>
 
-  <footer>
+
+<nav class="site-directory" aria-label="Explore Tokyo Signature Tours"><div class="container"><a href="/">Home</a><a href="/tours.html">Tours &amp; prices</a><a href="/private-tokyo-tour-guide.html">Private Tokyo guide</a><a href="/about.html">About us</a><a href="/reviews.html">Guest reviews</a><a href="/faq.html">FAQ</a><a href="/contact.html">Contact</a></div></nav>
+<footer>
     <div class="container footer-inner">
       <div class="footer-links">
         <a href="https://tokyosignaturetours.com/terms.html">Terms of Use</a>
@@ -2229,7 +2254,7 @@ Each tour is customized to your interests, pace, and travel style. Discover icon
     <div class="sticky-inner">
       <div class="sticky-left">
         <div class="sticky-line1" id="stickyLine">8 Hours • 2 guests</div>
-        <div class="sticky-price" id="stickyPrice">$280/person</div>
+        <div class="sticky-price" id="stickyPrice">$559 total</div>
       </div>
 
       <div class="sticky-actions">
@@ -2314,7 +2339,7 @@ const fmtUSD = (amount)=> {
 };
 
 const fmtUSDTotal = (total)=> `${fmtUSD(total)} total`;
-const fmtUSDPerPersonCompact = (total, guests)=> `$${Math.round(total / guests)}/person`;
+const fmtUSDPerPersonCompact = (total, guests)=> `${fmtUSD(total / guests)}/person`;
 
 const inquiryPriceText = (total, guests)=> {
   if (total == null) return 'Please advise';
@@ -2332,11 +2357,11 @@ const inquiryPriceText = (total, guests)=> {
         const lineText = `${state.duration} Hours • ${state.guests} ${state.guests === 1 ? 'guest' : 'guests'}`;
 
         summaryLine.textContent = lineText;
-stickyLine.textContent = lineText;
+stickyLine.textContent = `${state.duration}h · ${state.guests} ${state.guests === 1 ? "guest" : "guests"}`;
 
 if (p != null) {
   const totalText = fmtUSDTotal(p);
-  stickyPrice.textContent = fmtUSDPerPersonCompact(p, state.guests);
+  stickyPrice.textContent = fmtUSDTotal(p);
 
   if (state.guests > 1) {
     if (summaryPrice) summaryPrice.textContent = fmtUSDPerPersonCompact(p, state.guests);
@@ -2563,6 +2588,7 @@ bookingEmailBtn && bookingEmailBtn.addEventListener('click', ()=> openInquiry(bo
       ].join(',');
 
       const setAria = (open)=>{
+      sideMenu.inert = !open;
         sideMenu.setAttribute('aria-hidden', open ? 'false' : 'true');
         openBtn && openBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
         openBtn && openBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
@@ -2740,7 +2766,9 @@ bookingEmailBtn && bookingEmailBtn.addEventListener('click', ()=> openInquiry(bo
         button.setAttribute('aria-label', `Open review from ${review.guest}`);
 
         const image = document.createElement('img');
-        image.src = review.image;
+        image.src = review.image.replace('/images/reviews/', '/images/optimized/').replace('.webp', '-640.webp');
+        image.width = 640;
+        image.height = 640;
         image.alt = review.alt;
         image.loading = index < initialImageCount ? 'eager' : 'lazy';
         image.decoding = 'async';
