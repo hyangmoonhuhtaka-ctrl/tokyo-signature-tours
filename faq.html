@@ -185,11 +185,12 @@ nav.primary a.active::after{
 .menu-toggle span::before,.menu-toggle span::after{content:"";position:absolute;left:0;width:18px;height:2px;background:var(--ink);border-radius:2px}
 .menu-toggle span::before{top:-6px} .menu-toggle span::after{top:6px}
 
-.menu-backdrop{position:fixed;inset:0;background:rgba(20,24,31,.32);opacity:0;pointer-events:none;transition:opacity .25s ease;z-index:39}
+/* Layer the mobile menu and backdrop above the sticky site header (40). */
+.menu-backdrop{position:fixed;inset:0;background:rgba(20,24,31,.32);opacity:0;pointer-events:none;transition:opacity .25s ease;z-index:41}
 .side-menu{
   position:fixed;top:0;right:0;width:340px;max-width:88vw;height:100%;
   background:#ffffff;
-  transform:translateX(102%);transition:transform .28s ease;z-index:40;
+  transform:translateX(102%);transition:transform .28s ease;z-index:42;
   display:flex;flex-direction:column;padding:22px 22px;
   overflow-y:auto;-webkit-overflow-scrolling:touch;
   padding-bottom:calc(24px + env(safe-area-inset-bottom));
@@ -951,6 +952,17 @@ footer.site{
     backdrop && backdrop.addEventListener('click', close);
     sideMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
     document.addEventListener('keydown', onKey);
+
+    // Release the modal state when the desktop navigation becomes visible.
+    const desktopMenuMedia = window.matchMedia('(min-width: 960px)');
+    const closeMenuOnDesktop = ()=>{
+      if (desktopMenuMedia.matches && body.classList.contains('menu-open')) close();
+    };
+    if (typeof desktopMenuMedia.addEventListener === 'function') {
+      desktopMenuMedia.addEventListener('change', closeMenuOnDesktop);
+    } else if (typeof desktopMenuMedia.addListener === 'function') {
+      desktopMenuMedia.addListener(closeMenuOnDesktop);
+    }
     setAria(false);
     openBtn.setAttribute('aria-expanded', 'false');
   })();

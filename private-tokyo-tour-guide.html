@@ -290,6 +290,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .menu-toggle span::before{top:-6px}
     .menu-toggle span::after{top:6px}
 
+    /* Layer the mobile menu and backdrop above the sticky site header (40). */
     .menu-backdrop{
       position:fixed;
       inset:0;
@@ -297,7 +298,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       opacity:0;
       pointer-events:none;
       transition:opacity .22s ease;
-      z-index:39;
+      z-index:41;
       touch-action: manipulation; /* ensure backdrop can always be tapped */
     }
     .side-menu{
@@ -316,7 +317,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       box-shadow:-14px 0 40px rgba(0,0,0,.18);
       transform:translateX(102%);
       transition:transform .22s ease;
-      z-index:40;
+      z-index:42;
       display:flex;
       flex-direction:column;
       padding:18px 18px calc(18px + env(safe-area-inset-bottom));
@@ -1198,6 +1199,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       });
 
       document.addEventListener('keydown', onKeydown);
+
+      // Release the modal state when the desktop navigation becomes visible.
+      const desktopMenuMedia = window.matchMedia('(min-width: 900px)');
+      const closeMenuOnDesktop = ()=>{
+        if (desktopMenuMedia.matches && body.classList.contains('menu-open')) close();
+      };
+      if (typeof desktopMenuMedia.addEventListener === 'function') {
+        desktopMenuMedia.addEventListener('change', closeMenuOnDesktop);
+      } else if (typeof desktopMenuMedia.addListener === 'function') {
+        desktopMenuMedia.addListener(closeMenuOnDesktop);
+      }
 
       setAria(false);
       openBtn && openBtn.setAttribute('aria-expanded', 'false');
