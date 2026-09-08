@@ -4,35 +4,28 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>Private Tokyo Tours · 4h, 6h, 8h Customized Itineraries</title>
-<meta name="description" content="Reserve a private, customized Tokyo tour: 4-hour highlights, 6-hour food tour, or 8-hour signature day. Per-person pricing, secure Stripe checkout. English & Japanese guides." />
+<meta name="description" content="Compare 4-, 6- and 8-hour private Tokyo tours with English/Japanese guides. View group prices and request a customized itinerary by WhatsApp or email." />
 <meta name="format-detection" content="telephone=no" />
 <meta name="robots" content="index, follow, max-image-preview:large" />
 <link rel="canonical" href="https://tokyosignaturetours.com/tours.html" />
-<link rel="icon" href="/favicon.ico" />
-<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link rel="preconnect" href="https://www.instagram.com" />
-<link rel="dns-prefetch" href="https://buy.stripe.com" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'" />
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" /></noscript>
 
 <meta property="og:site_name" content="Tokyo Signature Tours" />
 <meta property="og:title" content="Private Tokyo Tours · 4h, 6h, 8h Customized Itineraries" />
-<meta property="og:description" content="Reserve a private, customized Tokyo tour: 4-hour highlights, 6-hour food tour, or 8-hour signature day. Per-person pricing, secure Stripe checkout. English & Japanese guides." />
+<meta property="og:description" content="Compare 4-, 6- and 8-hour private Tokyo tours with English/Japanese guides. View group prices and request a customized itinerary by WhatsApp or email." />
 <meta property="og:image" content="https://tokyosignaturetours.com/og.jpg" />
 <meta property="og:url" content="https://tokyosignaturetours.com/tours.html" />
 <meta property="og:type" content="website" />
 <meta property="og:locale" content="en_US" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Private Tokyo Tours · 4h, 6h, 8h Customized Itineraries" />
-<meta name="twitter:description" content="Reserve a private, customized Tokyo tour: 4-hour highlights, 6-hour food tour, or 8-hour signature day. Per-person pricing, secure Stripe checkout. English & Japanese guides." />
+<meta name="twitter:description" content="Compare 4-, 6- and 8-hour private Tokyo tours with English/Japanese guides. View group prices and request a customized itinerary by WhatsApp or email." />
 <meta name="twitter:image" content="https://tokyosignaturetours.com/og.jpg" />
-
-<meta name="ai-content-declaration" content="human-authored" />
 <meta name="article:section" content="Travel / Private Tours / Tokyo" />
-<link rel="alternate" type="application/ld+json" href="/llms.txt" />
 
 <style>
 /* =========================================================
@@ -192,11 +185,12 @@ nav.primary a.active::after{
 .menu-toggle span::before,.menu-toggle span::after{content:"";position:absolute;left:0;width:18px;height:2px;background:var(--ink);border-radius:2px}
 .menu-toggle span::before{top:-6px} .menu-toggle span::after{top:6px}
 
-.menu-backdrop{position:fixed;inset:0;background:rgba(20,24,31,.32);opacity:0;pointer-events:none;transition:opacity .25s ease;z-index:39}
+/* Layer the mobile menu and backdrop above the sticky site header (40). */
+.menu-backdrop{position:fixed;inset:0;background:rgba(20,24,31,.32);opacity:0;pointer-events:none;transition:opacity .25s ease;z-index:41}
 .side-menu{
   position:fixed;top:0;right:0;width:340px;max-width:88vw;height:100%;
   background:#ffffff;
-  transform:translateX(102%);transition:transform .28s ease;z-index:40;
+  transform:translateX(102%);transition:transform .28s ease;z-index:42;
   display:flex;flex-direction:column;padding:22px 22px;
   overflow-y:auto;-webkit-overflow-scrolling:touch;
   padding-bottom:calc(24px + env(safe-area-inset-bottom));
@@ -612,28 +606,6 @@ blockquote.review p.quote strong{font-weight:600;color:var(--ink);font-family:va
 body.has-sticky{padding-bottom:92px}
 body.menu-open .sticky-buy{display:none !important}
 
-/* ============== PHOTO SLIDER ============== */
-.slider-wrap{
-  position:relative;overflow:hidden;
-  border:1px solid var(--line-soft);border-radius:var(--radius-lg);
-  background:#fff;box-shadow:var(--shadow-1);
-}
-.slider-track{display:flex;transition:transform .6s cubic-bezier(.4,0,.2,1);will-change:transform}
-.slide{min-width:100%;user-select:none}
-.slide img{width:100%;height:320px;object-fit:cover;display:block}
-.slider-btn{
-  position:absolute;top:50%;transform:translateY(-50%);
-  background:rgba(255,255,255,.96);color:var(--ink);border:1px solid var(--line);
-  width:50px;height:50px;border-radius:50%;cursor:pointer;
-  font-family:var(--serif);font-size:26px;line-height:1;font-weight:400;
-  box-shadow:var(--shadow-1);
-}
-.slider-btn:hover{background:#fff;border-color:var(--accent);color:var(--accent-dark)}
-.slider-prev{left:16px} .slider-next{right:16px}
-.slider-dots{display:flex;gap:10px;justify-content:center;padding:18px}
-.slider-dot{width:8px;height:8px;border-radius:50%;background:var(--line);border:none;cursor:pointer;transition:background .2s ease, width .2s ease}
-.slider-dot.active{background:var(--accent);width:28px;border-radius:4px}
-
 /* ============== CTA BLOCK ============== */
 .cta-block{
   background:linear-gradient(135deg,rgba(196,72,120,.08),rgba(184,153,104,.06));
@@ -673,20 +645,6 @@ body.menu-open .sticky-buy{display:none !important}
 }
 .icon-btn:hover{border-color:var(--accent);color:var(--accent-dark);transform:translateY(-1px)}
 .icon{width:18px;height:18px;fill:currentColor}
-
-/* ============== INSTAGRAM ============== */
-.instagram-card{
-  border:1px solid var(--line-soft);
-  border-radius:var(--radius-lg);background:#fff;
-  padding:26px 24px 28px;max-width:600px;margin:0 auto;
-  box-shadow:var(--shadow-1);
-}
-.instagram-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;gap:10px;flex-wrap:wrap}
-.instagram-header h3{margin:0;font-size:22px}
-.instagram-header a{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--accent-dark);font-family:var(--sans);font-weight:600;letter-spacing:.10em;text-transform:uppercase}
-.instagram-header svg{width:16px;height:16px;fill:currentColor}
-.instagram-intro{font-size:16px;color:var(--text-soft);margin-bottom:14px;line-height:1.7}
-.instagram-embed{border-radius:var(--radius);overflow:hidden;position:relative;min-height:220px;background:rgba(0,0,0,.02)}
 
 /* ============== FOOTER ============== */
 footer.site{
@@ -735,7 +693,7 @@ footer.site{
   p.lead{font-size:24px}
   .hero{padding-top:72px;padding-bottom:48px}
   .hero-wrap{grid-template-columns:1.05fr .95fr;gap:48px}
-  .hero-img img,.slide img{height:520px}
+  .hero-img img{height:520px}
   .grid{grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:28px}
   .grid-2{grid-template-columns:1fr 1fr;gap:32px}
   .card{padding:32px 30px}
@@ -778,13 +736,149 @@ footer.site{
   body::before{display:none}
 }
 
+
+/* Crawlable page directory and readable group pricing. */
+.site-directory { padding:24px 0; border-top:1px solid rgba(80,60,60,.15); }
+.site-directory .container { display:flex; flex-wrap:wrap; gap:12px 22px; }
+.site-directory a { text-decoration:underline; text-underline-offset:3px; font-size:15px; }
+.price-table-wrap { overflow-x:auto; margin:20px 0; }
+.price-table { width:100%; border-collapse:collapse; font-size:15px; min-width:570px; }
+.price-table th,.price-table td { padding:12px; text-align:left; border-bottom:1px solid rgba(80,60,60,.18); white-space:nowrap; }
+.price-table caption { text-align:left; font-weight:600; padding:0 0 12px; white-space:normal; }
+.price-table thead { background:rgba(180,140,150,.10); }
+.inquiry-actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:20px; }
+
+
+@media (max-width:600px) {
+  header.site .nav { padding:12px 16px; gap:10px; }
+  header.site .brand { min-width:0; font-size:18px; }
+  header.site .brand-mark, header.site .brand-title small { display:none; }
+  header.site .cta { padding:0 12px; font-size:13px; letter-spacing:0; }
+  header.site .menu-toggle { flex:0 0 44px; margin-left:0; }
+}
+
+
+/* Resolve percentage card widths against the viewport, not max-content. */
+.seg { min-width:0; width:100%; }
+.seg-btn { min-width:0; }
+
+@media (max-width:959px) {
+  .duration-wrap { padding:48px 0 0; }
+  .duration-wrap .dur-arrow { top:0; transform:none; }
+  .duration-wrap .dur-prev { left:auto; right:52px; }
+  .duration-wrap .dur-next { right:0; }
+}
+
 </style>
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": ["LocalBusiness", "TravelAgency", "TouristInformationCenter"], "@id": "https://tokyosignaturetours.com/#business", "name": "Tokyo Signature Tours", "url": "https://tokyosignaturetours.com/", "logo": "https://tokyosignaturetours.com/og.jpg", "image": "https://tokyosignaturetours.com/og.jpg", "description": "Tokyo Signature Tours offers private, premium guided tours in Tokyo for international travelers seeking authentic and personalized experiences. Each tour is fully customized to your interests — from iconic landmarks and hidden local gems to food, culture, history, and modern Tokyo life. All tours are conducted in fluent English and Japanese by carefully selected local guides.", "priceRange": "$$$", "telephone": "+81-90-8435-0822", "email": "info@tokyosignaturetours.com", "areaServed": [{"@type": "City", "name": "Tokyo"}, {"@type": "Place", "name": "Hakone"}, {"@type": "Place", "name": "Kamakura"}, {"@type": "Place", "name": "Nikko"}], "address": {"@type": "PostalAddress", "addressLocality": "Tokyo", "addressCountry": "JP"}, "sameAs": ["https://www.instagram.com/tokyosignaturetours?igsh=YzBtNXd4Y3Vjenlt", "https://www.facebook.com/profile.php?id=61580978236755&mibextid=ZbWKwL", "https://share.google/rSQ56F9cOzpPe06sC"], "aggregateRating": {"@type": "AggregateRating", "ratingValue": "5.0", "bestRating": "5", "ratingCount": "25", "reviewCount": "25"}, "makesOffer": [{"@type": "Offer", "name": "Half Day Tokyo Highlights (4h)", "price": "349", "priceCurrency": "USD", "description": "Private 4-hour fully customized Tokyo tour, total price for up to 2 guests."}, {"@type": "Offer", "name": "Extended Half Day & Food Tour (6h)", "price": "499", "priceCurrency": "USD", "description": "Private 6-hour fully customized Tokyo tour with local food experiences, total price for up to 2 guests."}, {"@type": "Offer", "name": "Full Day Signature Tour (8h)", "price": "559", "priceCurrency": "USD", "description": "Private 8-hour fully customized Tokyo tour, total price for up to 2 guests."}], "openingHoursSpecification": {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"], "description": "By advance reservation only. Tour schedules are arranged based on each guest's itinerary and preferences."}, "knowsAbout": ["Tokyo private tours", "Tokyo customized tours", "Tokyo food tours", "Tokyo cultural tours", "Asakusa", "Shibuya", "Harajuku", "Meiji Shrine", "Tsukiji", "Japanese etiquette"], "slogan": "Private, customized Tokyo tours — designed entirely around you."}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://tokyosignaturetours.com/"}, {"@type": "ListItem", "position": 2, "name": "Tours", "item": "https://tokyosignaturetours.com/tours.html"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TouristTrip", "name": "Half Day Tokyo Highlights", "description": "Private 4-hour customized Tokyo tour.", "touristType": ["Couples", "Families", "First-time visitors", "Small groups"], "provider": {"@id": "https://tokyosignaturetours.com/#business"}, "offers": {"@type": "Offer", "price": "349", "priceCurrency": "USD", "availability": "https://schema.org/InStock", "url": "https://tokyosignaturetours.com/tours.html#booking"}, "duration": "PT4H"}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TouristTrip", "name": "Extended Half Day & Food Tour", "description": "Private 6-hour customized Tokyo tour with local food experiences.", "touristType": ["Couples", "Families", "First-time visitors", "Small groups"], "provider": {"@id": "https://tokyosignaturetours.com/#business"}, "offers": {"@type": "Offer", "price": "499", "priceCurrency": "USD", "availability": "https://schema.org/InStock", "url": "https://tokyosignaturetours.com/tours.html#booking"}, "duration": "PT6H"}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TouristTrip", "name": "Full Day Signature Tour", "description": "Private 8-hour customized Tokyo tour.", "touristType": ["Couples", "Families", "First-time visitors", "Small groups"], "provider": {"@id": "https://tokyosignaturetours.com/#business"}, "offers": {"@type": "Offer", "price": "559", "priceCurrency": "USD", "availability": "https://schema.org/InStock", "url": "https://tokyosignaturetours.com/tours.html#booking"}, "duration": "PT8H"}</script>
+<script type="application/ld+json">
+{
+  "@type": [
+    "LocalBusiness",
+    "TravelAgency"
+  ],
+  "@id": "https://tokyosignaturetours.com/#organization",
+  "name": "Tokyo Signature Tours",
+  "url": "https://tokyosignaturetours.com/",
+  "description": "Tokyo Signature Tours offers private, customized Tokyo tours with carefully selected bilingual local guides for couples, families, first-time visitors, and discerning travelers.",
+  "image": "https://tokyosignaturetours.com/tokyo-signature-tours-og-image.jpg",
+  "areaServed": {
+    "@type": "City",
+    "name": "Tokyo"
+  },
+  "telephone": "+81-90-8435-0822",
+  "email": "info@tokyosignaturetours.com",
+  "priceRange": "$$",
+  "sameAs": [
+    "https://www.instagram.com/tokyosignaturetours/",
+    "https://www.facebook.com/profile.php?id=61580978236755",
+    "https://www.google.com/maps/place/Tokyo+Signature+Tours+%7C+Private+Tokyo+Tours/@35.701622,139.6885977,14z/data=!3m1!4b1!4m6!3m5!1s0x2ae76d89645afc83:0x968877d08d9a25e1!8m2!3d35.7015889!4d139.7091972!16s%2Fg%2F11yrbvflx0"
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Tokyo",
+    "addressCountry": "JP"
+  },
+  "@context": "https://schema.org"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://tokyosignaturetours.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Tours",
+      "item": "https://tokyosignaturetours.com/tours.html"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TouristTrip",
+  "name": "Half Day Tokyo Highlights",
+  "description": "Private 4-hour customized Tokyo tour.",
+  "touristType": [
+    "Couples",
+    "Families",
+    "First-time visitors",
+    "Small groups"
+  ],
+  "provider": {
+    "@id": "https://tokyosignaturetours.com/#organization"
+  },
+  "duration": "PT4H",
+  "url": "https://tokyosignaturetours.com/tours.html"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TouristTrip",
+  "name": "Extended Half Day & Food Tour",
+  "description": "Private 6-hour customized Tokyo tour with local food experiences.",
+  "touristType": [
+    "Couples",
+    "Families",
+    "First-time visitors",
+    "Small groups"
+  ],
+  "provider": {
+    "@id": "https://tokyosignaturetours.com/#organization"
+  },
+  "duration": "PT6H",
+  "url": "https://tokyosignaturetours.com/tours.html"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TouristTrip",
+  "name": "Full Day Signature Tour",
+  "description": "Private 8-hour customized Tokyo tour.",
+  "touristType": [
+    "Couples",
+    "Families",
+    "First-time visitors",
+    "Small groups"
+  ],
+  "provider": {
+    "@id": "https://tokyosignaturetours.com/#organization"
+  },
+  "duration": "PT8H",
+  "url": "https://tokyosignaturetours.com/tours.html"
+}
+</script>
 </head>
 <body>
 
@@ -835,7 +929,7 @@ footer.site{
       <a href="/contact.html">Contact</a>
     </nav>
     <div style="display:flex;align-items:center;gap:10px;">
-      <a href="/tours.html#booking" class="cta">Reserve</a>
+      <a href="/tours.html#booking" class="cta">Plan tour</a>
       <button class="menu-toggle" aria-label="Open menu" type="button"><span></span></button>
     </div>
   </div>
@@ -869,7 +963,7 @@ footer.site{
   <div class="container">
     <div class="section-head">
       <span class="section-eyebrow">Itineraries &amp; Reservations</span>
-      <h1>Three Lengths of Day,<br>Each Designed Around You</h1>
+      <h1>Private Tokyo Tours:<br>4, 6 &amp; 8 Hours</h1>
       <p class="section-lead">
         Every tour is private, fully customized, and led by a carefully selected local guide fluent in English and Japanese. Choose your duration below — we'll plan the route together.
       </p>
@@ -894,8 +988,8 @@ footer.site{
     <div class="booking-shell" id="booking" aria-label="Tour booking">
       <div class="booking-head">
         <span class="booking-kicker">Reservations</span>
-        <h2 class="booking-title">Reserve Your Tokyo Day</h2>
-        <p class="booking-sub">Choose duration and party size. Per-person pricing is shown, with the total calculated automatically. Secure Stripe checkout in USD.</p>
+        <h2 class="booking-title">Plan Your Private Tokyo Tour</h2>
+        <p class="booking-sub">Choose your duration and party size to see the group total and per-person estimate in USD. Send an inquiry to confirm availability and payment details.</p>
       </div>
       <div class="booking-body">
 
@@ -949,6 +1043,8 @@ footer.site{
           <button class="guest-btn" type="button" data-guests="6" aria-pressed="false"><div class="guest-num">6</div><div class="guest-lbl">Guests</div></button>
         </div>
 
+<p class="family-price-note" style="font-size:14px;line-height:1.6;margin-top:16px">Traveling with children? Please include their ages in your inquiry so we can confirm the applicable guest count and final price. See our <a href="/terms.html" style="text-decoration:underline">terms</a> for the child policy.</p>
+<div class="inquiry-actions"><a id="bookingInquiry" class="cta" href="https://wa.me/819084350822" target="_blank" rel="noopener">Inquire on WhatsApp</a><a id="bookingEmail" class="cta ghost" href="mailto:info@tokyosignaturetours.com">Inquire by email</a></div><p style="font-size:14px;margin-top:12px">An inquiry is not a confirmed booking. No payment is taken on this page.</p>
         <div class="mini-includes" aria-label="Booking summary">
           <div class="mini-row">
             <div class="mini-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 1a11 11 0 1 0 11 11A11.01 11.01 0 0 0 12 1Zm1 11.41 3.29 3.3-1.42 1.41L11 13V6h2Z"/></svg></div>
@@ -956,7 +1052,7 @@ footer.site{
               <p class="mini-title">Your Selection</p>
               <p class="mini-sub" id="summaryLine">8 Hours · 2 guests</p>
               <div class="price-line">
-                <span class="pp" id="summaryPrice">$280</span>
+                <span class="pp" id="summaryPrice">$279.50</span>
                 <span class="pp-lbl">per person</span>
                 <span class="total" id="summaryTotal">($559 total)</span>
               </div>
@@ -968,7 +1064,7 @@ footer.site{
           </div>
           <div class="mini-row">
             <div class="mini-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 6H4V4h16Zm0 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8Zm-2 4H6v2h12Z"/></svg></div>
-            <div class="mini-txt"><p class="mini-title">Confirmation</p><p class="mini-sub">Secure Stripe checkout in USD. We finalize the customized itinerary together after your reservation.</p></div>
+            <div class="mini-txt"><p class="mini-title">Confirmation</p><p class="mini-sub">We confirm availability, your customized itinerary, the final amount, and payment details before you pay.</p></div>
           </div>
           <p style="margin:10px 4px 0;color:var(--muted);font-size:14px;line-height:1.7;font-family:var(--sans);letter-spacing:.02em;">
             Note · Transportation, meals, and admission fees are not included. Day trips to Hakone, Kamakura, or Nikko are available by request.
@@ -977,13 +1073,27 @@ footer.site{
       </div>
     </div>
 
+    <section id="group-prices" aria-labelledby="group-prices-title">
+      <h2 id="group-prices-title">Private Tour Prices by Group Size</h2>
+      <p>These are the displayed tour estimates in USD for your entire private group, not a charge per guest. Per-person figures are rounded to two decimal places; the group total is the reference amount. Charges are billed in US dollars (USD). Confirm availability and the final amount with us before payment.</p>
+      <div class="price-table-wrap" tabindex="0" role="region" aria-label="Group prices, scroll horizontally on smaller screens">
+        <table class="price-table"><caption>Private guiding — total price in USD</caption>
+          <thead><tr><th scope="col">Duration</th><th scope="col">1 guest</th><th scope="col">2 guests</th><th scope="col">3 guests</th><th scope="col">4 guests</th><th scope="col">5 guests</th><th scope="col">6 guests</th></tr></thead>
+          <tbody><tr><th scope="row">4 hours</th><td>$269</td><td>$349</td><td>$399</td><td>$449</td><td>$499</td><td>$549</td></tr>
+          <tr><th scope="row">6 hours</th><td>$399</td><td>$499</td><td>$549</td><td>$609</td><td>$659</td><td>$709</td></tr>
+          <tr><th scope="row">8 hours</th><td>$449</td><td>$559</td><td>$619</td><td>$669</td><td>$719</td><td>$769</td></tr></tbody>
+        </table>
+      </div>
+      <p>Included: a private English/Japanese guide, customized itinerary planning and flexible pacing. Not included: food, drinks, transportation, admission tickets and gratuities. Day trips and groups above six guests require a separate inquiry.</p>
+      <p>See <a href="/faq.html">booking questions</a> and our <a href="/terms.html">terms and cancellation policy</a>.</p>
+    </section>
     <div class="grid" style="margin-top:36px;">
       <div class="card" id="half-day">
         <span class="tag">4 Hours</span>
         <h3>Half Day Tokyo Highlights</h3>
         <p>A gentle introduction to Tokyo, well suited for your first afternoon or a shorter stay. We focus on two or three neighborhoods so you can feel oriented and at ease from day one.</p>
         <p style="font-family:var(--serif);font-size:19px;color:var(--ink);margin-top:12px;">
-          From <strong>$135</strong> per person <span style="color:var(--muted);font-size:15px;font-style:italic;">($269 for 1 guest · $349 total for 2)</span>
+          <strong>$269 total</strong> for 1 guest · <strong>$349 total</strong> for 2 guests (USD)
         </p>
         <button class="toggle" type="button">View Details</button>
         <div class="details">
@@ -1001,7 +1111,7 @@ footer.site{
         <h3>Extended Half Day &amp; Food Tour</h3>
         <p>A deeper exploration of neighborhoods and food culture. We combine essential sights with quiet backstreets and carefully chosen eateries — ramen, sushi, izakaya, or market snacks.</p>
         <p style="font-family:var(--serif);font-size:19px;color:var(--ink);margin-top:12px;">
-          From <strong>$200</strong> per person <span style="color:var(--muted);font-size:15px;font-style:italic;">($399 for 1 guest · $499 total for 2)</span>
+          <strong>$399 total</strong> for 1 guest · <strong>$499 total</strong> for 2 guests (USD)
         </p>
         <button class="toggle" type="button">View Details</button>
         <div class="details">
@@ -1019,7 +1129,7 @@ footer.site{
         <h3>Full Day Signature Tour</h3>
         <p>A complete Tokyo day — temples, markets, viewpoints, and hidden corners, woven into one thoughtful experience at your preferred pace.</p>
         <p style="font-family:var(--serif);font-size:19px;color:var(--ink);margin-top:12px;">
-          From <strong>$225</strong> per person <span style="color:var(--muted);font-size:15px;font-style:italic;">($449 for 1 guest · $559 total for 2)</span>
+          <strong>$449 total</strong> for 1 guest · <strong>$559 total</strong> for 2 guests (USD)
         </p>
         <button class="toggle" type="button">View Details</button>
         <div class="details">
@@ -1074,19 +1184,17 @@ footer.site{
     <div class="sticky-left">
       <div class="sticky-line1" id="stickyLine">8 Hours · 2 guests</div>
       <div class="sticky-price">
-        <span id="stickyPrice">$280</span>
+        <span id="stickyPrice">$279.50</span>
         <span class="per">per person</span>
         <span class="total" id="stickyTotal">($559 total)</span>
       </div>
     </div>
-    <button class="sticky-btn" id="bookBtn" type="button" aria-label="Reserve via Stripe">
-      Reserve
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14ZM5 5h6v2H7v10h10v-4h2v6H5Z"/></svg>
-    </button>
+    <button class="sticky-btn" id="bookBtn" type="button" aria-label="Inquire on WhatsApp">WhatsApp inquiry</button>
   </div>
 </div>
 
 
+<nav class="site-directory" aria-label="Explore Tokyo Signature Tours"><div class="container"><a href="/">Home</a><a href="/tours.html">Tours &amp; prices</a><a href="/private-tokyo-tour-guide.html">Private Tokyo guide</a><a href="/about.html">About us</a><a href="/reviews.html">Guest reviews</a><a href="/faq.html">FAQ</a><a href="/contact.html">Contact</a></div></nav>
 <footer class="site" role="contentinfo">
   <div class="container">
     <div class="footer-grid">
@@ -1158,6 +1266,7 @@ footer.site{
     const focusableSel = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
     const setAria = (open)=>{
+      sideMenu.inert = !open;
       sideMenu.setAttribute('aria-hidden', open ? 'false' : 'true');
       openBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
     };
@@ -1191,6 +1300,17 @@ footer.site{
     backdrop && backdrop.addEventListener('click', close);
     sideMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
     document.addEventListener('keydown', onKey);
+
+    // Release the modal state when the desktop navigation becomes visible.
+    const desktopMenuMedia = window.matchMedia('(min-width: 960px)');
+    const closeMenuOnDesktop = ()=>{
+      if (desktopMenuMedia.matches && body.classList.contains('menu-open')) close();
+    };
+    if (typeof desktopMenuMedia.addEventListener === 'function') {
+      desktopMenuMedia.addEventListener('change', closeMenuOnDesktop);
+    } else if (typeof desktopMenuMedia.addListener === 'function') {
+      desktopMenuMedia.addListener(closeMenuOnDesktop);
+    }
     setAria(false);
     openBtn.setAttribute('aria-expanded', 'false');
   })();
@@ -1205,57 +1325,10 @@ footer.site{
     });
   });
 
-  /* ---------- Photo Slider ---------- */
-  (function(){
-    const wrap = document.getElementById('tst-slider');
-    if (!wrap) return;
-    const track = wrap.querySelector('.slider-track');
-    const slides = [...wrap.querySelectorAll('.slide')];
-    const prev = wrap.querySelector('.slider-prev');
-    const next = wrap.querySelector('.slider-next');
-    const dotsWrap = document.getElementById('tst-dots');
-    if (!slides.length) return;
-
-    let index = 0;
-    const go = (i)=>{
-      index = (i + slides.length) % slides.length;
-      track.style.transform = `translateX(${-index*100}%)`;
-      if (dotsWrap) [...dotsWrap.children].forEach((d,di)=>d.classList.toggle('active', di===index));
-    };
-    if (dotsWrap){
-      slides.forEach((_,i)=> {
-        const b = document.createElement('button');
-        b.className = 'slider-dot' + (i===0?' active':'');
-        b.type = 'button';
-        b.setAttribute('aria-label', `Go to slide ${i+1}`);
-        b.addEventListener('click', ()=>go(i));
-        dotsWrap.appendChild(b);
-      });
-    }
-    prev && prev.addEventListener('click', ()=>go(index-1));
-    next && next.addEventListener('click', ()=>go(index+1));
-    let startX=0, deltaX=0;
-    wrap.addEventListener('touchstart', e=>{ startX=e.touches[0].clientX; }, {passive:true});
-    wrap.addEventListener('touchmove',  e=>{ deltaX=e.touches[0].clientX - startX; }, {passive:true});
-    wrap.addEventListener('touchend', ()=>{ if (Math.abs(deltaX)>50) go(index + (deltaX<0?1:-1)); startX=0; deltaX=0; });
-    go(0);
-
-    let timer = setInterval(()=>go(index+1), 7000);
-    wrap.addEventListener('mouseenter', ()=>clearInterval(timer));
-    wrap.addEventListener('mouseleave', ()=>{ timer = setInterval(()=>go(index+1), 7000); });
-  })();
-
   /* ---------- Booking widget ---------- */
   (function(){
     const shell = document.getElementById('booking');
     if (!shell) return;
-
-    /* Stripe payment links — REPLACE with real URLs. */
-    const stripeLinks = (window.STRIPE_LINKS) || {
-      "4h_1g":"https://buy.stripe.com/REPLACE_4H_1G","4h_2g":"https://buy.stripe.com/REPLACE_4H_2G","4h_3g":"https://buy.stripe.com/REPLACE_4H_3G","4h_4g":"https://buy.stripe.com/REPLACE_4H_4G","4h_5g":"https://buy.stripe.com/REPLACE_4H_5G","4h_6g":"https://buy.stripe.com/REPLACE_4H_6G",
-      "6h_1g":"https://buy.stripe.com/REPLACE_6H_1G","6h_2g":"https://buy.stripe.com/REPLACE_6H_2G","6h_3g":"https://buy.stripe.com/REPLACE_6H_3G","6h_4g":"https://buy.stripe.com/REPLACE_6H_4G","6h_5g":"https://buy.stripe.com/REPLACE_6H_5G","6h_6g":"https://buy.stripe.com/REPLACE_6H_6G",
-      "8h_1g":"https://buy.stripe.com/REPLACE_8H_1G","8h_2g":"https://buy.stripe.com/REPLACE_8H_2G","8h_3g":"https://buy.stripe.com/REPLACE_8H_3G","8h_4g":"https://buy.stripe.com/REPLACE_8H_4G","8h_5g":"https://buy.stripe.com/REPLACE_8H_5G","8h_6g":"https://buy.stripe.com/REPLACE_8H_6G"
-    };
 
     /* === TOTAL prices (server-side logic, preserved) === */
     const prices = {
@@ -1278,11 +1351,10 @@ footer.site{
     const prevBtn = document.getElementById('durPrev');
     const nextBtn = document.getElementById('durNext');
     let state = { duration: 8, guests: 2 };
-    const fmt = n => `$${Number(n).toLocaleString('en-US')}`;
-    const key = ()=> `${state.duration}h_${state.guests}g`;
+    const fmt = n => `$${Number(n).toLocaleString('en-US', {minimumFractionDigits:Number.isInteger(Number(n))?0:2, maximumFractionDigits:2})}`;
 
     /* Per-person = total / guests, rounded */
-    const perPerson = (total, guests) => Math.round(total / guests);
+    const perPerson = (total, guests) => Number((total / guests).toFixed(2));
 
     const render = ()=>{
       segBtns.forEach(b=>b.setAttribute('aria-pressed', String(Number(b.dataset.duration)===state.duration)));
@@ -1300,11 +1372,12 @@ footer.site{
       if (stickyPrice && pp != null) stickyPrice.textContent = fmt(pp);
       if (stickyTotal && total != null) stickyTotal.textContent = `(${fmt(total)} total)`;
 
-      const url = stripeLinks[key()];
-      if (bookBtn){
-        if (url && !url.includes('REPLACE_')){ bookBtn.disabled=false; bookBtn.dataset.href=url; }
-        else { bookBtn.disabled=true; bookBtn.dataset.href=''; }
-      }
+      const message = `Hello Tokyo Signature Tours,\nI would like a ${state.duration}-hour private Tokyo tour for ${state.guests} guests.\nDisplayed group total: USD ${total}.\nPreferred date: [TYPE HERE]\nHotel area: [TYPE HERE]\nInterests: [TYPE HERE]\nPlease confirm availability, the final amount and payment details.`;
+      const url = `https://wa.me/819084350822?text=${encodeURIComponent(message)}`;
+      const emailUrl = `mailto:info@tokyosignaturetours.com?subject=Private%20Tokyo%20Tour%20Inquiry&body=${encodeURIComponent(message)}`;
+      if (bookBtn){ bookBtn.disabled = false; bookBtn.dataset.href = url; }
+      document.getElementById('bookingInquiry').href = url;
+      document.getElementById('bookingEmail').href = emailUrl;
     };
     const centerSelected = (behavior='smooth')=>{
       if (!durationScroll) return;
@@ -1329,7 +1402,13 @@ footer.site{
     prevBtn && prevBtn.addEventListener('click',()=>scrollBy(-1));
     nextBtn && nextBtn.addEventListener('click',()=>scrollBy(1));
     durationScroll && durationScroll.addEventListener('scroll',()=>requestAnimationFrame(arrowState),{passive:true});
-    bookBtn && bookBtn.addEventListener('click',()=>{ const u=bookBtn.dataset.href; if (u) window.open(u,'_blank','noopener'); });
+    const recordInquiry = source => {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({event:'generate_lead', lead_source:source, tour_duration:state.duration, group_size:state.guests, total_price_usd:prices[state.duration][state.guests]});
+    };
+    bookBtn && bookBtn.addEventListener('click',()=>{ recordInquiry('tours_sticky_whatsapp'); const u=bookBtn.dataset.href; if (u) window.open(u,'_blank','noopener'); });
+    document.getElementById('bookingInquiry').addEventListener('click',()=>recordInquiry('tours_booking_whatsapp'));
+    document.getElementById('bookingEmail').addEventListener('click',()=>recordInquiry('tours_booking_email'));
 
     if (sticky){
       const mq = window.matchMedia('(min-width: 960px)');
@@ -1344,29 +1423,6 @@ footer.site{
     window.addEventListener('resize',()=>setTimeout(()=>{centerSelected('auto');arrowState();},150));
     window.addEventListener('orientationchange',()=>setTimeout(()=>{centerSelected('auto');arrowState();},250));
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(()=>setTimeout(()=>{centerSelected('auto');arrowState();},120));
-  })();
-
-  /* ---------- Lazy load Instagram embed ---------- */
-  (function(){
-    const sec = document.getElementById('instagram');
-    if (!sec) return;
-    let loaded = false;
-    const load = ()=>{
-      if (loaded) return;
-      loaded = true;
-      const s = document.createElement('script');
-      s.src = 'https://www.instagram.com/embed.js';
-      s.async = true;
-      document.body.appendChild(s);
-    };
-    if ('IntersectionObserver' in window){
-      const obs = new IntersectionObserver(entries=>{
-        entries.forEach(e=>{ if (e.isIntersecting){ load(); obs.disconnect(); }});
-      }, {rootMargin:'300px 0px'});
-      obs.observe(sec);
-    } else {
-      window.addEventListener('load', load);
-    }
   })();
 
 })();
