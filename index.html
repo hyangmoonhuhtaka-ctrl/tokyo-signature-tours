@@ -1731,6 +1731,28 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 .seg { min-width:0; width:100%; }
 .seg-btn { min-width:0; }
 
+
+    /* Guest-written travel story */
+    #guest-story .tst-story-card{
+      display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);
+      border:1px solid #e8cbd5;border-radius:24px;overflow:hidden;
+      background:#fff;box-shadow:0 14px 40px rgba(91,37,59,.08);
+    }
+    #guest-story .tst-story-intro{padding:clamp(24px,4vw,44px);background:linear-gradient(135deg,#fff0f5,#f8e2eb)}
+    #guest-story .tst-story-kicker{display:block;color:#883251;font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;margin-bottom:18px}
+    #guest-story h2{font-size:clamp(28px,3.3vw,40px);line-height:1.16;letter-spacing:-.035em;margin:0 0 18px;color:#29202a;max-width:18ch}
+    #guest-story .tst-story-intro p{color:#584651;line-height:1.7;margin:0}
+    #guest-story .tst-story-body{padding:clamp(24px,4vw,44px);display:flex;flex-direction:column;justify-content:center;min-width:0}
+    #guest-story .tst-story-byline{font-size:13px;color:#65565f;margin:0 0 18px}
+    #guest-story blockquote{font-family:Georgia,'Times New Roman',serif;font-size:clamp(23px,2.5vw,30px);line-height:1.45;color:#352831;margin:0 0 18px;padding:0;border:0}
+    #guest-story .tst-story-disclosure{font-size:13px;line-height:1.65;color:#65565f;margin:0 0 22px}
+    #guest-story .tst-story-button{display:flex;align-items:center;justify-content:space-between;gap:16px;box-sizing:border-box;min-height:52px;padding:14px 20px;border-radius:12px;background:#953b5b;color:#fff;font-size:15px;font-weight:750;line-height:1.5;text-decoration:none;transition:background .18s ease,transform .18s ease}
+    #guest-story .tst-story-button:hover{background:#762c46;transform:translateY(-2px)}
+    #guest-story a:focus-visible{outline:3px solid #762c46;outline-offset:4px}
+    #guest-story .tst-story-destination{font-size:12px;color:#65565f;margin:9px 0 0;overflow-wrap:anywhere}
+    #guest-story .tst-story-plan{display:inline-block;align-self:flex-start;font-size:14px;font-weight:700;text-decoration:underline;text-underline-offset:4px;margin-top:18px;color:#883251;padding:8px 0}
+    @media(max-width:700px){#guest-story .tst-story-card{grid-template-columns:1fr}#guest-story h2{max-width:22ch}}
+    @media(prefers-reduced-motion:reduce){#guest-story .tst-story-button{transition:none}#guest-story .tst-story-button:hover{transform:none}}
 </style>
 </head>
 
@@ -1837,7 +1859,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <p>
           Tokyo Signature Tours offers private Tokyo tours led by carefully selected English-speaking bilingual local guides.
           Each tour is customized to your interests, pace, hotel location, and travel style. Discover iconic landmarks, local neighborhoods, food, and culture through an authentic and seamless Tokyo experience.
-          If it is your first time in Japan, your guide can also help you understand local customs, navigate Tokyo, and feel more confident for the rest of your stay. <a href="/private-tokyo-tour-guide.html">Learn about our private Tokyo guide service</a> or <a href="/tours.html#group-prices">compare tour durations and group prices</a>.
+          If it is your first time in Japan, your guide can also help you understand local customs, navigate Tokyo, and feel more confident for the rest of your stay. Learn about our private Tokyo guide service or compare tour durations and group prices.
         </p>
         <p style="font-size:14px;color:var(--muted);margin-top:8px;">
           Founded in Tokyo by Taka, Tokyo Signature Tours is built around one simple idea: a private tour should feel personal, thoughtful, and easy — more like being hosted by a trusted local than following a standard sightseeing script.
@@ -1872,6 +1894,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               etiquette, and cultural context with quiet attention. In most cases, you can meet your guide at your central Tokyo hotel lobby.
               You can relax, adjust the plan, and simply enjoy Tokyo at your own rhythm.
             </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="guest-story" aria-labelledby="guest-story-title">
+      <div class="container">
+        <div class="tst-story-card">
+          <div class="tst-story-intro">
+            <span class="tst-story-kicker">A story from our guests</span>
+            <h2 id="guest-story-title">What does a day in Tokyo with Taka feel like?</h2>
+            <p>Eight travelers. A day shaped around them. Don &amp; Linda share the sights, small moments, and personal connections that made their private Tokyo tour memorable, on their travel blog, Have Time Will Travel.</p>
+          </div>
+          <div class="tst-story-body">
+            <p class="tst-story-byline"><strong>Don &amp; Linda</strong> &middot; Have Time Will Travel</p>
+            <blockquote cite="https://havetimewilltravel.com/private-tokyo-tour-with-taka/">&ldquo;We will remember beginning the morning with a guide and ending the evening with a friend.&rdquo;</blockquote>
+            <p class="tst-story-disclosure">Written by our guests on their own blog. The authors confirm they paid the full tour cost and that the article was not sponsored.</p>
+            <a class="tst-story-button" href="https://havetimewilltravel.com/private-tokyo-tour-with-taka/" target="_blank" rel="noopener" aria-describedby="tst-story-destination">Read their day with Taka <span aria-hidden="true">&#8599;</span></a>
+            <p class="tst-story-destination" id="tst-story-destination">On havetimewilltravel.com &middot; Opens in a new tab</p>
+            <a class="tst-story-plan" href="#booking">Plan your own Tokyo day &rarr;</a>
           </div>
         </div>
       </div>
