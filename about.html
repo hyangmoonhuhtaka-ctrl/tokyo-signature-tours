@@ -588,16 +588,20 @@ footer.site{
 .site-directory .container { display:flex; flex-wrap:wrap; gap:12px 22px; }
 .site-directory a { text-decoration:underline; text-underline-offset:3px; font-size:15px; }
 
-/* Founder profile: a readable biography with its guest source alongside. */
+/* Founder profile: portrait, biography and supporting guest story. */
 #taka{scroll-margin-top:100px}
 .founder-profile{display:grid;gap:28px;align-items:start}
+.founder-portrait{width:100%;max-width:360px;margin:0 auto}
+.founder-portrait a{display:block}
+.founder-portrait img{display:block;width:100%;height:auto;border-radius:var(--radius-lg)}
+.founder-portrait figcaption{margin-top:12px;font-size:14px;color:var(--accent-dark);text-align:center}
 .founder-role{color:var(--accent-dark);font-size:15px;font-weight:600;margin-bottom:20px}
 .founder-bio{max-width:720px}
 .founder-story{border-left:3px solid var(--accent);padding:24px;background:rgba(255,255,255,.85);border-radius:0 var(--radius-lg) var(--radius-lg) 0}
 .founder-story h3{font-size:23px}
 .founder-story p{font-size:16px}
 .founder-story .source-note{margin:0 0 16px}
-@media (min-width:900px){.founder-profile{grid-template-columns:minmax(0,1.65fr) minmax(0,1fr);gap:44px}}
+@media (min-width:900px){.founder-profile{grid-template-columns:minmax(0,1fr) minmax(0,1.8fr);gap:32px 44px}.founder-portrait{margin:0}.founder-story{grid-column:1/-1}}
 
 
 @media (max-width:600px) {
@@ -649,6 +653,7 @@ footer.site{
         "@id": "https://tokyosignaturetours.com/about.html#taka",
         "name": "Taka",
         "jobTitle": "Founder and local guide",
+        "image": "https://tokyosignaturetours.com/assets/taka-founder-portrait.jpg",
         "url": "https://tokyosignaturetours.com/about.html#taka",
         "description": "Taka is the founder and a guide at Tokyo Signature Tours, offering a personal introduction to Tokyo shaped around each group's interests and pace.",
         "worksFor": {
@@ -826,6 +831,12 @@ footer.site{
       <h2 id="taka-title">Taka, Founder &amp; Local Guide</h2>
     </div>
     <div class="founder-profile">
+      <figure class="founder-portrait">
+        <a href="https://www.instagram.com/p/DS03NuIk37q/" target="_blank" rel="noopener" aria-label="View Taka's original photo on Instagram (opens in a new tab)">
+          <img src="/assets/taka-founder-portrait.jpg" alt="Taka, founder and local guide at Tokyo Signature Tours" width="1440" height="1522" loading="lazy" decoding="async" />
+        </a>
+        <figcaption>Taka · Founder &amp; local guide</figcaption>
+      </figure>
       <div class="founder-bio">
         <p class="founder-role">Tokyo Signature Tours · Tokyo, Japan</p>
         <p>Taka is the founder and a guide at Tokyo Signature Tours. He built the service around a personal introduction to Tokyo: listening to each group's interests, sharing cultural context and making space for a comfortable pace.</p>
