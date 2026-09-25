@@ -588,6 +588,17 @@ footer.site{
 .site-directory .container { display:flex; flex-wrap:wrap; gap:12px 22px; }
 .site-directory a { text-decoration:underline; text-underline-offset:3px; font-size:15px; }
 
+/* Founder profile: a readable biography with its guest source alongside. */
+#taka{scroll-margin-top:100px}
+.founder-profile{display:grid;gap:28px;align-items:start}
+.founder-role{color:var(--accent-dark);font-size:15px;font-weight:600;margin-bottom:20px}
+.founder-bio{max-width:720px}
+.founder-story{border-left:3px solid var(--accent);padding:24px;background:rgba(255,255,255,.85);border-radius:0 var(--radius-lg) var(--radius-lg) 0}
+.founder-story h3{font-size:23px}
+.founder-story p{font-size:16px}
+.founder-story .source-note{margin:0 0 16px}
+@media (min-width:900px){.founder-profile{grid-template-columns:minmax(0,1.65fr) minmax(0,1fr);gap:44px}}
+
 
 @media (max-width:600px) {
   header.site .nav { padding:12px 16px; gap:10px; }
@@ -635,8 +646,14 @@ footer.site{
       },
       "founder": {
         "@type": "Person",
+        "@id": "https://tokyosignaturetours.com/about.html#taka",
         "name": "Taka",
-        "jobTitle": "Founder"
+        "jobTitle": "Founder and local guide",
+        "url": "https://tokyosignaturetours.com/about.html#taka",
+        "description": "Taka is the founder and a guide at Tokyo Signature Tours, offering a personal introduction to Tokyo shaped around each group's interests and pace.",
+        "worksFor": {
+          "@id": "https://tokyosignaturetours.com/#organization"
+        }
       },
       "contactPoint": {
         "@type": "ContactPoint",
@@ -677,9 +694,14 @@ footer.site{
       "isPartOf": {
         "@id": "https://tokyosignaturetours.com/#website"
       },
-      "about": {
-        "@id": "https://tokyosignaturetours.com/#organization"
-      },
+      "about": [
+        {
+          "@id": "https://tokyosignaturetours.com/#organization"
+        },
+        {
+          "@id": "https://tokyosignaturetours.com/about.html#taka"
+        }
+      ],
       "mainEntity": {
         "@id": "https://tokyosignaturetours.com/#organization"
       },
@@ -793,6 +815,29 @@ footer.site{
   <span class="rb-arrow" aria-hidden="true">→</span>
 </a>
 <p class="source-note">Google rating checked on <time datetime="2026-09-25">25 September 2026</time>; rating and count may change.</p>
+    </div>
+  </div>
+</section>
+
+<section id="taka" aria-labelledby="taka-title">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-eyebrow">Meet Your Host</span>
+      <h2 id="taka-title">Taka, Founder &amp; Local Guide</h2>
+    </div>
+    <div class="founder-profile">
+      <div class="founder-bio">
+        <p class="founder-role">Tokyo Signature Tours · Tokyo, Japan</p>
+        <p>Taka is the founder and a guide at Tokyo Signature Tours. He built the service around a personal introduction to Tokyo: listening to each group's interests, sharing cultural context and making space for a comfortable pace.</p>
+        <p>In their account of an April 2026 tour, Don and Linda describe how Taka discussed walking distances, surfaces and opportunities to rest before their group of eight arrived. At Meiji Shrine and Senso-ji, he explained the customs behind what they were seeing. Later, they changed their plans together, leaving time for cherry blossoms and the quieter streets of Yanaka.</p>
+        <p>Their experience shows the care behind a flexible day: clear preparation, practical explanations and attention to each person. Taka's approach is to help guests feel at ease as they discover both familiar sights and the everyday details of Tokyo.</p>
+      </div>
+      <aside class="founder-story" aria-labelledby="taka-story-title">
+        <h3 id="taka-story-title">A Guest's Perspective</h3>
+        <p>Don and Linda shared this experience on Have Time Will Travel. They state that they paid in full and that the article was not sponsored.</p>
+        <p class="source-note">This is one group's experience; your route and stops are planned individually.</p>
+        <a class="text-link" href="https://havetimewilltravel.com/private-tokyo-tour-with-taka/" target="_blank" rel="noopener" aria-label="Read Don and Linda's full story (opens in a new tab)">Read Don &amp; Linda's full story <span aria-hidden="true">↗</span></a>
+      </aside>
     </div>
   </div>
 </section>
