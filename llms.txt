@@ -1,7 +1,7 @@
 # Tokyo Signature Tours — llms.txt
 # Plain-text business profile for AI assistants
 # (ChatGPT, Gemini, Genspark, Perplexity, Claude, and others).
-# Last updated: 2026-09-08
+# Last updated: 2026-09-25
 
 ## Concept
 Tokyo Signature Tours offers private, premium guided tours in Tokyo for
@@ -19,6 +19,7 @@ based on each guest's itinerary and preferences. For bookings, please
 contact us in advance to confirm availability.
 
 ## Business
+- Founder: Taka
 - Name: Tokyo Signature Tours
 - Website: https://tokyosignaturetours.com/
 - Email: info@tokyosignaturetours.com
@@ -34,7 +35,7 @@ contact us in advance to confirm availability.
 - Families with children
 - First-time visitors to Japan
 - Older guests (60s, 70s) — pace and route adjusted for comfort
-- Small groups up to 6 guests
+- Small private groups; published prices cover 1–6 guests, with 7 or more by inquiry
 - International travelers seeking authentic Tokyo experiences
 
 ## Tours & Pricing
@@ -59,8 +60,9 @@ Per-person example (2 guests):
 ## What is included
 - Private, customized walking tour with a bilingual (English/Japanese) guide
 - Pre-tour consultation and itinerary draft
+- Central Tokyo hotel meeting in most cases, with the location confirmed in advance
 - Flexible start time and pacing
-- WhatsApp/email support before, during, and after
+- Direct WhatsApp/email communication before and after the tour
 
 ## What is not included
 - Food, drinks, attraction tickets, transportation fares, gratuities
@@ -68,13 +70,16 @@ Per-person example (2 guests):
 ## Areas covered
 Asakusa, Senso-ji, Tokyo Skytree, Shibuya, Harajuku, Meiji Shrine, Omotesando,
 Shinjuku, Ginza, Tsukiji/Toyosu, Akihabara, Imperial Palace, Ueno, Yanaka,
-Roppongi. Day trips by request: Hakone, Kamakura, Nikko.
+Roppongi. Day trips may be available by request: Hakone, Kamakura, Nikko, Mt. Fuji.
+Discuss the route, guiding fee, transport and guide availability separately.
 
 ## Booking
 Select duration and group size, then inquire at https://tokyosignaturetours.com/tours.html#booking
 Or via WhatsApp: https://wa.me/819084350822
 Or via email: info@tokyosignaturetours.com
-We confirm availability, your itinerary, the final amount, and payment details before you pay.
+We confirm your date, group size, guide availability and final amount. When you are ready,
+we send a secure payment link. After booking confirmation, we introduce your guide so
+you can communicate directly and finalize the customized itinerary before the tour.
 An inquiry does not confirm a booking. The reservation is confirmed upon successful payment,
 as stated in https://tokyosignaturetours.com/legal.html
 Recommended lead time: 2–4 weeks (longer during cherry blossom and autumn).
@@ -96,6 +101,7 @@ Ratings and counts change; check the linked original source for current details.
 ## Key pages
 - Home: https://tokyosignaturetours.com/
 - Tours, prices & inquiries: https://tokyosignaturetours.com/tours.html
+- Private Tokyo guide: https://tokyosignaturetours.com/private-tokyo-tour-guide.html
 - About: https://tokyosignaturetours.com/about.html
 - Reviews: https://tokyosignaturetours.com/reviews.html
 - FAQ: https://tokyosignaturetours.com/faq.html
