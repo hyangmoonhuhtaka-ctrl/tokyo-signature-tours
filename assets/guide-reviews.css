@@ -1,0 +1,32 @@
+/* Source-linked guest experiences, readable with or without JavaScript. */
+.guide-review-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin:24px 0}
+.guide-review-card{min-width:0;display:flex;flex-direction:column;margin:0;padding:25px 24px;border:1px solid rgba(120,78,94,.14);border-radius:14px;background:#fff;box-shadow:0 8px 24px rgba(51,26,37,.045);scroll-margin-top:110px}
+.guide-review-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px}
+.guide-review-guide{color:#9e3760;font-size:14px;font-weight:750;letter-spacing:.02em}
+.guide-review-stars{color:#a66b17;font-size:13px;letter-spacing:.08em;white-space:nowrap}
+.guide-review-card h3{margin:0 0 17px!important;font-family:Georgia,'Times New Roman',serif;font-size:24px!important;font-weight:500;line-height:1.3;color:#22252c}
+.guide-review-card blockquote{margin:0 0 12px;padding:0;border:0;border-radius:0;background:none;box-shadow:none}
+.guide-review-card blockquote p{font-family:Georgia,'Times New Roman',serif;font-size:20px;line-height:1.5;color:#363640;margin:0!important}
+.guide-review-card .guide-review-author{font-size:13px;line-height:1.55;font-weight:650;color:#42434b;margin:0 0 15px}
+.guide-review-google-name{font-weight:400;display:block;color:#666}
+.guide-review-card .guide-review-context{font-size:14px;line-height:1.7;color:#5b5e66;margin:0 0 22px}
+.guide-review-source{margin-top:auto;padding-top:16px;border-top:1px solid #eee5e9;font-size:12px;line-height:1.7;color:#6b6670}
+.guide-review-source span{display:block}
+.guide-review-source a,.guide-reviews-more a,.guide-experience-links a,.guide-reviews-note a{color:#963257;text-decoration:underline;text-underline-offset:3px}
+.guide-review-source a{display:inline-block;margin-top:7px;font-size:13px;font-weight:600}
+.guide-review-source a span{display:inline}
+.guide-review-nav{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0 28px}
+.guide-review-nav a{border:1px solid #e5c8d4;border-radius:30px;padding:8px 17px;background:#fff;color:#87314f;font-size:14px;text-decoration:none}
+.guide-review-nav a:hover{background:#fff0f6;border-color:#bd6689}
+.guide-review-nav a:focus-visible,.guide-review-source a:focus-visible,.guide-reviews-more a:focus-visible{outline:3px solid #9e3760;outline-offset:4px}
+.guide-reviews-more{text-align:center;margin:25px 0 0;font-size:15px}
+.guide-reviews-note{max-width:85ch;margin:22px 0 0;font-size:14px!important;line-height:1.75;color:#66616a}
+.guide-review-grid-single{max-width:750px;grid-template-columns:1fr}
+.guide-experience-links{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px}
+.guide-experience-links article{padding:6px 0}
+.guide-experience-links h3{font-size:22px;line-height:1.35}
+.guide-experience-links p{font-size:15px;line-height:1.8}
+.review-anchor{display:block;scroll-margin-top:110px}
+#guide-reviews,#kyoto-reviews{scroll-margin-top:80px}
+@media(max-width:1000px){.guide-review-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.guide-review-grid-single{grid-template-columns:1fr}}
+@media(max-width:620px){.guide-review-grid,.guide-experience-links{grid-template-columns:1fr;gap:16px}.guide-review-card{padding:24px 22px}.guide-review-card h3{font-size:23px!important}.guide-review-top{margin-bottom:14px}.guide-review-nav{gap:8px}.guide-review-nav a{padding:7px 15px}}
