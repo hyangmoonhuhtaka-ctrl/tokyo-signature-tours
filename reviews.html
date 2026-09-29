@@ -679,6 +679,8 @@ footer.site{
 <link rel="stylesheet" href="/assets/subpages.css" />
 <noscript><style>.menu-toggle,.sticky-buy{display:none!important}</style></noscript>
 <script src="/assets/contact-tracking.js" defer></script>
+<link rel="stylesheet" href="/assets/google-reviews.css" />
+<script src="/assets/google-reviews.js" defer></script>
 </head>
 <body class="subpage">
 <!-- Google Tag Manager (noscript) -->
@@ -727,8 +729,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="trust-strip" role="region" aria-label="Trust indicators">
   <div class="container trust-row">
     <span class="trust-item">
-      <span class="trust-stars">★★★★★</span>
-      <strong>5.0 on Google · 25 Sep 2026</strong>
+      <span class="trust-stars" data-google-review-summary-stars>★★★★★</span>
+      <strong data-google-review-summary>5.0 on Google · 25 Sep 2026</strong>
     </span>
     <span class="trust-item">
       <svg viewBox="0 0 24 24"><path d="M12 12a5 5 0 1 0-5-5 5 5 0 0 0 5 5zm0 2c-3.33 0-10 1.67-10 5v3h20v-3c0-3.33-6.67-5-10-5z"/></svg>
@@ -753,27 +755,32 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="section-head">
       <span class="section-eyebrow">Guest Voices</span>
       <h1 id="section-1-title">Guest Reviews of<br>Tokyo Signature Tours</h1>
-      <p class="section-lead">
+      <p class="section-lead" data-google-review-legacy>
         Read selected guest reviews of Tokyo Signature Tours, a Tokyo-based provider of private, customized tours with English-speaking local guides. Each excerpt links to the guest’s original Google post so you can read the full account.
       </p>
       
-<a class="review-badge" href="https://share.google/rSQ56F9cOzpPe06sC" target="_blank" rel="noopener" aria-label="Rated 5.0 on Google with 80 reviews, checked on 25 September 2026. View our Google reviews.">
+<a class="review-badge" href="https://share.google/rSQ56F9cOzpPe06sC" target="_blank" rel="noopener" aria-label="Rated 5.0 on Google with 80 reviews, checked on 25 September 2026. View our Google reviews." data-google-review-link>
   <span class="g-mark" aria-hidden="true">
     <svg viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3c-1.6 4.6-6 8-11.3 8-6.6 0-12-5.4-12-12s5.4-12 12-12c3 0 5.8 1.1 7.9 3l5.7-5.7C34 6 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.3-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.6 16 19 13 24 13c3 0 5.8 1.1 7.9 3l5.7-5.7C34 6 29.3 4 24 4 16.4 4 9.8 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2c-2 1.4-4.5 2.4-7.2 2.4-5.2 0-9.6-3.3-11.2-8L6.3 33C9.7 39.6 16.3 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.1-4.1 5.5l6.2 5.2C40.5 36 44 30.5 44 24c0-1.3-.1-2.3-.4-3.5z"/></svg>
   </span>
   <div class="rb-body">
-    <span class="rb-stars" aria-hidden="true">★★★★★</span>
-    <span class="rb-rating"><strong>5.0</strong> <small>Google · 80 reviews</small></span>
+    <span class="rb-stars" data-google-rating-stars aria-hidden="true">★★★★★</span>
+    <span class="rb-rating"><strong data-google-rating-score>5.0</strong> <small>Google · <span data-google-review-count-label>80 reviews</span></small></span>
   </div>
   <span class="rb-arrow" aria-hidden="true">→</span>
 </a>
-<p class="review-rating-note">Google rating checked on <time datetime="2026-09-25">25 September 2026</time>. This is the rating on our Google profile, not a combined rating across review platforms. The current rating and count may change.</p>
+<p class="review-rating-note" data-google-review-check-note>Google rating checked on <time data-google-review-checked datetime="2026-09-25">25 September 2026</time>. This is the rating on our Google profile, not a combined rating across review platforms. The current rating and count may change.</p>
 
     </div>
   </div>
 </section>
 
-<section aria-labelledby="review-themes-title">
+<div class="container">
+  <div data-google-review-feed hidden aria-label="Google guest reviews"></div>
+  <p data-google-review-status hidden aria-live="polite"></p>
+</div>
+
+<section aria-labelledby="review-themes-title" data-google-review-legacy>
   <div class="container">
     <div class="section-head">
       <span class="section-eyebrow">Guest Experiences</span>
@@ -788,13 +795,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
-<section aria-labelledby="selected-reviews-title">
+<section aria-labelledby="selected-reviews-title" data-google-review-legacy>
   <div class="container">
     <div class="section-head">
       <h2 id="selected-reviews-title">Selected Google Review Excerpts</h2>
       <p>These are selected excerpts, not a complete list of reviews. Original posts contain the full wording and context; the source-check date under each excerpt records when that source was checked.</p>
     </div>
-<blockquote class="review" cite="https://share.google/WXaOE2drH5DbOd5OR">
+<blockquote class="review" cite="https://share.google/WXaOE2drH5DbOd5OR" data-google-review-legacy>
   <div class="head">
     <span class="stars" aria-label="5 out of 5 stars">★★★★★</span>
     <span class="src google">Google</span>
@@ -804,7 +811,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <p class="review-source">Excerpt from a Google review.<br><a href="https://share.google/WXaOE2drH5DbOd5OR" target="_blank" rel="noopener">Read Joe OHern’s original review on Google</a><br>Source checked on <time datetime="2026-09-11">11 September 2026</time>.</p>
 </blockquote>
 
-<blockquote class="review" cite="https://share.google/f2mFVLP0hkuIAkpCb">
+<blockquote class="review" cite="https://share.google/f2mFVLP0hkuIAkpCb" data-google-review-legacy>
   <div class="head">
     <span class="stars" aria-label="5 out of 5 stars">★★★★★</span>
     <span class="src google">Google</span>
@@ -814,7 +821,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <p class="review-source">Excerpt from a Google review.<br><a href="https://share.google/f2mFVLP0hkuIAkpCb" target="_blank" rel="noopener">Read Jason Paduchik’s original review on Google</a><br>Source checked on <time datetime="2026-09-11">11 September 2026</time>.</p>
 </blockquote>
 
-<blockquote id="review-family" class="review" cite="https://share.google/mxJpzHec2C9z1B8z9">
+<blockquote id="review-family" class="review" cite="https://share.google/mxJpzHec2C9z1B8z9" data-google-review-legacy>
   <div class="head">
     <span class="stars" aria-label="5 out of 5 stars">★★★★★</span>
     <span class="src google">Google</span>
@@ -824,7 +831,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <p class="review-source">Excerpt from a Google review.<br><a href="https://share.google/mxJpzHec2C9z1B8z9" target="_blank" rel="noopener">Read Flipson Flip’s original review on Google</a><br>Source checked on <time datetime="2026-09-11">11 September 2026</time>.</p>
 </blockquote>
 
-<blockquote class="review" cite="https://share.google/xa8Z4fEfUWnYZdWpp">
+<blockquote class="review" cite="https://share.google/xa8Z4fEfUWnYZdWpp" data-google-review-legacy>
   <div class="head">
     <span class="stars" aria-label="5 out of 5 stars">★★★★★</span>
     <span class="src google">Google</span>
@@ -834,7 +841,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <p class="review-source">Excerpt from a Google review.<br><a href="https://share.google/xa8Z4fEfUWnYZdWpp" target="_blank" rel="noopener">Read Kelly Soirefman’s original review on Google</a><br>Source checked on <time datetime="2026-09-11">11 September 2026</time>.</p>
 </blockquote>
 
-<blockquote id="review-first-visit" class="review" cite="https://share.google/egl8LlSzQXNZo6lhL">
+<blockquote id="review-first-visit" class="review" cite="https://share.google/egl8LlSzQXNZo6lhL" data-google-review-legacy>
   <div class="head">
     <span class="stars" aria-label="5 out of 5 stars">★★★★★</span>
     <span class="src google">Google</span>
@@ -844,7 +851,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <p class="review-source">Excerpt from a Google review.<br><a href="https://share.google/egl8LlSzQXNZo6lhL" target="_blank" rel="noopener">Read Olivia Crane’s original review on Google</a><br>Source checked on <time datetime="2026-09-11">11 September 2026</time>.</p>
 </blockquote>
 
-<blockquote class="review" cite="https://share.google/p18wqm4JuHLszhTIh">
+<blockquote class="review" cite="https://share.google/p18wqm4JuHLszhTIh" data-google-review-legacy>
   <div class="head">
     <span class="stars" aria-label="5 out of 5 stars">★★★★★</span>
     <span class="src google">Google</span>
@@ -854,7 +861,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <p class="review-source">Excerpt from a Google review.<br><a href="https://share.google/p18wqm4JuHLszhTIh" target="_blank" rel="noopener">Read Ashley Tenney’s original review on Google</a><br>Source checked on <time datetime="2026-09-11">11 September 2026</time>.</p>
 </blockquote>
 
-<blockquote class="review" cite="https://share.google/A4z8Wcleun9fgsF74">
+<blockquote class="review" cite="https://share.google/A4z8Wcleun9fgsF74" data-google-review-legacy>
   <div class="head">
     <span class="stars" aria-label="5 out of 5 stars">★★★★★</span>
     <span class="src google">Google</span>
@@ -864,7 +871,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <p class="review-source">Excerpt from a Google review.<br><a href="https://share.google/A4z8Wcleun9fgsF74" target="_blank" rel="noopener">Read Jordana Wolf’s original review on Google</a><br>Source checked on <time datetime="2026-09-11">11 September 2026</time>.</p>
 </blockquote>
 
-<blockquote id="review-custom-days" class="review" cite="https://share.google/OBck5aaoCVkrwZN6T">
+<blockquote id="review-custom-days" class="review" cite="https://share.google/OBck5aaoCVkrwZN6T" data-google-review-legacy>
   <div class="head">
     <span class="stars" aria-label="5 out of 5 stars">★★★★★</span>
     <span class="src google">Google</span>
@@ -874,7 +881,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <p class="review-source">Excerpt from a Google review.<br><a href="https://share.google/OBck5aaoCVkrwZN6T" target="_blank" rel="noopener">Read Jonathan Chester’s original review on Google</a><br>Source checked on <time datetime="2026-09-11">11 September 2026</time>.</p>
 </blockquote>
 
-<blockquote class="review" cite="https://share.google/oqJLzs9eo7JQNjNAY">
+<blockquote class="review" cite="https://share.google/oqJLzs9eo7JQNjNAY" data-google-review-legacy>
   <div class="head">
     <span class="stars" aria-label="5 out of 5 stars">★★★★★</span>
     <span class="src google">Google</span>
@@ -887,7 +894,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <h2>Read More on Google</h2>
       <p>Visit our Google profile to read reviews posted there and see the current Google rating.</p>
       <div class="cta-block-actions">
-        <a href="https://share.google/rSQ56F9cOzpPe06sC" class="cta" target="_blank" rel="noopener">Open Google Reviews</a>
+        <a href="https://share.google/rSQ56F9cOzpPe06sC" class="cta" target="_blank" rel="noopener" data-google-review-link>Open Google Reviews</a>
         <a href="/contact.html" class="cta ghost">Check Availability</a>
       </div>
     </div>
@@ -944,7 +951,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <h4>Reservations</h4>
         <a href="https://wa.me/819084350822" target="_blank" rel="noopener">WhatsApp · +81-90-8435-0822</a>
         <a href="mailto:info@tokyosignaturetours.com">info@tokyosignaturetours.com</a>
-        <a href="https://share.google/rSQ56F9cOzpPe06sC" target="_blank" rel="noopener">Google Listing</a>
+        <a href="https://share.google/rSQ56F9cOzpPe06sC" target="_blank" rel="noopener" data-google-review-link>Google Listing</a>
         <p style="font-size:13px;color:var(--muted);margin-top:10px;line-height:1.6;">By advance reservation only. Tour schedules arranged per guest.</p>
       </div>
       <div class="footer-col">

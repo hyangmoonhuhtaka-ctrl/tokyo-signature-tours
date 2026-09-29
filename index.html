@@ -2105,6 +2105,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <script src="/assets/faq-search.js" defer></script>
 <script src="/assets/contact-tracking.js" defer></script>
 <link rel="stylesheet" href="/assets/sample-itinerary.css" />
+<link rel="stylesheet" href="/assets/google-reviews.css" />
+<script src="/assets/google-reviews.js" defer></script>
 </head>
 
 <body>
@@ -2195,10 +2197,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <path fill="#1976D2" d="M43.6 20H24v8h11.3c-.8 2-2.1 3.7-3.8 5.1l6.1 5.2C37.2 38.7 44 34 44 24c0-1.3-.1-2.7-.4-4z"/>
               </svg>
             </span>
-            <span class="hero-trust-stars" aria-hidden="true">★★★★★</span>
-            <span><strong><span data-google-rating-score>5.0</span> on Google</strong> · <span data-google-review-count>80</span> Google Reviews</span>
+            <span class="hero-trust-stars" data-google-rating-stars aria-hidden="true">★★★★★</span>
+            <span><strong><span data-google-rating-score>5.0</span> on Google</strong> · <span data-google-review-count-label><span data-google-review-count>80</span> Google Reviews</span></span>
           </a>
-          <p class="review-rating-checked">Google rating checked on <time data-google-review-checked datetime="2026-09-25">25 September 2026</time>.</p>
+          <p class="review-rating-checked" data-google-review-check-note>Google rating checked on <time data-google-review-checked datetime="2026-09-25">25 September 2026</time>.</p>
           <ul class="hero-points">
             <li><strong>100% private</strong> — only your group and your guide, with no fixed script</li>
             <li>Carefully selected <strong>English-speaking local guides</strong> and a personalized itinerary before your tour</li>
@@ -2283,24 +2285,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </svg>
               </span>
               <span class="google-rating-copy">
-                <span class="google-rating-stars" aria-hidden="true">★★★★★</span>
+                <span class="google-rating-stars" data-google-rating-stars aria-hidden="true">★★★★★</span>
                 <span class="google-rating-text">
                   <span class="google-rating-score" data-google-rating-score>5.0</span>
-                  <span class="google-rating-label"><span data-google-review-count>80</span> Google Reviews</span>
+                  <span class="google-rating-label"><span data-google-review-count-label><span data-google-review-count>80</span> Google Reviews</span></span>
                 </span>
               </span>
               <span class="google-rating-arrow" aria-hidden="true">→</span>
             </a>
-            <p class="review-rating-checked">Google rating checked on <time data-google-review-checked datetime="2026-09-25">25 September 2026</time>. The current rating and count may change.</p>
+            <p class="review-rating-checked" data-google-review-check-note>Google rating checked on <time data-google-review-checked datetime="2026-09-25">25 September 2026</time>. The current rating and count may change.</p>
             <h3>Real Stories from Our Guests</h3>
-            <p>Selected guest experiences in Tokyo and Japan, including a Kyoto tour.</p>
-            <p class="review-editorial-note">Designed cards with excerpts or summaries, not Google screenshots. Each card links to the original review; combined cards link to both posts.</p>
+            <p data-google-review-legacy>Selected guest experiences in Tokyo and Japan, including a Kyoto tour.</p>
+            <p class="review-editorial-note" data-google-review-legacy>Designed cards with excerpts or summaries, not Google screenshots. Each card links to the original review; combined cards link to both posts.</p>
           </div>
         </div>
 
-        <div class="review-carousel">
+        <div data-google-review-feed data-review-limit="6" hidden aria-label="Google guest reviews"></div>
+        <p data-google-review-status hidden aria-live="polite"></p>
+
+        <div class="review-carousel" data-google-review-legacy>
           <div class="review-grid" id="review-grid" role="region" aria-label="Guest reviews" tabindex="0">
-            <figure class="review-card">
+            <figure class="review-card" data-google-review-legacy>
               <a class="review-open" href="/images/reviews/review-joe-ohern.webp" aria-label="Open review from Joe O&#x27;Hern">
                 <img src="/images/optimized/review-joe-ohern-640.webp" width="640" height="640" loading="lazy" decoding="async" alt="Five-star private Tokyo tour review from Joe O&#x27;Hern, guided by Taka">
               </a>
@@ -2314,7 +2319,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <span class="review-stars" aria-label="5 out of 5 stars">★★★★★</span>
               </figcaption>
             </figure>
-            <figure class="review-card">
+            <figure class="review-card" data-google-review-legacy>
               <a class="review-open" href="/images/reviews/review-jason-p.webp" aria-label="Open review from Jason P.">
                 <img src="/images/optimized/review-jason-p-640.webp" width="640" height="640" loading="lazy" decoding="async" alt="Five-star private Tokyo tour review from Jason P., guided by Mai">
               </a>
@@ -2328,7 +2333,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <span class="review-stars" aria-label="5 out of 5 stars">★★★★★</span>
               </figcaption>
             </figure>
-            <figure class="review-card">
+            <figure class="review-card" data-google-review-legacy>
               <a class="review-open" href="/images/reviews/review-tais-k.webp" aria-label="Open review from Tais K.">
                 <img src="/images/optimized/review-tais-k-640.webp" width="640" height="640" loading="lazy" decoding="async" alt="Edited review card for Tais K.'s Kyoto tour with Masa; original Google review linked below">
               </a>
@@ -2342,7 +2347,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <span class="review-stars" aria-label="5 out of 5 stars">★★★★★</span>
               </figcaption>
             </figure>
-            <figure class="review-card">
+            <figure class="review-card" data-google-review-legacy>
               <a class="review-open" href="/images/reviews/review-flipson-f.webp" aria-label="Open review from Flipson F.">
                 <img src="/images/optimized/review-flipson-f-640.webp" width="640" height="640" loading="lazy" decoding="async" alt="Five-star private Tokyo tour review from Flipson F., guided by Chiro">
               </a>
@@ -2356,7 +2361,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <span class="review-stars" aria-label="5 out of 5 stars">★★★★★</span>
               </figcaption>
             </figure>
-            <figure class="review-card">
+            <figure class="review-card" data-google-review-legacy>
               <a class="review-open" href="/images/reviews/review-jordana-john-david.webp" aria-label="Open review from Jordana W. &amp; John-David K.">
                 <img src="/images/optimized/review-jordana-john-david-640.webp" width="640" height="640" loading="lazy" decoding="async" alt="Five-star private Japan tour review from Jordana W. and John-David K., guided by Taka">
               </a>
@@ -2370,7 +2375,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <span class="review-stars" aria-label="5 out of 5 stars">★★★★★</span>
               </figcaption>
             </figure>
-            <figure class="review-card">
+            <figure class="review-card" data-google-review-legacy>
               <a class="review-open" href="/images/reviews/review-kelly-soirefman.webp" aria-label="Open review from Kelly Soirefman">
                 <img src="/images/optimized/review-kelly-soirefman-640.webp" width="640" height="640" loading="lazy" decoding="async" alt="Five-star private tour review from Kelly Soirefman, guided by Taka">
               </a>
@@ -2384,7 +2389,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <span class="review-stars" aria-label="5 out of 5 stars">★★★★★</span>
               </figcaption>
             </figure>
-            <figure class="review-card">
+            <figure class="review-card" data-google-review-legacy>
               <div class="review-story-cover">
                 <span>TOKYO · TWO GUEST EXPERIENCES</span>
                 <strong>A first day to remember.<br>A city to discover.</strong>
@@ -2400,7 +2405,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <span class="review-stars" aria-label="5 out of 5 stars">★★★★★</span>
               </figcaption>
             </figure>
-            <figure class="review-card">
+            <figure class="review-card" data-google-review-legacy>
               <a class="review-open" href="/images/reviews/review-ashley-tenney.webp" aria-label="Open review from Ashley Tenney">
                 <img src="/images/optimized/review-ashley-tenney-640.webp" width="640" height="640" loading="lazy" decoding="async" alt="Five-star private Tokyo tour review from Ashley Tenney, guided by Taka">
               </a>
@@ -2414,7 +2419,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <span class="review-stars" aria-label="5 out of 5 stars">★★★★★</span>
               </figcaption>
             </figure>
-            <figure class="review-card">
+            <figure class="review-card" data-google-review-legacy>
               <a class="review-open" href="/images/reviews/review-luiz-camilla.webp" aria-label="Open review from Luiz F. &amp; Camilla M.">
                 <img src="/images/optimized/review-luiz-camilla-640.webp" width="640" height="640" loading="lazy" decoding="async" alt="Five-star private Tokyo tour review from Luiz F. and Camilla M., guided by Taka">
               </a>
@@ -2428,7 +2433,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <span class="review-stars" aria-label="5 out of 5 stars">★★★★★</span>
               </figcaption>
             </figure>
-            <figure class="review-card">
+            <figure class="review-card" data-google-review-legacy>
               <a class="review-open" href="/images/reviews/review-suzanne-b.webp" aria-label="Open review from Suzanne B.">
                 <img src="/images/optimized/review-suzanne-b-640.webp" width="640" height="640" loading="lazy" decoding="async" alt="Five-star private Tokyo tour review from Suzanne B., guided by Taka">
               </a>
@@ -2453,7 +2458,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </section>
 
-    <dialog class="review-dialog" id="review-dialog" aria-label="Guest review image" aria-describedby="review-dialog-note">
+    <dialog data-google-review-legacy class="review-dialog" id="review-dialog" aria-label="Guest review image" aria-describedby="review-dialog-note">
       <button class="review-dialog-close" type="button" aria-label="Close review">×</button>
       <p class="review-dialog-note" id="review-dialog-note">Edited review artwork, not a Google screenshot. Close this image to read the linked original reviews and checked tour details.</p>
       <img src="/images/optimized/review-joe-ohern-640.webp" width="640" height="640" loading="lazy" alt="Review from Joe O'Hern">
@@ -2921,7 +2926,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 9H16V6h-2.5C11.57 6 10 7.57 10 9.5V11H8v3h2v7h3v-7h2.1l.9-3H13v-1.5c0-.28.22-.5.5-.5z"/></svg>
 </a>
 
-<a class="icon-btn" href="https://www.google.com/maps/place/Tokyo+Signature+Tours+%7C+Private+Tokyo+Tours/@35.701622,139.6885977,14z/data=!3m1!4b1!4m6!3m5!1s0x2ae76d89645afc83:0x968877d08d9a25e1!8m2!3d35.7015889!4d139.7091972!16s%2Fg%2F11yrbvflx0" target="_blank" rel="noopener" aria-label="Google Maps">
+<a class="icon-btn" href="https://www.google.com/maps/place/Tokyo+Signature+Tours+%7C+Private+Tokyo+Tours/@35.701622,139.6885977,14z/data=!3m1!4b1!4m6!3m5!1s0x2ae76d89645afc83:0x968877d08d9a25e1!8m2!3d35.7015889!4d139.7091972!16s%2Fg%2F11yrbvflx0" target="_blank" rel="noopener" aria-label="Google Maps" data-google-review-link>
   <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
     <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5z"/>
   </svg>
@@ -3401,79 +3406,6 @@ if (bookingEmailBtn) bookingEmailBtn.href = emailUrl;
       dialog.addEventListener('click', (event)=>{
         if (event.target === dialog) closeDialog();
       });
-    })();
-  </script>
-
-  <script>
-    /* ==========================================================
-       GOOGLE REVIEW STATS AUTO-SYNC
-       - Current fallback shown in HTML: 5.0 / 80 reviews (checked 2026-09-25)
-       - To enable live automatic updates, paste a browser-restricted
-         Google Maps JavaScript API key below and enable Places API (New).
-       ========================================================== */
-    const GOOGLE_MAPS_API_KEY = 'PASTE_YOUR_GOOGLE_MAPS_API_KEY_HERE';
-    const GOOGLE_PLACE_ID = 'ChIJg_xaZIlt5yoR4SWajdB3iJY';
-
-    (async function syncGoogleReviewStats(){
-      if (!GOOGLE_MAPS_API_KEY || GOOGLE_MAPS_API_KEY.includes('PASTE_YOUR_')) return;
-
-      const loadGoogleMaps = () => new Promise((resolve, reject) => {
-        if (window.google?.maps?.importLibrary) return resolve();
-
-        const existing = document.querySelector('script[data-google-maps-loader="true"]');
-        if (existing) {
-          existing.addEventListener('load', resolve, {once:true});
-          existing.addEventListener('error', reject, {once:true});
-          return;
-        }
-
-        const script = document.createElement('script');
-        script.src = `https://maps.googleapis.com/maps/api/js?key=${encodeURIComponent(GOOGLE_MAPS_API_KEY)}&v=weekly&libraries=places&loading=async`;
-        script.async = true;
-        script.defer = true;
-        script.dataset.googleMapsLoader = 'true';
-        script.onload = resolve;
-        script.onerror = reject;
-        document.head.appendChild(script);
-      });
-
-      try {
-        await loadGoogleMaps();
-        const { Place } = await google.maps.importLibrary('places');
-        const place = new Place({ id: GOOGLE_PLACE_ID, requestedLanguage: 'en' });
-        await place.fetchFields({ fields: ['rating', 'userRatingCount'] });
-
-        const rating = Number(place.rating);
-        const reviewCount = Number(place.userRatingCount);
-        if (!Number.isFinite(rating) || rating < 1 || rating > 5
-            || !Number.isInteger(reviewCount) || reviewCount < 1) return;
-
-        const ratingText = rating.toFixed(1);
-        const countText = reviewCount.toLocaleString('en-US');
-
-        document.querySelectorAll('[data-google-rating-score]').forEach((el) => {
-          el.textContent = ratingText;
-        });
-        document.querySelectorAll('[data-google-review-count]').forEach((el) => {
-          el.textContent = countText;
-        });
-        const now = new Date();
-        const checkedISO = new Intl.DateTimeFormat('en-CA', {timeZone:'Asia/Tokyo', year:'numeric', month:'2-digit', day:'2-digit'}).format(now);
-        const checkedText = new Intl.DateTimeFormat('en-GB', {timeZone:'Asia/Tokyo', day:'numeric', month:'long', year:'numeric'}).format(now);
-        document.querySelectorAll('[data-google-review-checked]').forEach(el => {
-          el.dateTime = checkedISO;
-          el.textContent = checkedText;
-        });
-        document.querySelectorAll('[data-google-review-link]').forEach(el => {
-          el.setAttribute('aria-label', 'Rated ' + ratingText + ' on Google with ' + countText + ' reviews, checked on ' + checkedText + '. View reviews on Google Maps.');
-        });
-        document.querySelectorAll('.hero-trust-stars,.google-rating-stars').forEach(el => {
-          const wholeStars = Math.round(rating);
-          el.textContent = '★'.repeat(wholeStars) + '☆'.repeat(5 - wholeStars);
-        });
-      } catch (error) {
-        console.warn('Google review stats auto-sync unavailable; using the current fallback values.', error);
-      }
     })();
   </script>
 
