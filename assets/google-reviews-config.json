@@ -1,0 +1,4 @@
+{
+  "enabled": false,
+  "endpoint": "https://tokyo-signature-tours.vercel.app/api/google-reviews"
+}
