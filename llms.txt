@@ -1,7 +1,7 @@
 # Tokyo Signature Tours — llms.txt
 # Plain-text business profile for AI assistants
 # (ChatGPT, Gemini, Genspark, Perplexity, Claude, and others).
-# Last updated: 2026-09-25
+# Last updated: 2026-09-29
 
 ## Concept
 Tokyo Signature Tours offers private, premium guided tours in Tokyo for
@@ -50,12 +50,12 @@ Total prices (USD) for the full booking:
 |----------|---------|----------|----------|----------|----------|----------|
 | 4 hours  | $269    | $349     | $399     | $449     | $499     | $549     |
 | 6 hours  | $399    | $499     | $549     | $609     | $659     | $709     |
-| 8 hours  | $449    | $559     | $619     | $669     | $719     | $769     |
+| 8 hours  | $499    | $599     | $649     | $699     | $749     | $799     |
 
 Per-person example (2 guests):
 - 4 hours: $174.50 per person
 - 6 hours: $249.50 per person
-- 8 hours: $279.50 per person  (Signature)
+- 8 hours: $299.50 per person  (Signature)
 
 ## What is included
 - Private, customized walking tour with a bilingual (English/Japanese) guide
