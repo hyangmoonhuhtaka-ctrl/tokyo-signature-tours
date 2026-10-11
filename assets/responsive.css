@@ -1,0 +1,469 @@
+/* Shared layout corrections. Load after each page's component styles. */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+/* A long email, button or table must not enlarge its parent grid track. */
+.container,
+.hero-wrap > *,
+.grid > *,
+.grid-2 > *,
+.footer-grid > *,
+.founder-profile > *,
+.booking-body,
+.mini-txt,
+.step-left,
+.brand,
+.brand-title {
+  min-width: 0;
+}
+
+main,
+footer,
+.side-menu {
+  overflow-wrap: anywhere;
+}
+
+img,
+video,
+iframe {
+  max-width: 100%;
+}
+
+.price-table-wrap {
+  max-width: 100%;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+.site-directory {
+  display: block;
+}
+
+.cta,
+.booking-contact-btn,
+.sticky-btn {
+  gap: 8px;
+}
+
+.cta svg,
+.booking-contact-btn svg,
+.sticky-btn svg,
+.sticky-email-btn svg {
+  display: block;
+  flex: 0 0 18px;
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+.review-planning {
+  padding: 28px 0;
+}
+
+.review-planning h2 {
+  margin-bottom: 10px;
+}
+
+.review-planning p {
+  max-width: 72ch;
+  margin: 0 0 16px;
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+.review-planning-links {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.review-planning-links a {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  min-height: 48px;
+  padding: 12px 14px;
+  border: 1px solid var(--line, #eadfe4);
+  border-radius: 12px;
+  background: #fff;
+  color: var(--accent-dark, #963257);
+  font-size: 15px;
+  line-height: 1.45;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  overflow-wrap: anywhere;
+}
+
+.review-planning-links a:hover {
+  background: var(--accent-soft, #fff0f6);
+}
+
+.review-browse-link {
+  margin: 12px 0 0;
+}
+
+.review-browse-link a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  max-width: 100%;
+  color: var(--accent-dark, #963257);
+  font-size: 15px;
+  font-weight: 650;
+  line-height: 1.5;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.mobile-price-hint {
+  display: none;
+}
+
+/* Keep hidden navigation outside the visual and keyboard reading order. */
+.side-menu {
+  visibility: hidden;
+  height: 100vh;
+  height: 100dvh;
+  max-height: 100dvh;
+}
+
+body.menu-open .side-menu {
+  visibility: visible;
+}
+
+@media (max-width: 959px) {
+  header > .container.nav {
+    padding: 10px max(16px, env(safe-area-inset-right)) 10px max(16px, env(safe-area-inset-left));
+    gap: 12px;
+  }
+
+  header > .nav > div:last-child {
+    flex: 0 0 auto;
+  }
+
+  header .menu-toggle {
+    flex: 0 0 44px;
+    width: 44px;
+    height: 44px;
+    margin-left: 0;
+  }
+
+  .side-menu-actions .btn {
+    min-width: 0;
+    min-height: 44px;
+    padding: 10px 12px;
+    text-align: center;
+    white-space: normal;
+    line-height: 1.4;
+  }
+
+  .side-menu-actions .btn svg {
+    flex: 0 0 18px;
+  }
+
+  .sticky-inner {
+    min-width: 0;
+    gap: 10px;
+  }
+
+  .sticky-left {
+    flex: 1 1 auto;
+  }
+
+  .sticky-actions {
+    min-width: 0;
+    gap: 6px;
+  }
+
+  .sticky-btn,
+  .sticky-email-btn {
+    min-height: 44px;
+    padding: 10px 12px;
+    font-size: 13px;
+    line-height: 1.3;
+    letter-spacing: 0;
+  }
+
+  body.has-sticky {
+    padding-bottom: calc(100px + env(safe-area-inset-bottom));
+  }
+}
+
+@media (max-width: 759px) {
+  .review-planning-links {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 8px;
+  }
+
+  .review-planning-links a {
+    min-height: 44px;
+    padding: 11px 14px;
+  }
+
+  .mobile-price-hint {
+    display: block;
+    margin: 12px 0 6px;
+    color: var(--muted, #625b64);
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .container {
+    padding-left: max(16px, env(safe-area-inset-left));
+    padding-right: max(16px, env(safe-area-inset-right));
+  }
+
+  main > section {
+    padding-top: 32px;
+    padding-bottom: 32px;
+  }
+
+  .hero {
+    padding-top: 28px;
+    padding-bottom: 20px;
+  }
+
+  .hero-wrap,
+  .grid,
+  .grid-2 {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+  }
+
+  .hero h1,
+  h1 {
+    font-size: clamp(28px, 7.5vw, 36px);
+    line-height: 1.2;
+  }
+
+  h2 {
+    font-size: clamp(24px, 6.4vw, 30px);
+    line-height: 1.3;
+  }
+
+  .section-head {
+    margin-bottom: 20px;
+  }
+
+  .section-lead {
+    font-size: 17px;
+    line-height: 1.7;
+  }
+
+  .card,
+  .details-section,
+  .founder-story,
+  .booking-head,
+  .booking-body,
+  .cta-block {
+    padding: 20px 18px;
+  }
+
+  .booking-title {
+    font-size: 26px;
+  }
+
+  .hero-img img {
+    height: auto;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+  }
+
+  .hero-actions,
+  .cta-block-actions,
+  .inquiry-actions {
+    gap: 10px;
+  }
+
+  main .cta,
+  .booking-contact-btn {
+    max-width: 100%;
+    min-height: 44px;
+    padding: 10px 16px;
+    white-space: normal;
+    text-align: center;
+    line-height: 1.45;
+  }
+
+  .trust-row {
+    padding: 12px 16px;
+    gap: 8px 18px;
+    font-size: 13px;
+    line-height: 1.45;
+  }
+
+  .trust-item {
+    max-width: 100%;
+    white-space: normal;
+    justify-content: center;
+  }
+
+  .trust-item svg {
+    flex: 0 0 16px;
+  }
+
+  .review-badge {
+    max-width: 100%;
+    gap: 12px;
+    padding: 14px 16px;
+  }
+
+  .review-badge .g-mark,
+  .review-badge .rb-arrow {
+    flex-shrink: 0;
+  }
+
+  .review-badge .rb-body {
+    min-width: 0;
+  }
+
+  .review-badge .rb-rating {
+    flex-wrap: wrap;
+    gap: 3px 8px;
+  }
+
+  .mini-row {
+    padding: 14px 12px;
+    gap: 12px;
+  }
+
+  .mini-ic {
+    width: 34px;
+    height: 34px;
+  }
+
+  .price-line .pp {
+    font-size: clamp(22px, 6.4vw, 28px);
+  }
+
+  .seg-top {
+    flex-wrap: wrap;
+  }
+
+  .seg-tag {
+    max-width: 100%;
+    white-space: normal;
+  }
+
+  .guest-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .guest-btn {
+    min-width: 0;
+    min-height: 60px;
+    padding: 12px 6px;
+  }
+
+  .swipe-hint {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .all-prices {
+    padding: 14px 12px;
+  }
+
+  .all-prices .price-table {
+    table-layout: fixed;
+    min-width: 0;
+    font-size: 12px;
+  }
+
+  .all-prices .price-table th,
+  .all-prices .price-table td {
+    padding: 10px 3px;
+    white-space: normal;
+  }
+
+  /* The seven-column comparison scrolls locally, with its row label in view. */
+  #group-prices .price-table th:first-child {
+    position: sticky;
+    left: 0;
+    z-index: 1;
+    background: var(--panel, #fff);
+    box-shadow: 1px 0 0 var(--line, #e8e0e3);
+  }
+
+  .footer-links,
+  .footer-grid {
+    overflow-wrap: anywhere;
+  }
+
+  .site-directory .container {
+    gap: 8px 18px;
+  }
+
+  .site-directory a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+
+  .instagram-card {
+    padding: 18px 12px;
+  }
+
+  .instagram-media,
+  .instagram-embed iframe {
+    min-width: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 430px) {
+  header > .container.nav {
+    gap: 8px;
+  }
+
+  header.site .brand {
+    font-size: 17px;
+    line-height: 1.2;
+  }
+
+  header:not(.site) .brand {
+    font-size: 12px;
+    line-height: 1.35;
+    letter-spacing: .06em;
+  }
+
+  header .cta,
+  header.site .cta {
+    min-height: 44px;
+    padding: 8px 10px;
+    font-size: 12px;
+    line-height: 1.3;
+    letter-spacing: 0;
+    text-align: center;
+  }
+
+  .sticky-buy {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .sticky-price {
+    font-size: 18px;
+  }
+
+  .sticky-actions .sticky-btn {
+    gap: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .inquiry-actions .cta,
+  .cta-block-actions .cta {
+    width: 100%;
+  }
+}
