@@ -2,11 +2,11 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "tst-google-reviews",
   "main": "worker/google-reviews.mjs",
-  "compatibility_date": "2026-08-03",
+  "compatibility_date": "2026-10-11",
   "compatibility_flags": ["nodejs_compat"],
   "workers_dev": true,
   "vars": {
-    "GOOGLE_REVIEWS_SYNC_ENABLED": "false"
+    "GOOGLE_REVIEWS_SYNC_ENABLED": "true"
   },
   "triggers": {
     "crons": ["17 0 * * *"]

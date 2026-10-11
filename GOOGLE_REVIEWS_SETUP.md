@@ -10,13 +10,24 @@ receive Google OAuth credentials or call the Business Profile API directly.
 - Project number: `317556041702`
 - Expected Maps Place ID: `ChIJg_xaZIlt5yoR4SWajdB3iJY`
 - Business Profile API access was approved on 8 October 2026 with a default quota
-  of 300 queries per minute. API activation and OAuth authorization remain separate steps.
+  of 300 queries per minute. The required APIs are enabled.
 - The owner approved Cloudflare Workers Free with Upstash Redis Free on
-  11 October 2026. The backend is prepared but has not been deployed or activated.
-- `assets/google-reviews-config.json` starts with `enabled: false`.
-- Synchronization also starts disabled unless `GOOGLE_REVIEWS_SYNC_ENABLED=true`.
+  11 October 2026. The Worker and Redis database have been created.
+- The OAuth app uses the **Internal** audience. Owner authorization and offline
+  token exchange succeeded, and the authorized business account/location was
+  matched to the expected TST Place ID. The exact resource is stored privately
+  as `GOOGLE_BUSINESS_LOCATION`.
+- The shared public endpoint is
+  `https://tst-google-reviews.wild-glade-c11e.workers.dev/api/google-reviews`.
+- `assets/google-reviews-config.json` is prepared with `enabled: true` and that
+  endpoint. Publish this configuration only after the activation checks below
+  succeed; the local configuration alone does not prove the live sync is working.
+- Synchronization requires `GOOGLE_REVIEWS_SYNC_ENABLED=true` on the Worker.
+- The native daily Cron Trigger is `17 0 * * *` (09:17 JST).
 
-The existing dated HTML remains visible while the integration is disabled.
+When the frontend is disabled, the existing dated HTML remains visible. When it
+is enabled but no valid snapshot is available, the pages direct visitors to Google
+instead of displaying an old rating as current.
 
 ## Google configuration
 
@@ -26,17 +37,17 @@ The existing dated HTML remains visible while the integration is disabled.
    for that project before activation.
 2. Enable Google My Business API (v4 reviews), My Business Account Management API,
    and My Business Business Information API in that project.
-3. Configure the OAuth consent screen for TST and a client suitable for a secure
+3. Retain the Internal OAuth audience and the approved web client for a secure
    authorization-code flow. Request only the
    `https://www.googleapis.com/auth/business.manage` scope. Google does not offer
    a narrower read-only reviews scope. The code only reads data, but the owner
    must explicitly approve the broader Google permission at authorization time.
-4. Obtain offline access using that client and the TST owner/manager account.
-   Keep client secrets and refresh tokens in server environment variables only.
-   An external OAuth app in Testing generally has refresh tokens that expire
-   after seven days; finish the appropriate production/verification setup before
-   relying on unattended updates.
-5. List authorized accounts and locations to find the exact
+4. Offline access has been obtained with that client and the TST owner/manager
+   account. For future reauthorization, use state validation and PKCE, exchange
+   the authorization code privately, and replace the encrypted Worker Secret.
+   Do not change the audience to External/Testing for unattended operation; such
+   testing apps generally receive refresh tokens that expire after seven days.
+5. Authorized account/location discovery has identified the exact
    `accounts/{accountId}/locations/{locationId}` resource for TST. This is not the
    Maps Place ID. Every sync checks the location metadata against the expected
    Place ID before fetching reviews.
@@ -49,10 +60,10 @@ endpoint. There are no Vercel API functions or Vercel cron jobs in this integrat
 The existing website hosting is separate from the selected review backend.
 
 The entry point is `worker/google-reviews.mjs`; `wrangler.jsonc` configures its
-Node compatibility, disabled initial state and daily native Cron Trigger. Deploy
+Node compatibility, enable switch and daily native Cron Trigger. Deploy
 from the repository root when using Wrangler. For a Cloudflare dashboard upload,
 use the prepared single-file ESM bundle, and apply the same configuration in the
-dashboard: compatibility date `2026-08-03`, flag `nodejs_compat`, Workers Logs off,
+dashboard: compatibility date `2026-10-11`, flag `nodejs_compat`, Workers Logs off,
 and Cron Trigger `17 0 * * *`. A dashboard code upload alone does not apply
 `wrangler.jsonc` settings.
 
@@ -84,6 +95,13 @@ Never place secret values in this document, browser JavaScript, chat, repository
 or logs. No Google or Redis credentials are needed by the static sites or their
 Vercel projects. Cloudflare is the only scheduled sync host.
 
+The one-time local setup keeps credentials in Git-ignored private files protected
+by owner-only Windows ACLs. These local JSON files are access-restricted, not
+encrypted at rest. Transfers between the setup browser and the local vault use
+single-use, purpose-bound RSA-OAEP-SHA256/AES-256-GCM envelopes with a ten-minute
+expiry. The deployed credentials belong in Cloudflare's encrypted Secrets.
+Never upload local setup files or transfer envelopes with the static website.
+
 The native Cloudflare scheduled handler runs at `17 0 * * *` (09:17 Japan time).
 It uses the same authenticated internal sync path as a manual request. Scheduler
 execution timing is not an exact-time guarantee. For a secure initial sync or
@@ -100,9 +118,13 @@ endpoint returns an unavailable response and the pages link to Google.
 
 ## Activation and verification
 
-1. Deploy the disabled Worker and confirm its public route returns a safe 503
-   until a valid snapshot exists. Confirm the Cloudflare settings match
-   `wrangler.jsonc`; deploying code is not evidence that synchronization works.
+1. Deploy the normal production Worker bundle from `worker/google-reviews.mjs`.
+   The temporary OAuth callback bundle used for the owner's authorization must
+   be replaced, so `/oauth2callback` returns 404 in production. It is not a
+   permanent OAuth service. Confirm the Cloudflare settings match
+   `wrangler.jsonc`, including the native `17 0 * * *` Cron Trigger and disabled
+   Workers Logs. Before the first valid snapshot, the public review route should
+   return a safe 503; deploying code is not evidence that synchronization works.
 2. Set the Cloudflare Secrets and enable `GOOGLE_REVIEWS_SYNC_ENABLED=true` only
    after the correct TST location and OAuth token are available. Apply the new
    Worker version, then invoke one authenticated sync securely. Confirm its
@@ -111,10 +133,11 @@ endpoint returns an unavailable response and the pages link to Google.
 3. Check the Worker `/api/google-reviews`: TST source link, current `fetchedAt`,
    72-hour `expiresAt`, official rating/count and complete reviews array, with no
    secrets. Check exact CORS access from all four configured TST origins.
-4. Replace the disabled placeholder endpoint in
-   `assets/google-reviews-config.json` with the verified Worker HTTPS URL ending
-   in `/api/google-reviews`, then set `enabled` to `true`. Never activate the old
-   Vercel placeholder URL; it does not host this backend.
+4. Confirm `assets/google-reviews-config.json` has `enabled: true` and exactly
+   `https://tst-google-reviews.wild-glade-c11e.workers.dev/api/google-reviews`.
+   This is already prepared locally. Commit and publish it only after the live
+   sync and public endpoint checks pass. The old Vercel placeholder does not
+   host this backend.
 5. Deploy to all connected sites. Verify all seven pages: homepage, tours, about,
    reviews, contact, FAQ, and private Tokyo tour guide. Confirm the homepage shows
    six latest updates and the reviews page can load the complete set. Old image

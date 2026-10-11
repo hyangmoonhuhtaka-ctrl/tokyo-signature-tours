@@ -18,16 +18,76 @@ function productionEnv(bindings) {
   return { ...bindings, NODE_ENV: 'production', VERCEL_ENV: 'production' };
 }
 
-export function createWorker({ fetchImpl = fetch, redis, now = Date.now, makeId } = {}) {
+const ERROR_CODES = new Set([
+  'configuration', 'upstream_unavailable', 'invalid_payload', 'cache_unavailable',
+  'invalid_cache', 'expired_cache', 'location_mismatch', 'inconsistent_pages',
+  'incomplete_pages', 'snapshot_too_large', 'lock_expired',
+]);
+const ERROR_TYPES = new Set(['Error', 'TypeError', 'ReferenceError', 'RangeError', 'SyntaxError', 'ReviewsError', 'AbortError', 'TimeoutError']);
+
+function syncFailure(error, phase, transport) {
+  // Only this authenticated response gets operational diagnostics. Never return
+  // error messages, stacks, URLs, upstream payloads, or arbitrary error fields.
+  return {
+    error: 'Review sync failed',
+    code: ERROR_CODES.has(error?.code) ? error.code : 'runtime_error',
+    type: ERROR_TYPES.has(error?.name) ? error.name : 'Error',
+    phase,
+    ...transport,
+  };
+}
+
+function transportFailure(error) {
+  const type = ERROR_TYPES.has(error?.name) ? error.name : 'Error';
+  const message = typeof error?.message === 'string' ? error.message : '';
+  let reason = 'other';
+  if (/illegal invocation|incorrect.*this.*reference|invalid receiver/i.test(message)) reason = 'invalid_receiver';
+  else if (type === 'AbortError' || type === 'TimeoutError' || /timed?\s*out|timeout/i.test(message)) reason = 'timeout';
+  else if (/\bdns\b|enotfound|eai_again|name resolution/i.test(message)) reason = 'dns';
+  else if (/\btls\b|\bssl\b|certificate/i.test(message)) reason = 'tls';
+  else if (/network|connection|fetch failed/i.test(message)) reason = 'network';
+  return { transportErrorType: type, transportReason: reason };
+}
+
+function requestPhase(url) {
+  try {
+    const host = new URL(url).hostname;
+    if (host === 'oauth2.googleapis.com') return 'google_token';
+    if (host === 'mybusinessbusinessinformation.googleapis.com') return 'google_location';
+    if (host === 'mybusiness.googleapis.com') return 'google_reviews';
+  } catch { /* Only fixed classifications leave the server. */ }
+  return 'cache';
+}
+
+export function createWorker({ fetchImpl = (...args) => globalThis.fetch(...args), redis, now = Date.now, makeId } = {}) {
   async function sync(method, authorization, env) {
     if (method !== 'GET' && method !== 'POST') return json(405, { error: 'Method not allowed' }, { Allow: 'GET, POST' });
     if (env.GOOGLE_REVIEWS_SYNC_ENABLED !== 'true') return json(200, { ok: true, status: 'disabled' });
     if (!authorized(authorization, env.CRON_SECRET)) return json(401, { error: 'Unauthorized' });
+    let phase = 'before_first_request';
+    let transport = {};
+    const trackedFetch = async (url, init) => {
+      // Cleanup must not obscure the primary operation that failed. This checks
+      // a fixed script fragment without parsing or retaining review payloads.
+      const unlock = typeof init?.body === 'string' && init.body.startsWith('["EVAL",') &&
+        init.body.includes('return redis.call(\\"DEL\\"');
+      if (!unlock) { phase = requestPhase(url); transport = {}; }
+      try {
+        const response = await fetchImpl(url, init);
+        if (!unlock && Number.isInteger(response.status) && response.status >= 100 && response.status <= 599) {
+          transport = { upstreamStatus: response.status };
+        }
+        return response;
+      } catch (error) {
+        if (!unlock) transport = transportFailure(error);
+        throw error;
+      }
+    };
     try {
-      const result = await syncReviews({ env, fetchImpl, redis, now, makeId });
+      const result = await syncReviews({ env, fetchImpl: trackedFetch, redis, now, makeId });
       return json(200, { ok: true, ...result });
-    } catch {
-      return json(502, { error: 'Review sync failed' });
+    } catch (error) {
+      return json(502, syncFailure(error, phase, transport));
     }
   }
 
