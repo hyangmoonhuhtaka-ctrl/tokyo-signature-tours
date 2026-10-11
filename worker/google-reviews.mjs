@@ -1,4 +1,5 @@
 import { allowedOrigin, authorized, createRedis, readSnapshot, syncReviews } from '../lib/google-reviews.mjs';
+import { createReviewPageModel, rewriteReviewPage } from '../lib/review-html.mjs';
 
 // Google credentials and the Redis token are
 // Cloudflare secrets; all environment values are passed explicitly per event.
@@ -59,7 +60,18 @@ function requestPhase(url) {
   return 'cache';
 }
 
-export function createWorker({ fetchImpl = (...args) => globalThis.fetch(...args), redis, now = Date.now, makeId } = {}) {
+const SITE_PREVIEW_HOST = 'tst-google-reviews.wild-glade-c11e.workers.dev';
+const SITE_PREVIEW_ORIGIN = 'https://tokyo-signature-tours.vercel.app';
+const SITE_PUBLIC_HOSTS = new Set(['tokyosignaturetours.com', 'www.tokyosignaturetours.com']);
+const SITE_HTML_PATHS = new Set(['/', '/index.html', '/reviews.html', '/tours.html', '/about.html', '/contact.html', '/faq.html', '/private-tokyo-tour-guide.html']);
+
+function allowedSiteAsset(path) {
+  if (['/robots.txt', '/sitemap.xml', '/favicon.ico', '/favicon.png'].includes(path)) return true;
+  return /^\/(?:assets|images)\/[a-zA-Z0-9_./-]+\.(?:css|js|json|png|jpe?g|webp|gif|avif|svg|ico|woff2?|ttf)$/i.test(path) ||
+    /^\/[a-zA-Z0-9_.-]+\.(?:png|jpe?g|webp|gif|avif|svg|ico)$/i.test(path);
+}
+
+export function createWorker({ fetchImpl = (...args) => globalThis.fetch(...args), redis, now = Date.now, makeId, rewritePage = rewriteReviewPage } = {}) {
   async function sync(method, authorization, env) {
     if (method !== 'GET' && method !== 'POST') return json(405, { error: 'Method not allowed' }, { Allow: 'GET, POST' });
     if (env.GOOGLE_REVIEWS_SYNC_ENABLED !== 'true') return json(200, { ok: true, status: 'disabled' });
@@ -91,6 +103,43 @@ export function createWorker({ fetchImpl = (...args) => globalThis.fetch(...args
     }
   }
 
+  async function site(request, env) {
+    const url = new URL(request.url);
+    const customDomain = SITE_PUBLIC_HOSTS.has(url.hostname);
+    const preview = url.hostname === SITE_PREVIEW_HOST;
+    const html = SITE_HTML_PATHS.has(url.pathname);
+    if ((!customDomain && !preview) || (preview && (!html && !allowedSiteAsset(url.pathname)))) return json(404, { error: 'Not found' });
+    if (request.method !== 'GET' && request.method !== 'HEAD') return json(405, { error: 'Method not allowed' }, { Allow: 'GET, HEAD' });
+    const enabled = env.GOOGLE_REVIEWS_SITE_ENABLED === 'true';
+    if (preview && !enabled) return json(404, { error: 'Not found' });
+    // A custom-domain Route fetches the same URL through Cloudflare to the
+    // DNS-defined GitHub Pages origin. workers.dev uses one fixed static mirror.
+    // Never forward caller Authorization, Cookie, Host, or conditional headers.
+    const upstream = new URL(url.pathname + url.search, customDomain ? url.origin : SITE_PREVIEW_ORIGIN);
+    if (html) upstream.search = '';
+    let origin;
+    try {
+      origin = await fetchImpl(new Request(upstream, {
+        method: html && enabled ? 'GET' : request.method,
+        headers: { Accept: html ? 'text/html' : '*/*' },
+        redirect: 'manual', signal: AbortSignal.timeout(12000),
+      }));
+    } catch { return json(502, { error: 'Site temporarily unavailable' }); }
+    if (!html || !enabled || origin.status !== 200 || !origin.headers.get('Content-Type')?.includes('text/html')) {
+      const headers = new Headers(origin.headers);
+      headers.delete('Set-Cookie');
+      if (preview) headers.set('X-Robots-Tag', 'noindex');
+      return new Response(request.method === 'HEAD' ? null : origin.body, { status: origin.status, headers });
+    }
+    let snapshot = null;
+    try { snapshot = await readSnapshot(redis ?? createRedis(env, fetchImpl), now()); } catch { /* Preserve the page with an unavailable review slot. */ }
+    const model = createReviewPageModel(snapshot, request.url, now());
+    try {
+      const response = rewritePage(origin, model, { preview });
+      return request.method === 'HEAD' ? new Response(null, { status: response.status, headers: response.headers }) : response;
+    } catch { return json(503, { error: 'Site temporarily unavailable' }); }
+  }
+
   return {
     async fetch(request, bindings) {
       const env = productionEnv(bindings);
@@ -99,7 +148,7 @@ export function createWorker({ fetchImpl = (...args) => globalThis.fetch(...args
         // Manual setup/repair endpoint. No browser CORS grant or public trigger.
         return sync(request.method, request.headers.get('Authorization'), env);
       }
-      if (path !== '/api/google-reviews') return json(404, { error: 'Not found' });
+      if (path !== '/api/google-reviews') return site(request, env);
       const origin = request.headers.get('Origin');
       const headers = { Vary: 'Origin' };
       if (origin && !allowedOrigin(origin, env)) return json(403, { error: 'Origin not allowed' }, headers);
