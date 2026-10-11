@@ -26,3 +26,4 @@
 [data-google-review-status]{color:var(--muted,#5b6470);font-size:13px;line-height:1.7;margin:12px 0}
 @media(max-width:900px){.tst-google-reviews-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:600px){.tst-google-reviews-grid{grid-template-columns:1fr;gap:16px}.tst-google-review-card{padding:22px}.tst-google-reviews-meta{gap:6px}.tst-google-reviews .tst-google-reviews-more{width:100%}}
+

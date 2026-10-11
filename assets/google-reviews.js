@@ -101,6 +101,37 @@
     each('[data-google-review-legacy]', function (node) { node.hidden = true; });
   }
 
+  function retireLegacyReviewSchema() {
+    var legacyId = 'https://tokyosignaturetours.com/reviews.html#guide-review-collection';
+    each('script[type="application/ld+json"]', function (script) {
+      var data;
+      try { data = JSON.parse(script.textContent); } catch (_) { return; }
+      if (!data || !Array.isArray(data['@graph'])) return;
+      var graph = data['@graph'];
+      var remaining = graph.filter(function (node) {
+        return !node || node['@type'] !== 'ItemList' || node['@id'] !== legacyId;
+      });
+      if (remaining.length === graph.length) return;
+      remaining.forEach(function (node) {
+        if (node && node['@type'] === 'CollectionPage' && node.mainEntity && node.mainEntity['@id'] === legacyId) {
+          delete node.mainEntity;
+        }
+      });
+      data['@graph'] = remaining;
+      script.textContent = JSON.stringify(data);
+    });
+  }
+
+  function routeLegacyReviewHash() {
+    var id;
+    try { id = decodeURIComponent(window.location.hash.slice(1)); } catch (_) { return; }
+    if (!id) return;
+    var target = document.getElementById(id);
+    if (!target || !target.closest('[data-google-review-legacy][hidden]')) return;
+    var feed = document.querySelector('[data-google-review-feed]');
+    if (feed && !feed.hidden) feed.scrollIntoView({ block: 'start', behavior: 'auto' });
+  }
+
   function status(message) {
     each('[data-google-review-status]', function (node) { node.textContent = message; node.hidden = !message; });
   }
@@ -298,9 +329,13 @@
     var sourceAnchor = document.querySelector('[data-google-review-link]');
     defaultSource = sourceAnchor ? googleUrl(sourceAnchor.getAttribute('href')) : null;
     hideLegacy();
+    retireLegacyReviewSchema();
     updateSummary(null);
     status('Checking Google reviews…');
     await refresh();
+    routeLegacyReviewHash();
+    window.addEventListener('hashchange', routeLegacyReviewHash);
+    if (document.readyState !== 'complete') window.addEventListener('load', routeLegacyReviewHash, { once: true });
     document.addEventListener('visibilitychange', function () {
       if (document.visibilityState !== 'visible') return;
       if (snapshot && Date.parse(snapshot.expiresAt) <= Date.now()) renderUnavailable();
