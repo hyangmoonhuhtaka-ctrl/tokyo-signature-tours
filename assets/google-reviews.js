@@ -15,6 +15,8 @@
   var lastAttempt = 0;
   var pending = false;
   var defaultSource = '';
+  var serverSnapshot;
+  var PAGE_SIZE = 6;
 
   function each(selector, callback) {
     document.querySelectorAll(selector).forEach(callback);
@@ -179,9 +181,17 @@
     date.setAttribute('datetime', review.updatedAt);
     card.appendChild(date);
     if (review.comment.trim()) {
-      var quote = element('blockquote', 'tst-google-review-quote');
-      quote.appendChild(element('p', 'tst-google-review-comment', review.comment));
-      card.appendChild(quote);
+      // Native disclosure keeps the complete original text readable without JavaScript.
+      var details = element('details', 'tst-google-review-text');
+      var summary = element('summary', 'tst-google-review-text-summary');
+      summary.appendChild(element('span', 'tst-google-review-comment', review.comment));
+      var toggle = element('span', 'tst-google-review-toggle');
+      toggle.appendChild(element('span', 'tst-review-read', 'Read full review'));
+      toggle.appendChild(element('span', 'tst-review-close', 'Show less'));
+      summary.appendChild(toggle);
+      details.appendChild(summary);
+      card.appendChild(details);
+      prepareDisclosure(details);
     } else {
       card.appendChild(element('p', 'tst-google-review-no-comment', 'This guest left a rating without a written review.'));
     }
@@ -189,56 +199,130 @@
     return card;
   }
 
+  function prepareDisclosure(details) {
+    if (details.dataset.reviewReady === 'true') return;
+    details.dataset.reviewReady = 'true';
+    var summary = details.querySelector('summary');
+    if (!summary) return;
+    function update() { summary.setAttribute('aria-expanded', details.open ? 'true' : 'false'); }
+    details.addEventListener('toggle', update);
+    update();
+  }
+
+  function currentPage(totalPages) {
+    var raw = new URL(window.location.href).searchParams.get('page');
+    var page = raw && /^[1-9]\d*$/.test(raw) ? Number(raw) : 1;
+    return Math.max(1, Math.min(Number.isSafeInteger(page) ? page : 1, totalPages));
+  }
+
+  function pageUrl(page) {
+    return '/reviews.html' + (page > 1 ? '?page=' + page : '') + '#google-review-feed';
+  }
+
+  function pageLink(page, label, className, current, changePage) {
+    var link = element('a', className, label);
+    link.href = pageUrl(page);
+    link.setAttribute('aria-label', 'Review page ' + page);
+    if (current) link.setAttribute('aria-current', 'page');
+    link.addEventListener('click', function (event) {
+      // Retain normal links for crawlers, new tabs, and browsers without History API.
+      if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || !window.history || !window.history.pushState) return;
+      event.preventDefault();
+      window.history.pushState(null, '', link.href);
+      changePage(page, true);
+    });
+    return link;
+  }
+
+  function pagination(page, totalPages, changePage) {
+    var nav = element('nav', 'tst-google-reviews-pagination');
+    nav.setAttribute('aria-label', 'Google review pages');
+    if (page > 1) {
+      var previous = pageLink(page - 1, 'Previous', 'tst-google-reviews-page-step', false, changePage);
+      previous.setAttribute('aria-label', 'Previous review page');
+      previous.rel = 'prev';
+      nav.appendChild(previous);
+    } else {
+      var start = element('span', 'tst-google-reviews-page-step', 'Previous');
+      start.setAttribute('aria-disabled', 'true');
+      nav.appendChild(start);
+    }
+    var pages = element('div', 'tst-google-reviews-page-numbers');
+    var first = Math.max(2, page - 1);
+    var last = Math.min(totalPages - 1, page + 1);
+    if (page <= 2) last = Math.min(totalPages - 1, 3);
+    if (page >= totalPages - 1) first = Math.max(2, totalPages - 2);
+    pages.appendChild(pageLink(1, '1', 'tst-google-reviews-page-number', page === 1, changePage));
+    if (first > 2) pages.appendChild(element('span', 'tst-google-reviews-page-gap', '…'));
+    for (var number = first; number <= last; number++) pages.appendChild(pageLink(number, String(number), 'tst-google-reviews-page-number', page === number, changePage));
+    if (last < totalPages - 1) pages.appendChild(element('span', 'tst-google-reviews-page-gap', '…'));
+    if (totalPages > 1) pages.appendChild(pageLink(totalPages, String(totalPages), 'tst-google-reviews-page-number', page === totalPages, changePage));
+    nav.appendChild(pages);
+    if (page < totalPages) {
+      var next = pageLink(page + 1, 'Next', 'tst-google-reviews-page-step', false, changePage);
+      next.setAttribute('aria-label', 'Next review page');
+      next.rel = 'next';
+      nav.appendChild(next);
+    } else {
+      var end = element('span', 'tst-google-reviews-page-step', 'Next');
+      end.setAttribute('aria-disabled', 'true');
+      nav.appendChild(end);
+    }
+    return nav;
+  }
+
   function renderFeed(container, data) {
     container.replaceChildren();
     container.hidden = false;
     container.classList.add('tst-google-reviews');
     var meta = element('div', 'tst-google-reviews-meta');
-    meta.appendChild(element('p', 'tst-google-reviews-order', 'Most recently updated on Google'));
-    meta.appendChild(sourceLink(data.sourceUrl, 'View Tokyo Signature Tours on Google'));
+    meta.appendChild(element('p', 'tst-google-reviews-order', 'Latest guest reviews'));
+    meta.appendChild(sourceLink(data.sourceUrl, 'View on Google'));
     container.appendChild(meta);
     if (!data.reviews.length) {
       container.appendChild(element('p', 'tst-google-reviews-empty', 'There are no Google reviews to display yet.'));
       return;
     }
-    var grid = element('div', 'tst-google-reviews-grid');
-    container.appendChild(grid);
     var cap = Number(container.dataset.reviewLimit);
     var limited = Number.isInteger(cap) && cap > 0;
-    var reviews = limited ? data.reviews.slice(0, Math.min(cap, 100)) : data.reviews;
-    var shown = 0;
-    var more;
-    function appendPage(focusFirst) {
+    var reviews = limited ? data.reviews.slice(0, Math.min(cap, 3)) : data.reviews;
+    var totalPages = Math.ceil(reviews.length / PAGE_SIZE);
+    var range = element('p', 'tst-google-reviews-range');
+    range.setAttribute('role', 'status');
+    range.setAttribute('aria-live', 'polite');
+    if (!limited) container.appendChild(range);
+    var grid = element('div', 'tst-google-reviews-grid');
+    container.appendChild(grid);
+    var nav;
+    function showPage(page, focusFirst) {
+      grid.replaceChildren();
       var first;
-      var end = Math.min(shown + (limited ? reviews.length : 12), reviews.length);
-      while (shown < end) {
-        var card = reviewCard(reviews[shown++]);
+      var start = limited ? 0 : (page - 1) * PAGE_SIZE;
+      var end = Math.min(start + (limited ? reviews.length : PAGE_SIZE), reviews.length);
+      for (var index = start; index < end; index++) {
+        var card = reviewCard(reviews[index]);
         if (!first) first = card;
         grid.appendChild(card);
       }
-      if (more) {
-        more.hidden = shown >= reviews.length;
-        more.textContent = 'Show more reviews (' + (reviews.length - shown) + ' remaining)';
-      }
+      range.textContent = 'Reviews ' + (start + 1) + '–' + end + ' of ' + data.count + ' · newest first';
+      if (nav) nav.remove();
+      if (!limited && totalPages > 1) { nav = pagination(page, totalPages, showPage); container.appendChild(nav); }
       if (focusFirst && first) {
         first.setAttribute('tabindex', '-1');
         first.focus({ preventScroll: true });
+        container.scrollIntoView({ block: 'start', behavior: 'auto' });
       }
     }
-    appendPage(false);
+    showPage(limited ? 1 : currentPage(totalPages), false);
     if (limited && data.reviews.length > reviews.length) {
-      var all = element('a', 'tst-google-reviews-more', 'Read all Google reviews');
-      all.href = '/reviews.html';
+      var all = element('a', 'tst-google-reviews-more', 'See all ' + data.count + ' reviews');
+      all.href = pageUrl(1);
       container.appendChild(all);
-    } else if (!limited && shown < reviews.length) {
-      more = element('button', 'tst-google-reviews-more', 'Show more reviews (' + (reviews.length - shown) + ' remaining)');
-      more.type = 'button';
-      more.addEventListener('click', function () { appendPage(true); });
-      container.appendChild(more);
     }
   }
 
   function renderUnavailable() {
+    serverSnapshot = null;
     updateSummary(null);
     each('[data-google-review-feed]', function (container) {
       container.replaceChildren();
@@ -256,12 +340,33 @@
     status((stale ? 'Last successful Google check: ' : 'Checked on Google: ') + formattedDate(data.fetchedAt, false) + '. Reviews sync daily.' + (stale ? ' The next update is delayed; see Google for the current reviews.' : ''));
   }
 
+  function expireAt(value) {
+    window.clearTimeout(expiryTimer);
+    expiryTimer = window.setTimeout(function () { renderUnavailable(); refresh(); }, Math.max(0, Date.parse(value) - Date.now()));
+  }
+
+  function prepareServerContent() {
+    each('.tst-google-review-text', prepareDisclosure);
+    var marker = document.querySelector('[data-review-rendered="true"]');
+    if (!marker) return false;
+    var checked = timestamp(marker.dataset.reviewFetchedAt);
+    var expires = timestamp(marker.dataset.reviewExpiresAt);
+    var now = Date.now();
+    if (!Number.isFinite(checked) || !Number.isFinite(expires) || checked > now + 5 * 60 * 1000 || expires <= now || expires <= checked || expires - checked > MAX_AGE || now - checked > MAX_AGE) {
+      renderUnavailable();
+      return false;
+    }
+    serverSnapshot = { fetchedAt: marker.dataset.reviewFetchedAt, expiresAt: marker.dataset.reviewExpiresAt };
+    expireAt(serverSnapshot.expiresAt);
+    return true;
+  }
+
   function render(data) {
+    serverSnapshot = null;
     updateSummary(data);
     each('[data-google-review-feed]', function (container) { renderFeed(container, data); });
     updateStatus(data);
-    window.clearTimeout(expiryTimer);
-    expiryTimer = window.setTimeout(function () { renderUnavailable(); refresh(); }, Math.max(0, Date.parse(data.expiresAt) - Date.now()));
+    expireAt(data.expiresAt);
   }
 
   async function fetchJson(url, maxBytes) {
@@ -307,8 +412,9 @@
       if (changed) render(snapshot);
       else updateStatus(snapshot);
     } catch (_) {
-      if (!snapshot || Date.parse(snapshot.expiresAt) <= Date.now()) renderUnavailable();
-      else status('Last successful Google check: ' + formattedDate(snapshot.fetchedAt, false) + '. The next update is delayed; see Google for the current reviews.');
+      var available = snapshot || serverSnapshot;
+      if (!available || Date.parse(available.expiresAt) <= Date.now()) renderUnavailable();
+      else status('Last successful Google check: ' + formattedDate(available.fetchedAt, false) + '. The next update is delayed; see Google for the current reviews.');
     } finally {
       pending = false;
       window.clearTimeout(refreshTimer);
@@ -317,6 +423,9 @@
   }
 
   async function start() {
+    var sourceAnchor = document.querySelector('[data-google-review-link]');
+    defaultSource = sourceAnchor ? googleUrl(sourceAnchor.getAttribute('href')) : null;
+    var hasServerContent = prepareServerContent();
     var settings;
     try { settings = await fetchJson('/assets/google-reviews-config.json', 8192); } catch (_) { return; }
     // A disabled or missing config preserves the dated, manually checked HTML exactly.
@@ -326,19 +435,26 @@
       if (endpoint.protocol !== 'https:' || endpoint.username || endpoint.password) return;
       config = { endpoint: endpoint.href };
     } catch (_) { return; }
-    var sourceAnchor = document.querySelector('[data-google-review-link]');
-    defaultSource = sourceAnchor ? googleUrl(sourceAnchor.getAttribute('href')) : null;
     hideLegacy();
     retireLegacyReviewSchema();
-    updateSummary(null);
-    status('Checking Google reviews…');
+    if (!hasServerContent) {
+      updateSummary(null);
+      status('Checking Google reviews…');
+    }
     await refresh();
     routeLegacyReviewHash();
     window.addEventListener('hashchange', routeLegacyReviewHash);
+    window.addEventListener('popstate', function () {
+      if (!snapshot || Date.parse(snapshot.expiresAt) <= Date.now()) return;
+      each('[data-google-review-feed]', function (container) {
+        if (!container.dataset.reviewLimit) renderFeed(container, snapshot);
+      });
+    });
     if (document.readyState !== 'complete') window.addEventListener('load', routeLegacyReviewHash, { once: true });
     document.addEventListener('visibilitychange', function () {
       if (document.visibilityState !== 'visible') return;
-      if (snapshot && Date.parse(snapshot.expiresAt) <= Date.now()) renderUnavailable();
+      var available = snapshot || serverSnapshot;
+      if (available && Date.parse(available.expiresAt) <= Date.now()) renderUnavailable();
       if (Date.now() - lastAttempt >= HOUR) refresh();
     });
   }
