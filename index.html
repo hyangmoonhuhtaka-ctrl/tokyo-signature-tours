@@ -2110,6 +2110,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="stylesheet" href="/assets/sample-itinerary.css?v=20261005-itineraries" />
 <link rel="stylesheet" href="/assets/guide-reviews.css?v=20260929-carousel" />
 <script src="/assets/guide-reviews.js?v=20260929-carousel" defer></script>
+<link rel="stylesheet" href="/assets/google-reviews.css" />
+<script src="/assets/google-reviews.js" defer></script>
 </head>
 
 <body>
@@ -2200,10 +2202,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <path fill="#1976D2" d="M43.6 20H24v8h11.3c-.8 2-2.1 3.7-3.8 5.1l6.1 5.2C37.2 38.7 44 34 44 24c0-1.3-.1-2.7-.4-4z"/>
               </svg>
             </span>
-            <span class="hero-trust-stars" aria-hidden="true">★★★★★</span>
-            <span><strong><span data-google-rating-score>5.0</span> on Google</strong> · <span data-google-review-count>87</span> Google Reviews</span>
+            <span class="hero-trust-stars" data-google-rating-stars aria-hidden="true">★★★★★</span>
+            <span><strong><span data-google-rating-score>5.0</span> on Google</strong> · <span data-google-review-count-label><span data-google-review-count>87</span> Google Reviews</span></span>
           </a>
-          <p class="review-rating-checked">Google rating checked on <time data-google-review-checked datetime="2026-10-05">5 October 2026</time>.</p>
+          <p class="review-rating-checked" data-google-review-check-note>Google rating checked on <time data-google-review-checked datetime="2026-10-05">5 October 2026</time>.</p>
           <ul class="hero-points">
             <li><strong>100% private</strong> — only your group and your guide, with no fixed script</li>
             <li>Carefully selected <strong>English-speaking local guides</strong> and a personalized itinerary before your tour</li>
@@ -2288,23 +2290,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </svg>
               </span>
               <span class="google-rating-copy">
-                <span class="google-rating-stars" aria-hidden="true">★★★★★</span>
+                <span class="google-rating-stars" data-google-rating-stars aria-hidden="true">★★★★★</span>
                 <span class="google-rating-text">
                   <span class="google-rating-score" data-google-rating-score>5.0</span>
-                  <span class="google-rating-label"><span data-google-review-count>87</span> Google Reviews</span>
+                  <span class="google-rating-label"><span data-google-review-count-label><span data-google-review-count>87</span> Google Reviews</span></span>
                 </span>
               </span>
               <span class="google-rating-arrow" aria-hidden="true">→</span>
             </a>
-            <p class="review-rating-checked">Google rating checked on <time data-google-review-checked datetime="2026-10-05">5 October 2026</time>. The current rating and count may change.</p>
-            <h3>Meet Our Guides Through Guest Stories</h3>
-            <p>First visits, family days and private Tokyo tours with Apy, Kay, Mai, Chiro, Mayu and Taka.</p>
-            <p class="review-editorial-note">Selected guest stories, with excerpts and links to the original Google reviews.</p>
+            <p class="review-rating-checked" data-google-review-check-note>Google rating checked on <time data-google-review-checked datetime="2026-10-05">5 October 2026</time>. The current rating and count may change.</p>
+            <h3 data-google-review-legacy>Meet Our Guides Through Guest Stories</h3>
+            <p data-google-review-legacy>First visits, family days and private Tokyo tours with Apy, Kay, Mai, Chiro, Mayu and Taka.</p>
+            <p class="review-editorial-note" data-google-review-legacy>Selected guest stories, with excerpts and links to the original Google reviews.</p>
           </div>
         </div>
 
-        <div class="guide-review-carousel" data-review-carousel><div class="guide-review-controls"><p class="guide-review-hint"><span class="guide-review-hint-mobile">Swipe to explore more stories</span><span class="guide-review-hint-desktop">Explore more guest stories</span></p><div class="guide-review-actions" hidden><span class="guide-review-count" aria-live="polite" aria-atomic="true"></span><button class="guide-review-prev" type="button" aria-label="Previous guest reviews" aria-controls="home-guide-reviews"><span aria-hidden="true">←</span></button><button class="guide-review-next" type="button" aria-label="Next guest reviews" aria-controls="home-guide-reviews"><span aria-hidden="true">→</span></button></div></div><div class="guide-review-grid guide-review-track" id="home-guide-reviews" tabindex="0" role="region" aria-label="Guest reviews across our guide team. Scroll horizontally to browse.">
-<article class="guide-review-card">
+        <div id="google-reviews" data-google-review-feed data-review-limit="6" hidden aria-label="Google guest reviews"></div>
+        <p data-google-review-status hidden aria-live="polite"></p>
+
+        <div class="guide-review-carousel" data-review-carousel data-google-review-legacy><div class="guide-review-controls"><p class="guide-review-hint"><span class="guide-review-hint-mobile">Swipe to explore more stories</span><span class="guide-review-hint-desktop">Explore more guest stories</span></p><div class="guide-review-actions" hidden><span class="guide-review-count" aria-live="polite" aria-atomic="true"></span><button class="guide-review-prev" type="button" aria-label="Previous guest reviews" aria-controls="home-guide-reviews"><span aria-hidden="true">←</span></button><button class="guide-review-next" type="button" aria-label="Next guest reviews" aria-controls="home-guide-reviews"><span aria-hidden="true">→</span></button></div></div><div class="guide-review-grid guide-review-track" id="home-guide-reviews" tabindex="0" role="region" aria-label="Guest reviews across our guide team. Scroll horizontally to browse.">
+<article class="guide-review-card" data-google-review-legacy>
   <div class="guide-review-top"><span class="guide-review-guide">With Apy</span><span class="guide-review-stars" aria-label="5 out of 5 stars">★★★★★</span></div>
   <h3>A first day shaped around your interests</h3>
   <blockquote cite="https://maps.app.goo.gl/4oeJn1jUvKpz497t9"><p>“She created a tour especially for us, based on our interests…”</p></blockquote>
@@ -2312,7 +2317,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <p class="guide-review-context">Hanna describes a Tokyo tour planned around her group’s interests, with orientation tips and recommendations for the rest of their trip.</p>
   <div class="guide-review-source"><span>Google review excerpt · Source checked <time datetime="2026-09-29">29 September 2026</time></span><a href="https://maps.app.goo.gl/4oeJn1jUvKpz497t9" target="_blank" rel="noopener" aria-label="Read Hanna’s original Google review about Apy">Read original Google review <span aria-hidden="true">↗</span></a></div>
 </article>
-<article class="guide-review-card">
+<article class="guide-review-card" data-google-review-legacy>
   <div class="guide-review-top"><span class="guide-review-guide">With Kay</span><span class="guide-review-stars" aria-label="5 out of 5 stars">★★★★★</span></div>
   <h3>A flexible day, shaped around your needs</h3>
   <blockquote cite="https://maps.app.goo.gl/1J2B71UX4hYkWkTv9"><p>“He understood our needs and organised the tour…”</p></blockquote>
@@ -2320,7 +2325,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <p class="guide-review-context">Reena describes Kay’s attentive care and flexibility, including adapting the schedule at the last moment to suit her group’s needs.</p>
   <div class="guide-review-source"><span>Google review excerpt · Source checked <time datetime="2026-09-29">29 September 2026</time></span><a href="https://maps.app.goo.gl/1J2B71UX4hYkWkTv9" target="_blank" rel="noopener" aria-label="Read Reena Goel’s original Google review about Kay">Read original Google review <span aria-hidden="true">↗</span></a></div>
 </article>
-<article class="guide-review-card">
+<article class="guide-review-card" data-google-review-legacy>
   <div class="guide-review-top"><span class="guide-review-guide">With Mai</span><span class="guide-review-stars" aria-label="5 out of 5 stars">★★★★★</span></div>
   <h3>Tokyo’s history and culture, comfortably explored</h3>
   <blockquote cite="https://maps.app.goo.gl/ZCey1gT22iqxjJtY9"><p>“Our guide, Mai, was truly exceptional.”</p></blockquote>
@@ -2328,7 +2333,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <p class="guide-review-context">Paul recalls a smooth first visit to Japan, with Mai sharing Tokyo’s history and culture and helping the day run comfortably.</p>
   <div class="guide-review-source"><span>Google review excerpt · Source checked <time datetime="2026-09-29">29 September 2026</time></span><a href="https://maps.app.goo.gl/ZCey1gT22iqxjJtY9" target="_blank" rel="noopener" aria-label="Read Paul Moraitis’s original Google review about Mai">Read original Google review <span aria-hidden="true">↗</span></a></div>
 </article>
-<article class="guide-review-card">
+<article class="guide-review-card" data-google-review-legacy>
   <div class="guide-review-top"><span class="guide-review-guide">With Chiro</span><span class="guide-review-stars" aria-label="5 out of 5 stars">★★★★★</span></div>
   <h3>A relaxed Tokyo day with a young child</h3>
   <blockquote cite="https://share.google/mxJpzHec2C9z1B8z9"><p>“Chiro was extremely kind, patient, and attentive to our pace…”</p></blockquote>
@@ -2336,7 +2341,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <p class="guide-review-context">Flipson describes a relaxed family tour with a young son, including temple customs, quieter neighborhoods and a local park.</p>
   <div class="guide-review-source"><span>Google review excerpt · Source checked <time datetime="2026-09-29">29 September 2026</time></span><a href="https://share.google/mxJpzHec2C9z1B8z9" target="_blank" rel="noopener" aria-label="Read Flipson Flip’s original Google review about Chiro">Read original Google review <span aria-hidden="true">↗</span></a></div>
 </article>
-<article class="guide-review-card">
+<article class="guide-review-card" data-google-review-legacy>
   <div class="guide-review-top"><span class="guide-review-guide">With Mayu</span><span class="guide-review-stars" aria-label="5 out of 5 stars">★★★★★</span></div>
   <h3>Two days tailored to a Tokyo visit</h3>
   <blockquote cite="https://share.google/OBck5aaoCVkrwZN6T"><p>“We did a two day customized tour with Mayu…”</p></blockquote>
@@ -2344,7 +2349,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <p class="guide-review-context">Jonathan describes a customized two-day Tokyo tour guided by Mayu and organized by Taka, helping his group see more of the city.</p>
   <div class="guide-review-source"><span>Google review excerpt · Source checked <time datetime="2026-09-29">29 September 2026</time></span><a href="https://share.google/OBck5aaoCVkrwZN6T" target="_blank" rel="noopener" aria-label="Read Jonathan Chester’s original Google review about Mayu">Read original Google review <span aria-hidden="true">↗</span></a></div>
 </article>
-<article class="guide-review-card">
+<article class="guide-review-card" data-google-review-legacy>
   <div class="guide-review-top"><span class="guide-review-guide">With Taka</span><span class="guide-review-stars" aria-label="5 out of 5 stars">★★★★★</span></div>
   <h3>A welcoming introduction to Tokyo</h3>
   <blockquote cite="https://maps.app.goo.gl/4hWJ9YmAaMBQw18F8"><p>“We met as strangers and left feeling like family.”</p></blockquote>
@@ -2352,7 +2357,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <p class="guide-review-context">Michael recalls his first full day in Japan: meeting Taka at his hotel, exploring Tokyo by public transport and learning about Japanese culture.</p>
   <div class="guide-review-source"><span>Google review excerpt · Source checked <time datetime="2026-09-29">29 September 2026</time></span><a href="https://maps.app.goo.gl/4hWJ9YmAaMBQw18F8" target="_blank" rel="noopener" aria-label="Read Michael Ferneau’s original Google review about Taka">Read original Google review <span aria-hidden="true">↗</span></a></div>
 </article></div></div>
-<p class="guide-reviews-more"><a href="/reviews.html#guide-reviews">Explore reviews by guide and tour experience →</a></p>
+<p class="guide-reviews-more" data-google-review-legacy><a href="/reviews.html#guide-reviews">Explore reviews by guide and tour experience →</a></p>
       </div>
     </section>
 
@@ -2818,7 +2823,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 9H16V6h-2.5C11.57 6 10 7.57 10 9.5V11H8v3h2v7h3v-7h2.1l.9-3H13v-1.5c0-.28.22-.5.5-.5z"/></svg>
 </a>
 
-<a class="icon-btn" href="https://www.google.com/maps/place/Tokyo+Signature+Tours+%7C+Private+Tokyo+Tours/@35.701622,139.6885977,14z/data=!3m1!4b1!4m6!3m5!1s0x2ae76d89645afc83:0x968877d08d9a25e1!8m2!3d35.7015889!4d139.7091972!16s%2Fg%2F11yrbvflx0" target="_blank" rel="noopener" aria-label="Google Maps">
+<a class="icon-btn" href="https://www.google.com/maps/place/Tokyo+Signature+Tours+%7C+Private+Tokyo+Tours/@35.701622,139.6885977,14z/data=!3m1!4b1!4m6!3m5!1s0x2ae76d89645afc83:0x968877d08d9a25e1!8m2!3d35.7015889!4d139.7091972!16s%2Fg%2F11yrbvflx0" target="_blank" rel="noopener" aria-label="Google Maps" data-google-review-link>
   <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
     <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5z"/>
   </svg>
@@ -3213,79 +3218,6 @@ if (bookingEmailBtn) bookingEmailBtn.href = emailUrl;
   </script>
 
   <script>
-  </script>
-
-  <script>
-    /* ==========================================================
-       GOOGLE REVIEW STATS AUTO-SYNC
-       - Current fallback shown in HTML: 5.0 / 87 reviews (checked 2026-10-05)
-       - To enable live automatic updates, paste a browser-restricted
-         Google Maps JavaScript API key below and enable Places API (New).
-       ========================================================== */
-    const GOOGLE_MAPS_API_KEY = 'PASTE_YOUR_GOOGLE_MAPS_API_KEY_HERE';
-    const GOOGLE_PLACE_ID = 'ChIJg_xaZIlt5yoR4SWajdB3iJY';
-
-    (async function syncGoogleReviewStats(){
-      if (!GOOGLE_MAPS_API_KEY || GOOGLE_MAPS_API_KEY.includes('PASTE_YOUR_')) return;
-
-      const loadGoogleMaps = () => new Promise((resolve, reject) => {
-        if (window.google?.maps?.importLibrary) return resolve();
-
-        const existing = document.querySelector('script[data-google-maps-loader="true"]');
-        if (existing) {
-          existing.addEventListener('load', resolve, {once:true});
-          existing.addEventListener('error', reject, {once:true});
-          return;
-        }
-
-        const script = document.createElement('script');
-        script.src = `https://maps.googleapis.com/maps/api/js?key=${encodeURIComponent(GOOGLE_MAPS_API_KEY)}&v=weekly&libraries=places&loading=async`;
-        script.async = true;
-        script.defer = true;
-        script.dataset.googleMapsLoader = 'true';
-        script.onload = resolve;
-        script.onerror = reject;
-        document.head.appendChild(script);
-      });
-
-      try {
-        await loadGoogleMaps();
-        const { Place } = await google.maps.importLibrary('places');
-        const place = new Place({ id: GOOGLE_PLACE_ID, requestedLanguage: 'en' });
-        await place.fetchFields({ fields: ['rating', 'userRatingCount'] });
-
-        const rating = Number(place.rating);
-        const reviewCount = Number(place.userRatingCount);
-        if (!Number.isFinite(rating) || rating < 1 || rating > 5
-            || !Number.isInteger(reviewCount) || reviewCount < 1) return;
-
-        const ratingText = rating.toFixed(1);
-        const countText = reviewCount.toLocaleString('en-US');
-
-        document.querySelectorAll('[data-google-rating-score]').forEach((el) => {
-          el.textContent = ratingText;
-        });
-        document.querySelectorAll('[data-google-review-count]').forEach((el) => {
-          el.textContent = countText;
-        });
-        const now = new Date();
-        const checkedISO = new Intl.DateTimeFormat('en-CA', {timeZone:'Asia/Tokyo', year:'numeric', month:'2-digit', day:'2-digit'}).format(now);
-        const checkedText = new Intl.DateTimeFormat('en-GB', {timeZone:'Asia/Tokyo', day:'numeric', month:'long', year:'numeric'}).format(now);
-        document.querySelectorAll('[data-google-review-checked]').forEach(el => {
-          el.dateTime = checkedISO;
-          el.textContent = checkedText;
-        });
-        document.querySelectorAll('[data-google-review-link]').forEach(el => {
-          el.setAttribute('aria-label', 'Rated ' + ratingText + ' on Google with ' + countText + ' reviews, checked on ' + checkedText + '. View reviews on Google Maps.');
-        });
-        document.querySelectorAll('.hero-trust-stars,.google-rating-stars').forEach(el => {
-          const wholeStars = Math.round(rating);
-          el.textContent = '★'.repeat(wholeStars) + '☆'.repeat(5 - wholeStars);
-        });
-      } catch (error) {
-        console.warn('Google review stats auto-sync unavailable; using the current fallback values.', error);
-      }
-    })();
   </script>
 
   <script>

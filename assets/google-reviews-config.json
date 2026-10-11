@@ -1,0 +1,4 @@
+{
+  "enabled": true,
+  "endpoint": "https://tst-google-reviews.wild-glade-c11e.workers.dev/api/google-reviews"
+}
