@@ -1321,7 +1321,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <section aria-labelledby="section-2-title">
   <div class="container">
-    <div class="booking-shell" id="booking" data-tour-duration="8" data-group-size="2" data-total-price-usd="599" data-price-per-person-usd="299.5" aria-label="Tour booking">
+    <div class="booking-shell" id="booking" data-tour-duration="4" data-group-size="2" data-total-price-usd="349" data-price-per-person-usd="174.5" aria-label="Tour booking">
       <div class="booking-head">
         <span class="booking-kicker">Reservations</span>
         <h2 class="booking-title" id="section-2-title">Plan Your Private Tokyo Tour</h2>
@@ -1345,7 +1345,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </button>
           <div class="seg-scroll" id="durationScroll" role="group" aria-label="Tour length selector">
             <div class="seg">
-              <button class="seg-btn" type="button" data-duration="4" aria-pressed="false">
+              <button class="seg-btn" type="button" data-duration="4" aria-pressed="true" data-default="true">
                 <div class="seg-top"><div class="seg-name">4 Hours</div><div class="seg-tag">Highlights</div></div>
                 <div class="seg-desc">A gentle introduction — two or three neighborhoods at a comfortable pace.</div>
               </button>
@@ -1353,7 +1353,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <div class="seg-top"><div class="seg-name">6 Hours</div><div class="seg-tag">Food &amp; Depth</div></div>
                 <div class="seg-desc">Neighborhoods, culture, and carefully chosen local meals along the way.</div>
               </button>
-              <button class="seg-btn" type="button" data-duration="8" aria-pressed="true" data-default="true">
+              <button class="seg-btn" type="button" data-duration="8" aria-pressed="false">
                 <div class="seg-top"><div class="seg-name">8 Hours</div><div class="seg-tag">Signature</div></div>
                 <div class="seg-desc">The full Tokyo day — iconic landmarks and quiet finds, woven together at your rhythm.</div>
               </button>
@@ -1387,10 +1387,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <div class="mini-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 1a11 11 0 1 0 11 11A11.01 11.01 0 0 0 12 1Zm1 11.41 3.29 3.3-1.42 1.41L11 13V6h2Z"/></svg></div>
             <div class="mini-txt">
               <p class="mini-title">Your Selection</p>
-              <p class="mini-sub" id="summaryLine">8 Hours · 2 guests</p>
+              <p class="mini-sub" id="summaryLine">4 Hours · 2 guests</p>
               <div class="price-line">
-                <span class="pp" id="summaryPrice">USD 599 total</span>
-                <span class="total" id="summaryTotal">USD 299.50/person</span>
+                <span class="pp" id="summaryPrice">USD 349 total</span>
+                <span class="total" id="summaryTotal">USD 174.50/person</span>
               </div>
             </div>
           </div>
@@ -1745,13 +1745,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="sticky-buy" id="stickyBuy" aria-label="Reservation summary">
   <div class="sticky-inner">
     <div class="sticky-left">
-      <div class="sticky-line1" id="stickyLine">8 Hours · 2 guests</div>
+      <div class="sticky-line1" id="stickyLine">4 Hours · 2 guests</div>
       <div class="sticky-price">
-        <span id="stickyPrice">USD 599 total</span>
-        <span class="total" id="stickyTotal">USD 299.50/person</span>
+        <span id="stickyPrice">USD 349 total</span>
+        <span class="total" id="stickyTotal">USD 174.50/person</span>
       </div>
     </div>
-    <a class="sticky-btn" id="bookBtn" data-cta-location="sticky" href="https://wa.me/819084350822?text=Hello%20Tokyo%20Signature%20Tours%2C%0AI%20would%20like%20a%208-hour%20private%20Tokyo%20tour%20for%202%20guests.%0ADisplayed%20group%20total%3A%20USD%20599.%0APreferred%20date%3A%20%5BTYPE%20HERE%5D%0AHotel%20area%3A%20%5BTYPE%20HERE%5D%0AInterests%3A%20%5BTYPE%20HERE%5D%0APlease%20confirm%20availability%2C%20the%20final%20amount%20and%20payment%20details." target="_blank" rel="noopener" aria-label="Check availability on WhatsApp">Check Availability</a>
+    <a class="sticky-btn" id="bookBtn" data-cta-location="sticky" href="https://wa.me/819084350822?text=Hello%20Tokyo%20Signature%20Tours%2C%0AI%20would%20like%20a%204-hour%20private%20Tokyo%20tour%20for%202%20guests.%0ADisplayed%20group%20total%3A%20USD%20349.%0APreferred%20date%3A%20%5BTYPE%20HERE%5D%0AHotel%20area%3A%20%5BTYPE%20HERE%5D%0AInterests%3A%20%5BTYPE%20HERE%5D%0APlease%20confirm%20availability%2C%20the%20final%20amount%20and%20payment%20details." target="_blank" rel="noopener" aria-label="Check availability on WhatsApp">Check Availability</a>
   </div>
 </div>
 
@@ -1910,7 +1910,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     const durationScroll = document.getElementById('durationScroll');
     const prevBtn = document.getElementById('durPrev');
     const nextBtn = document.getElementById('durNext');
-    let state = { duration: 8, guests: 2 };
+    let state = { duration: 4, guests: 2 };
     const fmt = n => `USD ${Number(n).toLocaleString('en-US', {minimumFractionDigits:Number.isInteger(Number(n))?0:2, maximumFractionDigits:2})}`;
 
     /* Per-person = total / guests, rounded */
