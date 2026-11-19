@@ -1,14 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-KP5FS3V4');</script>
-<!-- End Google Tag Manager -->
   <meta charset="utf-8" />
+<script src="/assets/consent.js?v=20261119-consent" data-tst-analytics-page="true" defer></script>
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Private Tokyo Tours &amp; English-Speaking Guides | Tokyo Signature Tours</title>
 <link rel="canonical" href="https://tokyosignaturetours.com/" />
@@ -2106,18 +2100,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <noscript><style>.seg-btn,.guest-grid,.step,.duration-wrap,.swipe-hint,.menu-toggle,.slider-btn{display:none!important}</style></noscript>
 <link rel="stylesheet" href="/assets/faq-search.css" />
 <script src="/assets/faq-search.js" defer></script>
-<script src="/assets/contact-tracking.js?v=20261119-host-guard" defer></script>
+<script src="/assets/contact-tracking.js?v=20261119-consent" defer></script>
 <link rel="stylesheet" href="/assets/sample-itinerary.css?v=20261005-itineraries" />
 <link rel="stylesheet" href="/assets/google-reviews.css?v=20261011-mobile" />
 <script src="/assets/google-reviews.js?v=20261011-mobile" defer></script>
 <link rel="stylesheet" href="/assets/responsive.css?v=20261119-accessibility" />
+<link rel="stylesheet" href="/assets/consent.css?v=20261119-consent" />
 </head>
 
 <body>
-  <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KP5FS3V4"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
   <a class="skip-link" href="#main">Skip to main content</a>
   <!-- mobile side menu -->
   <div class="menu-backdrop" aria-hidden="true"></div>
@@ -2739,7 +2730,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <p class="instagram-intro">
             See recent tour photos and behind-the-scenes stories on Instagram.
           </p>
-          <div class="instagram-embed">
+          <div class="tst-instagram-choice"><p id="tst-instagram-notice">Loading this post connects to Instagram (Meta), which may receive information about your visit and use its own cookies. This choice is separate from Google Analytics.</p><button type="button" data-tst-instagram-load aria-describedby="tst-instagram-notice" hidden>Load Instagram post</button></div>
+<div class="instagram-embed">
             <blockquote class="instagram-media"
               data-instgrm-permalink="https://www.instagram.com/p/DR5uvPaE1JJ/?igsh=d3N0eGYxNTlpMG9m"
               data-instgrm-version="14"
@@ -2806,7 +2798,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
       <div>© 2026 Tokyo Signature Tours. All rights reserved.</div>
     </div>
-  </footer>
+  <div class="tst-consent-settings-row"><button type="button" class="tst-consent-settings" data-tst-consent-settings aria-controls="tst-analytics-dialog" hidden>Analytics settings</button></div>
+</footer>
 
   <div class="sticky-buy" id="stickyBuy" aria-label="Inquiry bar">
     <div class="sticky-inner">
@@ -3178,34 +3171,7 @@ if (bookingEmailBtn) bookingEmailBtn.href = emailUrl;
   </script>
 
   <script>
-    /* Load Instagram embed only when the section is close to the viewport. */
-    (function lazyLoadInstagramEmbed(){
-      const section = document.getElementById('instagram');
-      if (!section) return;
-
-      let loaded = false;
-      const load = () => {
-        if (loaded) return;
-        loaded = true;
-        const script = document.createElement('script');
-        script.src = 'https://www.instagram.com/embed.js';
-        script.async = true;
-        document.body.appendChild(script);
-      };
-
-      if (!('IntersectionObserver' in window)) {
-        window.addEventListener('load', load, { once:true });
-        return;
-      }
-
-      const observer = new IntersectionObserver((entries) => {
-        if (!entries.some(entry => entry.isIntersecting)) return;
-        observer.disconnect();
-        load();
-      }, { rootMargin:'500px 0px' });
-
-      observer.observe(section);
-    })();
+    // Instagram loads only after its explicit Load Instagram post button is selected.
   </script>
 </body>
 </html>
