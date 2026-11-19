@@ -1,0 +1,39 @@
+/* Shared WhatsApp actions match the Home treatment. */
+a.whatsapp-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  border-radius: 999px !important;
+  background: #25D366 !important;
+  color: #141922 !important;
+  border-color: rgba(37, 211, 102, .38) !important;
+  box-shadow: 0 10px 22px rgba(37, 211, 102, .22) !important;
+  text-decoration: none;
+}
+a.whatsapp-action:hover {
+  background: #20bd5a !important;
+  color: #141922 !important;
+  opacity: 1;
+  transform: none;
+}
+a.whatsapp-action svg {
+  display: block;
+  width: 18px !important;
+  height: 18px !important;
+  fill: currentColor;
+  flex: 0 0 18px;
+}
+a.icon-btn.whatsapp-action {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0;
+  border-radius: 50% !important;
+}
+a.whatsapp-action:focus-visible {
+  outline: 3px solid #141922;
+  outline-offset: 3px;
+}
