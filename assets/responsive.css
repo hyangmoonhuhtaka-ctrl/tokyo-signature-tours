@@ -467,3 +467,89 @@ body.menu-open .side-menu {
     width: 100%;
   }
 }
+
+
+/* Keep the brand backgrounds while making action labels readable. */
+.cta,
+.booking-contact-btn.primary,
+.sticky-btn {
+  color: #141922;
+}
+
+.whatsapp-action {
+  color: #141922 !important;
+}
+
+.toggle,
+.instagram-header a {
+  color: #963257;
+}
+
+.toggle:hover {
+  color: #141922;
+}
+
+.google-rating-card {
+  color: #141922;
+}
+
+.google-rating-label {
+  color: #5b6470;
+}
+
+.google-rating-stars {
+  color: #946519;
+}
+
+/* Preserve small gallery indicators inside comfortable touch targets. */
+.slider-dots {
+  flex-wrap: wrap;
+  gap: 0;
+}
+
+.slider-dot,
+.slider-dot.active {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 44px;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  background: transparent;
+}
+
+.slider-dot::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #5b6470;
+}
+
+.slider-dot.active::before {
+  background: #963257;
+}
+
+.slider-btn,
+.icon-btn.whatsapp-action {
+  width: 44px;
+  height: 44px;
+}
+
+.slider-btn,
+.slider-btn:hover {
+  background: rgba(0, 0, 0, .72);
+}
+
+.cta:focus-visible,
+.booking-contact-btn:focus-visible,
+.sticky-btn:focus-visible,
+.sticky-email-btn:focus-visible,
+.toggle:focus-visible,
+.slider-dot:focus-visible,
+.slider-btn:focus-visible,
+.icon-btn.whatsapp-action:focus-visible {
+  outline: 3px solid #141922;
+  outline-offset: 3px;
+}

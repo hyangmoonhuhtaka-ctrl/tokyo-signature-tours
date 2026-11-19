@@ -283,7 +283,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       "mainEntity": {
         "@id": "https://tokyosignaturetours.com/#private-tokyo-tour-service"
       },
-      "dateModified": "2026-10-05",
+      "dateModified": "2026-11-19",
       "hasPart": {
         "@id": "https://tokyosignaturetours.com/#faq"
       },
@@ -2106,11 +2106,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <noscript><style>.seg-btn,.guest-grid,.step,.duration-wrap,.swipe-hint,.menu-toggle,.slider-btn{display:none!important}</style></noscript>
 <link rel="stylesheet" href="/assets/faq-search.css" />
 <script src="/assets/faq-search.js" defer></script>
-<script src="/assets/contact-tracking.js" defer></script>
+<script src="/assets/contact-tracking.js?v=20261119-host-guard" defer></script>
 <link rel="stylesheet" href="/assets/sample-itinerary.css?v=20261005-itineraries" />
 <link rel="stylesheet" href="/assets/google-reviews.css?v=20261011-mobile" />
 <script src="/assets/google-reviews.js?v=20261011-mobile" defer></script>
-<link rel="stylesheet" href="/assets/responsive.css?v=20261011-mobile" />
+<link rel="stylesheet" href="/assets/responsive.css?v=20261119-accessibility" />
 </head>
 
 <body>
@@ -2226,7 +2226,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <p style="font-size:14px;color:var(--muted);margin-top:8px;">
           Founded in Tokyo by Taka, Tokyo Signature Tours makes each day feel personal and easy, like being hosted by a trusted local.
         </p>
-        <p style="font-size:15px;margin-top:16px;"><a href="/about.html#taka" style="text-decoration:underline;text-underline-offset:3px;">Meet Taka, our founder and private guide</a> · <a href="/private-tokyo-tour-guide.html" style="text-decoration:underline;text-underline-offset:3px;">Explore our private guide service</a></p>
+        <p style="font-size:15px;margin-top:16px;"><a href="/about.html#taka" style="text-decoration:underline;text-underline-offset:3px;">Meet Taka, our founder and private guide</a> · <a href="/private-tokyo-tour-guide.html#guide-matching" style="text-decoration:underline;text-underline-offset:3px;">How your private guide is arranged</a></p>
       </div>
     </section>
 
@@ -3042,7 +3042,12 @@ if (bookingEmailBtn) bookingEmailBtn.href = emailUrl;
       const go = (i)=>{
         index = (i + slides.length) % slides.length;
         track.style.transform = `translateX(${-index*100}%)`;
-        [...dotsWrap.children].forEach((d,di)=>d.classList.toggle('active', di===index));
+        [...dotsWrap.children].forEach((d,di)=>{
+          const active = di === index;
+          d.classList.toggle('active', active);
+          if(active) d.setAttribute('aria-current', 'true');
+          else d.removeAttribute('aria-current');
+        });
       };
 
       slides.forEach((_,i)=> {
