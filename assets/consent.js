@@ -5,6 +5,7 @@
 
   var STORAGE_KEY = 'tst_analytics_consent_v1';
   var VERSION = 1;
+  var japanese = !!(document.documentElement && /^ja(?:-|$)/i.test(document.documentElement.lang));
   var MAX_AGE = 180 * 24 * 60 * 60 * 1000;
   var production = window.location.hostname === 'tokyosignaturetours.com';
   // Legal and payment-status pages expose settings without adding analytics to those pages.
@@ -113,7 +114,7 @@
       // A failed save must not reload into a previously stored grant.
       try { window.localStorage.removeItem(STORAGE_KEY); } catch (_) { /* Fail closed in this document. */ }
       stopAnalytics(false);
-      status.textContent = 'Your browser could not save this choice. Google Analytics is off on this page. To keep it off on future visits, allow this website to save your preference or clear its site data in your browser.';
+      status.textContent = japanese ? '設定を保存できませんでした。このページでは Google Analytics を無効にしています。次回以降も無効にするには、このサイトの設定保存をブラウザーで許可するか、ブラウザーからこのサイトのデータを削除してください。' : 'Your browser could not save this choice. Google Analytics is off on this page. To keep it off on future visits, allow this website to save your preference or clear its site data in your browser.';
       return;
     }
     choice = record;
@@ -126,7 +127,7 @@
   function openSettings() {
     if (!panel) return;
     previousFocus = document.activeElement;
-    status.textContent = 'Current setting: Google Analytics ' + (isAllowed() ? 'on.' : 'off.');
+    status.textContent = japanese ? '現在の設定：Google Analytics は' + (isAllowed() ? '有効です。' : '無効です。') : 'Current setting: Google Analytics ' + (isAllowed() ? 'on.' : 'off.');
     if (!panel.open) {
       if (typeof panel.showModal === 'function') panel.showModal();
       else panel.setAttribute('open', '');
@@ -140,7 +141,13 @@
     panel.className = 'tst-consent-dialog';
     panel.setAttribute('aria-labelledby', 'tst-consent-title');
     panel.setAttribute('aria-describedby', 'tst-consent-description');
-    panel.innerHTML = '<h2 id="tst-consent-title">Optional analytics</h2>' +
+    panel.innerHTML = japanese ? '<h2 id="tst-consent-title">アクセス解析の設定</h2>' +
+      '<p id="tst-consent-description">お客様の同意を得た場合に限り、Google Analytics を使って当サイトの利用状況を把握し、改善に役立てます。許可するまでアクセス解析は無効です。この選択は、ツアーのお問い合わせや予約に影響しません。</p>' +
+      '<p>このブラウザーで選択を180日間保存します。フッターの「アクセス解析の設定」からいつでも変更できます。<a href="/privacy-ja.html">プライバシーポリシー</a></p>' +
+      '<p class="tst-consent-status" role="status" aria-live="polite"></p>' +
+      '<div class="tst-consent-actions"><button type="button" data-tst-reject>解析を許可しない</button><button type="button" data-tst-accept>解析を許可する</button></div>' +
+      '<button type="button" class="tst-consent-close" data-tst-close>設定を閉じる</button>' :
+      '<h2 id="tst-consent-title">Optional analytics</h2>' +
       '<p id="tst-consent-description">With your permission, we use Google Analytics to understand how visitors use this website and improve it. Analytics is off until you accept. Your choice does not affect tour inquiries or bookings.</p>' +
       '<p>We remember your choice on this browser for 180 days. You can change it anytime using Analytics settings in the footer. <a href="/privacy.html">Privacy Policy</a></p>' +
       '<p class="tst-consent-status" role="status" aria-live="polite"></p>' +
