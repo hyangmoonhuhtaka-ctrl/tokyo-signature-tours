@@ -98,6 +98,8 @@
   }
 
   document.addEventListener('click', function (event) {
+    // Do not queue pre-consent clicks for later replay when analytics is enabled.
+    if (!window.TSTConsent || !window.TSTConsent.isAnalyticsAllowed()) return;
     var target = event.target;
     if (target && typeof target.closest !== 'function') target = target.parentElement;
     var link = target && typeof target.closest === 'function' ? target.closest('a[href]') : null;

@@ -1,14 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-KP5FS3V4');</script>
-<!-- End Google Tag Manager -->
 <meta charset="utf-8" />
+<script src="/assets/consent.js?v=20261119-consent" data-tst-analytics-page="true" defer></script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>About Taka &amp; Our Local Guides | Tokyo Signature Tours</title>
 <link rel="canonical" href="https://tokyosignaturetours.com/about.html" />
@@ -742,16 +736,13 @@ footer.site{
 
 <link rel="stylesheet" href="/assets/subpages.css" />
 <noscript><style>.menu-toggle,.sticky-buy{display:none!important}</style></noscript>
-<script src="/assets/contact-tracking.js?v=20261119-host-guard" defer></script>
+<script src="/assets/contact-tracking.js?v=20261119-consent" defer></script>
 <link rel="stylesheet" href="/assets/google-reviews.css?v=20261011-mobile" />
 <script src="/assets/google-reviews.js?v=20261011-mobile" defer></script>
 <link rel="stylesheet" href="/assets/responsive.css?v=20261119-accessibility" />
+<link rel="stylesheet" href="/assets/consent.css?v=20261119-consent" />
 </head>
 <body class="subpage">
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KP5FS3V4"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
 
 <a class="skip-link" href="#main">Skip to main content</a>
 <div class="menu-backdrop" aria-hidden="true"></div>
@@ -849,7 +840,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="founder-profile">
       <figure class="founder-portrait">
         <a href="https://www.instagram.com/p/DS03NuIk37q/" target="_blank" rel="noopener" aria-label="View Taka's original photo on Instagram (opens in a new tab)">
-          <img src="/assets/taka-founder-portrait.jpg" alt="Taka, founder and local guide at Tokyo Signature Tours" width="1440" height="1522" loading="lazy" decoding="async" />
+          <picture>
+            <source type="image/webp" srcset="/assets/taka-founder-portrait-360.webp 360w, /assets/taka-founder-portrait-720.webp 720w, /assets/taka-founder-portrait-1080.webp 1080w" sizes="(max-width: 391px) calc(100vw - 32px), 360px" />
+            <img src="/assets/taka-founder-portrait.jpg" alt="Taka, founder and local guide at Tokyo Signature Tours" width="1440" height="1522" loading="lazy" decoding="async" />
+          </picture>
         </a>
         <figcaption>Taka · Founder &amp; local guide</figcaption>
       </figure>
@@ -979,7 +973,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </a>
       </div>
       <p class="instagram-intro">Photos, moments from recent tours, and quiet stories from the city we love.</p>
-      <div class="instagram-embed">
+      <div class="tst-instagram-choice"><p id="tst-instagram-notice">Loading this post connects to Instagram (Meta), which may receive information about your visit and use its own cookies. This choice is separate from Google Analytics.</p><button type="button" data-tst-instagram-load aria-describedby="tst-instagram-notice" hidden>Load Instagram post</button></div>
+<div class="instagram-embed">
         <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DR5uvPaE1JJ/" data-instgrm-version="14" style="background:#fff;border:0;margin:0 auto;max-width:540px;width:100%;"></blockquote>
       </div>
     </div>
@@ -1051,6 +1046,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       © 2026 Tokyo Signature Tours · All rights reserved · Based in Tokyo, Japan
     </div>
   </div>
+<div class="tst-consent-settings-row"><button type="button" class="tst-consent-settings" data-tst-consent-settings aria-controls="tst-analytics-dialog" hidden>Analytics settings</button></div>
 </footer>
 <script>
 /* =========================================================
@@ -1162,28 +1158,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     wrap.addEventListener('mouseleave', ()=>{ timer = setInterval(()=>go(index+1), 7000); });
   })();
 
-  /* ---------- Lazy load Instagram embed ---------- */
-  (function(){
-    const sec = document.getElementById('instagram');
-    if (!sec) return;
-    let loaded = false;
-    const load = ()=>{
-      if (loaded) return;
-      loaded = true;
-      const s = document.createElement('script');
-      s.src = 'https://www.instagram.com/embed.js';
-      s.async = true;
-      document.body.appendChild(s);
-    };
-    if ('IntersectionObserver' in window){
-      const obs = new IntersectionObserver(entries=>{
-        entries.forEach(e=>{ if (e.isIntersecting){ load(); obs.disconnect(); }});
-      }, {rootMargin:'300px 0px'});
-      obs.observe(sec);
-    } else {
-      window.addEventListener('load', load);
-    }
-  })();
+  // Instagram loads only after its explicit Load Instagram post button is selected.
 
 })();
 
