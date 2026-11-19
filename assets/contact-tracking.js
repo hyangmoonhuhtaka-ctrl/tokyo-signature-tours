@@ -2,6 +2,9 @@
 (function (window, document) {
   'use strict';
 
+  // Keep preview and local interactions out of production measurement.
+  if (window.location.hostname !== 'tokyosignaturetours.com') return;
+
   if (window.__tstContactTrackingInstalled) return;
   window.__tstContactTrackingInstalled = true;
 
